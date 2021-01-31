@@ -168,11 +168,12 @@ nmap <silent> <leader>] <Plug>(ale_next_wrap)
 " DEOPLETE OPTIONS
 
 let g:deoplete#enable_at_startup = 1
+
 " close preview window automatically
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
 " navigate through auto-completion list with Tab
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
 
 " ECHODOC SETTINGS
 
