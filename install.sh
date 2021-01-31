@@ -7,3 +7,6 @@ ln -s ${BASEDIR}/tmux.conf ~/.tmux.conf
 
 # zsh
 ln -s ${BASEDIR}/zshrc ~/.zshrc
+
+# neovim
+ln -s ${BASEDIR}/init.vim ~/.config/nvim/init.vim
