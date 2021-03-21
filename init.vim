@@ -42,6 +42,7 @@ Plug 'ryanoasis/vim-devicons' " Icons in file explorer
 
 call plug#end()
 
+let mapleader = " "
 
 " SET PYTHON ENVIRONMENT
 
