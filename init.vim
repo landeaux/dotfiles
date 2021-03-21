@@ -21,15 +21,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Function signatures
-Plug 'Shougo/echodoc.vim'
-
-" CoC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'neoclide/coc-tabnine', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC
 Plug 'scrooloose/nerdtree' " File explorer
 Plug 'scrooloose/nerdcommenter' " Easy Commenting
 Plug 'sheerun/vim-polyglot' " Syntax Highlighting
