@@ -20,18 +20,19 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Auto completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-
 " Function signatures
 Plug 'Shougo/echodoc.vim'
 
-Plug 'davidhalter/jedi-vim' " Code jump (go-to) plugin
+" CoC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-tabnine', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+
 Plug 'scrooloose/nerdtree' " File explorer
 Plug 'scrooloose/nerdcommenter' " Easy Commenting
 Plug 'sheerun/vim-polyglot' " Syntax Highlighting
-Plug 'dense-analysis/ale' " Linting/Formatting
 Plug 'Vimjas/vim-python-pep8-indent' " Indentation
 Plug 'vim-airline/vim-airline' " Status bar plugin
 Plug 'jiangmiao/auto-pairs' " Automatic quote and bracket completion
@@ -62,6 +63,26 @@ endif
 syntax enable
 colorscheme dracula
 " colorscheme gruvbox
+
+
+" COC SETTINGS
+
+let g:coc_global_extensions = [
+  \ 'coc-python',
+  \ 'coc-yaml',
+  \ 'coc-json',
+  \ ]
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 
 " NERDTREE SETTINGS
@@ -130,69 +151,6 @@ filetype plugin on
 
 "" Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 0
-
-
-"" ALE SETTINGS
-
-let g:ale_list_window_size = 4
-let g:ale_sign_column_always = 0
-let g:ale_open_list = 0
-let g:ale_keep_list_window_open = 0
-
-"" options are in .pylintrc
-highlight VertSplit ctermbg=253
-
-let g:ale_sign_error = '‼'
-let g:ale_sign_warning = '∙'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = '1'
-let g:ale_lint_on_save = '1'
-let g:ale_linters = {
-    \    'python': ['pylint'],
-    \}
-let g:ale_fixers = {
-    \    'python': ['autopep8'],
-    \}
-let g:ale_fix_on_save = '1'
-
-" nmap Ctrl-[ and Ctrl-] to moving between errors
-nmap <silent> <leader>[ <Plug>(ale_previous_wrap)
-nmap <silent> <leader>] <Plug>(ale_next_wrap)
-
-
-" DEOPLETE OPTIONS
-
-let g:deoplete#enable_at_startup = 1
-
-" close preview window automatically
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" navigate through auto-completion list with Tab
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-
-" ECHODOC SETTINGS
-
-let g:echodoc#enable_at_startup = 1
-
-"" use neovim's floating text feature
-let g:echodoc#type = 'floating'
-" To use a custom highlight for the float window,
-" change Pmenu to your highlight group
-highlight link EchoDocFloat Pmenu
-
-
-" JEDI-VIM OPTIONS
-
-"" disable autocompletion, cause we use deoplete for completion
-let g:jedi#completions_enabled = 1
-
-"" open the go-to function in split, not another buffer
-"" options: top, left, right, bottom or winwidth
-let g:jedi#use_tabs_not_buffers = 0
-
-"" put call signatures in command line
-let g:jedi#show_call_signatures = 0
 
 
 " MISCELLANEOUS SETTINGS

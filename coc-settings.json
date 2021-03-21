@@ -1,0 +1,14 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "python.pythonPath": "python",
+    "python.venvPath": "~/.pyenv/",
+    "python.jediPath": "~/.pyenv/versions/3.6.9/envs/neovim-python3/lib/python3.6/site-packages/",
+    "python.jediEnabled": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "~/.pyenv/versions/black/bin/black",
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.linting.pylintPath": "~/.pyenv/versions/pylint/bin/pylint",
+    "python.linting.lintOnSave": true,
+    "suggest.timeout": 5000
+}
