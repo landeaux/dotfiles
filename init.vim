@@ -50,13 +50,6 @@ let g:python_host_prog = $HOME . "/.pyenv/versions/neovim-python2/bin/python"
 let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim-python3/bin/python"
 
 
-" CUSTOM MAPPINGS
-
-"" editing and reloading this file
-map <leader>M :tabnew ~/.config/nvim/init.vim<CR>
-map <leader>R :source ~/.config/nvim/init.vim<CR>
-
-
 " ENABLING THEME SUPPORT
 
 if (has("termguicolors"))
@@ -202,12 +195,16 @@ let g:jedi#show_call_signatures = 0
 
 " MISCELLANEOUS SETTINGS
 
+"" editing and reloading this file
+nmap <leader>M :tabnew ~/.config/nvim/init.vim<CR>
+nmap <leader>R :source ~/.config/nvim/init.vim<CR>
+
 "" enable hybrid line numbers
 set number relativenumber
 set nu rnu
 
 "" easy new tab open
-map <leader>t :tabnew 
+nmap <leader>t :tabnew
 
 "" toggle visibility of whitespace characters
 set nolist
