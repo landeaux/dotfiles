@@ -156,7 +156,7 @@ let g:NERDSpaceDelims = 0
 " MISCELLANEOUS SETTINGS
 
 "" editing and reloading this file
-nmap <leader>M :tabnew ~/.config/nvim/init.vim<CR>
+nmap <leader>M :e ~/.config/nvim/init.vim<CR>
 nmap <leader>R :source ~/.config/nvim/init.vim<CR>
 
 "" enable hybrid line numbers
