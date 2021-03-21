@@ -90,7 +90,7 @@ tnoremap <Esc> <C-\><C-n>
 "" start terminal in insert mode
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
-"" open terminal on ctrl+b
+"" open terminal on ctrl+j
 function! OpenTerminal()
   split term://zsh
   resize 10
@@ -136,7 +136,7 @@ let g:NERDSpaceDelims = 0
 
 let g:ale_list_window_size = 4
 let g:ale_sign_column_always = 0
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
 
 "" options are in .pylintrc
@@ -155,9 +155,10 @@ let g:ale_fixers = {
     \}
 let g:ale_fix_on_save = '1'
 
-" map Ctrl-E and Ctrl-e to moving between errors
+" nmap Ctrl-[ and Ctrl-] to moving between errors
 nmap <silent> <leader>[ <Plug>(ale_previous_wrap)
 nmap <silent> <leader>] <Plug>(ale_next_wrap)
+
 
 " DEOPLETE OPTIONS
 
@@ -168,6 +169,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " navigate through auto-completion list with Tab
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 
 " ECHODOC SETTINGS
 
@@ -187,7 +189,7 @@ let g:jedi#completions_enabled = 1
 
 "" open the go-to function in split, not another buffer
 "" options: top, left, right, bottom or winwidth
-let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#use_tabs_not_buffers = 0
 
 "" put call signatures in command line
 let g:jedi#show_call_signatures = 0
@@ -229,3 +231,6 @@ autocmd VimEnter * WipeReg  " wipe registers when starting up (n)vim
 "" prevent Python auto indent when pressing colon (:) key
 autocmd FileType python setlocal indentkeys-=<:>
 autocmd FileType python setlocal indentkeys-=:
+
+"" toggle search highlighting
+nnoremap <leader>h :set hlsearch!<CR>
