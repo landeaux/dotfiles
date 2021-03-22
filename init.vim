@@ -22,6 +22,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 Plug 'scrooloose/nerdtree' " File explorer
 Plug 'scrooloose/nerdcommenter' " Easy Commenting
 Plug 'sheerun/vim-polyglot' " Syntax Highlighting
