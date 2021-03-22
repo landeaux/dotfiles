@@ -20,6 +20,7 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'stsewd/fzf-checkout.vim' " fuzzy git checkout
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
@@ -54,9 +55,9 @@ endif
 " THEME
 
 syntax enable
-colorscheme dracula
-" colorscheme gruvbox
-
+"colorscheme dracula
+colorscheme gruvbox
+set background=dark
 
 " COC SETTINGS
 
@@ -153,8 +154,11 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l<Paste>
 
 
-" FILE SEARCHING
+" FZF
 
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+
+"" file searching
 nnoremap <C-p> :FZF<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -164,6 +168,13 @@ let g:fzf_action = {
 
 "" ignore node_modules
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+"" order results from top to bottom
+let $FZF_DEFAULT_OPTS='--reverse'
+
+"" map to fzf GCheckout
+nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>p :GFiles<CR>
 
 
 " NERD COMMENTER SETTINGS
