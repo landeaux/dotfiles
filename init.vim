@@ -61,14 +61,15 @@ set background=dark
 
 " COC SETTINGS
 
-let g:coc_global_extensions = [
-  \ 'coc-python',
-  \ 'coc-yaml',
-  \ 'coc-json',
-  \ 'coc-tsserver',
-  \ 'coc-prettier',
-  \ 'coc-eslint',
-  \ ]
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see https://github.com/neoclide/coc.nvim/issues/649
+set nobackup
+set nowritebackup
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -114,9 +115,29 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+" Show diagnostics list
 nnoremap <silent> <leader>d :<C-u>CocList diagnostics<cr>
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Define global extensions/language servers
+let g:coc_global_extensions = [
+  \ 'coc-python',
+  \ 'coc-yaml',
+  \ 'coc-json',
+  \ 'coc-tsserver',
+  \ 'coc-prettier',
+  \ 'coc-eslint',
+  \ ]
 
 
 " NERDTREE SETTINGS
