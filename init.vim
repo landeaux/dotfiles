@@ -107,6 +107,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+nnoremap <silent> <leader>d :<C-u>CocList diagnostics<cr>
 
 
 " NERDTREE SETTINGS
