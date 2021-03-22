@@ -1,5 +1,9 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "coc.preferences.formatOnSaveFiletypes": [
+        "python",
+        "javascript",
+        "javascriptreact"
+    ],
     "python.pythonPath": "python",
     "python.venvPath": "~/.pyenv/",
     "python.jediPath": "~/.pyenv/versions/3.6.9/envs/neovim-python3/lib/python3.6/site-packages/",
@@ -10,5 +14,7 @@
     "python.linting.flake8Enabled": false,
     "python.linting.pylintPath": "~/.pyenv/versions/pylint/bin/pylint",
     "python.linting.lintOnSave": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.filetypes": ["javascript", "javascriptreact"],
     "suggest.timeout": 5000
 }
