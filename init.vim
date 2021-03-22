@@ -20,8 +20,8 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Function signatures
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'scrooloose/nerdtree' " File explorer
 Plug 'scrooloose/nerdcommenter' " Easy Commenting
 Plug 'sheerun/vim-polyglot' " Syntax Highlighting
@@ -63,6 +63,7 @@ let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-yaml',
   \ 'coc-json',
+  \ 'coc-tsserver',
   \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
