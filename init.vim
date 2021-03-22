@@ -61,18 +61,18 @@ set background=dark
 
 " COC SETTINGS
 
-" TextEdit might fail if hidden is not set.
+"" TextEdit might fail if hidden is not set.
 set hidden
 
-" Some servers have issues with backup files, see https://github.com/neoclide/coc.nvim/issues/649
+"" Some servers have issues with backup files, see https://github.com/neoclide/coc.nvim/issues/649
 set nobackup
 set nowritebackup
 
-" Don't pass messages to |ins-completion-menu|.
+"" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
+"" Always show the signcolumn, otherwise it would shift the text each time
+"" diagnostics appear/become resolved.
 if has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
@@ -80,7 +80,7 @@ else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
+"" Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -92,49 +92,47 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
+"" Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
+"" Make <CR> auto-select the first completion item and notify coc.nvim to
+"" format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+"" Use `[g` and `]g` to navigate diagnostics
+"" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" GoTo code navigation.
+"" GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Highlight the symbol and its references when holding the cursor.
+"" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+"" Symbol renaming.
+nmap <leader>n <Plug>(coc-rename)
 
-" Show diagnostics list
-nnoremap <silent> <leader>d :<C-u>CocList diagnostics<cr>
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
+"" Applying codeAction to the selected region.
+"" Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying codeAction to the current buffer.
+"" Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
+
+"" Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Remap <C-f> and <C-b> for scroll float windows/popups.
+"" Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
@@ -144,13 +142,37 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" Add `:Fold` command to fold current buffer.
+"" Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
-" Add `:OR` command for organize imports of the current buffer.
+"" Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Define global extensions/language servers
+"" Show diagnostics list
+nnoremap <silent><nowait> <leader>d :<C-u>CocList diagnostics<cr>
+
+"" Manage extensions
+nnoremap <silent><nowait> <leader>e :<C-u>CocList extensions<cr>
+
+"" Show commands
+nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
+
+"" Find symbol of current document
+nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
+
+"" Search workspace symbols
+nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
+
+"" Do default action for next item
+nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
+
+"" Do default action for previous item
+nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
+
+"" Resume latest coc list
+nnoremap <silent><nowait> <leader>r  :<C-u>CocListResume<CR>
+
+"" Define global extensions/language servers
 let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-yaml',
@@ -158,6 +180,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-prettier',
   \ 'coc-eslint',
+  \ 'coc-vetur',
   \ ]
 
 
