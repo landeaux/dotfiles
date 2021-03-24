@@ -20,11 +20,10 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Vue.js syntax highlighting
-Plug 'posva/vim-vue'
-
-" Javascript syntax highlighting
-Plug 'pangloss/vim-javascript'
+" Syntax highlighting
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Python
+Plug 'pangloss/vim-javascript' " Javascript
+Plug 'posva/vim-vue' " Vue.js
 
 Plug 'stsewd/fzf-checkout.vim' " fuzzy git checkout
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC
@@ -62,8 +61,27 @@ endif
 syntax enable
 "colorscheme dracula
 colorscheme gruvbox
-let g:gruvbox_contrast = "hard"
+let g:gruvbox_contrast_dark = "hard"
 set background=dark
+hi! link javaScript             GruvboxBlue
+hi! link jsExportDefault        GruvboxBlue
+hi! link jsImport               GruvboxBlue
+hi! link jsFrom                 GruvboxBlue
+hi! link jsObjectKey            GruvboxBlue
+hi! link jsObjectProp           GruvboxBlue
+hi! link jsExport               GruvboxRedBold
+hi! link jsObjectFuncName       GruvboxBlueBold
+hi! link jsFuncCall             GruvboxBlueBold
+hi! link jsVariableDef          GruvboxFg1
+hi! link jsDestructuringBlock   GruvboxFg1
+hi! link jsObjectShorthandProp  GruvboxFg1
+hi! link jsFuncArgs             GruvboxFg1
+hi! link htmlH2                 GruvboxFg1
+hi! link jsBrackets             GruvboxFg4
+hi! link jsObjectBraces         GruvboxFg4
+hi! link jsFuncBraces           GruvboxFg4
+hi! link Normal                 GruvboxFg4
+hi! link Noise                  GruvboxFg4
 
 " COC SETTINGS
 
