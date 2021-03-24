@@ -237,6 +237,10 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 
 "" file searching
 nnoremap <C-p> :FZF<CR>
+
+"" text search
+nnoremap <leader>f :Ag<CR>
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
@@ -249,8 +253,13 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 "" order results from top to bottom
 let $FZF_DEFAULT_OPTS='--reverse'
 
-"" map to fzf GCheckout
+
+" FUGITIVE
+
+"" easy git checkout
 nnoremap <leader>gc :GCheckout<CR>
+
+"" project file search with display window
 nnoremap <leader>p :GFiles<CR>
 
 
