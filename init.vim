@@ -20,13 +20,18 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Vue.js syntax highlighting
+Plug 'posva/vim-vue'
+
+" Javascript syntax highlighting
+Plug 'pangloss/vim-javascript'
+
 Plug 'stsewd/fzf-checkout.vim' " fuzzy git checkout
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " CoC
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'scrooloose/nerdtree' " File explorer
 Plug 'scrooloose/nerdcommenter' " Easy Commenting
-Plug 'sheerun/vim-polyglot' " Syntax Highlighting
 Plug 'Vimjas/vim-python-pep8-indent' " Indentation
 Plug 'vim-airline/vim-airline' " Status bar plugin
 Plug 'jiangmiao/auto-pairs' " Automatic quote and bracket completion
@@ -57,6 +62,7 @@ endif
 syntax enable
 "colorscheme dracula
 colorscheme gruvbox
+let g:gruvbox_contrast = "hard"
 set background=dark
 
 " COC SETTINGS
