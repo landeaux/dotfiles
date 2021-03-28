@@ -302,6 +302,11 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 
+autocmd BufRead,BufNewFile .env.* set filetype=sh
+autocmd BufRead,BufNewFile .gitignore_global set filetype=conf
+autocmd BufRead,BufNewFile .pylintrc set filetype=conf
+autocmd BufRead,BufNewFile Dockerfile.* set filetype=dockerfile
+
 "" prevent Python auto indent when pressing colon (:) key
 autocmd FileType python setlocal indentkeys-=<:>
 autocmd FileType python setlocal indentkeys-=:
