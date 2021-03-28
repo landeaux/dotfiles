@@ -302,13 +302,15 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 
+"" add custom filetype mappings
 autocmd BufRead,BufNewFile .env.* set filetype=sh
-autocmd BufRead,BufNewFile .gitignore_global set filetype=conf
 autocmd BufRead,BufNewFile .gitconfig.local set filetype=gitconfig
 autocmd BufRead,BufNewFile .pylintrc set filetype=conf
 autocmd BufRead,BufNewFile .tmux.conf.local set filetype=tmux
+autocmd BufRead,BufNewFile .zshrc.local set filetype=sh
 autocmd BufRead,BufNewFile Dockerfile.* set filetype=dockerfile
 autocmd BufRead,BufNewFile gitconfig set filetype=gitconfig
+autocmd BufRead,BufNewFile gitignore set filetype=conf
 
 "" prevent Python auto indent when pressing colon (:) key
 autocmd FileType python setlocal indentkeys-=<:>
