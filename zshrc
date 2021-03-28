@@ -124,6 +124,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # allow overrides (NOTE: This must stay at the bottom of the file!)
-if [ -f ~/.zshrc_local ]; then
-  source ~/.zshrc_local
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
 fi
