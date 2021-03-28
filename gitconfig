@@ -1,0 +1,19 @@
+[color]
+  ui = auto
+[commit]
+  template = ~/.gitmessage
+[core]
+  autocrlf = input
+	editor = nvim
+  excludesfile = ~/.gitignore
+[diff]
+  colorMoved = zebra
+[fetch]
+  prune = true
+  pruneTags = true
+[include]
+  path = ~/.gitconfig.local
+[init]
+  defaultBranch = main
+[push]
+  default = current

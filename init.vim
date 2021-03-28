@@ -304,9 +304,11 @@ set expandtab
 
 autocmd BufRead,BufNewFile .env.* set filetype=sh
 autocmd BufRead,BufNewFile .gitignore_global set filetype=conf
+autocmd BufRead,BufNewFile .gitconfig.local set filetype=gitconfig
 autocmd BufRead,BufNewFile .pylintrc set filetype=conf
-autocmd BufRead,BufNewFile Dockerfile.* set filetype=dockerfile
 autocmd BufRead,BufNewFile .tmux.conf.local set filetype=tmux
+autocmd BufRead,BufNewFile Dockerfile.* set filetype=dockerfile
+autocmd BufRead,BufNewFile gitconfig set filetype=gitconfig
 
 "" prevent Python auto indent when pressing colon (:) key
 autocmd FileType python setlocal indentkeys-=<:>
