@@ -289,13 +289,22 @@ nnoremap <leader>p :GFiles<CR>
 
 " NERD COMMENTER SETTINGS
 
-filetype plugin on
-
 "" Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 0
 
 
 " MISCELLANEOUS SETTINGS
+
+filetype plugin on
+
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set expandtab
+
+"" prevent Python auto indent when pressing colon (:) key
+autocmd FileType python setlocal indentkeys-=<:>
+autocmd FileType python setlocal indentkeys-=:
 
 "" editing and reloading this file
 nmap <leader>M :e ~/.config/nvim/init.vim<CR>
@@ -327,10 +336,6 @@ let &colorcolumn = join(range(80,999), ',')
 "" wiping the register
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 autocmd VimEnter * WipeReg  " wipe registers when starting up (n)vim
-
-"" prevent Python auto indent when pressing colon (:) key
-autocmd FileType python setlocal indentkeys-=<:>
-autocmd FileType python setlocal indentkeys-=:
 
 "" toggle search highlighting
 nnoremap <leader>h :set hlsearch!<CR>
