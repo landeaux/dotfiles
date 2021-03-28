@@ -106,6 +106,7 @@ alias prettifyjson="python -m json.tool"
 # Marker command palette (https://github.com/pindexis/marker)
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 export MARKER_KEY_GET="\C-J"
+export MARKER_KEY_NEXT_PLACEHOLDER="\C-{"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
