@@ -4,6 +4,7 @@
         "javascript",
         "javascriptreact"
     ],
+    "diagnostic.maxWindowWidth": 200,
     "python.pythonPath": "python",
     "python.venvPath": "~/.pyenv/",
     "python.jediPath": "~/.pyenv/versions/3.6.9/envs/neovim-python3/lib/python3.6/site-packages/",
