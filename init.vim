@@ -86,6 +86,8 @@ hi! link jsFuncBraces           GruvboxFg4
 hi! link Normal                 GruvboxFg4
 hi! link Noise                  GruvboxFg4
 
+set background=dark
+
 " COC SETTINGS
 
 "" TextEdit might fail if hidden is not set.
