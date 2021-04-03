@@ -41,7 +41,9 @@ Plug 'ryanoasis/vim-devicons' " Icons in file explorer
 
 call plug#end()
 
+
 let mapleader = " "
+
 
 " SET PYTHON ENVIRONMENT
 
@@ -59,10 +61,11 @@ endif
 " THEME
 
 syntax enable
+
 "colorscheme dracula
+
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
-set background=dark
 hi! link javaScript             GruvboxBlue
 hi! link jsExportDefault        GruvboxBlue
 hi! link jsImport               GruvboxBlue
@@ -239,7 +242,7 @@ function! OpenTerminal()
   split term://zsh
   resize 10
 endfunction
-nnoremap <C-j> :call OpenTerminal()<CR>
+nnoremap <C-x> :call OpenTerminal()<CR>
 
 
 " SWITCHING BETWEEN PANELS
@@ -280,10 +283,21 @@ let $FZF_DEFAULT_OPTS='--reverse'
 
 " FUGITIVE
 
-"" easy git checkout
+"" git status
+nnoremap <leader>gs :G<CR>
+
+"" git checkout
 nnoremap <leader>gc :GCheckout<CR>
 
-"" project file search with display window
+"" handling merge conflicts
+
+""" accept incoming
+nnoremap <leader>gj :diffget //3<CR>
+
+""" accept yours
+nnoremap <leader>gf :diffget //2<CR>
+
+"" project search of git-tracked files with display window
 nnoremap <leader>p :GFiles<CR>
 
 
@@ -295,11 +309,10 @@ let g:NERDSpaceDelims = 0
 
 " MISCELLANEOUS SETTINGS
 
-filetype plugin on
-
+set smartindent
 set shiftwidth=2
-set tabstop=2
 set softtabstop=2
+set tabstop=2
 set expandtab
 
 "" add custom filetype mappings
@@ -349,3 +362,7 @@ autocmd VimEnter * WipeReg  " wipe registers when starting up (n)vim
 
 "" toggle search highlighting
 nnoremap <leader>h :set hlsearch!<CR>
+
+"" search
+set ignorecase " ignore case when searching...
+set smartcase " ...unless we type a capital
