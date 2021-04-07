@@ -39,9 +39,8 @@ vim.api.nvim_set_keymap('n', 'gy', '<Plug>(coc-type-definition)', {})
 vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', {})
 vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', {})
 
--- TODO
 -- Highlight the symbol and its references when holding the cursor.
--- autocmd CursorHold * silent call CocActionAsync('highlight')
+vim.cmd [[autocmd CursorHold * silent call CocActionAsync('highlight')]]
 
 -- Symbol renaming.
 vim.api.nvim_set_keymap('n', '<leader>n', '<Plug>(coc-rename)', {})
