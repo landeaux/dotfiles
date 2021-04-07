@@ -23,8 +23,12 @@ require('plugins')
 -- Key mappings
 require('keymappings')
 
+-- Autocommands
+require('autocmd')
+
 -- Language server config
 -- require('lang')
 
 -- Config
 require('config')
+
