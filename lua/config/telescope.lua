@@ -13,6 +13,7 @@ require('telescope').setup {
     },
     prompt_position = 'top',
     sorting_strategy = 'ascending',
+    file_sorter = require('telescope.sorters').get_fzy_sorter,
   }
 }
 
