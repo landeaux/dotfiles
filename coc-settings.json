@@ -4,6 +4,7 @@
         "javascript",
         "javascriptreact"
     ],
+    "prettier.eslintIntegration": true,
     "diagnostic.maxWindowWidth": 200,
     "python.pythonPath": "python",
     "python.venvPath": "~/.pyenv/",
