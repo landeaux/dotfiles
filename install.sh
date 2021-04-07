@@ -9,7 +9,9 @@ ln -s ${BASEDIR}/tmux.conf ~/.tmux.conf
 ln -s ${BASEDIR}/zshrc ~/.zshrc
 
 # neovim
-ln -s ${BASEDIR}/init.vim ~/.config/nvim/init.vim
+rm -rf ~/.config/nvim && mkdir -p ~/.config/nvim
+ln -s ${BASEDIR}/init.lua ~/.config/nvim/init.lua
+ln -s ${BASEDIR}/lua ~/.config/nvim/lua
 ln -s ${BASEDIR}/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # git
