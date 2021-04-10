@@ -4,11 +4,12 @@ ts_config.setup {
     ensure_installed = {
         'bash',
         'css',
-        'scss',
+        'graphql',
         'html',
         'javascript',
         'lua',
         'python',
+        'scss',
         'vue',
     },
     highlight = {
