@@ -1,33 +1,123 @@
 local gl = require('galaxyline')
-local gls = gl.section
+local utils = require('utils')
+local dracula = require('config/colorscheme').dracula
 
+local gls = gl.section
 gl.short_line_list = {' '} -- keeping this table { } as empty will show inactive statuslines
 
+local normal = utils.get_hi_term('Normal', 'guibg')
+local file_icon_color = require('galaxyline.provider_fileinfo').get_file_icon_color
+
 local colors = {
-    bg = '#282c34',
-    line_bg = '#282c34',
-    fg = '#D8DEE9',
-    fg_green = '#65a380',
-    yellow = '#A3BE8C',
-    cyan = '#22262C',
-    darkblue = '#61afef',
-    green = '#BBE67E',
-    orange = '#FF8800',
-    purple = '#252930',
-    magenta = '#c678dd',
-    blue = '#22262C',
-    red = '#DF8890',
-    lightbg = '#3C4048',
-    nord = '#81A1C1',
-    greenYel = '#EBCB8B'
+  leftRounded = {
+    fg = dracula.cyan,
+    bg = normal,
+  },
+  statusIcon  = {
+    fg = dracula.bg_light,
+    bg = dracula.cyan,
+    sep_fg = dracula.bg_lighter,
+    sep_bg = dracula.bg_lighter,
+  },
+  FileIcon = {
+    fg = file_icon_color,
+    bg = dracula.bg_lighter,
+  },
+  FileName = {
+    fg = dracula.fg,
+    bg = dracula.bg_lighter,
+  },
+  teech = {
+    fg = dracula.bg_lighter,
+    bg = dracula.bg_light,
+    sep_fg = dracula.bg_light,
+    sep_bg = dracula.bg_light,
+  },
+  DiffAdd = {
+    fg = dracula.yellow,
+    bg = dracula.bg_light,
+  },
+  DiffModified = {
+    fg = dracula.orange,
+    bg = dracula.bg_light,
+  },
+  DiffRemove = {
+    fg = dracula.red,
+    bg = dracula.bg_light,
+  },
+  LeftEnd = {
+    fg = dracula.bg_light,
+    bg = dracula.bg_light,
+    sep_fg = dracula.bg_light,
+    sep_bg = dracula.bg_light,
+  },
+  DiagnosticError = {
+    fg = dracula.red,
+    bg = dracula.bg_light,
+  },
+  Space = {
+    fg = dracula.bg_light,
+    bg = dracula.bg_light,
+  },
+  DiagnosticWarn = {
+    fg = dracula.blue,
+    bg = dracula.bg_light,
+  },
+  GitIcon = {
+    fg = dracula.green,
+    bg = dracula.bg_light,
+  },
+  GitBranch = {
+    fg = dracula.green,
+    bg = dracula.bg_light,
+  },
+  right_LeftRounded = {
+    fg = dracula.purple,
+    bg = dracula.bg_light,
+    sep_fg = dracula.normal,
+    sep_bg = dracula.bg_light,
+  },
+  ViMode = {
+    fg = dracula.bg_light,
+    bg = dracula.purple,
+  },
+  Percent = {
+    fg = dracula.bg_light,
+    bg = dracula.fg,
+    sep_fg = dracula.purple,
+    sep_bg = dracula.purple,
+  },
+  rightRounded = {
+    fg = dracula.fg,
+    bg = normal,
+  }
 }
+
+-- local colors = {
+--     bg = '#282c34',
+--     line_bg = '#282c34',
+--     fg = '#D8DEE9',
+--     fg_green = '#65a380',
+--     yellow = '#A3BE8C',
+--     cyan = '#22262C',
+--     darkblue = '#61afef',
+--     green = '#BBE67E',
+--     orange = '#FF8800',
+--     purple = '#252930',
+--     magenta = '#c678dd',
+--     blue = '#22262C',
+--     red = '#DF8890',
+--     lightbg = '#3C4048',
+--     nord = '#81A1C1',
+--     greenYel = '#EBCB8B'
+-- }
 
 gls.left[1] = {
     leftRounded = {
         provider = function()
             return ''
         end,
-        highlight = {colors.nord, colors.bg}
+        highlight = {colors.leftRounded.fg, colors.leftRounded.bg}
     }
 }
 
@@ -36,9 +126,9 @@ gls.left[2] = {
         provider = function()
             return '   '
         end,
-        highlight = {colors.bg, colors.nord},
+        highlight = {colors.statusIcon.fg, colors.statusIcon.bg},
         separator = ' ',
-        separator_highlight = {colors.lightbg, colors.lightbg}
+        separator_highlight = {colors.statusIcon.sep_fg, colors.statusIcon.sep_bg}
     }
 }
 
@@ -46,7 +136,7 @@ gls.left[3] = {
     FileIcon = {
         provider = 'FileIcon',
         condition = buffer_not_empty,
-        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, colors.lightbg}
+        highlight = {colors.FileIcon.fg, colors.FileIcon.bg}
     }
 }
 
@@ -54,7 +144,7 @@ gls.left[4] = {
     FileName = {
         provider = {'FileName', 'FileSize'},
         condition = buffer_not_empty,
-        highlight = {colors.fg, colors.lightbg}
+        highlight = {colors.FileName.fg, colors.FileName.bg}
     }
 }
 
@@ -64,7 +154,8 @@ gls.left[5] = {
             return ''
         end,
         separator = ' ',
-        highlight = {colors.lightbg, colors.bg}
+        separator_highlight = {colors.teech.sep_fg, colors.teech.sep_bg},
+        highlight = {colors.teech.fg, colors.teech.bg}
     }
 }
 
@@ -81,7 +172,7 @@ gls.left[6] = {
         provider = 'DiffAdd',
         condition = checkwidth,
         icon = '   ',
-        highlight = {colors.greenYel, colors.line_bg}
+        highlight = {colors.DiffAdd.fg, colors.DiffAdd.bg}
     }
 }
 
@@ -90,7 +181,7 @@ gls.left[7] = {
         provider = 'DiffModified',
         condition = checkwidth,
         icon = ' ',
-        highlight = {colors.orange, colors.line_bg}
+        highlight = {colors.DiffModified.fg, colors.DiffModified.bg}
     }
 }
 
@@ -99,7 +190,7 @@ gls.left[8] = {
         provider = 'DiffRemove',
         condition = checkwidth,
         icon = ' ',
-        highlight = {colors.red, colors.line_bg}
+        highlight = {colors.DiffRemove.fg, colors.DiffRemove.bg}
     }
 }
 
@@ -109,8 +200,8 @@ gls.left[9] = {
             return ' '
         end,
         separator = ' ',
-        separator_highlight = {colors.line_bg, colors.line_bg},
-        highlight = {colors.line_bg, colors.line_bg}
+        separator_highlight = {colors.LeftEnd.sep_fg, colors.LeftEnd.sep_bg},
+        highlight = {colors.LeftEnd.fg, colors.LeftEnd.bg}
     }
 }
 
@@ -118,7 +209,7 @@ gls.left[10] = {
     DiagnosticError = {
         provider = 'DiagnosticError',
         icon = '  ',
-        highlight = {colors.red, colors.bg}
+        highlight = {colors.DiagnosticError.fg, colors.DiagnosticError.bg}
     }
 }
 
@@ -127,7 +218,7 @@ gls.left[11] = {
         provider = function()
             return ' '
         end,
-        highlight = {colors.line_bg, colors.line_bg}
+        highlight = {colors.Space.fg, colors.Space.bg}
     }
 }
 
@@ -135,7 +226,14 @@ gls.left[12] = {
     DiagnosticWarn = {
         provider = 'DiagnosticWarn',
         icon = '  ',
-        highlight = {colors.blue, colors.bg}
+        highlight = {colors.DiagnosticWarn.fg, colors.DiagnosticWarn.bg}
+    }
+}
+
+gls.left[14] = {
+    Space = {
+        provider = function() return '' end,
+        highlight = {colors.Space.fg, colors.Space.bg}
     }
 }
 
@@ -145,7 +243,7 @@ gls.right[1] = {
             return '   '
         end,
         condition = require('galaxyline.provider_vcs').check_git_workspace,
-        highlight = {colors.green, colors.line_bg}
+        highlight = {colors.GitIcon.fg, colors.GitIcon.bg}
     }
 }
 
@@ -153,7 +251,7 @@ gls.right[2] = {
     GitBranch = {
         provider = 'GitBranch',
         condition = require('galaxyline.provider_vcs').check_git_workspace,
-        highlight = {colors.green, colors.line_bg}
+        highlight = {colors.GitBranch.fg, colors.GitBranch.bg},
     }
 }
 
@@ -163,8 +261,8 @@ gls.right[3] = {
             return ''
         end,
         separator = ' ',
-        separator_highlight = {colors.bg, colors.bg},
-        highlight = {colors.red, colors.bg}
+        separator_highlight = {colors.right_LeftRounded.fg, colors.right_LeftRounded.bg},
+        highlight = {colors.right_LeftRounded.fg, colors.right_LeftRounded.bg}
     }
 }
 
@@ -182,16 +280,16 @@ gls.right[4] = {
             }
             return alias[vim.fn.mode()]
         end,
-        highlight = {colors.bg, colors.red}
+        highlight = {colors.ViMode.fg, colors.ViMode.bg}
     }
 }
 
 gls.right[5] = {
-    PerCent = {
+    Percent = {
         provider = 'LinePercent',
         separator = ' ',
-        separator_highlight = {colors.red, colors.red},
-        highlight = {colors.bg, colors.fg}
+        separator_highlight = {colors.Percent.sep_fg, colors.Percent.sep_bg},
+        highlight = {colors.Percent.fg, colors.Percent.bg}
     }
 }
 
@@ -200,7 +298,7 @@ gls.right[6] = {
         provider = function()
             return ''
         end,
-        highlight = {colors.fg, colors.bg}
+        highlight = {colors.rightRounded.fg, colors.rightRounded.bg}
     }
 }
 

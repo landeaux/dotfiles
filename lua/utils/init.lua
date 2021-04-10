@@ -1,6 +1,7 @@
 local utils = { }
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
+local execute = vim.api.nvim_exec
 
 function utils.opt(scope, key, value)
 	scopes[scope][key] = value
@@ -16,6 +17,12 @@ end
 -- escape terminal codes and keycodes
 function utils.t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+-- gets the highlight value for the given group and term
+function utils.get_hi_term(group, term)
+  local output = execute('hi ' .. group, true)
+  return vim.fn.matchstr(output, term .. '=\\zs\\S*')
 end
 
 return utils
