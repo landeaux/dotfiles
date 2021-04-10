@@ -126,11 +126,12 @@ utils.map('n', '<leader>r',  ':<C-u>CocListResume<CR>', { silent = true, nowait 
 
 -- Define global extensions/language servers
 vim.g.coc_global_extensions = {
-  'coc-python',
-  'coc-yaml',
-  'coc-json',
-  'coc-tsserver',
-  'coc-prettier',
+  'coc-css',
   'coc-eslint',
+  'coc-json',
+  'coc-prettier',
+  'coc-python',
+  'coc-tsserver',
   'coc-vetur',
+  'coc-yaml',
 }
