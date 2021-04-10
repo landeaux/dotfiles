@@ -2,40 +2,40 @@ vim.cmd [[packadd nvim-web-devicons]]
 
 require 'nvim-web-devicons'.setup {
     override = {
-        html = {
-            icon = '',
-            color = '#DE8C92',
-            name = 'html'
-        },
         css = {
             icon = '',
             color = '#61afef',
             name = 'css'
         },
-        js = {
-            icon = '',
-            color = '#EBCB8B',
-            name = 'js'
+        Dockerfile = {
+            icon = '',
+            color = '#b8b5ff',
+            name = 'Dockerfile'
         },
-        ts = {
-            icon = 'ﯤ',
-            color = '#519ABA',
-            name = 'ts'
+        html = {
+            icon = '',
+            color = '#DE8C92',
+            name = 'html'
         },
-        png = {
+        jpeg = {
             icon = '',
             color = '#BD77DC',
-            name = 'png'
+            name = 'jpeg'
         },
         jpg = {
             icon = '',
             color = '#BD77DC',
             name = 'jpg'
         },
-        jpeg = {
-            icon = '',
-            color = '#BD77DC',
-            name = 'jpeg'
+        js = {
+            icon = '',
+            color = '#EBCB8B',
+            name = 'js'
+        },
+        lock = {
+            icon = '',
+            color = '#DE6B74',
+            name = 'lock'
         },
         mp3 = {
             icon = '',
@@ -52,35 +52,35 @@ require 'nvim-web-devicons'.setup {
             color = '#C8CCD4',
             name = 'out'
         },
-        Dockerfile = {
-            icon = '',
-            color = '#b8b5ff',
-            name = 'Dockerfile'
-        },
-        rb = {
-            icon = '',
-            color = '#ff75a0',
-            name = 'rb'
-        },
-        vue = {
-            icon = '﵂',
-            color = '#7eca9c',
-            name = 'vue'
+        png = {
+            icon = '',
+            color = '#BD77DC',
+            name = 'png'
         },
         py = {
             icon = '',
             color = '#a7c5eb',
             name = 'py'
         },
+        rb = {
+            icon = '',
+            color = '#ff75a0',
+            name = 'rb'
+        },
         toml = {
             icon = '',
             color = '#61afef',
             name = 'toml'
         },
-        lock = {
-            icon = '',
-            color = '#DE6B74',
-            name = 'lock'
+        ts = {
+            icon = 'ﯤ',
+            color = '#519ABA',
+            name = 'ts'
+        },
+        vue = {
+            icon = '﵂',
+            color = '#7eca9c',
+            name = 'vue'
         },
         zip = {
             icon = '',
