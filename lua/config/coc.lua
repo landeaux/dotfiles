@@ -107,7 +107,7 @@ utils.map('n', '<leader>d', ':<C-u>CocList diagnostics<cr>', { silent = true, no
 utils.map('n', '<leader>e', ':<C-u>CocList extensions<cr>', { silent = true, nowait = true })
 
 -- Show commands
-utils.map('n', '<leader>c',  ':<C-u>CocList commands<cr>', { silent = true, nowait = true })
+utils.map('n', '<leader>x',  ':<C-u>CocList commands<cr>', { silent = true, nowait = true })
 
 -- Find symbol of current document
 utils.map('n', '<leader>o',  ':<C-u>CocList outline<cr>', { silent = true, nowait = true })

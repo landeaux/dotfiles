@@ -65,5 +65,8 @@ return require('packer').startup(function()
   -- Better Python indentation
   use { 'Vimjas/vim-python-pep8-indent' }
 
+  -- Commenting
+  use { 'terrortylor/nvim-comment' }
+
 end)
 
