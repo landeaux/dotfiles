@@ -9,11 +9,11 @@ local normal = utils.get_hi_term('Normal', 'guibg')
 local file_icon_color = require('galaxyline.provider_fileinfo').get_file_icon_color
 
 local colors = {
-  leftRounded = {
+  left_LeftRounded = {
     fg = dracula.cyan,
     bg = normal,
   },
-  statusIcon  = {
+  StatusIcon  = {
     fg = dracula.bg_light,
     bg = dracula.cyan,
     sep_fg = dracula.bg_lighter,
@@ -27,7 +27,7 @@ local colors = {
     fg = dracula.fg,
     bg = dracula.bg_lighter,
   },
-  teech = {
+  left_RightRounded = {
     fg = dracula.bg_lighter,
     bg = dracula.bg_light,
     sep_fg = dracula.bg_light,
@@ -87,7 +87,7 @@ local colors = {
     sep_fg = dracula.purple,
     sep_bg = dracula.purple,
   },
-  rightRounded = {
+  right_RightRounded = {
     fg = dracula.fg,
     bg = normal,
   }
@@ -113,22 +113,22 @@ local colors = {
 -- }
 
 gls.left[1] = {
-    leftRounded = {
+    left_LeftRounded = {
         provider = function()
             return ''
         end,
-        highlight = {colors.leftRounded.fg, colors.leftRounded.bg}
+        highlight = {colors.left_LeftRounded.fg, colors.left_LeftRounded.bg}
     }
 }
 
 gls.left[2] = {
-    statusIcon = {
+    StatusIcon = {
         provider = function()
             return '   '
         end,
-        highlight = {colors.statusIcon.fg, colors.statusIcon.bg},
+        highlight = {colors.StatusIcon.fg, colors.StatusIcon.bg},
         separator = ' ',
-        separator_highlight = {colors.statusIcon.sep_fg, colors.statusIcon.sep_bg}
+        separator_highlight = {colors.StatusIcon.sep_fg, colors.StatusIcon.sep_bg}
     }
 }
 
@@ -149,13 +149,13 @@ gls.left[4] = {
 }
 
 gls.left[5] = {
-    teech = {
+    left_RightRounded = {
         provider = function()
             return ''
         end,
         separator = ' ',
-        separator_highlight = {colors.teech.sep_fg, colors.teech.sep_bg},
-        highlight = {colors.teech.fg, colors.teech.bg}
+        separator_highlight = {colors.left_RightRounded.sep_fg, colors.left_RightRounded.sep_bg},
+        highlight = {colors.left_RightRounded.fg, colors.left_RightRounded.bg}
     }
 }
 
@@ -294,11 +294,11 @@ gls.right[5] = {
 }
 
 gls.right[6] = {
-    rightRounded = {
+    right_RightRounded = {
         provider = function()
             return ''
         end,
-        highlight = {colors.rightRounded.fg, colors.rightRounded.bg}
+        highlight = {colors.right_RightRounded.fg, colors.right_RightRounded.bg}
     }
 }
 
