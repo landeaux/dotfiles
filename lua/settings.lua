@@ -27,7 +27,6 @@ utils.opt('o', 'clipboard', 'unnamed,unnamedplus')
 utils.opt('o', 'updatetime', 100)
 
 cmd('let &colorcolumn = join(range(80,999), ",")') -- show column guide
-cmd('au TextYankPost * lua vim.highlight.on_yank {on_visual = false}') -- highlight on yank
 
 -- INTEGRATED TERMINAL --
 utils.map('t', '<Esc>', '<C-\\><C-n>') -- go to normal mode on escape

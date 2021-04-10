@@ -10,6 +10,9 @@ vim.cmd('autocmd BufRead,BufNewFile gitconfig set filetype=gitconfig')
 vim.cmd('autocmd BufRead,BufNewFile gitignore set filetype=conf')
 vim.cmd('autocmd BufRead,BufNewFile *.graphql,*.graphqls,*.gql set filetype=graphql')
 
+-- highlight on yank
+vim.cmd('autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false}')
+
 -- prevent Python auto indent when pressing colon (:) key
 -- autocmd FileType python setlocal indentkeys-=<:>
 -- autocmd FileType python setlocal indentkeys-=:
