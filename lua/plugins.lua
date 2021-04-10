@@ -67,6 +67,7 @@ return require('packer').startup(function()
 
   -- Commenting
   use { 'terrortylor/nvim-comment' }
+  use { 'JoosepAlviste/nvim-ts-context-commentstring' }
 
 end)
 

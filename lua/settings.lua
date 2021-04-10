@@ -24,6 +24,7 @@ utils.opt('o', 'numberwidth', 2)
 utils.opt('w', 'signcolumn', 'yes')
 utils.opt('w', 'listchars', 'tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»')
 utils.opt('o', 'clipboard', 'unnamed,unnamedplus')
+utils.opt('o', 'updatetime', 100)
 
 cmd('let &colorcolumn = join(range(80,999), ",")') -- show column guide
 cmd('au TextYankPost * lua vim.highlight.on_yank {on_visual = false}') -- highlight on yank
