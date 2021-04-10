@@ -15,7 +15,12 @@ ts_config.setup {
         use_languagetree = true
     },
     context_commentstring = {
-        enable = true
+        enable = true,
+        config = {
+            vue = {
+              style_element = '// %s',
+            }
+        }
     }
 }
 
