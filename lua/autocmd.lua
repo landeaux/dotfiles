@@ -17,3 +17,5 @@ vim.cmd('autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false}')
 -- autocmd FileType python setlocal indentkeys-=<:>
 -- autocmd FileType python setlocal indentkeys-=:
 
+-- set lua indentation rules
+vim.cmd('autocmd BufNewFile,BufRead *.lua setlocal tabstop=4 softtabstop=4 shiftwidth=4')
