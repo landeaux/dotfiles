@@ -21,3 +21,7 @@ rm ~/.gitconfig && rm ~/.gitignore && rm ~/.gitmessage
 ln -s ${BASEDIR}/gitconfig ~/.gitconfig
 ln -s ${BASEDIR}/gitignore ~/.gitignore
 ln -s ${BASEDIR}/gitmessage ~/.gitmessage
+
+# pylint
+rm ~/.config/pylintrc
+ln -s ${BASEDIR}/pylintrc ~/.config/pylintrc
