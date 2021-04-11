@@ -60,7 +60,7 @@ local colors = {
     bg = dracula.bg_light,
   },
   DiagnosticWarn = {
-    fg = dracula.blue,
+    fg = dracula.orange,
     bg = dracula.bg_light,
   },
   GitIcon = {
