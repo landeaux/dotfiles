@@ -10,4 +10,4 @@ utils.map('', '<leader>y', '"+y') -- copy any selected text to clipboard
 utils.map('n', '<leader>a', '<cmd> %+y<CR>') -- copy any selected text to clipboard
 
 -- terminals
-utils.map('n', '<C-x>', [[<Cmd>vnew term://bash <CR>]]) -- open term over right
+utils.map('n', '<C-x>', [[<Cmd>vnew term://zsh <CR>]]) -- open term over right
