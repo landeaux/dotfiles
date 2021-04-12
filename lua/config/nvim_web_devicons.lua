@@ -1,6 +1,8 @@
 vim.cmd [[packadd nvim-web-devicons]]
 
 require 'nvim-web-devicons'.setup {
+    default = true;
+
     override = {
         css = {
             icon = '',
@@ -11,6 +13,11 @@ require 'nvim-web-devicons'.setup {
             icon = '',
             color = '#b8b5ff',
             name = 'Dockerfile'
+        },
+        gz = {
+            icon = '',
+            color = '#EBCB8B',
+            name = 'gz'
         },
         html = {
             icon = '',
@@ -67,6 +74,16 @@ require 'nvim-web-devicons'.setup {
             color = '#ff75a0',
             name = 'rb'
         },
+        sh = {
+            icon = '',
+            color = '#61afef',
+            name = 'sh'
+        },
+        tar = {
+            icon = '',
+            color = '#EBCB8B',
+            name = 'tar'
+        },
         toml = {
             icon = '',
             color = '#61afef',
@@ -92,6 +109,6 @@ require 'nvim-web-devicons'.setup {
             color = '#EBCB8B',
             name = 'xz'
         }
-    }
+    };
 }
 
