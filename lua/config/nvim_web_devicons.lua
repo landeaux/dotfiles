@@ -79,6 +79,11 @@ require 'nvim-web-devicons'.setup {
             color = '#61afef',
             name = 'sh'
         },
+        snap = {
+            icon = '',
+            color = '#7eca9c',
+            name = 'snap'
+        },
         tar = {
             icon = '',
             color = '#EBCB8B',
