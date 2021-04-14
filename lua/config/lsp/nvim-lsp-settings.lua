@@ -2,8 +2,6 @@ local nvim_lsp = require('lspconfig')
 
 -- Default on_attach for LSP servers
 local on_attach = function(client, bufnr)
-    require('completion').on_attach()
-
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -25,16 +23,16 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<Leader>ldp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', '<Leader>ldn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
-    -- local function buf_bind_picker(...)
-    --     require('config.tools.telescope-nvim-utils').buf_bind_picker(bufnr, ...)
-    -- end
+    local function buf_bind_picker(...)
+        require('config.tools.telescope-nvim-utils').buf_bind_picker(bufnr, ...)
+    end
 
     -- Telescope LSP
-    -- buf_bind_picker('<Leader>lsd', 'lsp_document_symbols')
-    -- buf_bind_picker('<Leader>lsw', 'lsp_workspace_symbols')
-    -- buf_bind_picker('<Leader>ldd', 'lsp_document_diagnostics')
-    -- buf_bind_picker('<Leader>ldw', 'lsp_workspace_diagnostics')
-    -- buf_bind_picker('<Leader>lc', 'lsp_code_actions')
+    buf_bind_picker('<Leader>lsd', 'lsp_document_symbols')
+    buf_bind_picker('<Leader>lsw', 'lsp_workspace_symbols')
+    buf_bind_picker('<Leader>ldd', 'lsp_document_diagnostics')
+    buf_bind_picker('<Leader>ldw', 'lsp_workspace_diagnostics')
+    buf_bind_picker('<Leader>lc', 'lsp_code_actions')
 
     -- local keys = {
     --     l = {
@@ -68,9 +66,12 @@ local on_attach = function(client, bufnr)
         buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
         -- Format on save
-        -- require('utils').create_augroup({
-        --     {'BufWritePre', '*', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
-        -- }, 'lsp_auto_format')
+        require('utils').create_augroup({
+            {
+                'BufWritePre', '*',
+                'lua vim.lsp.buf.formatting_sync(nil, 1000)'
+            }
+        }, 'lsp_auto_format')
 
         -- keys.l.f = 'Format'
 
@@ -95,12 +96,12 @@ local on_attach = function(client, bufnr)
         )
 
         -- Format on save
-        -- require('utils').create_augroup({
-        --     {
-        --         'BufWritePre', '*',
-        --         'lua vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})'
-        --     }
-        -- }, 'lsp_auto_format')
+        require('utils').create_augroup({
+            {
+                'BufWritePre', '*',
+                'lua vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})'
+            }
+        }, 'lsp_auto_format')
 
         -- keys.l.f = 'Format'
         -- keys.l.F = 'Range Format'
