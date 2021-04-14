@@ -1,7 +1,7 @@
 local utils = require('utils')
 
 utils.map('n', '<leader>hl', '<cmd>set hlsearch!<CR>') -- toggle highlights
-utils.map('n', '<leader>l', '<cmd>set list!<CR>') -- toggle visibility of whitespace chars
+utils.map('n', '<leader>hh', '<cmd>set list!<CR>') -- toggle visibility of whitespace chars
 utils.map('n', '<leader>M', '<cmd>e ~/.config/nvim/init.lua<CR>') -- edit nvim config
 utils.map('n', '<leader>R', '<cmd>luafile ~/.config/nvim/init.lua<CR>') -- reload nvim config
 
