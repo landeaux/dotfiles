@@ -138,6 +138,7 @@ end
 -- LSP Servers
 local servers = {
     'cssls',
+    'dockerls',
     'html',
     'pyls',
     'tsserver',
