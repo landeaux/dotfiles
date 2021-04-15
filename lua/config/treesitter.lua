@@ -23,6 +23,9 @@ ts_config.setup {
               style_element = '// %s',
             }
         }
+    },
+    indent = {
+        enable = true
     }
 }
 
