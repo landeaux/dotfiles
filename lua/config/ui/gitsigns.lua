@@ -21,7 +21,7 @@ require('gitsigns').setup {
     use_internal_diff = true,  -- If luajit is present
 }
 
--- -- Default keymap options
+-- Default keymap options
 local opts = { noremap = true }
 
 bind('n', ']h', "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'",
