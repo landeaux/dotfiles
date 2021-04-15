@@ -1,6 +1,17 @@
 -- Tree-sitter
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = {'python', 'bash', 'lua', 'toml'},
+    ensure_installed = {
+        'bash',
+        'css',
+        'graphql',
+        'html',
+        'javascript',
+        'lua',
+        'python',
+        'scss',
+        'toml',
+        'vue',
+    },
     highlight = {
         enable = true,
         disable = {},
