@@ -136,7 +136,11 @@ local default_config = function()
 end
 
 -- LSP Servers
-local servers = { 'pyls', 'vuels' }
+local servers = {
+    'cssls',
+    'pyls',
+    'vuels'
+}
 
 for _, server in ipairs(servers) do
     local config = default_config()
