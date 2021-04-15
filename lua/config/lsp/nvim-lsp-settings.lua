@@ -140,6 +140,7 @@ local servers = {
     'cssls',
     'html',
     'pyls',
+    'tsserver',
     'vuels'
 }
 
