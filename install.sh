@@ -10,7 +10,7 @@ tmux source-file ~/.tmux.conf
 # zsh
 rm ~/.zshrc
 ln -s ${BASEDIR}/zshrc ~/.zshrc
-source ~/.zshrc
+# source ~/.zshrc
 
 # neovim
 rm -rf ~/.config/nvim && mkdir -p ~/.config/nvim

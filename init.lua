@@ -1,34 +1,47 @@
+local fn = vim.fn
+local cmd = vim.cmd
+
+-- Add commands for reload and restart
+cmd('command! Reload lua require("utils").Reload()')
+cmd('command! Restart lua require("utils").Restart()')
+
+-- Set mapleader to space
 vim.g.mapleader = ' '
 
-local fn = vim.fn
-local execute = vim.api.nvim_command
+-- Set localleader to comma
+vim.g.maplocalleader = ','
 
-vim.g.python_host_prog = "~/.pyenv/versions/neovim-python2/bin/python"
-vim.g.python3_host_prog = "~/.pyenv/versions/neovim-python3/bin/python"
-
+-- Sensible defaults
 require('settings')
 
--- Automatically install packer.nvim
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+-- If Packer is not installed, download it and all plugins and reload config
+-- If Packer is installed, load configuration as usual
+local packer_install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
+if fn.empty(fn.glob(packer_install_path)) > 0
+then
+    -- Download Packer and add it
+    cmd('!git clone https://github.com/wbthomason/packer.nvim '..packer_install_path)
+    cmd('packadd packer.nvim')
+
+    -- Load plugins
+    require('plugins')
+
+    -- Automatically sync packer and restart Vim
+    cmd('PackerSync')
+    require('utils').create_augroup({
+        {'User', 'PackerComplete', 'lua require("utils").Restart()'}
+    }, 'init_reload_after_packer')
+else
+    -- Load plugins
+    require('plugins')
+
+    -- Load keybinds
+    require('keybinds')
+
+    -- Load configuration
+    require('config')
+
+    -- Load statusline
+    require('statusline')
 end
-
--- auto compile when there are changes in plugins.lua
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
-
--- Install plugins
-require('plugins')
-
--- Key mappings
-require('keymappings')
-
--- Autocommands
-require('autocmd')
-
--- Language server config
--- require('lang')
-
--- Config
-require('config')
-

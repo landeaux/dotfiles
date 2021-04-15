@@ -39,4 +39,3 @@ vim.fn.sign_define('LspDiagnosticsSignInformation',
 
 vim.fn.sign_define('LspDiagnosticsSignHint',
     { text = '', texthl = 'LspDiagnosticsSignHint' })
-

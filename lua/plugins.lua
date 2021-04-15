@@ -1,84 +1,131 @@
--- check if packer is installed (~/local/share/nvim/site/pack)
-local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
+-- Plugins
+local packer = require('packer')
+local use = packer.use
 
-return require('packer').startup(function()
+packer.reset()
+packer.init()
 
-    -- Packer can manage itself as an optional plugin
-    use { 'wbthomason/packer.nvim', opt = true }
+-- Packer
+use 'wbthomason/packer.nvim'
 
-    -- Color scheme
-    -- use { 'morhetz/gruvbox' }
-    use { 'dracula/vim' }
+-- Neovim GUI Shim
+use { 'equalsraf/neovim-gui-shim', opt = true }
 
-    -- Fuzzy finder
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-    }
+-- Colorscheme
+use 'dracula/vim'
 
-    -- LSP and completion
-    use { 'neovim/nvim-lspconfig' } -- LSP
-    use { 'hrsh7th/nvim-compe' } -- Completion
-    -- use { 'nvim-lua/completion-nvim' } -- completion
-    use { 'onsails/lspkind-nvim' } -- add pictograms to LSP completion items
-    -- use { 'kabouzeid/nvim-lspinstall' } -- install LSPs using :LspInstall <language>
-    -- use { 'neoclide/coc.nvim', branch = 'release' } -- CoC 
-    -- use { 'ray-x/lsp_signature.nvim' }
-    use { 'kosayoda/nvim-lightbulb' }
+-- Statusline
+use 'glepnir/galaxyline.nvim'
 
-    -- Snippets
-    use { 'hrsh7th/vim-vsnip' }
-    use { 'hrsh7th/vim-vsnip-integ'}
+-- Tab bar
+use 'akinsho/nvim-bufferline.lua'
 
+-- Start screen
+use 'mhinz/vim-startify'
 
-    -- Lua development
-    -- use { 'tjdevries/nlua.nvim' }
+-- Colorize color codes
+use 'chrisbra/Colorizer'
 
-    -- Fugitive for Git
-    use { 'tpope/vim-fugitive' }
+-- Neovim icons
+use 'kyazdani42/nvim-web-devicons'
 
-    -- Indent lines
-    use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
+-- Indent guides
+use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 
-    -- Git signs
-    use { 'lewis6991/gitsigns.nvim' }
+-- Which Key
+use {
+    'AckslD/nvim-whichkey-setup.lua',
+    requires = {'liuchengxu/vim-which-key'},
+}
 
-    -- Treesitter
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+-- Smooth scrolling
+use 'psliwka/vim-smoothie'
 
-    -- Colorizer
-    use { 'norcalli/nvim-colorizer.lua' }
+-- File Tree
+use 'kyazdani42/nvim-tree.lua'
 
-    -- Autopairs
-    -- use { 'windwp/nvim-autopairs' }
+-- Git
+use 'tpope/vim-fugitive'
+use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
+use 'junegunn/gv.vim'
 
-    -- Delimit
-    use { 'Raimondi/delimitMate' }
+-- Undo Tree
+use 'mbbill/undotree'
 
-    -- Auto-close HTML tags
-    use { 'alvan/vim-closetag' }
+-- Register Preview
+use 'gennaro-tedesco/nvim-peekup'
 
-    -- Neoformat
-    -- use { 'sbdchd/neoformat' }
+-- Floating Terminal
+use "numtostr/FTerm.nvim"
 
-    -- Icons
-    use { 'kyazdani42/nvim-web-devicons' }
+-- Color Picker
+use 'KabbAmine/vCoolor.vim'
 
-    -- Status line
-    use { 'glepnir/galaxyline.nvim' }
+-- Surround
+use 'tpope/vim-surround'
 
-    -- File tree
-    use { 'kyazdani42/nvim-tree.lua' }
+-- Comments
+use 'b3nj5m1n/kommentary'
 
-    -- Startuptime
-    use { 'tweekmonster/startuptime.vim' }
+-- Tabs and text alignment
+use 'godlygeek/tabular'
 
-    -- Better Python indentation
-    use { 'Vimjas/vim-python-pep8-indent' }
+-- Delimit
+use 'Raimondi/delimitMate'
 
-    -- Commenting
-    use { 'terrortylor/nvim-comment' }
-    use { 'JoosepAlviste/nvim-ts-context-commentstring' }
+-- Remember last location in file
+use 'farmergreg/vim-lastplace'
 
-end)
+-- UNIX helper
+use 'tpope/vim-eunuch'
 
+-- Automatically change current directory
+use 'airblade/vim-rooter'
+
+-- Editorconfig
+use 'editorconfig/editorconfig-vim'
+
+-- Snippets
+use 'hrsh7th/vim-vsnip'
+use 'hrsh7th/vim-vsnip-integ'
+
+-- LSP
+use 'neovim/nvim-lspconfig'
+use 'onsails/lspkind-nvim'
+use 'ray-x/lsp_signature.nvim'
+use 'kosayoda/nvim-lightbulb'
+
+-- Telescope
+use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+}
+
+-- Search and replace across multiple files
+use 'brooth/far.vim'
+
+-- Completion
+use 'hrsh7th/nvim-compe'
+
+-- Tresitter
+use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+use 'nvim-treesitter/nvim-treesitter-textobjects'
+
+-- Debugging
+use 'mfussenegger/nvim-dap'
+use 'mfussenegger/nvim-dap-python'
+use 'theHamsta/nvim-dap-virtual-text'
+use 'nvim-telescope/telescope-dap.nvim'
+
+-- Markdown preview
+use {
+    'iamcco/markdown-preview.nvim',
+    run = function() vim.fn['mkdp#util#install']() end
+}
+
+-- Meta
+-- Read line and column from the command line
+use 'wsdjeg/vim-fetch'
+
+-- Profiler
+use { 'norcalli/profiler.nvim', opt = true }

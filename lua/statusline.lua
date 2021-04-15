@@ -1,6 +1,6 @@
 local gl = require('galaxyline')
 local utils = require('utils')
-local dracula = require('config/colorscheme').dracula
+local dracula = require('config/ui/colorscheme').dracula
 
 local gls = gl.section
 gl.short_line_list = {' '} -- keeping this table { } as empty will show inactive statuslines

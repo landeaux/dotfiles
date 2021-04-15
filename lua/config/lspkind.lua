@@ -1,5 +1,0 @@
-require('lspkind').init(
-  {
-    File = ' '
-  }
-)

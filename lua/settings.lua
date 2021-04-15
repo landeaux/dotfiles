@@ -1,39 +1,110 @@
-local utils = require('utils')
-
 local cmd = vim.cmd
-local indent = 2
+local set_opt = require('utils').set_opt
+local append_opt = require('utils').append_opt
 
-cmd('syntax enable')
-cmd('filetype plugin indent on')
+local fill_column = 80
+local indent = 4
 
-utils.opt('b', 'expandtab', true)
-utils.opt('b', 'shiftwidth', indent)
-utils.opt('b', 'smartindent', true)
-utils.opt('b', 'tabstop', indent)
-utils.opt('b', 'softtabstop', indent)
-utils.opt('o', 'hidden', true)
-utils.opt('o', 'ignorecase', true)
-utils.opt('o', 'scrolloff', 4)
-utils.opt('o', 'shiftround', true)
-utils.opt('o', 'smartcase', true)
-utils.opt('o', 'splitbelow', true)
-utils.opt('o', 'splitright', true)
-utils.opt('o', 'wildmode', 'list:longest')
-utils.opt('w', 'number', true)
-utils.opt('w', 'relativenumber', true)
-utils.opt('o', 'numberwidth', 2)
-utils.opt('w', 'signcolumn', 'yes')
-utils.opt('w', 'listchars', 'tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»')
-utils.opt('o', 'clipboard', 'unnamed,unnamedplus')
-utils.opt('o', 'updatetime', 100)
+-- Set encoding
+set_opt('o', 'encoding', 'utf-8')
 
-cmd('let &colorcolumn = join(range(80,999), ",")') -- show column guide
+-- Wildmenu
+set_opt('o', 'wildmode', 'longest,list,full')
+set_opt('o', 'wildmenu', true)
 
--- INTEGRATED TERMINAL --
-utils.map('t', '<Esc>', '<C-\\><C-n>') -- go to normal mode on escape
+-- Hidden buffers to switch buffers without saving
+set_opt('o', 'hidden', true)
 
--- start terminal in insert mode
-cmd([[au BufEnter * if &buftype == 'terminal' | :startinsert | endif]])
+-- Enable mouse support
+set_opt('o', 'mouse', 'a')
 
--- hide line numbers in terminal windows
-cmd('au BufEnter term://* setlocal nonumber norelativenumber signcolumn=no')
+-- Project specific vimrc with secure
+set_opt('o', 'exrc', true)
+set_opt('o', 'secure', true)
+
+-- GUI cursor
+set_opt('o', 'guicursor', 'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,'..
+	'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,'..
+	'sm:block-blinkwait175-blinkoff150-blinkon175')
+
+-- Persistent undo
+set_opt('o', 'undofile', true)
+
+-- Auto read file changes
+set_opt('o', 'autoread', true)
+
+-- Backspace
+set_opt('o', 'backspace', 'indent,eol,start')
+
+-- Make last window always have a status line
+set_opt('o', 'laststatus', 2)
+
+-- Indent
+set_opt('b', 'softtabstop', indent)
+set_opt('b', 'shiftwidth', indent)
+set_opt('b', 'expandtab', true)
+set_opt('b', 'autoindent', true)
+set_opt('b', 'smartindent', true)
+
+-- Listchars
+set_opt('w', 'listchars', 'tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»')
+
+-- Linebreak and wrap behavior
+set_opt('w', 'linebreak', true)
+set_opt('w', 'breakindent', true)
+
+-- Show fill column indicator
+cmd('let &colorcolumn = join(range(' .. tostring(fill_column) .. ',999), ",")')
+
+-- Line numbers: Hybrid
+set_opt('w', 'number', true)
+set_opt('w', 'relativenumber', true)
+
+-- Folding (with Treesitter)
+set_opt('w', 'foldmethod', 'expr')
+set_opt('w', 'foldexpr', 'nvim_treesitter#foldexpr()')
+set_opt('w', 'foldlevel', 99)
+
+-- Search
+set_opt('o', 'hlsearch', true)
+set_opt('o', 'incsearch', true)
+set_opt('o', 'ignorecase', true)
+set_opt('o', 'smartcase', true)
+set_opt('o', 'gdefault', true)
+
+-- Incremental command
+set_opt('o', 'inccommand', 'nosplit')
+
+-- Completion
+set_opt('o', 'completeopt', 'menuone,preview,noselect')
+append_opt('o', 'shortmess', 'c')
+
+-- Split options
+set_opt('o', 'splitbelow', true)
+set_opt('o', 'splitright', true)
+
+-- Faster update time
+set_opt('o', 'updatetime', 100)
+set_opt('o', 'signcolumn', 'auto:4')
+
+-- Highlight current line
+set_opt('o', 'cursorline', true)
+
+-- Scroll offsets
+set_opt('o', 'scrolloff', 10)
+set_opt('o', 'sidescrolloff', 5)
+
+-- Enable filetype plugin
+cmd 'filetype plugin on'
+
+-- Highlight text on yank
+require('utils').create_augroup({
+    {'TextYankPost', '*', 'silent!', 'lua vim.highlight.on_yank()'}
+}, 'highlight_on_yank')
+
+-- Enable syntax highlighting
+cmd 'syntax enable'
+
+-- Enable clipboard
+set_opt('o', 'clipboard', 'unnamed,unnamedplus')
+

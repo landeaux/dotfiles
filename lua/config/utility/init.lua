@@ -1,0 +1,8 @@
+require('config.utility.colorizer')
+require('config.utility.tree-sitter')
+require('config.utility.rooter')
+require('config.utility.markdown-preview')
+require('config.utility.fterm')
+require('config.utility.kommentary')
+require('config.utility.whichkey')
+require('config.utility.smoothie')

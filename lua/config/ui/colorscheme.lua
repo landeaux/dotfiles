@@ -1,12 +1,14 @@
-local utils = require('utils')
-
-local cmd = vim.cmd
 local colorscheme = { }
 
-utils.opt('o', 'termguicolors', true)
+-- Make Terminal use GUI colors
+vim.o.termguicolors = true
 
--- DRACULA --
-cmd('colorscheme dracula')
+-- Set colorscheme
+-- vim.cmd('colorscheme codedark')
+vim.cmd('colorscheme dracula')
+
+-- Set background color
+vim.o.background = 'dark'
 
 local function get_dracula_palette_hex(key)
   return vim.g['dracula#palette'][key][1]
@@ -36,6 +38,5 @@ colorscheme.dracula = {
 
 -- GRUVBOX --
 -- cmd('colorscheme gruvbox')
--- utils.opt('o', 'background', 'dark')
 
 return colorscheme

@@ -34,46 +34,43 @@ local on_attach = function(client, bufnr)
     buf_bind_picker('<Leader>ldw', 'lsp_workspace_diagnostics')
     buf_bind_picker('<Leader>lc', 'lsp_code_actions')
 
-    -- local keys = {
-    --     l = {
-    --         name = '+lsp',
-    --         s = {
-    --             name = '+symbols',
-    --             d = 'Document Symbols',
-    --             w = 'Workspace Symbols'
-    --         },
-    --         d = {
-    --             name = '+diagnostics',
-    --             s = 'Show line diagnostics',
-    --             p = 'Goto prev',
-    --             n = 'Goto next',
-    --             d = 'Document Diagnostics',
-    --             w = 'Workspace Diagnostics'
-    --         },
-    --         c = 'Code Actions',
-    --         w = {
-    --             name = '+workspace',
-    --             a = 'Add workspace folder',
-    --             r = 'Remove workspace folder',
-    --             l = 'List workspace folders'
-    --         },
-    --         D = 'Type definition',
-    --         r = 'Rename',
-    --     }
-    -- }
+    local keys = {
+        l = {
+            name = '+lsp',
+            s = {
+                name = '+symbols',
+                d = 'Document Symbols',
+                w = 'Workspace Symbols'
+            },
+            d = {
+                name = '+diagnostics',
+                s = 'Show line diagnostics',
+                p = 'Goto prev',
+                n = 'Goto next',
+                d = 'Document Diagnostics',
+                w = 'Workspace Diagnostics'
+            },
+            c = 'Code Actions',
+            w = {
+                name = '+workspace',
+                a = 'Add workspace folder',
+                r = 'Remove workspace folder',
+                l = 'List workspace folders'
+            },
+            D = 'Type definition',
+            r = 'Rename',
+        }
+    }
 
     if client.resolved_capabilities.document_formatting then
         buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
         -- Format on save
         require('utils').create_augroup({
-            {
-                'BufWritePre', '*',
-                'lua vim.lsp.buf.formatting_sync(nil, 1000)'
-            }
+            {'BufWritePre', '*', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
         }, 'lsp_auto_format')
 
-        -- keys.l.f = 'Format'
+        keys.l.f = 'Format'
 
         if client.resolved_capabilities.document_range_formatting then
             buf_set_keymap('n', '<space>lF',
@@ -81,7 +78,7 @@ local on_attach = function(client, bufnr)
                 opts
             )
 
-            -- keys.l.F = 'Range Format'
+            keys.l.F = 'Range Format'
         end
 
     elseif client.resolved_capabilities.document_range_formatting then
@@ -103,11 +100,11 @@ local on_attach = function(client, bufnr)
             }
         }, 'lsp_auto_format')
 
-        -- keys.l.f = 'Format'
-        -- keys.l.F = 'Range Format'
+        keys.l.f = 'Format'
+        keys.l.F = 'Range Format'
     end
 
-    -- require('whichkey_setup').register_keymap('leader', keys)
+    require('whichkey_setup').register_keymap('leader', keys)
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
@@ -124,7 +121,7 @@ local on_attach = function(client, bufnr)
     end
 
     -- LSP Signatures
-    -- require('lsp_signature').on_attach()
+    require('lsp_signature').on_attach()
 end
 
 -- LSP Server Configurations
@@ -140,39 +137,9 @@ end
 
 -- LSP Servers
 local servers = { 'pyls' }
--- local lspinstall_path = vim.fn.stdpath('data') .. '/lspinstall/'
 
 for _, server in ipairs(servers) do
     local config = default_config()
 
-    -- if server == 'sumneko_lua' then
-    --     config.cmd = {
-    --         lspinstall_path .. 'lua/sumneko-lua-language-server',
-    --         '-E', lspinstall_path .. 'lua/main.lua'
-    --     }
-    --     config.settings = {
-    --         Lua = {
-    --             runtime = {
-    --                 -- Tell the language server which version of Lua you're using (LuaJIT in the case of Neovim)
-    --                 version = 'LuaJIT',
-    --                 -- Setup your lua path
-    --                 path = vim.split(package.path, ';'),
-    --             },
-    --             diagnostics = {
-    --                 -- Get the language server to recognize the `vim` global
-    --                 globals = {'vim'},
-    --             },
-    --             workspace = {
-    --                 -- Make the server aware of Neovim runtime files
-    --                 library = {
-    --                     [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-    --                     [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-    --                 },
-    --             },
-    --         },
-    --     }
-    -- end
-
     nvim_lsp[server].setup(config)
 end
-

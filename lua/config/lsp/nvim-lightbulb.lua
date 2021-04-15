@@ -37,4 +37,3 @@ vim.fn.sign_define('LightBulbSign', { text = "" })
 require('utils').create_augroup({
     {'CursorHold,CursorHoldI', '*', 'lua require("nvim-lightbulb").update_lightbulb()'}
 }, 'nvim-lightbulb')
-

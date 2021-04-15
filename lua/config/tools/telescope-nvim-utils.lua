@@ -36,4 +36,3 @@ function M.buf_bind_picker(bufnr, keys, picker_name, extension_name)
 end
 
 return M
-
