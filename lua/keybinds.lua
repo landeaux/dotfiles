@@ -22,10 +22,10 @@ bind('n', '<A-l>',
     opts)
 
 -- Toggle highlighting
-bind('n', '<A-k>', ':set hlsearch!<CR>', opts)
+bind('n', '<leader>th', ':set hlsearch!<CR>', opts)
 
 -- Toggle whitespace chars
-bind('n', '<A-h>', ':set list!<CR>', opts)
+bind('n', '<leader>tw', ':set list!<CR>', opts)
 
 -- Clipboard
 bind('', '<Leader>y', '"+y', opts) -- copy any selected text to clipboard
@@ -128,6 +128,11 @@ local keys = {
         q = 'Delete window',
         s = 'Split horizontally',
         v = 'Split vertically',
+    },
+    t = {
+        name = '+ui-toggle',
+        h = 'Highlighting',
+        w = 'Whitespace',
     },
     v = {
         name = '+vim',
