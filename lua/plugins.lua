@@ -66,6 +66,7 @@ use 'tpope/vim-surround'
 
 -- Comments
 use 'b3nj5m1n/kommentary'
+use 'JoosepAlviste/nvim-ts-context-commentstring'
 
 -- Tabs and text alignment
 use 'godlygeek/tabular'
