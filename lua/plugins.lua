@@ -130,3 +130,6 @@ use 'wsdjeg/vim-fetch'
 
 -- Profiler
 use { 'norcalli/profiler.nvim', opt = true }
+
+-- Startuptime
+use 'tweekmonster/startuptime.vim'
