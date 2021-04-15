@@ -13,8 +13,8 @@ bind('n', '<Space>gvc', ':GV!<CR>', {})
 bind('n', '<Space>gvl', ':GV?<CR>', {})
 
 -- Handling merge conflicts
-bind('n', '<Space>gf', ':diffget //2<CR>') -- choose our change
-bind('n', '<Space>gj', ':diffget //3<CR>') -- choose incoming change
+bind('n', '<Space>gf', ':diffget //2<CR>', {}) -- choose our change
+bind('n', '<Space>gj', ':diffget //3<CR>', {}) -- choose incoming change
 
 local keys = {
     g = {
