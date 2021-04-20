@@ -126,7 +126,7 @@ local on_attach = function(client, bufnr)
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
         vim.lsp.handlers.hover,
         {
-          border = "double"
+          border = "single"
         }
     )
 
