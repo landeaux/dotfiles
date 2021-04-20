@@ -19,9 +19,9 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<Leader>lwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
     buf_set_keymap('n', '<Leader>lD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', '<Leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<Leader>lds', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-    buf_set_keymap('n', '<Leader>ldp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', '<Leader>ldn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '<Leader>lds', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>', opts)
+    buf_set_keymap('n', '<Leader>ldp', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single" }})<CR>', opts)
+    buf_set_keymap('n', '<Leader>ldn', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single" }})<CR>', opts)
 
     local function buf_bind_picker(...)
         require('config.tools.telescope-nvim-utils').buf_bind_picker(bufnr, ...)
@@ -122,6 +122,20 @@ local on_attach = function(client, bufnr)
 
     -- LSP Signatures
     require('lsp_signature').on_attach()
+
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover,
+        {
+          border = "double"
+        }
+    )
+
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        {
+          border = "single"
+        }
+    )
 end
 
 -- LSP Server Configurations
