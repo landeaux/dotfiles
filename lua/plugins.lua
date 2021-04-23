@@ -133,3 +133,6 @@ use { 'norcalli/profiler.nvim', opt = true }
 
 -- Startuptime
 use 'tweekmonster/startuptime.vim'
+
+-- Autogenerate python docstrings
+use { 'heavenshell/vim-pydocstring', run = 'make install' }

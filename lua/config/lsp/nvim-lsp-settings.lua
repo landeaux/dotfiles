@@ -162,5 +162,38 @@ local servers = {
 for _, server in ipairs(servers) do
     local config = default_config()
 
+    if server == "pyls" then
+        config.settings = {
+            pyls = {
+                plugins = {
+                    mccabe = {
+                        enabled = true,
+                        threshold = 10
+                    },
+                    pycodestyle = {
+                        enabled = false
+                    },
+                    pydocstyle = {
+                        enabled = true,
+                        convention = "numpy"
+                    },
+                    pyflakes = {
+                        enabled = true
+                    },
+                    pylint = {
+                        enabled = false,
+                        executable = "pylint"
+                    },
+                    yapf = {
+                        enabled = false
+                    },
+                    pyls_mypy = {
+                        enabled = true
+                    }
+                }
+            }
+        }
+    end
+
     nvim_lsp[server].setup(config)
 end
