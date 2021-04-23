@@ -151,6 +151,7 @@ end
 
 -- LSP Servers
 local servers = {
+    'bashls',
     'cssls',
     'dockerls',
     'html',
