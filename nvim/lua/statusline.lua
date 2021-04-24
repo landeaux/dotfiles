@@ -99,72 +99,6 @@ local colors = {
   }
 }
 
--- local colors = {
---     bg = '#282c34',
---     line_bg = '#282c34',
---     fg = '#D8DEE9',
---     fg_green = '#65a380',
---     yellow = '#A3BE8C',
---     cyan = '#22262C',
---     darkblue = '#61afef',
---     green = '#BBE67E',
---     orange = '#FF8800',
---     purple = '#252930',
---     magenta = '#c678dd',
---     blue = '#22262C',
---     red = '#DF8890',
---     lightbg = '#3C4048',
---     nord = '#81A1C1',
---     greenYel = '#EBCB8B'
--- }
-
-gls.left[1] = {
-    left_LeftRounded = {
-        provider = function()
-            return ''
-        end,
-        highlight = {colors.left_LeftRounded.fg, colors.left_LeftRounded.bg}
-    }
-}
-
-gls.left[2] = {
-    StatusIcon = {
-        provider = function()
-            return '   '
-        end,
-        highlight = {colors.StatusIcon.fg, colors.StatusIcon.bg},
-        separator = ' ',
-        separator_highlight = {colors.StatusIcon.sep_fg, colors.StatusIcon.sep_bg}
-    }
-}
-
-gls.left[3] = {
-    FileIcon = {
-        provider = 'FileIcon',
-        condition = buffer_not_empty,
-        highlight = {colors.FileIcon.fg, colors.FileIcon.bg}
-    }
-}
-
-gls.left[4] = {
-    FileName = {
-        provider = {'FileName', 'FileSize'},
-        condition = buffer_not_empty,
-        highlight = {colors.FileName.fg, colors.FileName.bg}
-    }
-}
-
-gls.left[5] = {
-    left_RightRounded = {
-        provider = function()
-            return ''
-        end,
-        separator = ' ',
-        separator_highlight = {colors.left_RightRounded.sep_fg, colors.left_RightRounded.sep_bg},
-        highlight = {colors.left_RightRounded.fg, colors.left_RightRounded.bg}
-    }
-}
-
 local checkwidth = function()
     local squeeze_width = vim.fn.winwidth(0) / 2
     if squeeze_width > 40 then
@@ -173,153 +107,185 @@ local checkwidth = function()
     return false
 end
 
-gls.left[6] = {
-    DiffAdd = {
-        provider = 'DiffAdd',
-        condition = checkwidth,
-        icon = '   ',
-        highlight = {colors.DiffAdd.fg, colors.DiffAdd.bg}
-    }
+gls.left = {
+    {
+        left_LeftRounded = {
+            provider = function()
+                return ''
+            end,
+            highlight = {colors.left_LeftRounded.fg, colors.left_LeftRounded.bg}
+        }
+    },
+    {
+        StatusIcon = {
+            provider = function()
+                return '   '
+            end,
+            highlight = {colors.StatusIcon.fg, colors.StatusIcon.bg},
+            separator = ' ',
+            separator_highlight = {colors.StatusIcon.sep_fg, colors.StatusIcon.sep_bg}
+        }
+    },
+    {
+        FileIcon = {
+            provider = 'FileIcon',
+            condition = buffer_not_empty,
+            highlight = {colors.FileIcon.fg, colors.FileIcon.bg}
+        }
+    },
+    {
+        FileName = {
+            provider = {'FileName', 'FileSize'},
+            condition = buffer_not_empty,
+            highlight = {colors.FileName.fg, colors.FileName.bg}
+        }
+    },
+    {
+        left_RightRounded = {
+            provider = function()
+                return ''
+            end,
+            separator = ' ',
+            separator_highlight = {colors.left_RightRounded.sep_fg, colors.left_RightRounded.sep_bg},
+            highlight = {colors.left_RightRounded.fg, colors.left_RightRounded.bg}
+        }
+    },
+    {
+        DiffAdd = {
+            provider = 'DiffAdd',
+            condition = checkwidth,
+            icon = '   ',
+            highlight = {colors.DiffAdd.fg, colors.DiffAdd.bg}
+        }
+    },
+    {
+        DiffModified = {
+            provider = 'DiffModified',
+            condition = checkwidth,
+            icon = ' ',
+            highlight = {colors.DiffModified.fg, colors.DiffModified.bg}
+        }
+    },
+    {
+        DiffRemove = {
+            provider = 'DiffRemove',
+            condition = checkwidth,
+            icon = ' ',
+            highlight = {colors.DiffRemove.fg, colors.DiffRemove.bg}
+        }
+    },
+    {
+        LeftEnd = {
+            provider = function()
+                return ' '
+            end,
+            separator = ' ',
+            separator_highlight = {colors.LeftEnd.sep_fg, colors.LeftEnd.sep_bg},
+            highlight = {colors.LeftEnd.fg, colors.LeftEnd.bg}
+        }
+    },
+    {
+        DiagnosticError = {
+            provider = 'DiagnosticError',
+            icon = '  ',
+            highlight = {colors.DiagnosticError.fg, colors.DiagnosticError.bg}
+        }
+    },
+    {
+        Space = {
+            provider = function()
+                return ' '
+            end,
+            highlight = {colors.Space.fg, colors.Space.bg}
+        }
+    },
+    {
+        DiagnosticWarn = {
+            provider = 'DiagnosticWarn',
+            icon = '  ',
+            highlight = {colors.DiagnosticWarn.fg, colors.DiagnosticWarn.bg}
+        }
+    },
+    {
+        Space = {
+            provider = function() return '' end,
+            highlight = {colors.Space.fg, colors.Space.bg}
+        }
+    },
 }
 
-gls.left[7] = {
-    DiffModified = {
-        provider = 'DiffModified',
-        condition = checkwidth,
-        icon = ' ',
-        highlight = {colors.DiffModified.fg, colors.DiffModified.bg}
-    }
+gls.right = {
+    {
+        ShowLspClient = {
+            provider = 'GetLspClient',
+            condition = function()
+                local tbl = {['startify'] = true, [' '] = true, [''] = true}
+                if tbl[vim.bo.filetype] then return false end
+                return true
+            end,
+            icon = ' ',
+            highlight = {colors.ShowLspClient.fg, colors.ShowLspClient.bg},
+        }
+    },
+    {
+        GitIcon = {
+            provider = function()
+                return '   '
+            end,
+            condition = require('galaxyline.provider_vcs').check_git_workspace,
+            separator = ' ',
+            separator_highlight = {colors.GitIcon.sep_fg, colors.GitIcon.sep_bg},
+            highlight = {colors.GitIcon.fg, colors.GitIcon.bg},
+        }
+    },
+    {
+        GitBranch = {
+            provider = 'GitBranch',
+            condition = require('galaxyline.provider_vcs').check_git_workspace,
+            highlight = {colors.GitBranch.fg, colors.GitBranch.bg},
+        }
+    },
+    {
+        right_LeftRounded = {
+            provider = function()
+                return ''
+            end,
+            separator = ' ',
+            separator_highlight = {colors.right_LeftRounded.fg, colors.right_LeftRounded.bg},
+            highlight = {colors.right_LeftRounded.fg, colors.right_LeftRounded.bg}
+        }
+    },
+    {
+        ViMode = {
+            provider = function()
+                local alias = {
+                    n = 'NORMAL',
+                    i = 'INSERT',
+                    c = 'COMMAND',
+                    V = 'VISUAL',
+                    [''] = 'VISUAL',
+                    v = 'VISUAL',
+                    R = 'REPLACE'
+                }
+                return alias[vim.fn.mode()]
+            end,
+            highlight = {colors.ViMode.fg, colors.ViMode.bg}
+        }
+    },
+    {
+        Percent = {
+            provider = 'LinePercent',
+            separator = ' ',
+            separator_highlight = {colors.Percent.sep_fg, colors.Percent.sep_bg},
+            highlight = {colors.Percent.fg, colors.Percent.bg}
+        }
+    },
+    {
+        right_RightRounded = {
+            provider = function()
+                return ''
+            end,
+            highlight = {colors.right_RightRounded.fg, colors.right_RightRounded.bg}
+        }
+    },
 }
-
-gls.left[8] = {
-    DiffRemove = {
-        provider = 'DiffRemove',
-        condition = checkwidth,
-        icon = ' ',
-        highlight = {colors.DiffRemove.fg, colors.DiffRemove.bg}
-    }
-}
-
-gls.left[9] = {
-    LeftEnd = {
-        provider = function()
-            return ' '
-        end,
-        separator = ' ',
-        separator_highlight = {colors.LeftEnd.sep_fg, colors.LeftEnd.sep_bg},
-        highlight = {colors.LeftEnd.fg, colors.LeftEnd.bg}
-    }
-}
-
-gls.left[10] = {
-    DiagnosticError = {
-        provider = 'DiagnosticError',
-        icon = '  ',
-        highlight = {colors.DiagnosticError.fg, colors.DiagnosticError.bg}
-    }
-}
-
-gls.left[11] = {
-    Space = {
-        provider = function()
-            return ' '
-        end,
-        highlight = {colors.Space.fg, colors.Space.bg}
-    }
-}
-
-gls.left[12] = {
-    DiagnosticWarn = {
-        provider = 'DiagnosticWarn',
-        icon = '  ',
-        highlight = {colors.DiagnosticWarn.fg, colors.DiagnosticWarn.bg}
-    }
-}
-
-gls.left[14] = {
-    Space = {
-        provider = function() return '' end,
-        highlight = {colors.Space.fg, colors.Space.bg}
-    }
-}
-
-gls.right[1] = {
-    ShowLspClient = {
-        provider = 'GetLspClient',
-        condition = function()
-            local tbl = {['startify'] = true, [' '] = true, [''] = true}
-            if tbl[vim.bo.filetype] then return false end
-            return true
-        end,
-        icon = ' ',
-        highlight = {colors.ShowLspClient.fg, colors.ShowLspClient.bg},
-    }
-}
-
-gls.right[2] = {
-    GitIcon = {
-        provider = function()
-            return '   '
-        end,
-        condition = require('galaxyline.provider_vcs').check_git_workspace,
-        separator = ' ',
-        separator_highlight = {colors.GitIcon.sep_fg, colors.GitIcon.sep_bg},
-        highlight = {colors.GitIcon.fg, colors.GitIcon.bg},
-    }
-}
-
-gls.right[3] = {
-    GitBranch = {
-        provider = 'GitBranch',
-        condition = require('galaxyline.provider_vcs').check_git_workspace,
-        highlight = {colors.GitBranch.fg, colors.GitBranch.bg},
-    }
-}
-
-gls.right[4] = {
-    right_LeftRounded = {
-        provider = function()
-            return ''
-        end,
-        separator = ' ',
-        separator_highlight = {colors.right_LeftRounded.fg, colors.right_LeftRounded.bg},
-        highlight = {colors.right_LeftRounded.fg, colors.right_LeftRounded.bg}
-    }
-}
-
-gls.right[5] = {
-    ViMode = {
-        provider = function()
-            local alias = {
-                n = 'NORMAL',
-                i = 'INSERT',
-                c = 'COMMAND',
-                V = 'VISUAL',
-                [''] = 'VISUAL',
-                v = 'VISUAL',
-                R = 'REPLACE'
-            }
-            return alias[vim.fn.mode()]
-        end,
-        highlight = {colors.ViMode.fg, colors.ViMode.bg}
-    }
-}
-
-gls.right[6] = {
-    Percent = {
-        provider = 'LinePercent',
-        separator = ' ',
-        separator_highlight = {colors.Percent.sep_fg, colors.Percent.sep_bg},
-        highlight = {colors.Percent.fg, colors.Percent.bg}
-    }
-}
-
-gls.right[7] = {
-    right_RightRounded = {
-        provider = function()
-            return ''
-        end,
-        highlight = {colors.right_RightRounded.fg, colors.right_RightRounded.bg}
-    }
-}
-
