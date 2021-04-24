@@ -45,12 +45,6 @@ local colors = {
     fg = dracula.red,
     bg = dracula.bg_light,
   },
-  LeftEnd = {
-    fg = dracula.bg_light,
-    bg = dracula.bg_light,
-    sep_fg = dracula.bg_light,
-    sep_bg = dracula.bg_light,
-  },
   DiagnosticError = {
     fg = dracula.red,
     bg = dracula.bg_light,
@@ -151,37 +145,23 @@ gls.left = {
         }
     },
     {
-        DiffAdd = {
-            provider = 'DiffAdd',
-            condition = checkwidth,
-            icon = '   ',
-            highlight = {colors.DiffAdd.fg, colors.DiffAdd.bg}
+        ShowLspClient = {
+            provider = 'GetLspClient',
+            condition = function()
+                local tbl = {['startify'] = true, [' '] = true, [''] = true}
+                if tbl[vim.bo.filetype] then return false end
+                return true
+            end,
+            icon = ' ',
+            highlight = {colors.ShowLspClient.fg, colors.ShowLspClient.bg},
         }
     },
     {
-        DiffModified = {
-            provider = 'DiffModified',
-            condition = checkwidth,
-            icon = ' ',
-            highlight = {colors.DiffModified.fg, colors.DiffModified.bg}
-        }
-    },
-    {
-        DiffRemove = {
-            provider = 'DiffRemove',
-            condition = checkwidth,
-            icon = ' ',
-            highlight = {colors.DiffRemove.fg, colors.DiffRemove.bg}
-        }
-    },
-    {
-        LeftEnd = {
+        Space = {
             provider = function()
                 return ' '
             end,
-            separator = ' ',
-            separator_highlight = {colors.LeftEnd.sep_fg, colors.LeftEnd.sep_bg},
-            highlight = {colors.LeftEnd.fg, colors.LeftEnd.bg}
+            highlight = {colors.Space.fg, colors.Space.bg}
         }
     },
     {
@@ -216,15 +196,27 @@ gls.left = {
 
 gls.right = {
     {
-        ShowLspClient = {
-            provider = 'GetLspClient',
-            condition = function()
-                local tbl = {['startify'] = true, [' '] = true, [''] = true}
-                if tbl[vim.bo.filetype] then return false end
-                return true
-            end,
-            icon = ' ',
-            highlight = {colors.ShowLspClient.fg, colors.ShowLspClient.bg},
+        DiffAdd = {
+            provider = 'DiffAdd',
+            condition = checkwidth,
+            icon = '   ',
+            highlight = {colors.DiffAdd.fg, colors.DiffAdd.bg}
+        }
+    },
+    {
+        DiffModified = {
+            provider = 'DiffModified',
+            condition = checkwidth,
+            icon = ' ',
+            highlight = {colors.DiffModified.fg, colors.DiffModified.bg}
+        }
+    },
+    {
+        DiffRemove = {
+            provider = 'DiffRemove',
+            condition = checkwidth,
+            icon = ' ',
+            highlight = {colors.DiffRemove.fg, colors.DiffRemove.bg}
         }
     },
     {
