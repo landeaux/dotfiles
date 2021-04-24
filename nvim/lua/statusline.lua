@@ -63,9 +63,15 @@ local colors = {
     fg = dracula.orange,
     bg = dracula.bg_light,
   },
+  ShowLspClient = {
+    fg = dracula.fg,
+    bg = dracula.bg_light,
+  },
   GitIcon = {
     fg = dracula.green,
     bg = dracula.bg_light,
+    sep_fg = dracula.bg_light,
+    sep_bg = dracula.bg_light,
   },
   GitBranch = {
     fg = dracula.green,
@@ -238,16 +244,31 @@ gls.left[14] = {
 }
 
 gls.right[1] = {
+    ShowLspClient = {
+        provider = 'GetLspClient',
+        condition = function()
+            local tbl = {['dashboard'] = true, [' '] = true}
+            if tbl[vim.bo.filetype] then return false end
+            return true
+        end,
+        icon = ' ',
+        highlight = {colors.ShowLspClient.fg, colors.ShowLspClient.bg},
+    }
+}
+
+gls.right[2] = {
     GitIcon = {
         provider = function()
             return '   '
         end,
         condition = require('galaxyline.provider_vcs').check_git_workspace,
-        highlight = {colors.GitIcon.fg, colors.GitIcon.bg}
+        separator = ' ',
+        separator_highlight = {colors.GitIcon.sep_fg, colors.GitIcon.sep_bg},
+        highlight = {colors.GitIcon.fg, colors.GitIcon.bg},
     }
 }
 
-gls.right[2] = {
+gls.right[3] = {
     GitBranch = {
         provider = 'GitBranch',
         condition = require('galaxyline.provider_vcs').check_git_workspace,
@@ -255,7 +276,7 @@ gls.right[2] = {
     }
 }
 
-gls.right[3] = {
+gls.right[4] = {
     right_LeftRounded = {
         provider = function()
             return ''
@@ -266,7 +287,7 @@ gls.right[3] = {
     }
 }
 
-gls.right[4] = {
+gls.right[5] = {
     ViMode = {
         provider = function()
             local alias = {
@@ -284,7 +305,7 @@ gls.right[4] = {
     }
 }
 
-gls.right[5] = {
+gls.right[6] = {
     Percent = {
         provider = 'LinePercent',
         separator = ' ',
@@ -293,7 +314,7 @@ gls.right[5] = {
     }
 }
 
-gls.right[6] = {
+gls.right[7] = {
     right_RightRounded = {
         provider = function()
             return ''
