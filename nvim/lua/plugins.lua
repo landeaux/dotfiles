@@ -94,7 +94,8 @@ use 'hrsh7th/vim-vsnip-integ'
 -- LSP
 use 'neovim/nvim-lspconfig'
 use 'kabouzeid/nvim-lspinstall'
-use 'onsails/lspkind-nvim'
+-- use 'onsails/lspkind-nvim'
+use 'glepnir/lspsaga.nvim'
 use 'ray-x/lsp_signature.nvim'
 use 'kosayoda/nvim-lightbulb'
 
