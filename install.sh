@@ -13,10 +13,8 @@ ln -s ${BASEDIR}/zshrc ~/.zshrc
 # source ~/.zshrc
 
 # neovim
-rm -rf ~/.config/nvim && mkdir -p ~/.config/nvim
-ln -s ${BASEDIR}/init.lua ~/.config/nvim/init.lua
-ln -s ${BASEDIR}/lua ~/.config/nvim/lua
-ln -s ${BASEDIR}/coc-settings.json ~/.config/nvim/coc-settings.json
+rm -rf ~/.config/nvim
+ln -s ${BASEDIR}/nvim ~/.config/nvim
 
 # git
 rm ~/.gitconfig && rm ~/.gitignore && rm ~/.gitmessage
