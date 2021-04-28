@@ -26,6 +26,10 @@ bind('i', 'jk', '<ESC>', opts)
 bind('i', 'kj', '<ESC>', opts)
 bind('i', 'jj', '<ESC>', opts)
 
+-- Move selected line / block of text in visual mode
+bind('x', 'J', ':move \'>+1<CR>gv-gv', opts)
+bind('x', 'K', ':move \'<-2<CR>gv-gv', opts)
+
 -- Toggle highlighting
 bind('n', '<leader>th', ':set hlsearch!<CR>', opts)
 
