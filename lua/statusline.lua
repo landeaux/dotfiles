@@ -122,7 +122,7 @@ gls.right[5] = {
     ShowLspClient = {
         provider = 'GetLspClient',
         condition = function()
-            local tbl = {['dashboard'] = true, [' '] = true}
+            local tbl = {['startify'] = true, [' '] = true, [''] = true}
             if tbl[vim.bo.filetype] then return false end
             return true
         end,
