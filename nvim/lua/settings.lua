@@ -40,6 +40,7 @@ set_opt('o', 'backspace', 'indent,eol,start')
 set_opt('o', 'laststatus', 2)
 
 -- Indent
+set_opt('b', 'tabstop', indent)
 set_opt('b', 'softtabstop', indent)
 set_opt('b', 'shiftwidth', indent)
 set_opt('b', 'expandtab', true)
