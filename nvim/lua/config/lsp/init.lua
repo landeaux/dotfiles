@@ -4,6 +4,7 @@ require('config.lsp.nvim-lsp-settings')
 -- Individual language server configs
 require('config.lsp.bash-ls')
 require('config.lsp.css-ls')
+require('config.lsp.docker-ls')
 require('config.lsp.html-ls')
 require('config.lsp.lua-ls')
 require('config.lsp.js-ts-ls')
