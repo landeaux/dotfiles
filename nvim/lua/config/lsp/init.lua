@@ -11,6 +11,7 @@ require('config.lsp.js-ts-ls')
 require('config.lsp.json-ls')
 require('config.lsp.python-ls')
 require('config.lsp.vue-ls')
+require('config.lsp.yaml-ls')
 
 -- Formatting
 require('config.lsp.efm-general-ls')
