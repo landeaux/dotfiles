@@ -10,6 +10,7 @@ require('config.lsp.lua-ls')
 require('config.lsp.js-ts-ls')
 require('config.lsp.json-ls')
 require('config.lsp.python-ls')
+require('config.lsp.vim-ls')
 require('config.lsp.vue-ls')
 require('config.lsp.yaml-ls')
 
