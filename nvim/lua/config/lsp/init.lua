@@ -1,7 +1,11 @@
--- Language servers
+-- General LSP settings
 require('config.lsp.nvim-lsp-settings')
-require('config.lsp.python-ls')
+
+-- Individual language server configs
 require('config.lsp.lua-ls')
+require('config.lsp.js-ts-ls')
+require('config.lsp.python-ls')
+require('config.lsp.vue-ls')
 
 -- Formatting
 require('config.lsp.efm-general-ls')
