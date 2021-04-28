@@ -39,9 +39,6 @@ use {
     requires = {'liuchengxu/vim-which-key'},
 }
 
--- Smooth scrolling
-use 'psliwka/vim-smoothie'
-
 -- File Tree
 use 'kyazdani42/nvim-tree.lua'
 
