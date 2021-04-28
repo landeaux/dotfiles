@@ -115,9 +115,31 @@ table.insert(vue_args, eslint)
 
 local markdownPandocFormat = {formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2', formatStdin = true}
 
-DATA_PATH = vim.fn.stdpath('data')
+local on_attach = function(client, bufnr)
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+    -- Mappings.
+    local opts = { noremap=true, silent=true }
+    buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+    -- Format on save
+    require('utils').create_augroup({
+        {'BufWritePre', '*', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
+    }, 'lsp_auto_format')
+
+    local keys = {
+        l = {
+            name = '+lsp',
+            f = 'Format',
+        }
+    }
+
+    require('whichkey_setup').register_keymap('leader', keys)
+end
+
 require"lspconfig".efm.setup {
-    cmd = {DATA_PATH .. "/lspinstall/efm/efm-langserver"},
+    on_attach = on_attach,
+    cmd = {vim.fn.stdpath('data') .. "/lspinstall/efm/efm-langserver"},
     init_options = {documentFormatting = true, codeAction = false},
     filetypes = {"lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "json", "yaml", "markdown", "vue"},
     settings = {
