@@ -90,6 +90,7 @@ use 'editorconfig/editorconfig-vim'
 -- Snippets
 use 'hrsh7th/vim-vsnip'
 use 'hrsh7th/vim-vsnip-integ'
+use 'rafamadriz/friendly-snippets'
 
 -- LSP
 use 'neovim/nvim-lspconfig'
