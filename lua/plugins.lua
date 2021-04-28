@@ -12,7 +12,8 @@ use 'wbthomason/packer.nvim'
 use { 'equalsraf/neovim-gui-shim', opt = true }
 
 -- Colorscheme
-use 'dracula/vim'
+-- use 'dracula/vim'
+use 'christianchiarulli/nvcode-color-schemes.vim'
 
 -- Statusline
 use 'glepnir/galaxyline.nvim'
@@ -92,6 +93,7 @@ use 'hrsh7th/vim-vsnip-integ'
 
 -- LSP
 use 'neovim/nvim-lspconfig'
+use 'kabouzeid/nvim-lspinstall'
 use 'onsails/lspkind-nvim'
 use 'ray-x/lsp_signature.nvim'
 use 'kosayoda/nvim-lightbulb'

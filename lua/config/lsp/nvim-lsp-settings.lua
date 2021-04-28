@@ -1,5 +1,7 @@
 local nvim_lsp = require('lspconfig')
 
+local M = {}
+
 -- Default on_attach for LSP servers
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -139,7 +141,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- LSP Server Configurations
-local default_config = function()
+M.default_config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
@@ -149,52 +151,6 @@ local default_config = function()
     }
 end
 
--- LSP Servers
-local servers = {
-    'bashls',
-    'cssls',
-    'dockerls',
-    'html',
-    'pyls',
-    'tsserver',
-    'vuels'
-}
+M.common_on_attach = on_attach
 
-for _, server in ipairs(servers) do
-    local config = default_config()
-
-    if server == "pyls" then
-        config.settings = {
-            pyls = {
-                plugins = {
-                    mccabe = {
-                        enabled = true,
-                        threshold = 10
-                    },
-                    pycodestyle = {
-                        enabled = false
-                    },
-                    pydocstyle = {
-                        enabled = true,
-                        convention = "numpy"
-                    },
-                    pyflakes = {
-                        enabled = true
-                    },
-                    pylint = {
-                        enabled = false,
-                        executable = "pylint"
-                    },
-                    yapf = {
-                        enabled = false
-                    },
-                    pyls_mypy = {
-                        enabled = true
-                    }
-                }
-            }
-        }
-    end
-
-    nvim_lsp[server].setup(config)
-end
+return M
