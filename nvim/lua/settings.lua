@@ -89,7 +89,7 @@ set_opt('o', 'updatetime', 100)
 set_opt('o', 'signcolumn', 'yes')
 
 -- Wait less time for a mapped sequence to complete
-set_opt('o', 'timeoutlen', 200)
+set_opt('o', 'timeoutlen', 300)
 
 -- Highlight current line
 set_opt('o', 'cursorline', true)
