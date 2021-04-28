@@ -20,9 +20,7 @@ local black = {formatCommand = "black --fast --quiet -", formatStdin = true}
 local mypy = {
     lintCommand = "mypy --show-column-numbers --ignore-missing-imports",
     lintFormats = {
-        "%f:%l:%c: %trror: %m",
-        "%f:%l:%c: %tarning: %m",
-        "%f:%l:%c: %tote: %m"
+        "%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"
     },
     lintSource = "mypy"
 }
@@ -34,10 +32,10 @@ table.insert(python_arguments, black)
 
 -- lua
 local lua_arguments = {}
-lua_formatter = 'lua-format'
+local lua_formatter = 'lua-format'
 
 local luaFormat = {
-    formatCommand = "lua-format -i --no-keep-simple-function-one-line --column-limit=120",
+    formatCommand = "lua-format -i --no-keep-simple-function-one-line --column-limit=80",
     formatStdin = true
 }
 
@@ -47,9 +45,9 @@ local lua_fmt = {
 }
 
 if lua_formatter == 'lua-format' then
-  table.insert(lua_arguments, luaFormat)
+    table.insert(lua_arguments, luaFormat)
 elseif lua_formatter == 'lua-fmt' then
-  table.insert(lua_arguments, lua_fmt)
+    table.insert(lua_arguments, lua_fmt)
 end
 
 -- sh
@@ -59,7 +57,9 @@ local shfmt = {formatCommand = 'shfmt -ci -s -bn', formatStdin = true}
 
 local shellcheck = {
     LintCommand = 'shellcheck -f gcc -x',
-    lintFormats = {'%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m', '%f:%l:%c: %tote: %m'}
+    lintFormats = {
+        '%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m', '%f:%l:%c: %tote: %m'
+    }
 }
 
 table.insert(sh_arguments, shfmt)
@@ -67,7 +67,7 @@ table.insert(sh_arguments, shellcheck)
 
 -- tsserver/web javascript react, vue, json, html, css, yaml
 local prettier = {
-	formatCommand = [[
+    formatCommand = [[
 		./node_modules/.bin/prettier \
             --semi false \
             --single-quote true \
@@ -76,7 +76,7 @@ local prettier = {
             --config-precedence prefer-file \
             --stdin-filepath ${INPUT}
 	]],
-	formatStdin = true,
+    formatStdin = true
 }
 
 -- You can look for project scope Prettier and Eslint with e.g. vim.fn.glob("node_modules/.bin/prettier") etc. If it is not found revert to global Prettier where needed.
@@ -87,10 +87,7 @@ local eslint = {
     lintCommand = "./node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}",
     lintIgnoreExitCode = true,
     lintStdin = true,
-    lintFormats = {
-		"%f(%l,%c): %tarning %m",
-	    "%f(%l,%c): %rror %m",
-	},
+    lintFormats = {"%f(%l,%c): %tarning %m", "%f(%l,%c): %rror %m"},
     formatCommand = "./node_modules/.bin/eslint --fix-to-stdout --stdin --stdin-filename=${INPUT}",
     formatStdin = true
 }
@@ -113,26 +110,27 @@ table.insert(vue_args, eslint)
 --     lintFormats = {'%f:%l %m', '%f:%l:%c %m', '%f: %l: %m'}
 -- }
 
-local markdownPandocFormat = {formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2', formatStdin = true}
+local markdownPandocFormat = {
+    formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2',
+    formatStdin = true
+}
 
 local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
 
     -- Mappings.
-    local opts = { noremap=true, silent=true }
-    buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    local opts = {noremap = true, silent = true}
+    buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>",
+                   opts)
 
     -- Format on save
     require('utils').create_augroup({
         {'BufWritePre', '*', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
     }, 'lsp_auto_format')
 
-    local keys = {
-        l = {
-            name = '+lsp',
-            f = 'Format',
-        }
-    }
+    local keys = {l = {name = '+lsp', f = 'Format'}}
 
     require('whichkey_setup').register_keymap('leader', keys)
 end
@@ -141,7 +139,10 @@ require"lspconfig".efm.setup {
     on_attach = on_attach,
     cmd = {vim.fn.stdpath('data') .. "/lspinstall/efm/efm-langserver"},
     init_options = {documentFormatting = true, codeAction = false},
-    filetypes = {"lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "json", "yaml", "markdown", "vue"},
+    filetypes = {
+        "lua", "python", "javascriptreact", "javascript", "sh", "html", "css",
+        "json", "yaml", "markdown", "vue"
+    },
     settings = {
         rootMarkers = {".git/"},
         languages = {
@@ -155,7 +156,7 @@ require"lspconfig".efm.setup {
             json = {prettier},
             yaml = {prettier},
             vue = vue_args,
-            markdown = {markdownPandocFormat},
+            markdown = {markdownPandocFormat}
         }
     }
 }
