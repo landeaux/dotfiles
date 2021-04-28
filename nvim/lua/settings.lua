@@ -85,13 +85,16 @@ set_opt('o', 'splitright', true)
 
 -- Faster update time
 set_opt('o', 'updatetime', 100)
-set_opt('o', 'signcolumn', 'auto:4')
+set_opt('o', 'signcolumn', 'yes')
+
+-- Wait less time for a mapped sequence to complete
+set_opt('o', 'timeoutlen', 200)
 
 -- Highlight current line
 set_opt('o', 'cursorline', true)
 
 -- Scroll offsets
-set_opt('o', 'scrolloff', 10)
+set_opt('o', 'scrolloff', 0)
 set_opt('o', 'sidescrolloff', 5)
 
 -- Enable filetype plugin
