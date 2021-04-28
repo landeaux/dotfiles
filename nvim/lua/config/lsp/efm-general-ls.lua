@@ -68,7 +68,7 @@ table.insert(sh_arguments, shellcheck)
 -- tsserver/web javascript react, vue, json, html, css, yaml
 local prettier = {
 	formatCommand = [[
-		prettier \
+		./node_modules/.bin/prettier \
             --semi false \
             --single-quote true \
             --tab-width 2 \
