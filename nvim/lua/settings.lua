@@ -23,9 +23,11 @@ set_opt("o", "exrc", true)
 set_opt("o", "secure", true)
 
 -- GUI cursor
-set_opt("o", "guicursor", "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50," ..
-            "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor," ..
-            "sm:block-blinkwait175-blinkoff150-blinkon175")
+set_opt(
+    "o", "guicursor", "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50," ..
+        "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor," ..
+        "sm:block-blinkwait175-blinkoff150-blinkon175"
+)
 
 -- Persistent undo
 set_opt("o", "undofile", true)
@@ -88,9 +90,6 @@ set_opt("o", "splitright", true)
 set_opt("o", "updatetime", 100)
 set_opt("o", "signcolumn", "yes")
 
--- Wait less time for a mapped sequence to complete
-set_opt("o", "timeoutlen", 300)
-
 -- Highlight current line
 set_opt("o", "cursorline", true)
 
@@ -102,33 +101,38 @@ set_opt("o", "sidescrolloff", 5)
 cmd "filetype plugin on"
 
 -- Highlight text on yank
-require("utils").create_augroup({{"TextYankPost", "*", "silent!", "lua vim.highlight.on_yank()"}},
-                                "highlight_on_yank")
+require("utils").create_augroup(
+    {{"TextYankPost", "*", "silent!", "lua vim.highlight.on_yank()"}}, "highlight_on_yank"
+)
 
-require("utils").create_augroup({
-    {"BufRead,BufNewFile", ".env.*", "set filetype=sh"},
-    {"BufRead,BufNewFile", ".gitconfig.local", "set filetype=gitconfig"},
-    {"BufRead,BufNewFile", ".pylintrc", "set filetype=conf"},
-    {"BufRead,BufNewFile", ".tmux.conf.local", "set filetype=tmux"},
-    {"BufRead,BufNewFile", ".zshrc.local", "set filetype=sh"},
-    {"BufRead,BufNewFile", "Dockerfile.*", "set filetype=dockerfile"},
-    {"BufRead,BufNewFile", "Dockerfile-*", "set filetype=dockerfile"},
-    {"BufRead,BufNewFile", "gitconfig", "set filetype=gitconfig"},
-    {"BufRead,BufNewFile", "gitignore", "set filetype=conf"},
-    {"BufRead,BufNewFile", "*.graphql,*.graphqls,*.gql", "set filetype=graphql"}
-}, "custom_filetypedetect")
+require("utils").create_augroup(
+    {
+        {"BufRead,BufNewFile", ".env.*", "set filetype=sh"},
+        {"BufRead,BufNewFile", ".gitconfig.local", "set filetype=gitconfig"},
+        {"BufRead,BufNewFile", ".pylintrc", "set filetype=conf"},
+        {"BufRead,BufNewFile", ".tmux.conf.local", "set filetype=tmux"},
+        {"BufRead,BufNewFile", ".zshrc.local", "set filetype=sh"},
+        {"BufRead,BufNewFile", "Dockerfile.*", "set filetype=dockerfile"},
+        {"BufRead,BufNewFile", "Dockerfile-*", "set filetype=dockerfile"},
+        {"BufRead,BufNewFile", "gitconfig", "set filetype=gitconfig"},
+        {"BufRead,BufNewFile", "gitignore", "set filetype=conf"},
+        {"BufRead,BufNewFile", "*.graphql,*.graphqls,*.gql", "set filetype=graphql"}
+    }, "custom_filetypedetect"
+)
 
 -- autocmd FileType python setlocal indentkeys-=:
-require("utils").create_augroup({
-    {"FileType", "javascript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-    {"FileType", "javascriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-    {"FileType", "lua", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4"},
-    {"FileType", "python", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4"},
-    {"FileType", "typescript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-    {"FileType", "typescriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-    {"FileType", "vue", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-    {"FileType", "yaml", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"}
-}, "filetype_indent")
+require("utils").create_augroup(
+    {
+        {"FileType", "javascript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
+        {"FileType", "javascriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
+        {"FileType", "lua", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4"},
+        {"FileType", "python", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4"},
+        {"FileType", "typescript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
+        {"FileType", "typescriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
+        {"FileType", "vue", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
+        {"FileType", "yaml", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"}
+    }, "filetype_indent"
+)
 
 -- Enable syntax highlighting
 cmd "syntax enable"
