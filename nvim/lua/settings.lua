@@ -5,6 +5,9 @@ local append_opt = require('utils').append_opt
 local fill_column = 80
 local indent = 4
 
+-- Treat dash separated words as a word text object
+vim.cmd('set iskeyword+=-')
+
 -- Set encoding
 set_opt('o', 'encoding', 'utf-8')
 
@@ -23,9 +26,9 @@ set_opt('o', 'exrc', true)
 set_opt('o', 'secure', true)
 
 -- GUI cursor
-set_opt('o', 'guicursor', 'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,'..
-	'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,'..
-	'sm:block-blinkwait175-blinkoff150-blinkon175')
+set_opt('o', 'guicursor', 'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,' ..
+            'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,' ..
+            'sm:block-blinkwait175-blinkoff150-blinkon175')
 
 -- Persistent undo
 set_opt('o', 'undofile', true)
@@ -102,9 +105,8 @@ set_opt('o', 'sidescrolloff', 5)
 cmd 'filetype plugin on'
 
 -- Highlight text on yank
-require('utils').create_augroup({
-    {'TextYankPost', '*', 'silent!', 'lua vim.highlight.on_yank()'}
-}, 'highlight_on_yank')
+require('utils').create_augroup({{'TextYankPost', '*', 'silent!', 'lua vim.highlight.on_yank()'}},
+                                'highlight_on_yank')
 
 require('utils').create_augroup({
     {'BufRead,BufNewFile', '.env.*', 'set filetype=sh'},
@@ -116,7 +118,7 @@ require('utils').create_augroup({
     {'BufRead,BufNewFile', 'Dockerfile-*', 'set filetype=dockerfile'},
     {'BufRead,BufNewFile', 'gitconfig', 'set filetype=gitconfig'},
     {'BufRead,BufNewFile', 'gitignore', 'set filetype=conf'},
-    {'BufRead,BufNewFile', '*.graphql,*.graphqls,*.gql', 'set filetype=graphql'},
+    {'BufRead,BufNewFile', '*.graphql,*.graphqls,*.gql', 'set filetype=graphql'}
 }, 'custom_filetypedetect')
 
 -- autocmd FileType python setlocal indentkeys-=:
@@ -128,7 +130,7 @@ require('utils').create_augroup({
     {'FileType', 'typescript', 'setlocal', 'shiftwidth=2 softtabstop=2 tabstop=2'},
     {'FileType', 'typescriptreact', 'setlocal', 'shiftwidth=2 softtabstop=2 tabstop=2'},
     {'FileType', 'vue', 'setlocal', 'shiftwidth=2 softtabstop=2 tabstop=2'},
-    {'FileType', 'yaml', 'setlocal', 'shiftwidth=2 softtabstop=2 tabstop=2'},
+    {'FileType', 'yaml', 'setlocal', 'shiftwidth=2 softtabstop=2 tabstop=2'}
 }, 'filetype_indent')
 
 -- Enable syntax highlighting
