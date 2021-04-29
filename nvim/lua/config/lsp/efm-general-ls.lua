@@ -27,13 +27,14 @@ table.insert(python_arguments, black)
 
 -- lua
 local lua_arguments = {}
-local lua_formatter = 'lua-format'
+local lua_formatter = "lua-format"
 
 local luaFormat = {
     formatCommand = [[
         lua-format -i \
         --column-limit=100 \
-        --no-keep-simple-function-one-line
+        --no-keep-simple-function-one-line \
+        --single-quote-to-double-quote
     ]],
     formatStdin = true
 }
@@ -43,20 +44,20 @@ local lua_fmt = {
     formatStdin = true
 }
 
-if lua_formatter == 'lua-format' then
+if lua_formatter == "lua-format" then
     table.insert(lua_arguments, luaFormat)
-elseif lua_formatter == 'lua-fmt' then
+elseif lua_formatter == "lua-fmt" then
     table.insert(lua_arguments, lua_fmt)
 end
 
 -- sh
 local sh_arguments = {}
 
-local shfmt = {formatCommand = 'shfmt -ci -s -bn', formatStdin = true}
+local shfmt = {formatCommand = "shfmt -ci -s -bn", formatStdin = true}
 
 local shellcheck = {
-    LintCommand = 'shellcheck -f gcc -x',
-    lintFormats = {'%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m', '%f:%l:%c: %tote: %m'}
+    LintCommand = "shellcheck -f gcc -x",
+    lintFormats = {"%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"}
 }
 
 table.insert(sh_arguments, shfmt)
@@ -108,7 +109,7 @@ table.insert(vue_args, eslint)
 -- }
 
 local markdownPandocFormat = {
-    formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2',
+    formatCommand = "pandoc -f markdown -t gfm -sp --tab-stop=2",
     formatStdin = true
 }
 
@@ -122,18 +123,18 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
     -- Format on save
-    require('utils').create_augroup({
-        {'BufWritePre', '*', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
-    }, 'lsp_auto_format')
+    require("utils").create_augroup({
+        {"BufWritePre", "*", "lua vim.lsp.buf.formatting_sync(nil, 1000)"}
+    }, "lsp_auto_format")
 
-    local keys = {l = {name = '+lsp', f = 'Format'}}
+    local keys = {l = {name = "+lsp", f = "Format"}}
 
-    require('whichkey_setup').register_keymap('leader', keys)
+    require("whichkey_setup").register_keymap("leader", keys)
 end
 
 require"lspconfig".efm.setup {
     on_attach = on_attach,
-    cmd = {vim.fn.stdpath('data') .. "/lspinstall/efm/efm-langserver"},
+    cmd = {vim.fn.stdpath("data") .. "/lspinstall/efm/efm-langserver"},
     init_options = {documentFormatting = true, codeAction = false},
     filetypes = {
         "lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "json", "yaml",
