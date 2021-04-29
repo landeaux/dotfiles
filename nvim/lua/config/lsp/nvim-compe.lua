@@ -14,12 +14,15 @@ require'compe'.setup {
     documentation = true;
 
     source = {
-        path = true;
-        buffer = true;
-        calc = true;
-        nvim_lsp = true;
-        nvim_lua = true;
-        vsnip = true;
+        path = {kind = "  "},
+        buffer = {kind = "  "},
+        calc = {kind = "  "},
+        vsnip = {kind = "  "},
+        nvim_lsp = {kind = "  "},
+        nvim_lua = {kind = "  "},
+        spell = {kind = "  "},
+        tags = false,
+        emoji = {kind = " ﲃ ", filetypes={"markdown", "text"}} -- for emoji press :
     };
 }
 
