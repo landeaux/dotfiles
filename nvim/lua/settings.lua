@@ -55,7 +55,7 @@ set_opt("w", "linebreak", true)
 set_opt("w", "breakindent", true)
 
 -- Show fill column indicator
-cmd("let &colorcolumn = join(range(" .. tostring(fill_column) .. ",999), \",\")")
+cmd('let &colorcolumn = join(range(' .. tostring(fill_column) .. ',999), ",")')
 
 -- Line numbers: Hybrid
 set_opt("w", "number", true)

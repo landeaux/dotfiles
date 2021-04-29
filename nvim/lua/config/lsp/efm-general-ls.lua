@@ -33,8 +33,7 @@ local luaFormat = {
     formatCommand = [[
         lua-format -i \
         --column-limit=100 \
-        --no-keep-simple-function-one-line \
-        --single-quote-to-double-quote
+        --no-keep-simple-function-one-line
     ]],
     formatStdin = true
 }
