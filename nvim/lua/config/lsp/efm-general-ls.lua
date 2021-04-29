@@ -10,18 +10,13 @@ local flake8 = {
     lintFormats = {"%f:%l:%c: %m"}
 }
 
-local isort = {
-    formatCommand = "isort --stdout --profile black -",
-    formatStdin = true
-}
+local isort = {formatCommand = "isort --stdout --profile black -", formatStdin = true}
 
 local black = {formatCommand = "black --fast --quiet -", formatStdin = true}
 
 local mypy = {
     lintCommand = "mypy --show-column-numbers --ignore-missing-imports",
-    lintFormats = {
-        "%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"
-    },
+    lintFormats = {"%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"},
     lintSource = "mypy"
 }
 
@@ -35,12 +30,16 @@ local lua_arguments = {}
 local lua_formatter = 'lua-format'
 
 local luaFormat = {
-    formatCommand = "lua-format -i --no-keep-simple-function-one-line --column-limit=80",
+    formatCommand = [[
+        lua-format -i \
+        --column-limit=100 \
+        --no-keep-simple-function-one-line
+    ]],
     formatStdin = true
 }
 
 local lua_fmt = {
-    formatCommand = "luafmt --indent-count 2 --line-width 120 --stdin",
+    formatCommand = "luafmt --indent-count 2 --line-width 100 --stdin",
     formatStdin = true
 }
 
@@ -57,9 +56,7 @@ local shfmt = {formatCommand = 'shfmt -ci -s -bn', formatStdin = true}
 
 local shellcheck = {
     LintCommand = 'shellcheck -f gcc -x',
-    lintFormats = {
-        '%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m', '%f:%l:%c: %tote: %m'
-    }
+    lintFormats = {'%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m', '%f:%l:%c: %tote: %m'}
 }
 
 table.insert(sh_arguments, shfmt)
@@ -122,8 +119,7 @@ local on_attach = function(client, bufnr)
 
     -- Mappings.
     local opts = {noremap = true, silent = true}
-    buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>",
-                   opts)
+    buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
     -- Format on save
     require('utils').create_augroup({
@@ -140,8 +136,8 @@ require"lspconfig".efm.setup {
     cmd = {vim.fn.stdpath('data') .. "/lspinstall/efm/efm-langserver"},
     init_options = {documentFormatting = true, codeAction = false},
     filetypes = {
-        "lua", "python", "javascriptreact", "javascript", "sh", "html", "css",
-        "json", "yaml", "markdown", "vue"
+        "lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "json", "yaml",
+        "markdown", "vue"
     },
     settings = {
         rootMarkers = {".git/"},
