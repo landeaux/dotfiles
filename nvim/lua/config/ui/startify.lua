@@ -1,3 +1,6 @@
+local bind = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
 vim.g.startify_custom_header = 'startify#pad(startify#fortune#cowsay())'
 
 -- Use Nvim-web-devicons for Startify
@@ -12,3 +15,11 @@ function! StartifyEntryFormat() abort
     return 'v:lua.webDevIcons(absolute_path) . " " . entry_path'
 endfunction
 ]], false)
+
+bind('n', '<leader>;', ':Startify<CR>', opts)
+
+local keys = {
+    [";"] = "Go to Dashboard"
+}
+
+require('whichkey_setup').register_keymap('leader', keys)
