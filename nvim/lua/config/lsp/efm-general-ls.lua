@@ -14,11 +14,11 @@ local isort = {formatCommand = "isort --stdout --profile black -", formatStdin =
 
 local black = {formatCommand = "black --fast --quiet -", formatStdin = true}
 
-local mypy = {
-    lintCommand = "mypy --show-column-numbers --ignore-missing-imports",
-    lintFormats = {"%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"},
-    lintSource = "mypy"
-}
+-- local mypy = {
+--     lintCommand = "mypy --show-column-numbers --ignore-missing-imports",
+--     lintFormats = {"%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"},
+--     lintSource = "mypy"
+-- }
 
 table.insert(python_arguments, flake8)
 table.insert(python_arguments, isort)
@@ -33,7 +33,16 @@ local luaFormat = {
     formatCommand = [[
         lua-format -i \
         --column-limit=100 \
-        --no-keep-simple-function-one-line
+        --no-keep-simple-function-one-line \
+        --break-after-table-lb \
+        --break-before-table-rb \
+        --break-after-functiondef-lp \
+        --break-before-functiondef-rp \
+        --break-after-functioncall-lp \
+        --break-before-functioncall-rp \
+        --chop-down-parameter \
+        --chop-down-table \
+        --chop-down-kv-table
     ]],
     formatStdin = true
 }
@@ -122,9 +131,9 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
     -- Format on save
-    require("utils").create_augroup({
-        {"BufWritePre", "*", "lua vim.lsp.buf.formatting_sync(nil, 1000)"}
-    }, "lsp_auto_format")
+    require("utils").create_augroup(
+        {{"BufWritePre", "*", "lua vim.lsp.buf.formatting_sync(nil, 1000)"}}, "lsp_auto_format"
+    )
 
     local keys = {l = {name = "+lsp", f = "Format"}}
 
@@ -136,8 +145,17 @@ require"lspconfig".efm.setup {
     cmd = {vim.fn.stdpath("data") .. "/lspinstall/efm/efm-langserver"},
     init_options = {documentFormatting = true, codeAction = false},
     filetypes = {
-        "lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "json", "yaml",
-        "markdown", "vue"
+        "lua",
+        "python",
+        "javascriptreact",
+        "javascript",
+        "sh",
+        "html",
+        "css",
+        "json",
+        "yaml",
+        "markdown",
+        "vue"
     },
     settings = {
         rootMarkers = {".git/"},
