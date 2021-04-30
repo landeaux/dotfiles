@@ -22,6 +22,7 @@ g.indent_blankline_filetype_exclude = {
     'NvimTree',
     'undotree',
     'packer',
+    'git'
 }
 g.indent_blankline_buftype_exclude = {'terminal', 'nofile'}
 
