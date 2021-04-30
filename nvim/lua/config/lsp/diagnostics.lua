@@ -5,7 +5,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         underline = true,
         virtual_text = {
             spacing = 4,
-            prefix = '~',
+            prefix = 'ﱢ',
         },
         signs = {
             -- Use a function to dynamically turn signs off
