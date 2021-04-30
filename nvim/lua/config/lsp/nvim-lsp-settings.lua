@@ -55,27 +55,33 @@ function lsp_config.common_on_attach(client, bufnr)
 
     -- Mappings.
     local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts)
+    buf_set_keymap('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', 'K', ':Lspsaga hover_doc<CR>', opts)
-    -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<Leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<Leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<Leader>lwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', '<Leader>lD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<Leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+
+    buf_set_keymap('n', '<C-k>', ':Lspsaga signature_help<CR>', opts)
+    buf_set_keymap('n', '<Leader>lp', ':Lspsaga preview_definition<CR>', opts)
+    buf_set_keymap('n', '<Leader>lr', ':Lspsaga rename<CR>', opts)
     buf_set_keymap('n', '<Leader>lc', ':Lspsaga code_action<CR>', opts)
-    buf_set_keymap('n', '<Leader>lds', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>', opts)
+
+    buf_set_keymap('n', '<Leader>ldk', ':Lspsaga show_cursor_diagnostics<CR>', opts)
+    buf_set_keymap('n', '<Leader>lds', ':Lspsaga show_line_diagnostics<CR>', opts)
     buf_set_keymap('n', '<Leader>ldp', ':Lspsaga diagnostic_jump_prev<CR>', opts)
     buf_set_keymap('n', '<Leader>ldn', ':Lspsaga diagnostic_jump_next<CR>', opts)
 
-    -- vim.cmd('nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>')
+    buf_set_keymap('n', '<Leader>lwa', ':lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<Leader>lwr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<Leader>lwl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+
+    buf_set_keymap('n', '<Leader>lI', ':LspInfo<CR>', opts)
+
     -- scroll down hover doc or scroll in definition preview
-    -- buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
+    buf_set_keymap('n', '<C-f>', ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
     -- scroll up hover doc
-    -- buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
+    buf_set_keymap('n', '<C-b>', ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 
     vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
@@ -104,6 +110,7 @@ function lsp_config.common_on_attach(client, bufnr)
             },
             d = {
                 name = '+diagnostics',
+                k = 'Show cursor diagnostics',
                 s = 'Show line diagnostics',
                 p = 'Goto prev',
                 n = 'Goto next',
@@ -119,6 +126,8 @@ function lsp_config.common_on_attach(client, bufnr)
             },
             D = 'Type definition',
             r = 'Rename',
+            p = 'Preview definition',
+            I = 'LSP Info'
         }
     }
 
