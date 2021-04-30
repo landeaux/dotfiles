@@ -117,7 +117,7 @@ require("utils").create_augroup(
         {"BufRead,BufNewFile", "gitconfig", "set filetype=gitconfig"},
         {"BufRead,BufNewFile", "gitignore", "set filetype=conf"},
         {"BufRead,BufNewFile", "*.graphql,*.graphqls,*.gql", "set filetype=graphql"}
-    }, "custom_filetypedetect"
+    }, "_filetype_detect"
 )
 
 require("utils").create_augroup(
@@ -130,7 +130,20 @@ require("utils").create_augroup(
         {"FileType", "typescriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
         {"FileType", "vue", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
         {"FileType", "yaml", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"}
-    }, "filetype_indent"
+    }, "_filetype_indent"
+)
+
+require("utils").create_augroup(
+    {
+        {'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'},
+    }, "_buffer_bindings"
+)
+
+require("utils").create_augroup(
+    {
+        {'FileType', 'markdown', 'setlocal wrap'},
+        {'FileType', 'markdown', 'setlocal spell'},
+    }, "_markdown"
 )
 
 -- Enable syntax highlighting
