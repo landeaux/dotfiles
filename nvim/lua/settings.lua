@@ -2,7 +2,8 @@ local cmd = vim.cmd
 local set_opt = require("utils").set_opt
 local append_opt = require("utils").append_opt
 
-local fill_column = 80
+local soft_column_limit = 80
+local hard_column_limit = 120
 local indent = 4
 
 -- Set encoding
@@ -56,8 +57,12 @@ set_opt("w", "listchars", "tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¬,precede
 set_opt("w", "linebreak", true)
 set_opt("w", "breakindent", true)
 
--- Show fill column indicator
-cmd('let &colorcolumn = join(range(' .. tostring(fill_column) .. ',999), ",")')
+-- Show column limit indicators
+-- cmd('let &colorcolumn = join(range(' .. tostring(fill_column) .. ',999), ",")')
+cmd(
+    'let &colorcolumn="' .. tostring(soft_column_limit) .. ',".join(range(' ..
+        tostring(hard_column_limit) .. ',999),",")'
+)
 
 -- Line numbers: Hybrid
 set_opt("w", "number", true)
@@ -102,7 +107,7 @@ cmd "filetype plugin on"
 
 -- Highlight text on yank
 require("utils").create_augroup(
-    {{"TextYankPost", "*", "silent!", "lua vim.highlight.on_yank()"}}, "highlight_on_yank"
+    {{"TextYankPost", "*", "silent!", "lua vim.highlight.on_yank()"}}, "_highlight_on_yank"
 )
 
 require("utils").create_augroup(
@@ -134,15 +139,14 @@ require("utils").create_augroup(
 )
 
 require("utils").create_augroup(
-    {
-        {'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'},
-    }, "_buffer_bindings"
+    {{'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'}}, "_buffer_bindings"
 )
 
 require("utils").create_augroup(
     {
         {'FileType', 'markdown', 'setlocal wrap'},
         {'FileType', 'markdown', 'setlocal spell'},
+        {'FileType', 'markdown', 'let &colorcolumn=""'}
     }, "_markdown"
 )
 
