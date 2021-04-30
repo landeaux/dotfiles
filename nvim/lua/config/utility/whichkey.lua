@@ -1,12 +1,13 @@
 local g = vim.g
 
-require("whichkey_setup").config{
+require("whichkey_setup").config {
     hide_statusline = true,
-    default_keymap_settings = {
-        silent=true,
-        noremap=true,
-    },
+    default_keymap_settings = {silent = true, noremap = true}
 }
+
+-- NOTE: these two need to be the same to avoid failed mappings
+g.which_key_timeout = 300
+vim.o.timeoutlen = 300 -- By default timeoutlen is 1000 ms
 
 g.which_key_position = 'botright'
 g.which_key_sep = '→'
