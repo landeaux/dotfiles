@@ -5,7 +5,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 # tmux
 rm ~/.tmux.conf
 ln -s "${BASEDIR}/tmux.conf" "${HOME}/.tmux.conf"
-tmux source-file ~/.tmux.conf
+[ -n "$TMUX" ] && tmux source-file ~/.tmux.conf
 
 # zsh
 rm ~/.zshrc
