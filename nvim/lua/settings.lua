@@ -112,6 +112,12 @@ require("utils").create_augroup(
 
 require("utils").create_augroup(
     {
+        {'FileType', 'dashboard', 'set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2'},
+    }, "_dashboard"
+)
+
+require("utils").create_augroup(
+    {
         {"BufRead,BufNewFile", ".env.*", "set filetype=sh"},
         {"BufRead,BufNewFile", ".gitconfig.local", "set filetype=gitconfig"},
         {"BufRead,BufNewFile", ".pylintrc", "set filetype=conf"},
@@ -139,7 +145,10 @@ require("utils").create_augroup(
 )
 
 require("utils").create_augroup(
-    {{'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'}}, "_buffer_bindings"
+    {
+        {'FileType', 'dashboard', 'nnoremap <silent> <buffer> q :q<CR>'},
+        {'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'},
+    }, "_buffer_bindings"
 )
 
 require("utils").create_augroup(

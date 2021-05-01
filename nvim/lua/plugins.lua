@@ -22,7 +22,7 @@ use 'glepnir/galaxyline.nvim'
 use 'akinsho/nvim-bufferline.lua'
 
 -- Start screen
-use 'mhinz/vim-startify'
+use 'glepnir/dashboard-nvim'
 
 -- Colorize color codes
 use 'chrisbra/Colorizer'

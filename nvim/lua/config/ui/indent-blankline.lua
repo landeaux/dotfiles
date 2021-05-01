@@ -26,7 +26,7 @@ g.indent_blankline_context_patterns = {
 
 g.indent_blankline_filetype_exclude = {
     'help',
-    'startify',
+    'dashboard',
     'NvimTree',
     'undotree',
     'packer',
