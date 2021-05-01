@@ -33,7 +33,7 @@ g.indent_blankline_filetype_exclude = {
     'git',
     'gitcommit'
 }
-g.indent_blankline_buftype_exclude = {'terminal', 'nofile'}
+g.indent_blankline_buftype_exclude = {'terminal', 'nofile', 'help'}
 
 vim.api.nvim_set_keymap(
     'n', '<Leader>ti', '<cmd>IndentBlanklineToggle<CR>', {noremap = true, silent = true}
