@@ -6,6 +6,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 rm ~/.tmux.conf
 ln -s "${BASEDIR}/tmux.conf" "${HOME}/.tmux.conf"
 [ -n "$TMUX" ] && tmux source-file ~/.tmux.conf
+tic -x ./terminfo/tmux-256color.terminfo # custom terminfo w/ italics
 
 # zsh
 rm ~/.zshrc
