@@ -10,7 +10,16 @@ require('utils').create_augroup({
 }, 'dap_repl')
 
 -- DAP Terminal settings
-dap.defaults.fallback.external_terminal = {
-    command = '/usr/bin/env';
-    args = {'konsole', '-e'};
-}
+local external_terminal = nil
+if vim.g.os == "Linux" then
+    external_terminal = {
+        command = '/usr/bin/gnome-terminal';
+        args = {'-e'};
+    }
+elseif vim.g.os == "Darwin" then
+    external_terminal = {
+        command = '/Applications/iTerm.app/Contents/MacOS/iTerm2';
+        args = {};
+    }
+end
+dap.defaults.fallback.external_terminal = external_terminal
