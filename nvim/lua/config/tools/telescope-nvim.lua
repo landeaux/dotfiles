@@ -97,24 +97,26 @@ local bind_picker = require('config.tools.telescope-nvim-utils').bind_picker
 bind_picker('<S-A-p>', 'commands')
 
 -- Normal
+bind_picker('<Leader>f/', 'current_buffer_fuzzy_find')
+bind_picker('<Leader>fa', 'builtin')
+bind_picker('<Leader>fb', 'buffers')
 bind_picker('<Leader>ff', 'find_files')
 bind_picker('<Leader>fg', 'live_grep')
-bind_picker('<Leader>fb', 'buffers')
 bind_picker('<Leader>fh', 'help_tags')
-bind_picker('<Leader>ft', 'treesitter')
 bind_picker('<Leader>fo', 'oldfiles')
-bind_picker('<Leader>fa', 'builtin')
+bind_picker('<Leader>ft', 'treesitter')
 
 local keys = {
     f = {
         name = '+telescope',
+        ['/'] = 'Current buffer fuzzy find',
+        a = 'Builtins',
         b = 'Buffers',
         f = 'Find files',
         g = 'Live grep',
         h = 'Help tags',
-        t = 'Treesitter',
         o = 'Old files',
-        a = 'Builtins'
+        t = 'Treesitter',
     }
 }
 
