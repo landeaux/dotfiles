@@ -28,8 +28,16 @@ g.dashboard_custom_section = {
 
 bind('n', '<leader>;', ':Dashboard<CR>', opts)
 
+bind('n', '<leader>ss', ':<C-u>SessionSave<CR>', {})
+bind('n', '<leader>sl', ':<C-u>SessionLoad<CR>', {})
+
 local keys = {
-    [";"] = "Go to Dashboard"
+    [';'] = 'Go to Dashboard',
+    s = {
+        name = '+session',
+        l = 'Load session',
+        s = 'Save session'
+    }
 }
 
 require('whichkey_setup').register_keymap('leader', keys)
