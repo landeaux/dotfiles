@@ -121,13 +121,13 @@ local keys = {
 }
 
 -- DAP
-bind_picker('<Leader>dc', 'commands', 'dap')
-bind_picker('<Leader>ds', 'configurations', 'dap')
-bind_picker('<Leader>dl', 'list_breakpoints', 'dap')
-bind_picker('<Leader>dv', 'variables', 'dap')
-bind_picker('<Leader>df', 'frames', 'dap')
+bind_picker('<Leader>fdc', 'commands', 'dap')
+bind_picker('<Leader>fds', 'configurations', 'dap')
+bind_picker('<Leader>fdl', 'list_breakpoints', 'dap')
+bind_picker('<Leader>fdv', 'variables', 'dap')
+bind_picker('<Leader>fdf', 'frames', 'dap')
 
-keys.d = {
+keys.f.d = {
     name = '+dap',
     c = 'Commands',
     s = 'Configurations',
