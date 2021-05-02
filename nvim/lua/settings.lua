@@ -164,3 +164,14 @@ cmd "syntax enable"
 
 -- Enable clipboard
 set_opt("o", "clipboard", "unnamed,unnamedplus")
+
+-- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
+cmd [[
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+]]
