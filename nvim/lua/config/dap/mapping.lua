@@ -17,6 +17,7 @@ bind('n', '<Leader>dbc',
 bind('n', '<Leader>dbl',
     ':lua require("dap").set_breakpoint' ..
     '(nil, nil, vim.fn.input("Log point message: "))<CR>', opts)
+bind('n', '<leader>dbe', [[:lua require'dap'.set_exception_breakpoints({"all"})<CR>]], opts)
 bind('n', '<Leader>dr', [[:lua require("dap").repl.open({}, 'vsplit')<CR><C-w>l]], opts)
 bind('n', '<Leader>dR', ':lua require("dap").run_last()<CR>', opts)
 bind('n', '<leader>d?', ":lua require'dap.ui.variables'.scopes()<CR>", opts)
@@ -33,7 +34,8 @@ local keys = {
         b = {
             name = '+breakpoint',
             c = 'Conditional breakpoint',
-            l = 'Log point'
+            e = 'Exception breakpoints',
+            l = 'Log point',
         },
         r = 'Open REPL',
         R = 'Run last',
