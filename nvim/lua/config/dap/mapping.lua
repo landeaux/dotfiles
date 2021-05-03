@@ -21,6 +21,7 @@ bind('n', '<leader>dbe', [[:lua require'dap'.set_exception_breakpoints({"all"})<
 bind('n', '<Leader>dr', [[:lua require("dap").repl.open({}, 'vsplit')<CR><C-w>l]], opts)
 bind('n', '<Leader>dR', ':lua require("dap").run_last()<CR>', opts)
 bind('n', '<leader>d?', ":lua require'dap.ui.variables'.scopes()<CR>", opts)
+bind('n', '<leader>di', [[:lua require'dap.ui.variables'.hover(function () return vim.fn.expand("<cexpr>") end)<CR>]], opts)
 
 local keys = {
     d = {
@@ -40,6 +41,7 @@ local keys = {
         r = 'Open REPL',
         R = 'Run last',
         ['?'] = 'Variable scopes',
+        i = 'Variable info',
     }
 }
 
