@@ -4,6 +4,7 @@ local bind = vim.api.nvim_buf_set_keymap
 local opts = { noremap = true, silent = true }
 
 require('dap-python').setup('~/.pyenv/versions/debugpy/bin/python')
+require('dap-python').test_runner = 'pytest'
 
 function M.dap_python_bindings()
     bind(0, 'n', '<LocalLeader>dm', ':lua require("dap-python").test_method()<CR>', opts)
