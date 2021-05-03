@@ -2,6 +2,9 @@
 local bind = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+vim.fn.sign_define('DapBreakpoint', {text='', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='', texthl='', linehl='', numhl=''})
+
 bind('n', '<leader>dc', ':lua require("dap").continue()<CR>', opts)
 bind('n', '<leader>dC', ':lua require("config.dap.utils").reload_continue()<CR>', opts)
 bind('n', '<leader>dj', ':lua require("dap").step_over()<CR>', opts)
