@@ -22,6 +22,7 @@ bind('n', '<Leader>dr', [[:lua require("dap").repl.open({}, 'vsplit')<CR><C-w>l]
 bind('n', '<Leader>dR', ':lua require("dap").run_last()<CR>', opts)
 bind('n', '<leader>d?', ":lua require'dap.ui.variables'.scopes()<CR>", opts)
 bind('n', '<leader>di', [[:lua require'dap.ui.variables'.hover(function () return vim.fn.expand("<cexpr>") end)<CR>]], opts)
+bind('v', '<leader>di', ":lua require'dap.ui.variables'.visual_hover()<CR>", opts)
 
 local keys = {
     d = {
@@ -45,4 +46,12 @@ local keys = {
     }
 }
 
+local visual_keys = {
+    d = {
+        name = '+dap',
+        i = 'Variable info'
+    }
+}
+
 require('whichkey_setup').register_keymap('leader', keys)
+require('whichkey_setup').register_keymap('visual', visual_keys)
