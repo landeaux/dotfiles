@@ -137,3 +137,6 @@ use 'tweekmonster/startuptime.vim'
 
 -- Autogenerate python docstrings
 use { 'heavenshell/vim-pydocstring', run = 'make install' }
+
+-- Fix python indentation
+use 'Vimjas/vim-python-pep8-indent'
