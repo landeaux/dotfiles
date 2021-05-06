@@ -24,7 +24,7 @@ g.dashboard_custom_section = {
     g = {description = {'  Settings           '}, command = ':e ~/.config/nvim/lua/settings.lua'},
 }
 
--- g.dashboard_custom_footer = {'change me'}
+g.dashboard_custom_footer = {"You aren't going to need it."}
 
 bind('n', '<leader>;', ':Dashboard<CR>', opts)
 
