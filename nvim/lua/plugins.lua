@@ -8,9 +8,6 @@ packer.init()
 -- Packer
 use 'wbthomason/packer.nvim'
 
--- Neovim GUI Shim
-use { 'equalsraf/neovim-gui-shim', opt = true }
-
 -- Colorscheme
 -- use 'dracula/vim'
 use 'christianchiarulli/nvcode-color-schemes.vim'
