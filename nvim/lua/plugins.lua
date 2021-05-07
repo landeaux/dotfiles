@@ -63,9 +63,6 @@ use 'tpope/vim-surround'
 use 'b3nj5m1n/kommentary'
 use 'JoosepAlviste/nvim-ts-context-commentstring'
 
--- Tabs and text alignment
-use 'godlygeek/tabular'
-
 -- Delimit
 use 'Raimondi/delimitMate'
 
