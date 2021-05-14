@@ -4,7 +4,7 @@ require'bufferline'.setup {
         numbers = "ordinal",
         number_style = "superscript", -- buffer_id at index 1, ordinal at index 2
         mappings = false,
-        buffer_close_icon= '',
+        buffer_close_icon = '',
         modified_icon = '●',
         close_icon = '',
         left_trunc_marker = '',
@@ -20,9 +20,7 @@ require'bufferline'.setup {
         -- NOTE: this will be called a lot so don't do any heavy processing here
         custom_filter = function(buf_number)
             -- Filter out terminal buffers
-            if vim.bo[buf_number].buftype ~= "terminal" then
-                return true
-            end
+            if vim.bo[buf_number].buftype ~= "terminal" then return true end
         end,
         show_buffer_close_icons = true,
         show_close_icon = true,
@@ -41,7 +39,7 @@ require'bufferline'.setup {
 
 -- Keybinds
 local bind = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local opts = {noremap = true, silent = true}
 
 -- These commands will navigate through buffers in order regardless of which mode you are using
 -- e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
@@ -91,17 +89,9 @@ local keys = {
         p = 'Previous',
         d = 'Close',
         k = 'Kill',
-        m = {
-            name = '+move',
-            n = 'Next',
-            p = 'Previous'
-        },
-        sort = {
-            name = '+sort',
-            d = 'By Directory',
-            e = 'By Extension'
-        }
-    },
+        m = {name = '+move', n = 'Next', p = 'Previous'},
+        o = {name = '+sort', d = 'By Directory', e = 'By Extension'}
+    }
 }
 
 require('whichkey_setup').register_keymap('leader', keys)
