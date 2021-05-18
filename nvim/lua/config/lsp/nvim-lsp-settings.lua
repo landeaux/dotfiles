@@ -39,8 +39,7 @@ local function documentHighlight(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]],
-            false
+    ]], false
         )
     end
 end
@@ -48,13 +47,17 @@ end
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
+    local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+    end
 
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
-    local opts = { noremap=true, silent=true }
+    local opts = {noremap = true, silent = true}
     buf_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>', opts)
@@ -74,14 +77,21 @@ function lsp_config.common_on_attach(client, bufnr)
 
     buf_set_keymap('n', '<Leader>lwa', ':lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
     buf_set_keymap('n', '<Leader>lwr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<Leader>lwl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    buf_set_keymap(
+        'n', '<Leader>lwl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+        opts
+    )
 
     buf_set_keymap('n', '<Leader>lI', ':LspInfo<CR>', opts)
 
     -- scroll down hover doc or scroll in definition preview
-    buf_set_keymap('n', '<C-f>', ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+    buf_set_keymap(
+        'n', '<C-f>', ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts
+    )
     -- scroll up hover doc
-    buf_set_keymap('n', '<C-b>', ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+    buf_set_keymap(
+        'n', '<C-b>', ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts
+    )
 
     vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
@@ -99,15 +109,8 @@ function lsp_config.common_on_attach(client, bufnr)
     local keys = {
         l = {
             name = '+lsp',
-            a = {
-                name = '+code-actions',
-                d = 'Document Actions'
-            },
-            s = {
-                name = '+symbols',
-                d = 'Document Symbols',
-                w = 'Workspace Symbols'
-            },
+            a = {name = '+code-actions', d = 'Document Actions'},
+            s = {name = '+symbols', d = 'Document Symbols', w = 'Workspace Symbols'},
             d = {
                 name = '+diagnostics',
                 k = 'Show cursor diagnostics',
