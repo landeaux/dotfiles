@@ -124,7 +124,6 @@ function lsp_config.common_on_attach(client, bufnr)
                 r = 'Remove workspace folder',
                 l = 'List workspace folders'
             },
-            D = 'Type definition',
             r = 'Rename',
             p = 'Preview definition',
             I = 'LSP Info'
