@@ -126,9 +126,18 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# add Go binary to PATH
+go_path="/usr/local/go/bin"
+[ -d $go_path ] && export PATH=$PATH:$go_path
+
+# direnv hook
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
+###############################################################################
+
 # allow overrides (NOTE: This must stay at the bottom of the file!)
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
-
-export PATH=$PATH:/usr/local/go/bin
