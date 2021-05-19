@@ -3,6 +3,7 @@ local g = vim.g
 g.indent_blankline_enabled = true
 
 g.indent_blankline_char = '▏' -- │
+g.indent_blankline_char_highlight = 'LineNr'
 g.indent_blankline_space_char = ' '
 
 g.indent_blankline_indent_level = 10
