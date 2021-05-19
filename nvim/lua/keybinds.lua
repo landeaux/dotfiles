@@ -1,24 +1,22 @@
 local bind = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local opts = {noremap = true, silent = true}
 
 -- Make Y key yank to end of line
-bind('n', 'Y', 'y$', { noremap = true })
+bind('n', 'Y', 'y$', {noremap = true})
 
 -- Make U redo
-bind('n', 'U', 'undo', { noremap = true })
+bind('n', 'U', 'undo', {noremap = true})
 
 -- Don't leave visual mode after indenting
-bind('v', '>', '>gv^', { noremap = true })
-bind('v', '<', '<gv^', { noremap = true })
+bind('v', '>', '>gv^', {noremap = true})
+bind('v', '<', '<gv^', {noremap = true})
 
 -- Indent with Tab and Shift-Tab
 bind('v', '<Tab>', '>', {})
 bind('v', '<S-Tab>', '<', {})
 
 -- Use Alt-L to clear the highlighting of :set hlsearch.
-bind('n', '<A-l>',
-    ":nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>",
-    opts)
+bind('n', '<A-l>', ":nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>", opts)
 
 -- Easier escape from insert mode
 bind('i', 'jk', '<ESC>', opts)
@@ -92,7 +90,6 @@ bind('n', '<Leader>vr', ':lua require("utils").Reload()<CR>', opts)
 bind('n', '<Leader>vR', ':lua require("utils").Restart()<CR>', opts)
 bind('n', '<Leader>vv', ':version<CR>', opts)
 
-
 local keys = {
     a = 'Yank file to clipboard',
     q = 'Quit all',
@@ -118,13 +115,9 @@ local keys = {
             ['+'] = 'Increase window height',
             ['-'] = 'Decrease window height',
             ['>'] = 'Increase window width',
-            ['<'] = 'Decrease window width',
+            ['<'] = 'Decrease window width'
         },
-        R = {
-            name = '+rotate',
-            b = 'Rotate down/right',
-            u = 'Rotate up/left',
-        },
+        R = {name = '+rotate', b = 'Rotate down/right', u = 'Rotate up/left'},
         m = {
             name = '+move',
             x = 'Exchange windows',
@@ -135,20 +128,10 @@ local keys = {
         },
         q = 'Delete window',
         s = 'Split horizontally',
-        v = 'Split vertically',
+        v = 'Split vertically'
     },
-    t = {
-        name = '+ui-toggle',
-        h = 'Highlighting',
-        w = 'Whitespace',
-    },
-    v = {
-        name = '+vim',
-        c = 'Edit config',
-        r = 'Reload',
-        R = 'Restart',
-        v = 'Version'
-    },
-    y = 'Yank to clipboard',
+    t = {name = '+ui-toggle', h = 'Highlighting', w = 'Whitespace'},
+    v = {name = '+vim', c = 'Edit config', r = 'Reload', R = 'Restart', v = 'Version'},
+    y = 'Yank to clipboard'
 }
 require('whichkey_setup').register_keymap('leader', keys)

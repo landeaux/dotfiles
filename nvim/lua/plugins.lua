@@ -31,10 +31,7 @@ use 'kyazdani42/nvim-web-devicons'
 use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 
 -- Which Key
-use {
-    'AckslD/nvim-whichkey-setup.lua',
-    requires = {'liuchengxu/vim-which-key'},
-}
+use {'AckslD/nvim-whichkey-setup.lua', requires = {'liuchengxu/vim-which-key'}}
 
 -- File Tree
 use 'kyazdani42/nvim-tree.lua'
@@ -104,7 +101,7 @@ use 'brooth/far.vim'
 use 'hrsh7th/nvim-compe'
 
 -- Tresitter
-use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 use 'nvim-treesitter/nvim-treesitter-textobjects'
 
 -- Debugging
@@ -116,7 +113,9 @@ use 'nvim-telescope/telescope-dap.nvim'
 -- Markdown preview
 use {
     'iamcco/markdown-preview.nvim',
-    run = function() vim.fn['mkdp#util#install']() end
+    run = function()
+        vim.fn['mkdp#util#install']()
+    end
 }
 
 -- Meta
@@ -124,13 +123,13 @@ use {
 use 'wsdjeg/vim-fetch'
 
 -- Profiler
-use { 'norcalli/profiler.nvim', opt = true }
+use {'norcalli/profiler.nvim', opt = true}
 
 -- Startuptime
 use 'tweekmonster/startuptime.vim'
 
 -- Autogenerate python docstrings
-use { 'heavenshell/vim-pydocstring', run = 'make install' }
+use {'heavenshell/vim-pydocstring', run = 'make install'}
 
 -- Fix python indentation
 use 'Vimjas/vim-python-pep8-indent'

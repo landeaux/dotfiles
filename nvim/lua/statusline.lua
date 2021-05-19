@@ -108,15 +108,35 @@ gls.left[6] = {
 }
 
 gls.right[1] = {
-    DiagnosticError = {provider = 'DiagnosticError', icon = '  ', highlight = {colors.error_red, colors.bg}}
+    DiagnosticError = {
+        provider = 'DiagnosticError',
+        icon = '  ',
+        highlight = {colors.error_red, colors.bg}
+    }
 }
-gls.right[2] = {DiagnosticWarn = {provider = 'DiagnosticWarn', icon = '  ', highlight = {colors.orange, colors.bg}}}
+gls.right[2] = {
+    DiagnosticWarn = {
+        provider = 'DiagnosticWarn',
+        icon = '  ',
+        highlight = {colors.orange, colors.bg}
+    }
+}
 
 gls.right[3] = {
-    DiagnosticHint = {provider = 'DiagnosticHint', icon = '  ', highlight = {colors.vivid_blue, colors.bg}}
+    DiagnosticHint = {
+        provider = 'DiagnosticHint',
+        icon = '  ',
+        highlight = {colors.vivid_blue, colors.bg}
+    }
 }
 
-gls.right[4] = {DiagnosticInfo = {provider = 'DiagnosticInfo', icon = '  ', highlight = {colors.info_yellow, colors.bg}}}
+gls.right[4] = {
+    DiagnosticInfo = {
+        provider = 'DiagnosticInfo',
+        icon = '  ',
+        highlight = {colors.info_yellow, colors.bg}
+    }
+}
 
 gls.right[5] = {
     ShowLspClient = {
@@ -202,7 +222,13 @@ gls.short_line_left[1] = {
 }
 
 gls.short_line_left[2] = {
-    SFileName = {provider = 'SFileName', condition = condition.buffer_not_empty, highlight = {colors.grey, colors.bg}}
+    SFileName = {
+        provider = 'SFileName',
+        condition = condition.buffer_not_empty,
+        highlight = {colors.grey, colors.bg}
+    }
 }
 
-gls.short_line_right[1] = {BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.bg}}}
+gls.short_line_right[1] = {
+    BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.bg}}
+}

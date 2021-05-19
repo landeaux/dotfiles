@@ -21,8 +21,8 @@ function M.UnloadAllModules()
         '^utils$'
     }
 
-    for k,_ in pairs(package.loaded) do
-        for _,v in ipairs(unload_modules) do
+    for k, _ in pairs(package.loaded) do
+        for _, v in ipairs(unload_modules) do
             if k:match(v) then
                 package.loaded[k] = nil
                 break
@@ -61,18 +61,14 @@ end
 function M.set_opt(type, name, value)
     types[type][name] = value
 
-    if type ~= 'o' then
-        types['o'][name] = value
-    end
+    if type ~= 'o' then types['o'][name] = value end
 end
 
 -- Append option to a list of options
 function M.append_opt(type, name, value)
     local current_value = M.get_opt(type, name)
 
-    if not string.match(current_value, value) then
-        M.set_opt(type, name, current_value .. value)
-    end
+    if not string.match(current_value, value) then M.set_opt(type, name, current_value .. value) end
 end
 
 -- Remove option from a list of options
@@ -89,16 +85,14 @@ function M.create_augroup(autocmds, name)
     cmd('augroup ' .. name)
     cmd('autocmd!')
 
-    for _, autocmd in ipairs(autocmds) do
-        cmd('autocmd ' .. table.concat(autocmd, ' '))
-    end
+    for _, autocmd in ipairs(autocmds) do cmd('autocmd ' .. table.concat(autocmd, ' ')) end
 
     cmd('augroup END')
 end
 
 -- Make navigation keys navigate through display lines instead of physical lines
 function M.set_buffer_soft_line_nagivation()
-    local opts = { noremap = true, silent = true }
+    local opts = {noremap = true, silent = true}
 
     buf_bind(0, 'n', 'k', 'gk', opts)
     buf_bind(0, 'n', 'j', 'gj', opts)
@@ -130,13 +124,13 @@ end
 
 -- escape terminal codes and keycodes
 function M.t(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 -- gets the highlight value for the given group and term
 function M.get_hi_term(group, term)
-  local output = vim.api.nvim_exec('hi ' .. group, true)
-  return vim.fn.matchstr(output, term .. '=\\zs\\S*')
+    local output = vim.api.nvim_exec('hi ' .. group, true)
+    return vim.fn.matchstr(output, term .. '=\\zs\\S*')
 end
 
 return M

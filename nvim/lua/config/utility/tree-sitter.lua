@@ -14,19 +14,16 @@ require'nvim-treesitter.configs'.setup {
         'scss',
         'toml',
         'vue',
-        'yaml',
+        'yaml'
     },
-    highlight = {
-        enable = true,
-        disable = {},
-    },
+    highlight = {enable = true, disable = {}},
     incremental_selection = {
         enable = true,
         keymaps = {
             init_selection = "gnn",
             node_incremental = "grn",
             scope_incremental = "grc",
-            node_decremental = "grm",
+            node_decremental = "grm"
         }
     },
     textobjects = {
@@ -38,12 +35,10 @@ require'nvim-treesitter.configs'.setup {
                 ["ac"] = "@class.outer",
                 ["ic"] = "@class.inner",
 
-                ["iF"] = {
-                    python = "(function_definition) @function",
-                },
-            },
-        },
-    },
+                ["iF"] = {python = "(function_definition) @function"}
+            }
+        }
+    }
     -- context_commentstring = {
     --     enable = true,
     --     config = {

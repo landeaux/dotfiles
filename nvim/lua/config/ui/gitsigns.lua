@@ -2,37 +2,63 @@ local bind = vim.api.nvim_set_keymap
 
 require('gitsigns').setup {
     signs = {
-    add = {hl = 'GitSignsAdd'   , text = '▎', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-    change = {hl = 'GitSignsChange', text = '▎', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-    delete = {hl = 'GitSignsDelete', text = '契', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    topdelete = {hl = 'GitSignsDelete', text = '契', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    changedelete = {hl = 'GitSignsChange', text = '▎', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+        add = {hl = 'GitSignsAdd', text = '▎', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn'},
+        change = {
+            hl = 'GitSignsChange',
+            text = '▎',
+            numhl = 'GitSignsChangeNr',
+            linehl = 'GitSignsChangeLn'
+        },
+        delete = {
+            hl = 'GitSignsDelete',
+            text = '契',
+            numhl = 'GitSignsDeleteNr',
+            linehl = 'GitSignsDeleteLn'
+        },
+        topdelete = {
+            hl = 'GitSignsDelete',
+            text = '契',
+            numhl = 'GitSignsDeleteNr',
+            linehl = 'GitSignsDeleteLn'
+        },
+        changedelete = {
+            hl = 'GitSignsChange',
+            text = '▎',
+            numhl = 'GitSignsChangeNr',
+            linehl = 'GitSignsChangeLn'
+        }
     },
     numhl = false,
     linehl = false,
-    watch_index = {
-        interval = 1000
-    },
+    watch_index = {interval = 1000},
     current_line_blame = false,
     sign_priority = 6,
     update_debounce = 100,
     status_formatter = nil, -- Use default
     use_decoration_api = true,
-    use_internal_diff = true,  -- If luajit is present
+    use_internal_diff = true -- If luajit is present
 }
 
 -- Default keymap options
-local opts = { noremap = true }
+local opts = {noremap = true}
 
-bind('n', ']h', "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'",
-    { noremap = true, expr=true })
-bind('n', '[h', "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'",
-    { noremap = true, expr=true })
+bind(
+    'n', ']h', "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'",
+    {noremap = true, expr = true}
+)
+bind(
+    'n', '[h', "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'",
+    {noremap = true, expr = true}
+)
 
-bind('n', '<leader>ghn', "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'",
-    { noremap = true, expr=true })
-bind('n', '<leader>ghp', "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'",
-    { noremap = true, expr=true })
+bind(
+    'n', '<leader>ghn', "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'",
+    {noremap = true, expr = true}
+)
+bind(
+    'n', '<leader>ghp', "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'",
+    {noremap = true, expr = true}
+)
 
 bind('n', '<leader>ghs', '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
 bind('n', '<leader>ghu', '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', opts)

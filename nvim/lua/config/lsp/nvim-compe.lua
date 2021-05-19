@@ -1,17 +1,17 @@
 -- Compe configuration
 require'compe'.setup {
-    enabled = true;
-    autocomplete = true;
-    debug = false;
-    min_length = 1;
-    preselect = 'enable';
-    throttle_time = 80;
-    source_timeout = 200;
-    incomplete_delay = 400;
-    max_abbr_width = 100;
-    max_kind_width = 100;
-    max_menu_width = 100;
-    documentation = true;
+    enabled = true,
+    autocomplete = true,
+    debug = false,
+    min_length = 1,
+    preselect = 'enable',
+    throttle_time = 80,
+    source_timeout = 200,
+    incomplete_delay = 400,
+    max_abbr_width = 100,
+    max_kind_width = 100,
+    max_menu_width = 100,
+    documentation = true,
 
     source = {
         path = {kind = "  "},
@@ -22,26 +22,31 @@ require'compe'.setup {
         nvim_lua = {kind = "  "},
         spell = {kind = "  "},
         tags = false,
-        emoji = {kind = " ﲃ ", filetypes={"markdown", "text"}} -- for emoji press :
-    };
+        emoji = {kind = " ﲃ ", filetypes = {"markdown", "text"}} -- for emoji press :
+    }
 }
 
 -- Keybinds
-vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()",
-    {noremap=true, silent=true, expr=true})
+vim.api.nvim_set_keymap(
+    "i", "<C-Space>", "compe#complete()", {noremap = true, silent = true, expr = true}
+)
 
-vim.api.nvim_set_keymap("i", "<CR>",
-    "compe#confirm({ 'keys': \"<Plug>delimitMateCR\", 'mode': '' })",
-    {noremap=true, silent=true, expr=true})
+vim.api.nvim_set_keymap(
+    "i", "<CR>", "compe#confirm({ 'keys': \"<Plug>delimitMateCR\", 'mode': '' })",
+    {noremap = true, silent = true, expr = true}
+)
 
-vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')",
-    {noremap=true, silent=true, expr=true})
+vim.api.nvim_set_keymap(
+    "i", "<C-e>", "compe#close('<C-e>')", {noremap = true, silent = true, expr = true}
+)
 
-vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })",
-    {noremap=true, silent=true, expr=true})
+vim.api.nvim_set_keymap(
+    "i", "<C-f>", "compe#scroll({ 'delta': +4 })", {noremap = true, silent = true, expr = true}
+)
 
-vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })",
-    {noremap=true, silent=true, expr=true})
+vim.api.nvim_set_keymap(
+    "i", "<C-d>", "compe#scroll({ 'delta': -4 })", {noremap = true, silent = true, expr = true}
+)
 
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone

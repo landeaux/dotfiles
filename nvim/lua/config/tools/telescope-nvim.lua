@@ -1,7 +1,7 @@
 local actions = require('telescope.actions')
 
 -- Telescope setup
-require('telescope').setup{
+require('telescope').setup {
     defaults = {
         vimgrep_arguments = {
             'rg',
@@ -24,16 +24,9 @@ require('telescope').setup{
 
         layout_strategy = "horizontal",
 
-        layout_defaults = {
-            horizontal = {
-                mirror = false,
-            },
-            vertical = {
-                mirror = false,
-            },
-        },
+        layout_defaults = {horizontal = {mirror = false}, vertical = {mirror = false}},
 
-        file_sorter =  require'telescope.sorters'.get_fzy_sorter,
+        file_sorter = require'telescope.sorters'.get_fzy_sorter,
         file_ignore_patterns = {},
 
         generic_sorter = require'telescope.sorters'.get_fzy_sorter,
@@ -46,11 +39,11 @@ require('telescope').setup{
         results_width = 0.8,
 
         border = {},
-        borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+        borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
 
         color_devicons = true,
         use_less = true,
-        set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+        set_env = {['COLORTERM'] = 'truecolor'}, -- default = nil,
 
         file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
         grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
@@ -81,7 +74,7 @@ require('telescope').setup{
             n = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
                 -- ["<C-i>"] = my_cool_custom_action,
             }
         }
@@ -116,7 +109,7 @@ local keys = {
         g = 'Live grep',
         h = 'Help tags',
         o = 'Old files',
-        t = 'Treesitter',
+        t = 'Treesitter'
     }
 }
 

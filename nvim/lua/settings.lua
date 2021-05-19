@@ -111,9 +111,8 @@ require("utils").create_augroup(
 )
 
 require("utils").create_augroup(
-    {
-        {'FileType', 'dashboard', 'set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2'},
-    }, "_dashboard"
+    {{'FileType', 'dashboard', 'set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2'}},
+    "_dashboard"
 )
 
 require("utils").create_augroup(
@@ -136,7 +135,12 @@ require("utils").create_augroup(
         {"FileType", "javascript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
         {"FileType", "javascriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
         {"FileType", "lua", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4"},
-        {"FileType", "python", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4 indentkeys-=<:> indentkeys-=:"},
+        {
+            "FileType",
+            "python",
+            "setlocal",
+            "shiftwidth=4 softtabstop=4 tabstop=4 indentkeys-=<:> indentkeys-=:"
+        },
         {"FileType", "typescript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
         {"FileType", "typescriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
         {"FileType", "vue", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
@@ -147,7 +151,7 @@ require("utils").create_augroup(
 require("utils").create_augroup(
     {
         {'FileType', 'dashboard', 'nnoremap <silent> <buffer> q :q<CR>'},
-        {'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'},
+        {'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'}
     }, "_buffer_bindings"
 )
 

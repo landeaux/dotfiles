@@ -22,28 +22,18 @@ g.nvim_tree_hijack_netrw = 1
 g.nvim_tree_add_trailing = 0
 g.nvim_tree_group_empty = 1
 g.nvim_tree_lsp_diagnostics = 1
-g.nvim_tree_show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-}
+g.nvim_tree_show_icons = {git = 1, folders = 1, files = 1}
 g.nvim_tree_icons = {
     default = '',
     symlink = '',
-    git = {
-        unstaged = "✗",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        untracked = "★"
-    },
+    git = {unstaged = "✗", staged = "✓", unmerged = "", renamed = "➜", untracked = "★"},
     folder = {
         default = "",
         open = "",
         empty = "",
         empty_open = "",
         symlink = "",
-        symlink_open = "",
+        symlink_open = ""
     }
 }
 
@@ -53,7 +43,7 @@ end
 
 -- Mappings
 
-bind('n', '<Leader>tn', ':NvimTreeToggle<CR>', { noremap = true })
+bind('n', '<Leader>tn', ':NvimTreeToggle<CR>', {noremap = true})
 
 g.nvim_tree_bindings = {
     ['<CR>'] = get_lua_cb('edit'),
@@ -81,9 +71,4 @@ g.nvim_tree_bindings = {
     ['q'] = get_lua_cb('close')
 }
 
-require('whichkey_setup').register_keymap('leader', {
-    t = {
-        name = '+ui-toggle',
-        n = 'NvimTree',
-    }
-})
+require('whichkey_setup').register_keymap('leader', {t = {name = '+ui-toggle', n = 'NvimTree'}})

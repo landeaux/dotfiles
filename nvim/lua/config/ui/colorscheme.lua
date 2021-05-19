@@ -1,4 +1,4 @@
-local colorscheme = { }
+local colorscheme = {}
 
 -- Make Terminal use GUI colors
 vim.o.termguicolors = true

@@ -4,14 +4,16 @@ local wk = require('whichkey_setup')
 
 vim.cmd('let g:pydocstring_formatter = "numpy"')
 
-bind('n', '<leader>pl', '<Plug>(pydocstring)', { silent = true })
-bind('n', '<leader>pf', ':PydocstringFormat<CR>', { silent = true })
+bind('n', '<leader>pl', '<Plug>(pydocstring)', {silent = true})
+bind('n', '<leader>pf', ':PydocstringFormat<CR>', {silent = true})
 
-wk.register_keymap('leader', {
-    p = {
-        name = '+pydocstring',
-        l = 'Add docstring to function or class under the cursor',
-        f = 'Add docstrings to all functions and classes in the file',
+wk.register_keymap(
+    'leader', {
+        p = {
+            name = '+pydocstring',
+            l = 'Add docstring to function or class under the cursor',
+            f = 'Add docstrings to all functions and classes in the file'
+        }
     }
-})
+)
 

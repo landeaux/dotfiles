@@ -35,7 +35,7 @@ local keys = {
             l = 'Fill location list with revisions of current file'
         },
         w = 'Write'
-    },
+    }
 }
 
 require('whichkey_setup').register_keymap('leader', keys)

@@ -1,6 +1,8 @@
 require'lspconfig'.jsonls.setup {
     cmd = {
-        "node", vim.fn.stdpath("data") .. "/lspinstall/json/vscode-json/json-language-features/server/dist/node/jsonServerMain.js",
+        "node",
+        vim.fn.stdpath("data") ..
+            "/lspinstall/json/vscode-json/json-language-features/server/dist/node/jsonServerMain.js",
         "--stdio"
     },
     on_attach = require'config.lsp.nvim-lsp-settings'.common_on_attach,
