@@ -27,6 +27,10 @@ bind('i', 'jj', '<ESC>', opts)
 bind('x', 'J', ':move \'>+1<CR>gv-gv', opts)
 bind('x', 'K', ':move \'<-2<CR>gv-gv', opts)
 
+-- Remap for dealing with word wrap
+bind('n', 'k', "v:count == 0 ? 'gk' : 'k'", opts)
+bind('n', 'j', "v:count == 0 ? 'gj' : 'j'", opts)
+
 -- Toggle highlighting
 bind('n', '<leader>th', ':set hlsearch!<CR>', opts)
 
