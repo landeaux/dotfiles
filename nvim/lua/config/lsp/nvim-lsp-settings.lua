@@ -59,10 +59,10 @@ function lsp_config.common_on_attach(client, bufnr)
     -- Mappings.
     local opts = {noremap = true, silent = true}
     buf_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', '<Leader>D', ':lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', 'K', ':Lspsaga hover_doc<CR>', opts)
 
     buf_set_keymap('n', '<C-k>', ':Lspsaga signature_help<CR>', opts)
