@@ -8,11 +8,11 @@ require'nvim-treesitter.configs'.setup {
         'html',
         'javascript',
         'json',
-        'typescript',
         'lua',
         'python',
         'scss',
         'toml',
+        'typescript',
         'vue',
         'yaml'
     },
