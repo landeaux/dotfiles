@@ -57,10 +57,10 @@ require('telescope').setup {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+
                 -- To disable a keymap, put [map] = false
                 -- So, to not map "<C-n>", just put
                 -- ["<c-x>"] = false,
-                ["<esc>"] = actions.close,
 
                 -- Otherwise, just set the mapping to the function that you want it to be.
                 -- ["<C-i>"] = actions.select_horizontal,
@@ -72,10 +72,11 @@ require('telescope').setup {
                 -- ["<CR>"] = actions.select_default + actions.center + my_cool_custom_action,
             },
             n = {
+                -- ["<C-i>"] = my_cool_custom_action,
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
-                -- ["<C-i>"] = my_cool_custom_action,
+                ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                ["q"] = actions.close
             }
         }
     }
