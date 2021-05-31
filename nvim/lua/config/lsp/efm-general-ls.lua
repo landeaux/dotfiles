@@ -157,9 +157,15 @@ local on_attach = function(client, bufnr)
     require("whichkey_setup").register_keymap("leader", keys)
 end
 
+local efm_log_dir = "/tmp/"
+
 require"lspconfig".efm.setup {
     on_attach = on_attach,
-    cmd = {vim.fn.stdpath("data") .. "/lspinstall/efm/efm-langserver"},
+    cmd = {
+        vim.fn.stdpath("data") .. "/lspinstall/efm/efm-langserver",
+        "-logfile",
+        efm_log_dir .. "efm.log"
+    },
     init_options = {documentFormatting = true, codeAction = false},
     filetypes = {
         "lua",
