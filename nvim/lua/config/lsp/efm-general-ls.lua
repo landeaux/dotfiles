@@ -10,6 +10,11 @@ local flake8 = {
     lintFormats = {"%f:%l:%c: %m"}
 }
 
+local pydocstyle = {
+    lintCommand = "pydocstyle --convention=numpy ${INPUT}",
+    lintFormats = {"%I%f:%l %.%#:", "%Z%*\\sD%n: %m"}
+}
+
 local isort = {formatCommand = "isort --stdout --profile black -", formatStdin = true}
 
 local black = {formatCommand = "black --fast --quiet -", formatStdin = true}
@@ -21,6 +26,7 @@ local black = {formatCommand = "black --fast --quiet -", formatStdin = true}
 -- }
 
 table.insert(python_arguments, flake8)
+table.insert(python_arguments, pydocstyle)
 table.insert(python_arguments, isort)
 table.insert(python_arguments, black)
 -- table.insert(python_arguments, mypy)
