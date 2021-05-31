@@ -19,17 +19,17 @@ local isort = {formatCommand = "isort --stdout --profile black -", formatStdin =
 
 local black = {formatCommand = "black --fast --quiet -", formatStdin = true}
 
--- local mypy = {
---     lintCommand = "mypy --show-column-numbers --ignore-missing-imports",
---     lintFormats = {"%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"},
---     lintSource = "mypy"
--- }
+local mypy = {
+    lintCommand = "mypy --show-column-numbers --ignore-missing-imports",
+    lintFormats = {"%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"},
+    lintSource = "mypy"
+}
 
 table.insert(python_arguments, flake8)
 table.insert(python_arguments, pydocstyle)
 table.insert(python_arguments, isort)
 table.insert(python_arguments, black)
--- table.insert(python_arguments, mypy)
+table.insert(python_arguments, mypy)
 
 -- lua
 local lua_arguments = {}
