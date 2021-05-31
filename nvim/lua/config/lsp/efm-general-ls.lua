@@ -12,7 +12,7 @@ local flake8 = {
 
 local pydocstyle = {
     lintCommand = "pydocstyle --convention=numpy ${INPUT}",
-    lintFormats = {"%I%f:%l %.%#:", "%Z%*\\sD%n: %m"}
+    lintFormats = {"%I%f:%l %.%#:", "%Z%*\\s%m"}
 }
 
 local isort = {formatCommand = "isort --stdout --profile black -", formatStdin = true}
