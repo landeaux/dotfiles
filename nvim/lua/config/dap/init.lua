@@ -9,3 +9,6 @@ require('config.dap.configurations')
 
 -- Load DAP language configs
 require('config.dap.python')
+
+-- Load DAP UI settings
+require('config.dap.ui')
