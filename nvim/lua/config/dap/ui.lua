@@ -1,6 +1,6 @@
 require("dapui").setup(
     {
-        icons = {expanded = "⯆", collapsed = "⯈", circular = "↺"},
+        icons = {expanded = "", collapsed = "", circular = "↺"},
         mappings = {
             -- Use a table to apply multiple mappings
             expand = {"<CR>", "<2-LeftMouse>"},
