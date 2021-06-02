@@ -5,11 +5,30 @@ local dap = require('dap')
 g.dap_virtual_text = true
 
 -- Customize symbols and highlights
-vim.cmd('hi DapBreakpoint guifg=#ff0000')
+vim.cmd('hi DapBreakpointIcon guifg=#bf616a')
+vim.cmd('hi DapBreakpointLine guibg=#bf616a')
+vim.cmd('hi link DapBreakpointNumber DapBreakpointIcon')
+
+vim.cmd('hi DapStoppedIcon guifg=#558d9d')
+vim.cmd('hi DapStoppedLine guibg=#225a6a gui=bold')
+vim.cmd('hi link DapStoppedNumber DapStoppedIcon')
+
 vim.fn.sign_define(
-    'DapBreakpoint', {text = '', texthl = 'DapBreakpoint', linehl = '', numhl = ''}
+    'DapBreakpoint', {
+        text = '',
+        texthl = 'DapBreakpointIcon',
+        linehl = 'DapBreakpointLine',
+        numhl = 'DapBreakpointNumber'
+    }
 )
-vim.fn.sign_define('DapStopped', {text = '', texthl = '', linehl = '', numhl = ''})
+vim.fn.sign_define(
+    'DapStopped', {
+        text = '',
+        texthl = 'DapStoppedIcon',
+        linehl = 'DapStoppedLine',
+        numhl = 'DapStoppedNumber'
+    }
+)
 
 -- DAP REPL autocomplete
 require('utils').create_augroup(
