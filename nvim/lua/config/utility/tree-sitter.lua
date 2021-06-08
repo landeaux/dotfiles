@@ -51,13 +51,16 @@ require'nvim-treesitter.configs'.setup {
             goto_previous_start = {["[m"] = "@function.outer", ["[["] = "@class.outer"},
             goto_previous_end = {["[M"] = "@function.outer", ["[]"] = "@class.outer"}
         }
+    },
+    context_commentstring = {
+        enable = true,
+        enable_autocmd = true,
+        config = {
+            vue = {
+                template_element = '<!-- %s -->',
+                script_element = '// %s',
+                style_element = '// %s'
+            }
+        }
     }
-    -- context_commentstring = {
-    --     enable = true,
-    --     config = {
-    --         vue = {
-    --             style_element = '// %s'
-    --         }
-    --     }
-    -- }
 }

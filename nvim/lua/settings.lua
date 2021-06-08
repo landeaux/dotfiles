@@ -92,7 +92,7 @@ set_opt("o", "splitbelow", true)
 set_opt("o", "splitright", true)
 
 -- Faster update time
-set_opt("o", "updatetime", 100)
+set_opt("o", "updatetime", 0)
 set_opt("o", "signcolumn", "yes")
 
 -- Highlight current line
