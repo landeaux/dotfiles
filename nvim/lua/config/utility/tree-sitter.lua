@@ -54,7 +54,7 @@ require'nvim-treesitter.configs'.setup {
     },
     context_commentstring = {
         enable = true,
-        enable_autocmd = true,
+        enable_autocmd = false,
         config = {
             vue = {
                 template_element = '<!-- %s -->',
