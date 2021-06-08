@@ -85,7 +85,7 @@ use 'neovim/nvim-lspconfig'
 use 'kabouzeid/nvim-lspinstall'
 -- use 'onsails/lspkind-nvim'
 use 'glepnir/lspsaga.nvim'
-use 'ray-x/lsp_signature.nvim'
+-- use 'ray-x/lsp_signature.nvim'
 use 'kosayoda/nvim-lightbulb'
 
 -- Telescope
