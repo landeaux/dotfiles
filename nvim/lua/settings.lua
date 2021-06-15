@@ -132,6 +132,7 @@ require("utils").create_augroup(
 
 require("utils").create_augroup(
     {
+        {"FileType", "json", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
         {"FileType", "javascript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
         {"FileType", "javascriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
         {"FileType", "lua", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4"},
