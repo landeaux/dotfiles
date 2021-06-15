@@ -17,7 +17,7 @@ set_opt("o", "wildmenu", true)
 set_opt("o", "hidden", true)
 
 -- Enable mouse support
-set_opt("o", "mouse", "a")
+-- set_opt("o", "mouse", "a")
 
 -- Project specific vimrc with secure
 set_opt("o", "exrc", true)
