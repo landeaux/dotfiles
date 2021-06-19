@@ -131,7 +131,7 @@ go_path="/usr/local/go/bin"
 [ -d $go_path ] && export PATH=$PATH:$go_path
 
 # direnv hook
-if command -v pyenv 1>/dev/null 2>&1; then
+if command -v direnv 1>/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
 
