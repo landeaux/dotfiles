@@ -10,10 +10,10 @@ require("kommentary.config").configure_language(
     "vue", {
         hook_function = function()
             require('ts_context_commentstring.internal').update_commentstring()
-            -- vim.api.nvim_buf_set_option(0, 'commentstring', '{%s}')
         end,
         single_line_comment_string = "auto",
-        multi_line_comment_strings = "auto"
+        multi_line_comment_strings = "auto",
+        prefer_single_line_comments = true,
     }
 )
 
