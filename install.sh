@@ -18,8 +18,9 @@ rm -rf ~/.config/nvim
 ln -s "${BASEDIR}/nvim" "${HOME}/.config/nvim"
 
 # efm
-rm "$HOME/.config/efm-langserver/config.yaml"
-ln -s "${BASEDIR}/efm-langserver/config.yaml" "${HOME}/.config/efm-langserver/config.yaml"
+EFM_CONFIG_PATH="$HOME/.config/efm-langserver/config.yaml"
+rm "$EFM_CONFIG_PATH"
+ln -s "${BASEDIR}/efm-langserver/config.yaml" "$EFM_CONFIG_PATH"
 
 # git
 rm ~/.gitconfig && rm ~/.gitignore && rm ~/.gitmessage
