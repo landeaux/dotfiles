@@ -6,8 +6,8 @@ require("whichkey_setup").config {
 }
 
 -- NOTE: these two need to be the same to avoid failed mappings
-g.which_key_timeout = 300
-vim.o.timeoutlen = 300 -- By default timeoutlen is 1000 ms
+g.which_key_timeout = 500
+vim.o.timeoutlen = 500 -- By default timeoutlen is 1000 ms
 
 g.which_key_position = 'botright'
 g.which_key_sep = '→'
