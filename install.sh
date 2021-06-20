@@ -17,6 +17,10 @@ ln -s "${BASEDIR}/zshrc" "${HOME}/.zshrc"
 rm -rf ~/.config/nvim
 ln -s "${BASEDIR}/nvim" "${HOME}/.config/nvim"
 
+# efm
+rm "$HOME/.config/efm-langserver/config.yaml"
+ln -s "${BASEDIR}/efm-langserver/config.yaml" "${HOME}/.config/efm-langserver/config.yaml"
+
 # git
 rm ~/.gitconfig && rm ~/.gitignore && rm ~/.gitmessage
 ln -s "${BASEDIR}/gitconfig" "${HOME}/.gitconfig"
