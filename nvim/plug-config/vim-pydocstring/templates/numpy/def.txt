@@ -1,0 +1,31 @@
+"""{{ name }}.
+
+{% if params %}Parameters
+----------
+{% for p in params -%}
+{{ p.argument }}{% if p.annotation %} : {{ p.annotation }}{% endif %}
+    Description of {{ p.argument }}...
+{% endfor %}
+{% endif -%}
+{%- if return_type %}Returns
+-------
+{{ return_type }}
+
+{% endif -%}
+{% if yields %}Yields
+------
+{%- for y in yields %}
+{{ y }} : 
+    Description of {{ y }}...
+{%- endfor %}
+
+{% endif -%}
+{% if exceptions %}Raises
+------
+{%- for e in exceptions %}
+{{ e }}
+    Condition(s) that cause {{ e }} to be raised...
+{%- endfor %}
+
+{% endif -%}
+"""

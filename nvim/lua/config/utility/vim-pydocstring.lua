@@ -1,12 +1,14 @@
 local bind = vim.api.nvim_set_keymap
-local set_opt = require('utils').set_opt
 local wk = require('whichkey_setup')
 
+local formatter = "numpy"
 vim.g.pydocstring_doq_path = "~/.pyenv/versions/doq/bin/doq"
-vim.g.pydocstring_formatter = "numpy"
+vim.g.pydocstring_templates_path = "~/.config/nvim/plug-config/vim-pydocstring/templates" .. "/" .. formatter
+vim.g.pydocstring_formatter = formatter
 
 bind('n', '<leader>pl', '<Plug>(pydocstring)', {silent = true})
 bind('n', '<leader>pf', ':PydocstringFormat<CR>', {silent = true})
+bind('v', '<leader>p', ":'<,'>Pydocstring<CR>", {silent = true})
 
 wk.register_keymap(
     'leader', {
@@ -18,3 +20,9 @@ wk.register_keymap(
     }
 )
 
+wk.register_keymap(
+    'leader', {
+        p = 'Add python docstring to the function or class inside visual selection',
+    },
+    {mode = 'v'}
+)
