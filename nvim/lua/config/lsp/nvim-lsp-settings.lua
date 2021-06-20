@@ -59,7 +59,7 @@ function lsp_config.common_on_attach(client, bufnr)
     -- Mappings.
     local opts = {noremap = true, silent = true}
     buf_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', '<Leader>D', ':lua vim.lsp.buf.type_definition()<CR>', opts)
+    buf_set_keymap('n', 'gy', ':lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gI', ':lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts)
@@ -108,7 +108,7 @@ function lsp_config.common_on_attach(client, bufnr)
     buf_bind_picker('<Leader>ldw', 'lsp_workspace_diagnostics')
     buf_bind_picker('<Leader>lad', 'lsp_code_actions')
 
-    local keys = {
+    local keymap_leader = {
         l = {
             name = '+lsp',
             a = {name = '+code-actions', d = 'Document Actions'},
@@ -135,7 +135,18 @@ function lsp_config.common_on_attach(client, bufnr)
         }
     }
 
-    require('whichkey_setup').register_keymap('leader', keys)
+    local keymap_g = {
+        name = '+goto',
+        D = 'Go to declaration',
+        I = 'Go to implementation',
+        d = 'Go to definition',
+        r = 'Go to references',
+        y = 'Go to type definition',
+    }
+
+    local wk = require('whichkey_setup')
+    wk.register_keymap('leader', keymap_leader)
+    wk.register_keymap('g', keymap_g)
 
     documentHighlight(client, bufnr)
 
