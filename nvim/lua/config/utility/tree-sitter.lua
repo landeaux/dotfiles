@@ -1,3 +1,5 @@
+local wk = require('whichkey_setup')
+
 -- Tree-sitter
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
@@ -54,3 +56,20 @@ require'nvim-treesitter.configs'.setup {
     },
     context_commentstring = {enable = true, enable_autocmd = false}
 }
+
+local keymap_g = {
+    name = '+goto',
+    l = {
+        name = '+ts-selection',
+        i = 'Initialize selection',
+    }
+}
+
+wk.register_keymap('g', keymap_g)
+
+local keymap_leader = {
+    [">"] = 'TS: Swap next parameter',
+    ["<"] = 'TS: Swap previous parameter',
+}
+
+wk.register_keymap('leader', keymap_leader)
