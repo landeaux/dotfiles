@@ -2,7 +2,8 @@ local bind = vim.api.nvim_set_keymap
 local set_opt = require('utils').set_opt
 local wk = require('whichkey_setup')
 
-vim.cmd('let g:pydocstring_formatter = "numpy"')
+vim.g.pydocstring_doq_path = "~/.pyenv/versions/doq/bin/doq"
+vim.g.pydocstring_formatter = "numpy"
 
 bind('n', '<leader>pl', '<Plug>(pydocstring)', {silent = true})
 bind('n', '<leader>pf', ':PydocstringFormat<CR>', {silent = true})
