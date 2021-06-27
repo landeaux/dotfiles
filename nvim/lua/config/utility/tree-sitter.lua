@@ -4,16 +4,26 @@ local wk = require('whichkey_setup')
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         'bash',
+        'c',
         'comment',
+        'cpp',
         'css',
+        'dockerfile',
         'graphql',
         'html',
         'javascript',
+        'jsdoc',
         'json',
+        'latex',
         'lua',
+        'php',
         'python',
+        'r',
+        'regex',
+        'rst',
         'scss',
         'toml',
+        'tsx',
         'typescript',
         'vue',
         'yaml'
@@ -57,19 +67,20 @@ require'nvim-treesitter.configs'.setup {
     context_commentstring = {enable = true, enable_autocmd = false}
 }
 
-local keymap_g = {
-    name = '+goto',
-    l = {
-        name = '+ts-selection',
-        i = 'Initialize selection',
-    }
+-- custom md
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+parser_config.markdown = {
+    install_info = {
+        url = "https://github.com/ikatyang/tree-sitter-markdown",
+        files = {"src/parser.c", "src/scanner.cc"}
+    },
+    filetype = "md"
 }
+
+local keymap_g = {name = '+goto', l = {name = '+ts-selection', i = 'Initialize selection'}}
 
 wk.register_keymap('g', keymap_g)
 
-local keymap_leader = {
-    [">"] = 'TS: Swap next parameter',
-    ["<"] = 'TS: Swap previous parameter',
-}
+local keymap_leader = {[">"] = 'TS: Swap next parameter', ["<"] = 'TS: Swap previous parameter'}
 
 wk.register_keymap('leader', keymap_leader)
