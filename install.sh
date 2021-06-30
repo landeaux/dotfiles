@@ -31,3 +31,7 @@ ln -s "${BASEDIR}/gitmessage" "${HOME}/.gitmessage"
 # pylint
 rm ~/.config/pylintrc
 ln -s "${BASEDIR}/pylintrc" "${HOME}/.config/pylintrc"
+
+# stylua
+rm ~/.config/stylua.toml
+ln -s "${BASEDIR}/stylua.toml" "${HOME}/.config/stylua.toml"
