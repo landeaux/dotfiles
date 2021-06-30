@@ -7,11 +7,11 @@
 -- require'completion'.on_attach(client)
 -- require'illuminate'.on_attach(client)
 -- end
-require'lspconfig'.tsserver.setup {
+require("lspconfig").tsserver.setup({
     cmd = {
-        vim.fn.stdpath("data") ..
-            "/lspinstall/typescript/node_modules/.bin/typescript-language-server",
-        "--stdio"
+        vim.fn.stdpath("data")
+            .. "/lspinstall/typescript/node_modules/.bin/typescript-language-server",
+        "--stdio",
     },
     filetypes = {
         "javascript",
@@ -19,11 +19,14 @@ require'lspconfig'.tsserver.setup {
         "javascript.jsx",
         "typescript",
         "typescriptreact",
-        "typescript.tsx"
+        "typescript.tsx",
     },
-    on_attach = require'config.lsp.nvim-lsp-settings'.tsserver_on_attach,
-    root_dir = require('lspconfig/util').root_pattern(
-        "package.json", "tsconfig.json", "jsconfig.json", ".git"
+    on_attach = require("config.lsp.nvim-lsp-settings").tsserver_on_attach,
+    root_dir = require("lspconfig/util").root_pattern(
+        "package.json",
+        "tsconfig.json",
+        "jsconfig.json",
+        ".git"
     ),
-    settings = {documentFormatting = false}
-}
+    settings = { documentFormatting = false },
+})

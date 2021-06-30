@@ -1,16 +1,16 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
-  }
+    properties = {
+        "documentation",
+        "detail",
+        "additionalTextEdits",
+    },
 }
 
-require'lspconfig'.vuels.setup {
-    cmd = {vim.fn.stdpath("data") .. "/lspinstall/vue/node_modules/.bin/vls", "--stdio"},
-    on_attach = require'config.lsp.nvim-lsp-settings'.vuels_on_attach,
+require("lspconfig").vuels.setup({
+    cmd = { vim.fn.stdpath("data") .. "/lspinstall/vue/node_modules/.bin/vls", "--stdio" },
+    on_attach = require("config.lsp.nvim-lsp-settings").vuels_on_attach,
     capabilities = capabilities,
     settings = {
         vetur = {
@@ -21,36 +21,36 @@ require'lspconfig'.vuels.setup {
                 templateProps = false,
                 interpolation = true,
                 style = true,
-                script = true
+                script = true,
             },
             completion = {
                 autoImport = true,
-                tagCasing = 'initial',
-                scaffoldSnippetSources = {workspace = '', user = '', vetur = '﵂'}
+                tagCasing = "initial",
+                scaffoldSnippetSources = { workspace = "", user = "", vetur = "﵂" },
             },
-            grammar = {customBlocks = {}},
+            grammar = { customBlocks = {} },
             format = {
                 enable = false,
-                options = {tabSize = 2, useTabs = false},
+                options = { tabSize = 2, useTabs = false },
                 defaultFormatter = {
-                    html = {"prettier"},
-                    js = {"prettier-eslint"},
-                    sass = {"sass-formatter"}
+                    html = { "prettier" },
+                    js = { "prettier-eslint" },
+                    sass = { "sass-formatter" },
                 },
                 defaultFormatterOptions = {},
                 scriptInitialIndent = false,
-                styleInitialIndent = false
+                styleInitialIndent = false,
             },
-            languageFeatures = {codeActions = true, updateImportOnFileMove = true},
-            trace = {server = 'off'},
-            dev = {vlsPath = '', vlsPort = -1, logLevel = 'INFO'},
-            experimental = {templateInterpolationService = false}
+            languageFeatures = { codeActions = true, updateImportOnFileMove = true },
+            trace = { server = "off" },
+            dev = { vlsPath = "", vlsPort = -1, logLevel = "INFO" },
+            experimental = { templateInterpolationService = false },
         },
         css = {},
-        html = {suggest = {}},
-        javascript = {format = {}},
-        typescript = {tsdk = nil, format = {}},
+        html = { suggest = {} },
+        javascript = { format = {} },
+        typescript = { tsdk = nil, format = {} },
         emmet = {},
-        stylusSupremacy = {}
-    }
-}
+        stylusSupremacy = {},
+    },
+})

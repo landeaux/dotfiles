@@ -10,7 +10,7 @@ local prettier = {
             --trailing-comma es5 \
             --stdin-filepath ${INPUT}
     ]],
-    formatStdin = true
+    formatStdin = true,
 }
 
 return prettier

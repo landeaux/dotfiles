@@ -13,7 +13,7 @@ local luaFormat = {
         --chop-down-table \
         --chop-down-kv-table
     ]],
-    formatStdin = true
+    formatStdin = true,
 }
 
 return luaFormat

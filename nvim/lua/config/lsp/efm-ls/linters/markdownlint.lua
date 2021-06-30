@@ -1,9 +1,9 @@
 local markdownlint = {
     -- TODO default to global lintrc
     -- lintcommand = 'markdownlint -s -c ./markdownlintrc',
-    lintCommand = 'markdownlint -s',
+    lintCommand = "markdownlint -s",
     lintStdin = true,
-    lintFormats = {'%f:%l %m', '%f:%l:%c %m', '%f: %l: %m'}
+    lintFormats = { "%f:%l %m", "%f:%l:%c %m", "%f: %l: %m" },
 }
 
-return markdownlint 
+return markdownlint

@@ -1,1 +1,1 @@
-require('config.langs.markdown')
+require("config.langs.markdown")

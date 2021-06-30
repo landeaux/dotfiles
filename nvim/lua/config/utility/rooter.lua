@@ -1,7 +1,7 @@
 local g = vim.g
 
 -- File patterns that will trigger rooter, use / to include directories
-g.rooter_targets = '/,*'
+g.rooter_targets = "/,*"
 
 -- Patterns that rooter will look for to find project root.
 -- To specify the root is a certain directory, prefix it with =
@@ -12,10 +12,10 @@ g.rooter_targets = '/,*'
 --  prefix it with >
 -- To exclude a pattern, prefix it with !
 -- NOTE: Always list exclusions before patterns
-g.rooter_patterns = {'.git', 'Makefile', '>Workspace'}
+g.rooter_patterns = { ".git", "Makefile", ">Workspace" }
 
 -- Change to opened file's directory for non-project files
-g.rooter_change_directory_for_non_project_files = 'current'
+g.rooter_change_directory_for_non_project_files = "current"
 
 -- Use LCD to change directory
-g.rooter_cd_cmd = 'lcd'
+g.rooter_cd_cmd = "lcd"

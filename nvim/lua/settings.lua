@@ -25,9 +25,11 @@ set_opt("o", "secure", true)
 
 -- GUI cursor
 set_opt(
-    "o", "guicursor", "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50," ..
-        "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor," ..
-        "sm:block-blinkwait175-blinkoff150-blinkon175"
+    "o",
+    "guicursor",
+    "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,"
+        .. "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,"
+        .. "sm:block-blinkwait175-blinkoff150-blinkon175"
 )
 
 -- Persistent undo
@@ -63,8 +65,11 @@ set_opt("w", "breakindent", true)
 -- Show column limit indicators
 -- cmd('let &colorcolumn = join(range(' .. tostring(fill_column) .. ',999), ",")')
 cmd(
-    'let &colorcolumn="' .. tostring(soft_column_limit) .. ',".join(range(' ..
-        tostring(hard_column_limit) .. ',999),",")'
+    'let &colorcolumn="'
+        .. tostring(soft_column_limit)
+        .. ',".join(range('
+        .. tostring(hard_column_limit)
+        .. ',999),",")'
 )
 
 -- Line numbers: Hybrid
@@ -106,75 +111,68 @@ set_opt("o", "scrolloff", 0)
 set_opt("o", "sidescrolloff", 5)
 
 -- Enable filetype plugin
-cmd "filetype plugin on"
+cmd("filetype plugin on")
 
 -- Highlight text on yank
 require("utils").create_augroup(
-    {{"TextYankPost", "*", "silent!", "lua vim.highlight.on_yank()"}}, "_highlight_on_yank"
+    { { "TextYankPost", "*", "silent!", "lua vim.highlight.on_yank()" } },
+    "_highlight_on_yank"
 )
 
 require("utils").create_augroup(
-    {{'FileType', 'dashboard', 'set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2'}},
+    { { "FileType", "dashboard", "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2" } },
     "_dashboard"
 )
 
-require("utils").create_augroup(
-    {
-        {"BufRead,BufNewFile", ".env.*", "set filetype=sh"},
-        {"BufRead,BufNewFile", ".gitconfig.local", "set filetype=gitconfig"},
-        {"BufRead,BufNewFile", ".pylintrc", "set filetype=conf"},
-        {"BufRead,BufNewFile", ".tmux.conf.local", "set filetype=tmux"},
-        {"BufRead,BufNewFile", ".zshrc.local", "set filetype=sh"},
-        {"BufRead,BufNewFile", "Dockerfile.*", "set filetype=dockerfile"},
-        {"BufRead,BufNewFile", "Dockerfile-*", "set filetype=dockerfile"},
-        {"BufRead,BufNewFile", "gitconfig", "set filetype=gitconfig"},
-        {"BufRead,BufNewFile", "gitignore", "set filetype=conf"},
-        {"BufRead,BufNewFile", "*.graphql,*.graphqls,*.gql", "set filetype=graphql"}
-    }, "_filetype_detect"
-)
+require("utils").create_augroup({
+    { "BufRead,BufNewFile", ".env.*", "set filetype=sh" },
+    { "BufRead,BufNewFile", ".gitconfig.local", "set filetype=gitconfig" },
+    { "BufRead,BufNewFile", ".pylintrc", "set filetype=conf" },
+    { "BufRead,BufNewFile", ".tmux.conf.local", "set filetype=tmux" },
+    { "BufRead,BufNewFile", ".zshrc.local", "set filetype=sh" },
+    { "BufRead,BufNewFile", "Dockerfile.*", "set filetype=dockerfile" },
+    { "BufRead,BufNewFile", "Dockerfile-*", "set filetype=dockerfile" },
+    { "BufRead,BufNewFile", "gitconfig", "set filetype=gitconfig" },
+    { "BufRead,BufNewFile", "gitignore", "set filetype=conf" },
+    { "BufRead,BufNewFile", "*.graphql,*.graphqls,*.gql", "set filetype=graphql" },
+}, "_filetype_detect")
 
-require("utils").create_augroup(
+require("utils").create_augroup({
+    { "FileType", "json", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
+    { "FileType", "javascript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
+    { "FileType", "javascriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
+    { "FileType", "lua", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4" },
     {
-        {"FileType", "json", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-        {"FileType", "javascript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-        {"FileType", "javascriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-        {"FileType", "lua", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4"},
-        {
-            "FileType",
-            "python",
-            "setlocal",
-            "shiftwidth=4 softtabstop=4 tabstop=4 indentkeys-=<:> indentkeys-=:"
-        },
-        {"FileType", "typescript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-        {"FileType", "typescriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-        {"FileType", "vue", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"},
-        {"FileType", "yaml", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2"}
-    }, "_filetype_indent"
-)
+        "FileType",
+        "python",
+        "setlocal",
+        "shiftwidth=4 softtabstop=4 tabstop=4 indentkeys-=<:> indentkeys-=:",
+    },
+    { "FileType", "typescript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
+    { "FileType", "typescriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
+    { "FileType", "vue", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
+    { "FileType", "yaml", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
+}, "_filetype_indent")
 
-require("utils").create_augroup(
-    {
-        {'FileType', 'dashboard', 'nnoremap <silent> <buffer> q :q<CR>'},
-        {'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'}
-    }, "_buffer_bindings"
-)
+require("utils").create_augroup({
+    { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>" },
+    { "FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>" },
+}, "_buffer_bindings")
 
-require("utils").create_augroup(
-    {
-        {'FileType', 'markdown', 'setlocal wrap'},
-        {'FileType', 'markdown', 'setlocal spell'},
-        {'FileType', 'markdown', 'let &colorcolumn=""'}
-    }, "_markdown"
-)
+require("utils").create_augroup({
+    { "FileType", "markdown", "setlocal wrap" },
+    { "FileType", "markdown", "setlocal spell" },
+    { "FileType", "markdown", 'let &colorcolumn=""' },
+}, "_markdown")
 
 -- Enable syntax highlighting
-cmd "syntax enable"
+cmd("syntax enable")
 
 -- Enable clipboard
 set_opt("o", "clipboard", "unnamed,unnamedplus")
 
 -- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
-cmd [[
+cmd([[
 if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
         let g:os = "Windows"
@@ -182,4 +180,4 @@ if !exists("g:os")
         let g:os = substitute(system('uname'), '\n', '', '')
     endif
 endif
-]]
+]])

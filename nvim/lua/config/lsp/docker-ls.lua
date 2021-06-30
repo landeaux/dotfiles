@@ -1,8 +1,8 @@
-require'lspconfig'.dockerls.setup {
+require("lspconfig").dockerls.setup({
     cmd = {
         vim.fn.stdpath("data") .. "/lspinstall/dockerfile/node_modules/.bin/docker-langserver",
-        "--stdio"
+        "--stdio",
     },
-    on_attach = require'config.lsp.nvim-lsp-settings'.common_on_attach,
-    root_dir = vim.loop.cwd
-}
+    on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
+    root_dir = vim.loop.cwd,
+})

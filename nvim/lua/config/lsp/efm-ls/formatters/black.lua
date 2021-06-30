@@ -1,3 +1,3 @@
-local black = {formatCommand = "black --fast --quiet -", formatStdin = true}
+local black = { formatCommand = "black --fast --quiet -", formatStdin = true }
 
 return black

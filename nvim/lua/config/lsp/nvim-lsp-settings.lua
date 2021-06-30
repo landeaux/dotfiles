@@ -23,7 +23,7 @@ vim.lsp.protocol.CompletionItemKind = {
     " ﳤ  (Struct)",
     "   (Event)",
     "   (Operator)",
-    "   (TypeParameter)"
+    "   (TypeParameter)",
 }
 
 local function documentHighlight(client, bufnr)
@@ -39,7 +39,8 @@ local function documentHighlight(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]], false
+    ]],
+            false
         )
     end
 end
@@ -54,99 +55,107 @@ function lsp_config.common_on_attach(client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
 
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- Mappings.
-    local opts = {noremap = true, silent = true}
-    buf_set_keymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'gy', ':lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gI', ':lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', 'gr', ':lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', 'K', ':Lspsaga hover_doc<CR>', opts)
+    local opts = { noremap = true, silent = true }
+    buf_set_keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
+    buf_set_keymap("n", "gy", ":lua vim.lsp.buf.type_definition()<CR>", opts)
+    buf_set_keymap("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
+    buf_set_keymap("n", "gI", ":lua vim.lsp.buf.implementation()<CR>", opts)
+    buf_set_keymap("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
+    buf_set_keymap("n", "K", ":Lspsaga hover_doc<CR>", opts)
 
-    buf_set_keymap('n', '<C-k>', ':Lspsaga signature_help<CR>', opts)
-    buf_set_keymap('n', '<Leader>lp', ':Lspsaga preview_definition<CR>', opts)
-    buf_set_keymap('n', '<Leader>lr', ':Lspsaga rename<CR>', opts)
-    buf_set_keymap('n', '<Leader>lc', ':Lspsaga code_action<CR>', opts)
+    buf_set_keymap("n", "<C-k>", ":Lspsaga signature_help<CR>", opts)
+    buf_set_keymap("n", "<Leader>lp", ":Lspsaga preview_definition<CR>", opts)
+    buf_set_keymap("n", "<Leader>lr", ":Lspsaga rename<CR>", opts)
+    buf_set_keymap("n", "<Leader>lc", ":Lspsaga code_action<CR>", opts)
 
-    buf_set_keymap('n', '<Leader>ldk', ':Lspsaga show_cursor_diagnostics<CR>', opts)
-    buf_set_keymap('n', '<Leader>lds', ':Lspsaga show_line_diagnostics<CR>', opts)
-    buf_set_keymap('n', '<Leader>ldp', ':Lspsaga diagnostic_jump_prev<CR>', opts)
-    buf_set_keymap('n', '[d', ':Lspsaga diagnostic_jump_prev<CR>', opts)
-    buf_set_keymap('n', '<Leader>ldn', ':Lspsaga diagnostic_jump_next<CR>', opts)
-    buf_set_keymap('n', ']d', ':Lspsaga diagnostic_jump_next<CR>', opts)
+    buf_set_keymap("n", "<Leader>ldk", ":Lspsaga show_cursor_diagnostics<CR>", opts)
+    buf_set_keymap("n", "<Leader>lds", ":Lspsaga show_line_diagnostics<CR>", opts)
+    buf_set_keymap("n", "<Leader>ldp", ":Lspsaga diagnostic_jump_prev<CR>", opts)
+    buf_set_keymap("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", opts)
+    buf_set_keymap("n", "<Leader>ldn", ":Lspsaga diagnostic_jump_next<CR>", opts)
+    buf_set_keymap("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", opts)
 
-    buf_set_keymap('n', '<Leader>lwa', ':lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<Leader>lwr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    buf_set_keymap("n", "<Leader>lwa", ":lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", "<Leader>lwr", ":lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
     buf_set_keymap(
-        'n', '<Leader>lwl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+        "n",
+        "<Leader>lwl",
+        ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
         opts
     )
 
-    buf_set_keymap('n', '<Leader>lI', ':LspInfo<CR>', opts)
+    buf_set_keymap("n", "<Leader>lI", ":LspInfo<CR>", opts)
 
     -- scroll down hover doc or scroll in definition preview
     buf_set_keymap(
-        'n', '<C-f>', ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts
+        "n",
+        "<C-f>",
+        ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>",
+        opts
     )
     -- scroll up hover doc
     buf_set_keymap(
-        'n', '<C-b>', ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts
+        "n",
+        "<C-b>",
+        ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>",
+        opts
     )
 
     vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
     local function buf_bind_picker(...)
-        require('config.tools.telescope-nvim-utils').buf_bind_picker(bufnr, ...)
+        require("config.tools.telescope-nvim-utils").buf_bind_picker(bufnr, ...)
     end
 
     -- Telescope LSP
-    buf_bind_picker('<Leader>lsd', 'lsp_document_symbols')
-    buf_bind_picker('<Leader>lsw', 'lsp_workspace_symbols')
-    buf_bind_picker('<Leader>ldd', 'lsp_document_diagnostics')
-    buf_bind_picker('<Leader>ldw', 'lsp_workspace_diagnostics')
-    buf_bind_picker('<Leader>lad', 'lsp_code_actions')
+    buf_bind_picker("<Leader>lsd", "lsp_document_symbols")
+    buf_bind_picker("<Leader>lsw", "lsp_workspace_symbols")
+    buf_bind_picker("<Leader>ldd", "lsp_document_diagnostics")
+    buf_bind_picker("<Leader>ldw", "lsp_workspace_diagnostics")
+    buf_bind_picker("<Leader>lad", "lsp_code_actions")
 
     local keymap_leader = {
         l = {
-            name = '+lsp',
-            a = {name = '+code-actions', d = 'Document Actions'},
-            s = {name = '+symbols', d = 'Document Symbols', w = 'Workspace Symbols'},
+            name = "+lsp",
+            a = { name = "+code-actions", d = "Document Actions" },
+            s = { name = "+symbols", d = "Document Symbols", w = "Workspace Symbols" },
             d = {
-                name = '+diagnostics',
-                k = 'Show cursor diagnostics',
-                s = 'Show line diagnostics',
-                p = 'Goto prev',
-                n = 'Goto next',
-                d = 'Document Diagnostics',
-                w = 'Workspace Diagnostics'
+                name = "+diagnostics",
+                k = "Show cursor diagnostics",
+                s = "Show line diagnostics",
+                p = "Goto prev",
+                n = "Goto next",
+                d = "Document Diagnostics",
+                w = "Workspace Diagnostics",
             },
-            c = 'Code Actions',
+            c = "Code Actions",
             w = {
-                name = '+workspace',
-                a = 'Add workspace folder',
-                r = 'Remove workspace folder',
-                l = 'List workspace folders'
+                name = "+workspace",
+                a = "Add workspace folder",
+                r = "Remove workspace folder",
+                l = "List workspace folders",
             },
-            r = 'Rename',
-            p = 'Preview definition',
-            I = 'LSP Info'
-        }
+            r = "Rename",
+            p = "Preview definition",
+            I = "LSP Info",
+        },
     }
 
     local keymap_g = {
-        name = '+goto',
-        D = 'Go to declaration',
-        I = 'Go to implementation',
-        d = 'Go to definition',
-        r = 'Go to references',
-        y = 'Go to type definition',
+        name = "+goto",
+        D = "Go to declaration",
+        I = "Go to implementation",
+        d = "Go to definition",
+        r = "Go to references",
+        y = "Go to type definition",
     }
 
-    local wk = require('whichkey_setup')
-    wk.register_keymap('leader', keymap_leader)
-    wk.register_keymap('g', keymap_g)
+    local wk = require("whichkey_setup")
+    wk.register_keymap("leader", keymap_leader)
+    wk.register_keymap("g", keymap_g)
 
     documentHighlight(client, bufnr)
 

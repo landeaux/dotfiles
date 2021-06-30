@@ -1,8 +1,8 @@
-require'nvim-lightbulb'.update_lightbulb {
+require("nvim-lightbulb").update_lightbulb({
     sign = {
         enabled = true,
         -- Priority of the gutter sign
-        priority = 20
+        priority = 20,
     },
     float = {
         enabled = true,
@@ -22,19 +22,19 @@ require'nvim-lightbulb'.update_lightbulb {
         -- - offset_y   y-axis offset of the floating window
         -- - anchor     corner of float to place at the cursor (NW, NE, SW, SE)
         -- - winblend   transparency of the window (0-100)
-        win_opts = {}
+        win_opts = {},
     },
     virtual_text = {
         enabled = false,
         -- Text to show at virtual text
-        text = ""
-    }
-}
+        text = "",
+    },
+})
 
 -- Change Lightbulb sign
-vim.fn.sign_define('LightBulbSign', {text = ""})
+vim.fn.sign_define("LightBulbSign", { text = "" })
 
-require('utils').create_augroup(
-    {{'CursorHold,CursorHoldI', '*', 'lua require("nvim-lightbulb").update_lightbulb()'}},
-    'nvim-lightbulb'
+require("utils").create_augroup(
+    { { "CursorHold,CursorHoldI", "*", 'lua require("nvim-lightbulb").update_lightbulb()' } },
+    "nvim-lightbulb"
 )

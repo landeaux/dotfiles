@@ -1,3 +1,3 @@
-local isort = {formatCommand = "isort --stdout --profile black -", formatStdin = true}
+local isort = { formatCommand = "isort --stdout --profile black -", formatStdin = true }
 
 return isort
