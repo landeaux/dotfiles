@@ -17,15 +17,18 @@ table.insert(python_args, isort)
 -- lua
 local lua_args = {}
 
-local lua_formatter = "lua-format"
+local lua_formatter = "stylua"
 
 local lua_format = require "config.lsp.efm-ls.formatters.lua-format"
 local luafmt = require "config.lsp.efm-ls.formatters.luafmt"
+local stylua = require "config.lsp.efm-ls.formatters.stylua"
 
 if lua_formatter == "lua-format" then
     table.insert(lua_args, lua_format)
 elseif lua_formatter == "lua-fmt" then
     table.insert(lua_args, luafmt)
+elseif lua_formatter == "stylua" then
+    table.insert(lua_args, stylua)
 end
 
 -- sh
