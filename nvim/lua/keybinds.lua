@@ -37,6 +37,9 @@ bind('n', '<leader>th', ':set hlsearch!<CR>', opts)
 -- Toggle whitespace chars
 bind('n', '<leader>tw', ':set list!<CR>', opts)
 
+-- Toggle spelling
+bind('n', '<leader>ts', ':set spell!<CR>', opts)
+
 -- Clipboard
 bind('', '<Leader>y', '"+y', opts) -- copy any selected text to clipboard
 bind('n', '<Leader>a', '<cmd> %+y<CR>', opts) -- copy any selected text to clipboard
@@ -134,7 +137,7 @@ local keys = {
         s = 'Split horizontally',
         v = 'Split vertically'
     },
-    t = {name = '+ui-toggle', h = 'Highlighting', w = 'Whitespace'},
+    t = {name = '+ui-toggle', h = 'Highlighting', w = 'Whitespace', s = 'Spelling'},
     v = {name = '+vim', c = 'Edit config', r = 'Reload', R = 'Restart', v = 'Version'},
     y = 'Yank to clipboard'
 }

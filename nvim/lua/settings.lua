@@ -50,6 +50,9 @@ set_opt("b", "expandtab", true)
 set_opt("b", "autoindent", true)
 set_opt("b", "smartindent", true)
 
+-- Spelling
+set_opt("b", "spellfile", vim.fn.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add")
+
 -- Listchars
 set_opt("w", "listchars", "tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»")
 
