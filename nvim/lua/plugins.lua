@@ -10,7 +10,8 @@ use("wbthomason/packer.nvim")
 
 -- Colorscheme
 -- use 'dracula/vim'
-use("christianchiarulli/nvcode-color-schemes.vim")
+-- use("christianchiarulli/nvcode-color-schemes.vim")
+use("folke/tokyonight.nvim")
 
 -- Statusline
 use("glepnir/galaxyline.nvim")
