@@ -88,6 +88,9 @@ use("glepnir/lspsaga.nvim")
 -- use 'ray-x/lsp_signature.nvim'
 use("kosayoda/nvim-lightbulb")
 
+-- TypeScript
+use {'jose-elias-alvarez/nvim-lsp-ts-utils', requires = {'nvim-lua/plenary.nvim'}}
+
 -- Telescope
 use({
     "nvim-telescope/telescope.nvim",
