@@ -186,11 +186,10 @@ function lsp_config.tsserver_on_attach(client, bufnr)
     -- required to fix code action ranges
     ts_utils.setup_client(client)
 
-    -- no default maps, so you may want to define some here
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>lo", ":TSLspOrganize<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>lx", ":TSLspFixCurrent<CR>", {silent = true})
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>lR", ":TSLspRenameFile<CR>", {silent = true})
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>li", ":TSLspImportAll<CR>", {silent = true})
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>lx", ":TSLspFixCurrent<CR>", {silent = true})
 
     local keymap_leader = {
         l = {
