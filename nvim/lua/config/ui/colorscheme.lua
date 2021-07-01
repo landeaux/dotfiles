@@ -1,4 +1,4 @@
-local colorscheme = {}
+local M = {}
 
 -- Make Terminal use GUI colors
 vim.o.termguicolors = true
@@ -11,6 +11,10 @@ vim.g.tokyonight_style = "storm"
 vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 vim.cmd("colorscheme tokyonight")
 
+local config = require("tokyonight.config")
+local colors = require("tokyonight.colors").setup(config)
+local util = require("tokyonight.util")
+
 -- NVCODE --
 -- vim.cmd("colorscheme lunar")
 -- vim.cmd("let g:nvcode_termcolors=256")
@@ -21,4 +25,30 @@ vim.cmd("colorscheme tokyonight")
 -- GRUVBOX --
 -- cmd('colorscheme gruvbox')
 
-return colorscheme
+M.colors = {
+    none = "NONE",
+    red = colors.red,
+    orange = colors.orange,
+    yellow = colors.yellow,
+    green = colors.green,
+    blue = colors.blue,
+    purple = colors.purple,
+    magenta = colors.magenta,
+    bg = colors.bg,
+    bg_dark = colors.bg_dark,
+    gitSigns = {
+        add = colors.gitSigns.add,
+        change = colors.gitSigns.change,
+        delete = colors.gitSigns.delete,
+    },
+    error = colors.error,
+    warning = colors.warning,
+    hint = colors.hint,
+    info = colors.info,
+    breakpoint_icon_color = util.darken(colors.red, 0.8),
+    breakpoint_line_color = util.darken(colors.red, 0.3),
+    stopped_icon_color = util.darken(colors.blue, 0.8),
+    stopped_line_color = util.darken(colors.blue, 0.3),
+}
+
+return M

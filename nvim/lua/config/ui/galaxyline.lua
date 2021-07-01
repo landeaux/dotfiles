@@ -1,7 +1,6 @@
 local gl = require("galaxyline")
 local condition = require("galaxyline.condition")
-local config = require("tokyonight.config")
-local colors = require("tokyonight.colors").setup(config)
+local colors = require("config.ui.colorscheme").colors
 
 local gls = gl.section
 
@@ -14,10 +13,10 @@ gls.left[1] = {
             local mode_color = {
                 n = colors.blue,
                 i = colors.green,
-                v = colors.purple,
-                [""] = colors.purple,
-                V = colors.purple,
-                c = colors.magenta,
+                v = colors.magenta,
+                [""] = colors.magenta,
+                V = colors.magenta,
+                c = colors.yellow,
                 no = colors.blue,
                 s = colors.orange,
                 S = colors.orange,
@@ -131,7 +130,7 @@ gls.right[5] = {
             return true
         end,
         icon = " ",
-        highlight = { colors.none, colors.bg_dark },
+        highlight = { colors.green, colors.bg_dark },
     },
 }
 

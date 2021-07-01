@@ -1,16 +1,16 @@
 local g = vim.g
 local dap = require("dap")
+local colors = require("config.ui.colorscheme").colors
 
 -- Enable DAP virtual text
 g.dap_virtual_text = true
 
 -- Customize symbols and highlights
-vim.cmd("hi DapBreakpointIcon guifg=#bf616a")
-vim.cmd("hi DapBreakpointLine guibg=#bf616a")
+vim.cmd("hi DapBreakpointIcon guifg=" .. colors.breakpoint_icon_color)
+vim.cmd("hi DapBreakpointLine guibg=" .. colors.breakpoint_line_color)
 vim.cmd("hi link DapBreakpointNumber DapBreakpointIcon")
-
-vim.cmd("hi DapStoppedIcon guifg=#558d9d")
-vim.cmd("hi DapStoppedLine guibg=#225a6a gui=bold")
+vim.cmd("hi DapStoppedIcon guifg=" .. colors.stopped_icon_color)
+vim.cmd("hi DapStoppedLine guibg=" .. colors.stopped_line_color .. " gui=bold")
 vim.cmd("hi link DapStoppedNumber DapStoppedIcon")
 
 vim.fn.sign_define("DapBreakpoint", {
