@@ -6,7 +6,9 @@ require("lspconfig").jsonls.setup({
         "--stdio",
     },
     on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
-
+    flags = {
+        debounce_text_changes = 150,
+    },
     commands = {
         Format = {
             function()

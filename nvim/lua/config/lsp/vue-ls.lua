@@ -11,6 +11,9 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 require("lspconfig").vuels.setup({
     cmd = { vim.fn.stdpath("data") .. "/lspinstall/vue/node_modules/.bin/vls", "--stdio" },
     on_attach = require("config.lsp.nvim-lsp-settings").vuels_on_attach,
+    flags = {
+        debounce_text_changes = 150,
+    },
     capabilities = capabilities,
     settings = {
         vetur = {

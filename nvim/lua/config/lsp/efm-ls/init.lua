@@ -88,6 +88,9 @@ local efm_config = os.getenv("HOME") .. "/.config/efm-langserver/config.yaml"
 
 require("lspconfig").efm.setup({
     on_attach = on_attach,
+    flags = {
+        debounce_text_changes = 150,
+    },
     cmd = {
         vim.fn.stdpath("data") .. "/lspinstall/efm/efm-langserver",
         "-c",

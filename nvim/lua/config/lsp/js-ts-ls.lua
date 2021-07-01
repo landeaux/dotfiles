@@ -22,6 +22,9 @@ require("lspconfig").tsserver.setup({
         "typescript.tsx",
     },
     on_attach = require("config.lsp.nvim-lsp-settings").tsserver_on_attach,
+    flags = {
+        debounce_text_changes = 150,
+    },
     root_dir = require("lspconfig/util").root_pattern(
         "package.json",
         "tsconfig.json",
