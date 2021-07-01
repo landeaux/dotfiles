@@ -21,7 +21,10 @@ g.dashboard_custom_section = {
     d = { description = { "  New File           " }, command = "DashboardNewFile" },
     e = { description = { "  Load Last Session  " }, command = "SessionLoad" },
     f = { description = { "  Marks              " }, command = "Telescope marks" },
-    g = { description = { "  Settings           " }, command = ":e ~/.config/nvim/lua/settings.lua" },
+    g = {
+        description = { "  Settings           " },
+        command = ":e ~/.config/nvim/lua/settings.lua",
+    },
 }
 
 g.dashboard_custom_footer = { "You aren't going to need it." }
