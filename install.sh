@@ -10,8 +10,9 @@ tic -x ./terminfo/tmux-256color.terminfo # custom terminfo w/ italics
 
 # zsh
 rm ~/.zshrc
+rm ~/.zprofile
 ln -s "${BASEDIR}/zshrc" "${HOME}/.zshrc"
-# source ~/.zshrc
+ln -s "${BASEDIR}/zprofile" "${HOME}/.zprofile"
 
 # neovim
 rm -rf ~/.config/nvim
