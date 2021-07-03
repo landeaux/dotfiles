@@ -125,16 +125,17 @@ require("utils").create_augroup(
 )
 
 require("utils").create_augroup({
+    { "BufRead,BufNewFile", "*.graphql,*.graphqls,*.gql", "set filetype=graphql" },
     { "BufRead,BufNewFile", ".env.*", "set filetype=sh" },
     { "BufRead,BufNewFile", ".gitconfig.local", "set filetype=gitconfig" },
     { "BufRead,BufNewFile", ".pylintrc", "set filetype=conf" },
     { "BufRead,BufNewFile", ".tmux.conf.local", "set filetype=tmux" },
-    { "BufRead,BufNewFile", ".zshrc.local", "set filetype=sh" },
-    { "BufRead,BufNewFile", "Dockerfile.*", "set filetype=dockerfile" },
+    { "BufRead,BufNewFile", ".zshrc.local", "set filetype=zsh" },
     { "BufRead,BufNewFile", "Dockerfile-*", "set filetype=dockerfile" },
+    { "BufRead,BufNewFile", "Dockerfile.*", "set filetype=dockerfile" },
     { "BufRead,BufNewFile", "gitconfig", "set filetype=gitconfig" },
     { "BufRead,BufNewFile", "gitignore", "set filetype=conf" },
-    { "BufRead,BufNewFile", "*.graphql,*.graphqls,*.gql", "set filetype=graphql" },
+    { "BufRead,BufNewFile", "zprofile", "set filetype=zsh" },
 }, "_filetype_detect")
 
 require("utils").create_augroup({
@@ -152,6 +153,8 @@ require("utils").create_augroup({
     { "FileType", "typescriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
     { "FileType", "vue", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
     { "FileType", "yaml", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
+    { "FileType", "bash", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
+    { "FileType", "zsh", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
 }, "_filetype_indent")
 
 require("utils").create_augroup({
