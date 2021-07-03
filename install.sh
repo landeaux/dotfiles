@@ -3,36 +3,38 @@
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 # tmux
-rm ~/.tmux.conf
+[ -f ~/.tmux.conf ] && rm ~/.tmux.conf
 ln -s "${BASEDIR}/tmux.conf" "${HOME}/.tmux.conf"
 [ -n "$TMUX" ] && tmux source-file ~/.tmux.conf
 tic -x ./terminfo/tmux-256color.terminfo # custom terminfo w/ italics
 
 # zsh
-rm ~/.zshrc
-rm ~/.zprofile
+[ -f ~/.zshrc ] && rm ~/.zshrc
+[ -f ~/.zprofile ] && rm ~/.zprofile
 ln -s "${BASEDIR}/zshrc" "${HOME}/.zshrc"
 ln -s "${BASEDIR}/zprofile" "${HOME}/.zprofile"
 
 # neovim
-rm -rf ~/.config/nvim
+[ -d ~/.config/nvim ] && rm -rf ~/.config/nvim
 ln -s "${BASEDIR}/nvim" "${HOME}/.config/nvim"
 
 # efm
 EFM_CONFIG_PATH="$HOME/.config/efm-langserver/config.yaml"
-rm "$EFM_CONFIG_PATH"
+[ -f "${EFM_CONFIG_PATH}" ] && rm "$EFM_CONFIG_PATH"
 ln -s "${BASEDIR}/efm-langserver/config.yaml" "$EFM_CONFIG_PATH"
 
 # git
-rm ~/.gitconfig && rm ~/.gitignore && rm ~/.gitmessage
+[ -f ~/.gitconfig ] && rm ~/.gitconfig
+[ -f ~/.gitignore ] && rm ~/.gitignore
+[ -f ~/.gitmessage ] && rm ~/.gitmessage
 ln -s "${BASEDIR}/gitconfig" "${HOME}/.gitconfig"
 ln -s "${BASEDIR}/gitignore" "${HOME}/.gitignore"
 ln -s "${BASEDIR}/gitmessage" "${HOME}/.gitmessage"
 
 # pylint
-rm ~/.config/pylintrc
+[ -f ~/.config/pylintrc ] && rm ~/.config/pylintrc
 ln -s "${BASEDIR}/pylintrc" "${HOME}/.config/pylintrc"
 
 # stylua
-rm ~/.config/stylua.toml
+[ -f ~/.config/stylua.toml ] && rm ~/.config/stylua.toml
 ln -s "${BASEDIR}/stylua.toml" "${HOME}/.config/stylua.toml"
