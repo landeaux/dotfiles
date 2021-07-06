@@ -102,6 +102,11 @@ bind("n", "<Leader>vr", ":Reload<CR>", opts)
 bind("n", "<Leader>vR", ":Restart<CR>", opts)
 bind("n", "<Leader>vv", ":version<CR>", opts)
 
+-- Search and Replace
+-- '<Leader>r' for word, '<Leader>R' for WORD
+bind("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true })
+bind("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]], { noremap = true })
+
 local keys = {
     a = "Yank file to clipboard",
     q = "Quit all",
