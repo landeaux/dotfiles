@@ -32,6 +32,10 @@ bind("x", "K", ":move '<-2<CR>gv-gv", opts)
 bind("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
 bind("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 
+-- Beginning and end of line in `:` command mode
+bind("c", "<C-a>", "<home>", {})
+bind("c", "<C-e>", "<end>", {})
+
 -- Toggle highlighting
 bind("n", "<leader>th", ":set hlsearch!<CR>", opts)
 
