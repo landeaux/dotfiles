@@ -12,48 +12,6 @@ function M.length(table)
     return count
 end
 
-function M.UnloadAllModules()
-    -- Lua patterns for the modules to unload
-    local unload_modules = {
-        "^config",
-        "^keybinds$",
-        "^plugins$",
-        "^settings$",
-        "^statusline$",
-        "^utils$",
-    }
-
-    for k, _ in pairs(package.loaded) do
-        for _, v in ipairs(unload_modules) do
-            if k:match(v) then
-                package.loaded[k] = nil
-                break
-            end
-        end
-    end
-end
-
--- Reload Vim configuration
-function M.Reload()
-    -- Stop LSP
-    cmd("LspStop")
-
-    -- Unload all already loaded modules
-    M.UnloadAllModules()
-
-    -- Source init.lua
-    cmd("luafile $MYVIMRC")
-end
-
--- Restart Vim without having to close and run again
-function M.Restart()
-    -- Reload config
-    M.Reload()
-
-    -- Manually run VimEnter autocmd to emulate a new run of Vim
-    cmd("doautocmd VimEnter")
-end
-
 -- Get option
 function M.get_opt(type, name)
     return types[type][name]
@@ -139,6 +97,18 @@ end
 function M.get_hi_term(group, term)
     local output = vim.api.nvim_exec("hi " .. group, true)
     return vim.fn.matchstr(output, term .. "=\\zs\\S*")
+end
+
+function M.has_neovim_v05()
+    if vim.fn.has("nvim-0.5") == 1 then
+        return true
+    end
+    return false
+end
+
+function M.is_root()
+    local output = vim.fn.systemlist("id -u")
+    return ((output[1] or "") == "0")
 end
 
 return M

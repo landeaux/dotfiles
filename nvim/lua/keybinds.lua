@@ -94,8 +94,8 @@ bind("n", "<Leader>wv", ":wincmd v<CR>", opts)
 
 -- Keybinds for editing vim config
 bind("n", "<Leader>vc", ":edit $MYVIMRC<CR>", opts)
-bind("n", "<Leader>vr", ':lua require("utils").Reload()<CR>', opts)
-bind("n", "<Leader>vR", ':lua require("utils").Restart()<CR>', opts)
+bind("n", "<Leader>vr", ":Reload<CR>", opts)
+bind("n", "<Leader>vR", ":Restart<CR>", opts)
 bind("n", "<Leader>vv", ":version<CR>", opts)
 
 local keys = {
