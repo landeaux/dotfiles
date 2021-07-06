@@ -3,6 +3,7 @@ local opts = { noremap = true, silent = true }
 
 -- Make Y key yank to end of line
 bind("n", "Y", "y$", { noremap = true })
+bind("v", "Y", "<Esc>y$gv", { noremap = true })
 
 -- Make U redo
 bind("n", "U", "undo", { noremap = true })
