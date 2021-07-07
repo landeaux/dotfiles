@@ -74,7 +74,7 @@ local function init()
     use("kyazdani42/nvim-web-devicons")
 
     -- Indent guides
-    use({ "lukas-reineke/indent-blankline.nvim", branch = "lua" })
+    use("lukas-reineke/indent-blankline.nvim")
 
     -- Which Key
     use({ "AckslD/nvim-whichkey-setup.lua", requires = { "liuchengxu/vim-which-key" } })
