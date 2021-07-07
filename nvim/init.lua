@@ -7,6 +7,9 @@ vim.g.maplocalleader = ","
 -- Sensible defaults
 require("settings")
 
+-- Autocmd
+require("autocmd")
+
 -- Load plugins
 require("plugins")
 
