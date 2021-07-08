@@ -1,54 +1,18 @@
--- Do not use plugins when running as root or neovim < 0.5
-if require("utils").is_root() or not require("utils").has_neovim_v05() then
-    return {
-        sync_if_not_compiled = function()
-            return
-        end,
-    }
-end
+-- Only required if you have packer configured as `opt`
+-- vim.cmd [[packadd packer.nvim]]
 
 local execute = vim.api.nvim_command
+local fn = vim.fn
 
--- check if packer is installed (~/.local/share/nvim/site/pack)
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local compile_path = install_path .. "/plugin/packer_compiled.vim"
-local is_installed = vim.fn.empty(vim.fn.glob(install_path)) == 0
-local is_compiled = vim.fn.empty(vim.fn.glob(compile_path)) == 0
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
-if not is_installed then
-    if vim.fn.input("Install packer.nvim? (y for yes) ") == "y" then
-        execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-        execute("packadd packer.nvim")
-        print("Installed packer.nvim.")
-        is_installed = 1
-    end
+if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
+    execute("packadd packer.nvim")
 end
 
--- Packer commands
-vim.cmd([[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]])
-vim.cmd([[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]])
-vim.cmd([[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]])
-vim.cmd([[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]])
-vim.cmd([[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]])
-vim.cmd([[command! PC PackerCompile]])
-vim.cmd([[command! PS PackerStatus]])
-vim.cmd([[command! PU PackerSync]])
-
-local packer = nil
-
-local function init()
-    if not is_installed then
-        return
-    end
-    if packer == nil then
-        packer = require("packer")
-        packer.init({
-            -- we don't want the compilation file in '~/.config/nvim'
-            compile_path = compile_path,
-        })
-    end
-
-    local use = packer.use
+return require("packer").startup(function()
+    local use = require("packer").use
 
     -- Packer
     use("wbthomason/packer.nvim")
@@ -188,32 +152,4 @@ local function init()
 
     -- Fix python indentation
     use("Vimjas/vim-python-pep8-indent")
-end
-
--- called from 'lua/autocmd.lua' at `VimEnter`
-local function sync_if_not_compiled()
-    if packer == nil then
-        return
-    end
-    if not is_compiled then
-        packer.sync()
-        --execute("luafile $MYVIMRC")
-    end
-end
-
-local plugins = setmetatable({}, {
-    __index = function(_, key)
-        init()
-        -- workaround for error when packer not installed
-        if packer == nil then
-            return function() end
-        end
-        if key == "sync_if_not_compiled" then
-            return sync_if_not_compiled
-        else
-            return packer[key]
-        end
-    end,
-})
-
-return plugins
+end)
