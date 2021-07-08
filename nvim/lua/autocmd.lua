@@ -53,10 +53,6 @@ require("utils").create_augroup({
     { "FileType", "markdown", 'let &colorcolumn=""' },
 }, "_markdown")
 
--- require("utils").create_augroup({
---     { "VimEnter", "*", "lua require('plugins').sync_if_not_compiled()" },
--- }, "packer_init")
-
--- require("utils").create_augroup({
---     { "BufWritePost", "plugins.lua", "lua require('plugins').compile()" },
--- }, "packer_compile")
+require("utils").create_augroup({
+    { "BufWritePost", "plugins.lua", "PackerCompile" },
+}, "packer_compile")
