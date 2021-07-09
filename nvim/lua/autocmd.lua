@@ -54,5 +54,5 @@ require("utils").create_augroup({
 }, "_markdown")
 
 require("utils").create_augroup({
-    { "BufWritePost", "plugins.lua", "PackerCompile" },
+    { "BufWritePost", "plugins.lua", "source <afile> | PackerCompile" },
 }, "packer_compile")
