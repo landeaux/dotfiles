@@ -174,10 +174,6 @@ function lsp_config.tsserver_on_attach(client, bufnr)
         enable_import_on_completion = true,
         import_all_timeout = 5000, -- ms
 
-        -- parentheses completion
-        complete_parens = true,
-        signature_help_in_parens = true,
-
         -- update imports on file move
         update_imports_on_move = true,
         require_confirmation_on_move = true,
