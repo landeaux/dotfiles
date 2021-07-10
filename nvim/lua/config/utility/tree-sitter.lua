@@ -1,5 +1,8 @@
 local wk = require("whichkey_setup")
 
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- Tree-sitter
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
