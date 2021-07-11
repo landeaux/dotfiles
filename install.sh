@@ -18,6 +18,10 @@ ln -s "${BASEDIR}/zprofile" "${HOME}/.zprofile"
 [ -d ~/.config/nvim ] && rm -rf ~/.config/nvim
 ln -s "${BASEDIR}/nvim" "${HOME}/.config/nvim"
 
+# kitty
+[ -d ~/.config/kitty ] && rm -rf ~/.config/kitty
+ln -s "${BASEDIR}/kitty" "${HOME}/.config/kitty"
+
 # efm
 EFM_CONFIG_PATH="$HOME/.config/efm-langserver/config.yaml"
 [ -f "${EFM_CONFIG_PATH}" ] && rm "$EFM_CONFIG_PATH"
