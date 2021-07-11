@@ -19,8 +19,11 @@ ln -s "${BASEDIR}/zprofile" "${HOME}/.zprofile"
 ln -s "${BASEDIR}/nvim" "${HOME}/.config/nvim"
 
 # kitty
-[ -d ~/.config/kitty ] && rm -rf ~/.config/kitty
-ln -s "${BASEDIR}/kitty" "${HOME}/.config/kitty"
+[ -e "${HOME}/.config/kitty/kitty.conf" ] && rm "${HOME}/.config/kitty/kitty.conf"
+[ -e "${HOME}/.config/kitty/kitty_tokyonight_night.conf" ] && rm "${HOME}/.config/kitty/kitty_tokyonight_night.conf"
+mkdir -p "${HOME}/.config/kitty"
+ln -s "${BASEDIR}/kitty/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
+ln -s "${BASEDIR}/kitty/kitty_tokyonight_night.conf" "${HOME}/.config/kitty/kitty_tokyonight_night.conf"
 
 # efm
 EFM_CONFIG_PATH="$HOME/.config/efm-langserver/config.yaml"
