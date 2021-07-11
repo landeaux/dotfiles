@@ -2,46 +2,38 @@
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
+rm_and_symlink() {
+	[ -e "$1" ] && rm -rf "$1"
+	ln -s "$2" "$1"
+}
+
 # tmux
-[ -f ~/.tmux.conf ] && rm ~/.tmux.conf
-ln -s "${BASEDIR}/tmux.conf" "${HOME}/.tmux.conf"
-[ -n "$TMUX" ] && tmux source-file ~/.tmux.conf
+rm_and_symlink "${HOME}/.tmux.conf" "${BASEDIR}/tmux.conf"
+[ -n "$TMUX" ] && tmux source-file "${HOME}/.tmux.conf"
 tic -x ./terminfo/tmux-256color.terminfo # custom terminfo w/ italics
 
 # zsh
-[ -f ~/.zshrc ] && rm ~/.zshrc
-[ -f ~/.zprofile ] && rm ~/.zprofile
-ln -s "${BASEDIR}/zshrc" "${HOME}/.zshrc"
-ln -s "${BASEDIR}/zprofile" "${HOME}/.zprofile"
+rm_and_symlink "${HOME}/.zshrc" "${BASEDIR}/zshrc"
+rm_and_symlink "${HOME}/.zprofile" "${BASEDIR}/zprofile"
 
 # neovim
-[ -d ~/.config/nvim ] && rm -rf ~/.config/nvim
-ln -s "${BASEDIR}/nvim" "${HOME}/.config/nvim"
+rm_and_symlink "${HOME}/.config/nvim" "${BASEDIR}/nvim"
 
 # kitty
-[ -e "${HOME}/.config/kitty/kitty.conf" ] && rm "${HOME}/.config/kitty/kitty.conf"
-[ -e "${HOME}/.config/kitty/kitty_tokyonight_night.conf" ] && rm "${HOME}/.config/kitty/kitty_tokyonight_night.conf"
 mkdir -p "${HOME}/.config/kitty"
-ln -s "${BASEDIR}/kitty/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
-ln -s "${BASEDIR}/kitty/kitty_tokyonight_night.conf" "${HOME}/.config/kitty/kitty_tokyonight_night.conf"
+rm_and_symlink "${HOME}/.config/kitty/kitty.conf" "${BASEDIR}/kitty/kitty.conf"
+rm_and_symlink "${HOME}/.config/kitty/kitty_tokyonight_night.conf" "${BASEDIR}/kitty/kitty_tokyonight_night.conf"
 
 # efm
-EFM_CONFIG_PATH="$HOME/.config/efm-langserver/config.yaml"
-[ -f "${EFM_CONFIG_PATH}" ] && rm "$EFM_CONFIG_PATH"
-ln -s "${BASEDIR}/efm-langserver/config.yaml" "$EFM_CONFIG_PATH"
+rm_and_symlink "$HOME/.config/efm-langserver/config.yaml" "${BASEDIR}/efm-langserver/config.yaml"
 
 # git
-[ -f ~/.gitconfig ] && rm ~/.gitconfig
-[ -f ~/.gitignore ] && rm ~/.gitignore
-[ -f ~/.gitmessage ] && rm ~/.gitmessage
-ln -s "${BASEDIR}/gitconfig" "${HOME}/.gitconfig"
-ln -s "${BASEDIR}/gitignore" "${HOME}/.gitignore"
-ln -s "${BASEDIR}/gitmessage" "${HOME}/.gitmessage"
+rm_and_symlink "${HOME}/.gitconfig" "${BASEDIR}/gitconfig"
+rm_and_symlink "${HOME}/.gitignore" "${BASEDIR}/gitignore"
+rm_and_symlink "${HOME}/.gitmessage" "${BASEDIR}/gitmessage"
 
 # pylint
-[ -f ~/.config/pylintrc ] && rm ~/.config/pylintrc
-ln -s "${BASEDIR}/pylintrc" "${HOME}/.config/pylintrc"
+rm_and_symlink "${HOME}/.config/pylintrc" "${BASEDIR}/pylintrc"
 
 # stylua
-[ -f ~/.config/stylua.toml ] && rm ~/.config/stylua.toml
-ln -s "${BASEDIR}/stylua.toml" "${HOME}/.config/stylua.toml"
+rm_and_symlink "${HOME}/.config/stylua.toml" "${BASEDIR}/stylua.toml"
