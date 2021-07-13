@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+session=$1
+
+# only set up workspace if session doesn't already exist
+tmux has-session -t "$session"
+if [ $? != 0 ]; then
+	if [[ -n $1 ]]; then
+		setup_file="$HOME/.tmux/$1.proj"
+		if [[ -e $setup_file ]]; then
+			$(which tmux) new-session -d -s "$session" "tmux $2 source-file $setup_file"
+		else
+			printf "No such file \"%s\".\nListing existing files:\n" "$setup_file"
+			ls -1 "$HOME/.tmux/*.proj"
+			exit 1
+		fi
+	else
+		echo "Usage: $1 <project_name>"
+		exit 1
+	fi
+fi
+
+if [ -n "$TMUX" ]; then
+	tmux switch-client -t "$session":1
+else
+	tmux attach-session -t "$session":1
+fi
