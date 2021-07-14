@@ -1,0 +1,4 @@
+new-window
+rename-window "Main"
+send-keys "cd $DOTFILES" C-m
+send-keys "nvim +PackerSync" C-m
