@@ -1,4 +1,6 @@
-new-window
-rename-window "Main"
-send-keys "cd $DOTFILES" C-m
+new-window -c $DOTFILES
+rename-window "main"
 send-keys "nvim +PackerSync" C-m
+
+split-pane -h -c $DOTFILES
+send-keys "git fetch" C-m
