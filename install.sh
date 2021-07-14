@@ -8,8 +8,9 @@ rm_and_symlink() {
 }
 
 # tmux
-rm_and_symlink "${HOME}/.tmux.conf" "${BASEDIR}/tmux.conf"
-[ -n "$TMUX" ] && tmux source-file "${HOME}/.tmux.conf"
+tmux_home_path="${HOME}/.tmux.conf"
+rm_and_symlink "$tmux_home_path" "${BASEDIR}/tmux/tmux.conf"
+[ -n "$TMUX" ] && tmux source-file "$tmux_home_path"
 tic -x ./terminfo/tmux-256color.terminfo # custom terminfo w/ italics
 
 # zsh
