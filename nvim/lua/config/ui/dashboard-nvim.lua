@@ -27,7 +27,7 @@ g.dashboard_custom_section = {
     },
 }
 
-g.dashboard_custom_footer = { "You aren't going to need it." }
+g.dashboard_custom_footer = { "You aren't gonna need it." }
 
 bind("n", "<leader>;", ":Dashboard<CR>", opts)
 
