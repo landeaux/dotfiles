@@ -1,10 +1,21 @@
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+local set_prompt_to_entry_value = function(prompt_bufnr)
+    local entry = action_state.get_selected_entry()
+    if not entry or not type(entry) == "table" then
+        return
+    end
+
+    action_state.get_current_picker(prompt_bufnr):reset_prompt(entry.ordinal)
+end
 
 -- Telescope setup
 require("telescope").setup({
     defaults = {
         vimgrep_arguments = {
             "rg",
+            "--hidden",
             "--color=never",
             "--no-heading",
             "--with-filename",
@@ -18,16 +29,33 @@ require("telescope").setup({
         initial_mode = "insert",
         selection_strategy = "reset",
         sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
+        layout_strategy = "flex",
         layout_config = {
+            width = 0.95,
+            height = 0.85,
             prompt_position = "top",
+
             horizontal = {
-                mirror = false,
+                width = 0.9,
+                preview_cutoff = 60,
+                preview_width = function(_, cols, _)
+                    if cols > 200 then
+                        return math.floor(cols * 0.7)
+                    else
+                        return math.floor(cols * 0.6)
+                    end
+                end,
             },
             vertical = {
-                mirror = false,
+                width = 0.75,
+                height = 0.85,
+                preview_height = 0.4,
+                mirror = true,
             },
-            height = 0.80,
+            flex = {
+                -- change to horizontal after 120 cols
+                flip_columns = 120,
+            },
         },
         file_sorter = require("telescope.sorters").get_fzy_sorter,
         -- file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -70,7 +98,7 @@ require("telescope").setup({
 
                 -- Add up multiple actions
                 ["<CR>"] = actions.select_default + actions.center,
-
+                ["<C-y>"] = set_prompt_to_entry_value,
                 -- You can perform as many actions in a row as you like
                 -- ["<CR>"] = actions.select_default + actions.center + my_cool_custom_action,
             },
@@ -102,6 +130,9 @@ bind_picker("<Leader>fg", "live_grep")
 bind_picker("<Leader>fh", "help_tags")
 bind_picker("<Leader>fo", "oldfiles")
 bind_picker("<Leader>ft", "treesitter")
+bind_picker("<Leader>fw", "grep_string")
+
+vim.api.nvim_set_keymap("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
 
 local keys = {
     f = {
@@ -110,10 +141,12 @@ local keys = {
         a = "Builtins",
         b = "Buffers",
         f = "Find files",
+        F = "Find files in given directories",
         g = "Live grep",
         h = "Help tags",
         o = "Old files",
         t = "Treesitter",
+        w = "Find word under cursor",
     },
 }
 

@@ -50,10 +50,13 @@ require("utils").create_augroup({
 require("utils").create_augroup({
     { "FileType", "markdown", "setlocal wrap" },
     { "FileType", "markdown", "setlocal spell" },
-    { "FileType", "markdown", 'let &colorcolumn=""' },
 }, "_markdown")
 
 require("utils").create_augroup({
     { "BufWritePost", "plugins.lua", "source <afile> | PackerCompile" },
     { "User", "PackerComplete", "++once", "Restart" },
 }, "_packer")
+
+require("utils").create_augroup({
+    { "FileType", "fugitive,gitcommit,help,markdown,packer", 'let &colorcolumn=""' },
+}, "_no_colorcolumn")
