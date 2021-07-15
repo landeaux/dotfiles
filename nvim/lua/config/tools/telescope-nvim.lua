@@ -1,4 +1,14 @@
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+local set_prompt_to_entry_value = function(prompt_bufnr)
+    local entry = action_state.get_selected_entry()
+    if not entry or not type(entry) == "table" then
+        return
+    end
+
+    action_state.get_current_picker(prompt_bufnr):reset_prompt(entry.ordinal)
+end
 
 -- Telescope setup
 require("telescope").setup({
@@ -87,7 +97,7 @@ require("telescope").setup({
 
                 -- Add up multiple actions
                 ["<CR>"] = actions.select_default + actions.center,
-
+                ["<C-y>"] = set_prompt_to_entry_value,
                 -- You can perform as many actions in a row as you like
                 -- ["<CR>"] = actions.select_default + actions.center + my_cool_custom_action,
             },
