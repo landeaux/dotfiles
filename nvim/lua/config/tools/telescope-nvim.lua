@@ -129,6 +129,7 @@ bind_picker("<Leader>fg", "live_grep")
 bind_picker("<Leader>fh", "help_tags")
 bind_picker("<Leader>fo", "oldfiles")
 bind_picker("<Leader>ft", "treesitter")
+bind_picker("<Leader>fw", "grep_string")
 
 vim.api.nvim_set_keymap("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
 
@@ -144,6 +145,7 @@ local keys = {
         h = "Help tags",
         o = "Old files",
         t = "Treesitter",
+        w = "Find word under cursor",
     },
 }
 
