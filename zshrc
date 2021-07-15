@@ -108,6 +108,9 @@ alias rm="rm -i"
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias prettifyjson="python -m json.tool"
+if command -v tmux_workspace 1>/dev/null 2>&1; then
+  alias tmw="tmux_workspace"
+fi
 
 # Marker command palette (https://github.com/pindexis/marker)
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
