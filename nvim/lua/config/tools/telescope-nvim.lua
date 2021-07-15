@@ -18,16 +18,33 @@ require("telescope").setup({
         initial_mode = "insert",
         selection_strategy = "reset",
         sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
+        layout_strategy = "flex",
         layout_config = {
+            width = 0.95,
+            height = 0.85,
             prompt_position = "top",
+
             horizontal = {
-                mirror = false,
+                width = 0.9,
+                preview_cutoff = 60,
+                preview_width = function(_, cols, _)
+                    if cols > 200 then
+                        return math.floor(cols * 0.7)
+                    else
+                        return math.floor(cols * 0.6)
+                    end
+                end,
             },
             vertical = {
-                mirror = false,
+                width = 0.75,
+                height = 0.85,
+                preview_height = 0.4,
+                mirror = true,
             },
-            height = 0.80,
+            flex = {
+                -- change to horizontal after 120 cols
+                flip_columns = 120,
+            },
         },
         file_sorter = require("telescope.sorters").get_fzy_sorter,
         -- file_sorter = require("telescope.sorters").get_fuzzy_file,
