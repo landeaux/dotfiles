@@ -103,6 +103,8 @@ bind_picker("<Leader>fh", "help_tags")
 bind_picker("<Leader>fo", "oldfiles")
 bind_picker("<Leader>ft", "treesitter")
 
+vim.api.nvim_set_keymap("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
+
 local keys = {
     f = {
         name = "+telescope",
@@ -110,6 +112,7 @@ local keys = {
         a = "Builtins",
         b = "Buffers",
         f = "Find files",
+        F = "Find files in given directories",
         g = "Live grep",
         h = "Help tags",
         o = "Old files",
