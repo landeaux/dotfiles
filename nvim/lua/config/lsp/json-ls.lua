@@ -1,3 +1,6 @@
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 require("lspconfig").jsonls.setup({
     cmd = {
         "node",
@@ -6,6 +9,7 @@ require("lspconfig").jsonls.setup({
         "--stdio",
     },
     on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
+    capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
     },
