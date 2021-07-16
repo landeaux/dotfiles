@@ -58,5 +58,5 @@ require("utils").create_augroup({
 }, "_packer")
 
 require("utils").create_augroup({
-    { "FileType", "fugitive,gitcommit,help,markdown,packer", 'let &colorcolumn=""' },
+    { "FileType", "fugitive,gitcommit,help,markdown,packer,qf", 'let &colorcolumn=""' },
 }, "_no_colorcolumn")
