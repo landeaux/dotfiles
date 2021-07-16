@@ -3,4 +3,5 @@ rename-window "main"
 send-keys "nvim +PackerSync" C-m
 
 split-pane -h -c $DOTFILES
+resize-pane -x 38%
 send-keys "git fetch" C-m
