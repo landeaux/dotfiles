@@ -2,9 +2,13 @@
 local sumneko_root_path = vim.fn.stdpath("data") .. "/lspinstall/lua"
 local sumneko_binary = sumneko_root_path .. "/sumneko-lua-language-server"
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 require("lspconfig").sumneko_lua.setup({
     cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
     on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
+    capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
     },
