@@ -8,4 +8,13 @@ require("lspconfig").pyright.setup({
     flags = {
         debounce_text_changes = 1500,
     },
+    settings = {
+        python = {
+            analysis = {
+                diagnosticMode = "workspace",
+                typeCheckingMode = "off",
+            },
+            venvPath = vim.env.PYENV_ROOT,
+        },
+    },
 })
