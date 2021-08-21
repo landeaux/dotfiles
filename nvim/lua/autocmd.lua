@@ -4,11 +4,6 @@ require("utils").create_augroup(
     "_highlight_on_yank"
 )
 
-require("utils").create_augroup(
-    { { "FileType", "dashboard", "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2" } },
-    "_dashboard"
-)
-
 require("utils").create_augroup({
     { "BufRead,BufNewFile", "*.graphql,*.graphqls,*.gql", "set filetype=graphql" },
     { "BufRead,BufNewFile", ".env.*", "set filetype=sh" },
@@ -24,39 +19,6 @@ require("utils").create_augroup({
 }, "_filetype_detect")
 
 require("utils").create_augroup({
-    { "FileType", "json", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
-    { "FileType", "javascript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
-    { "FileType", "javascriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
-    { "FileType", "lua", "setlocal", "shiftwidth=4 softtabstop=4 tabstop=4" },
-    {
-        "FileType",
-        "python",
-        "setlocal",
-        "shiftwidth=4 softtabstop=4 tabstop=4 indentkeys-=<:> indentkeys-=:",
-    },
-    { "FileType", "typescript", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
-    { "FileType", "typescriptreact", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
-    { "FileType", "vue", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
-    { "FileType", "yaml", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
-    { "FileType", "bash", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
-    { "FileType", "zsh", "setlocal", "shiftwidth=2 softtabstop=2 tabstop=2" },
-}, "_filetype_indent")
-
-require("utils").create_augroup({
-    { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>" },
-    { "FileType", "lspinfo", "nnoremap <silent> <buffer> q :q<CR>" },
-}, "_buffer_bindings")
-
-require("utils").create_augroup({
-    { "FileType", "markdown", "setlocal wrap" },
-    { "FileType", "markdown", "setlocal spell" },
-}, "_markdown")
-
-require("utils").create_augroup({
     { "BufWritePost", "plugins.lua", "source <afile> | PackerCompile" },
     { "User", "PackerComplete", "++once", "Restart" },
 }, "_packer")
-
-require("utils").create_augroup({
-    { "FileType", "fugitive,gitcommit,help,markdown,packer,qf", 'let &colorcolumn=""' },
-}, "_no_colorcolumn")
