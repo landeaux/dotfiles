@@ -51,6 +51,12 @@ bind("n", "<Leader>bmp", ":BufferLineMovePrev<CR>", opts)
 -- These commands will sort buffers by directory, language, or a custom criteria
 bind("n", "<Leader>boe", ":BufferLineSortByExtension<CR>", opts)
 bind("n", "<Leader>bod", ":BufferLineSortByDirectory<CR>", opts)
+bind(
+    "n",
+    "<Leader>boi",
+    ":lua require'bufferline'.sort_buffers_by(function (buf_a, buf_b) return buf_a.id < buf_b.id end)<CR>",
+    opts
+)
 
 -- Goto buffer
 bind("n", "<Leader>b1", ":BufferLineGoToBuffer 1<CR>", opts)
