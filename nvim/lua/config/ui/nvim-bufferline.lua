@@ -2,8 +2,6 @@ require("bufferline").setup({
     options = {
         view = "multiwindow",
         numbers = "ordinal",
-        number_style = "superscript", -- buffer_id at index 1, ordinal at index 2
-        mappings = false,
         buffer_close_icon = "",
         modified_icon = "●",
         close_icon = "",
@@ -24,18 +22,16 @@ require("bufferline").setup({
                 return true
             end
         end,
-        show_buffer_close_icons = true,
-        show_close_icon = true,
+        show_buffer_close_icons = false,
+        show_close_icon = false,
         show_tab_indicators = true,
         -- whether or not custom sorted buffers should persist
         persist_buffer_sort = true,
-        -- can also be a table containing 2 custom separators
-        -- [focused and unfocused]. eg: { '|', '|' }
         -- separator_style = "slant" | "thick" | "thin" | { 'any', 'any' },
-        separator_style = "slant",
+        separator_style = "thick",
         enforce_regular_tabs = true,
         always_show_bufferline = true,
-        sort_by = "directory",
+        sort_by = "id",
     },
 })
 
@@ -57,15 +53,15 @@ bind("n", "<Leader>boe", ":BufferLineSortByExtension<CR>", opts)
 bind("n", "<Leader>bod", ":BufferLineSortByDirectory<CR>", opts)
 
 -- Goto buffer
-bind("n", "<Leader>b1", ':lua require("bufferline").go_to_buffer(1)<CR>', opts)
-bind("n", "<Leader>b2", ':lua require("bufferline").go_to_buffer(2)<CR>', opts)
-bind("n", "<Leader>b3", ':lua require("bufferline").go_to_buffer(3)<CR>', opts)
-bind("n", "<Leader>b4", ':lua require("bufferline").go_to_buffer(4)<CR>', opts)
-bind("n", "<Leader>b5", ':lua require("bufferline").go_to_buffer(5)<CR>', opts)
-bind("n", "<Leader>b6", ':lua require("bufferline").go_to_buffer(6)<CR>', opts)
-bind("n", "<Leader>b7", ':lua require("bufferline").go_to_buffer(7)<CR>', opts)
-bind("n", "<Leader>b8", ':lua require("bufferline").go_to_buffer(8)<CR>', opts)
-bind("n", "<Leader>b9", ':lua require("bufferline").go_to_buffer(9)<CR>', opts)
+bind("n", "<Leader>b1", ":BufferLineGoToBuffer 1<CR>", opts)
+bind("n", "<Leader>b2", ":BufferLineGoToBuffer 2<CR>", opts)
+bind("n", "<Leader>b3", ":BufferLineGoToBuffer 3<CR>", opts)
+bind("n", "<Leader>b4", ":BufferLineGoToBuffer 4<CR>", opts)
+bind("n", "<Leader>b5", ":BufferLineGoToBuffer 5<CR>", opts)
+bind("n", "<Leader>b6", ":BufferLineGoToBuffer 6<CR>", opts)
+bind("n", "<Leader>b7", ":BufferLineGoToBuffer 7<CR>", opts)
+bind("n", "<Leader>b8", ":BufferLineGoToBuffer 8<CR>", opts)
+bind("n", "<Leader>b9", ":BufferLineGoToBuffer 9<CR>", opts)
 
 -- Pick buffer
 bind("n", "<Leader>bc", ":BufferLinePick<CR>", opts)
