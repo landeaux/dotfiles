@@ -94,7 +94,7 @@ local keys = {
         d = "Close",
         k = "Kill",
         m = { name = "+move", n = "Next", p = "Previous" },
-        o = { name = "+sort", d = "By Directory", e = "By Extension" },
+        o = { name = "+sort", d = "By Directory", e = "By Extension", i = "By ID" },
     },
 }
 
