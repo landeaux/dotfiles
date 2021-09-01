@@ -112,6 +112,10 @@ local keys = {
     a = "Yank file to clipboard",
     q = "Quit all",
     Q = "Quit all without save",
+    r = "Replace word under cursor",
+    R = "Replace WORD under cursor",
+    t = { name = "+ui-toggle", h = "Highlighting", w = "Whitespace", s = "Spelling" },
+    v = { name = "+vim", c = "Edit config", r = "Reload", R = "Restart", v = "Version" },
     w = {
         name = "+windows",
         ["1"] = "Window 1",
@@ -148,8 +152,6 @@ local keys = {
         s = "Split horizontally",
         v = "Split vertically",
     },
-    t = { name = "+ui-toggle", h = "Highlighting", w = "Whitespace", s = "Spelling" },
-    v = { name = "+vim", c = "Edit config", r = "Reload", R = "Restart", v = "Version" },
     y = "Yank to clipboard",
 }
 require("whichkey_setup").register_keymap("leader", keys)
