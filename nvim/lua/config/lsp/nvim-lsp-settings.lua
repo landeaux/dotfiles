@@ -185,7 +185,6 @@ function lsp_config.tsserver_on_attach(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>lo", ":TSLspOrganize<CR>", { silent = true })
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>lR", ":TSLspRenameFile<CR>", { silent = true })
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>li", ":TSLspImportAll<CR>", { silent = true })
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>lx", ":TSLspFixCurrent<CR>", {silent = true})
 
     local keymap_leader = {
         l = {
