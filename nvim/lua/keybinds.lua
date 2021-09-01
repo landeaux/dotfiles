@@ -20,8 +20,9 @@ bind("v", "<S-Tab>", "<", {})
 bind("n", "<A-l>", ":nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>", opts)
 
 -- Easier escape from insert mode
-bind("i", "jk", "<ESC>", opts)
+bind("i", "kk", "<ESC>", opts)
 bind("i", "kj", "<ESC>", opts)
+bind("i", "jk", "<ESC>", opts)
 bind("i", "jj", "<ESC>", opts)
 
 -- Move selected line / block of text in visual mode
