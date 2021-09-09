@@ -1,40 +1,38 @@
-local g = vim.g
-
-g.indent_blankline_enabled = true
-
-g.indent_blankline_char = "▏" -- │
-g.indent_blankline_char_highlight = "LineNr"
-g.indent_blankline_space_char = " "
-
-g.indent_blankline_indent_level = 10
-g.indent_blankline_show_first_indent_level = true
-g.indent_blankline_show_trailing_blankline_indent = false
-
-g.indent_blankline_use_treesitter = true
-g.indent_blankline_show_current_context = true
-g.indent_blankline_context_patterns = {
-    "class",
-    "function",
-    "method",
-    "^if",
-    "^while",
-    "^for",
-    "^object",
-    "^table",
-    "block",
-    "arguments",
-}
-
-g.indent_blankline_filetype_exclude = {
-    "help",
-    "dashboard",
-    "NvimTree",
-    "undotree",
-    "packer",
-    "git",
-    "gitcommit",
-}
-g.indent_blankline_buftype_exclude = { "terminal", "nofile", "help" }
+require("indent_blankline").setup({
+    buftype_exclude = { "terminal", "nofile", "help" },
+    filetype_exclude = {
+        "help",
+        "dashboard",
+        "NvimTree",
+        "undotree",
+        "packer",
+        "git",
+        "gitcommit",
+    },
+    char = "▏",
+    -- char = "|",
+    -- char = "│",
+    char_highlight = "LineNr",
+    indent_level = 10,
+    show_first_indent_level = true,
+    show_trailing_blankline_indent = false,
+    show_current_context = true,
+    show_end_of_line = false,
+    space_char_blankline = " ",
+    use_treesitter = true,
+    context_patterns = {
+        "class",
+        "function",
+        "method",
+        "^if",
+        "^while",
+        "^for",
+        "^object",
+        "^table",
+        "block",
+        "arguments",
+    },
+})
 
 vim.api.nvim_set_keymap(
     "n",
