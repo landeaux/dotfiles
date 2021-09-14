@@ -4,10 +4,10 @@ require("lspconfig").pyright.setup({
         vim.fn.stdpath("data") .. "/lspinstall/python/node_modules/.bin/pyright-langserver",
         "--stdio",
     },
-    on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
     flags = {
         debounce_text_changes = 1500,
     },
+    capabilities = require("config.lsp.nvim-lsp-settings").capabilities,
     settings = {
         python = {
             analysis = {
@@ -17,4 +17,5 @@ require("lspconfig").pyright.setup({
             venvPath = vim.env.PYENV_ROOT,
         },
     },
+    on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
 })

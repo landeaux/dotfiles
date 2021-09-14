@@ -87,16 +87,15 @@ end
 local efm_config = os.getenv("HOME") .. "/.config/efm-langserver/config.yaml"
 
 require("lspconfig").efm.setup({
-    on_attach = on_attach,
-    flags = {
-        debounce_text_changes = 150,
-    },
     cmd = {
         vim.fn.stdpath("data") .. "/lspinstall/efm/efm-langserver",
         "-c",
         efm_config,
     },
     init_options = { documentFormatting = true, codeAction = false },
+    flags = {
+        debounce_text_changes = 150,
+    },
     filetypes = {
         "css",
         "html",
@@ -126,4 +125,5 @@ require("lspconfig").efm.setup({
             yaml = { prettier },
         },
     },
+    on_attach = on_attach,
 })

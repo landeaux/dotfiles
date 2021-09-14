@@ -26,7 +26,7 @@ vim.lsp.protocol.CompletionItemKind = {
     "   (TypeParameter)",
 }
 
-local function documentHighlight(client, bufnr)
+local function documentHighlight(client, _)
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
         -- hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
@@ -46,6 +46,16 @@ local function documentHighlight(client, bufnr)
 end
 
 local lsp_config = {}
+
+lsp_config.capabilities = vim.lsp.protocol.make_client_capabilities()
+lsp_config.capabilities.textDocument.completion.completionItem.snippetSupport = true
+lsp_config.capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+        "documentation",
+        "detail",
+        "additionalTextEdits",
+    },
+}
 
 function lsp_config.common_on_attach(client, bufnr)
     local function buf_set_keymap(...)
@@ -163,50 +173,4 @@ function lsp_config.common_on_attach(client, bufnr)
     -- require('lsp_signature').on_attach()
 end
 
-function lsp_config.tsserver_on_attach(client, bufnr)
-    lsp_config.common_on_attach(client, bufnr)
-
-    client.resolved_capabilities.document_formatting = false
-
-    local ts_utils = require("nvim-lsp-ts-utils")
-
-    ts_utils.setup({
-        enable_import_on_completion = true,
-        import_all_timeout = 5000, -- ms
-
-        -- update imports on file move
-        update_imports_on_move = true,
-        require_confirmation_on_move = true,
-    })
-
-    -- required to fix code action ranges
-    ts_utils.setup_client(client)
-
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>lo", ":TSLspOrganize<CR>", { silent = true })
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>lR", ":TSLspRenameFile<CR>", { silent = true })
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>li", ":TSLspImportAll<CR>", { silent = true })
-
-    local keymap_leader = {
-        l = {
-            name = "+lsp",
-            o = "Organize imports",
-            -- x = "Fix current problem",
-            R = "Rename file and update imports",
-            i = "Import all missing imports",
-        },
-    }
-
-    local wk = require("whichkey_setup")
-    wk.register_keymap("leader", keymap_leader)
-end
-
-function lsp_config.vuels_on_attach(client, bufnr)
-    lsp_config.common_on_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-end
-
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
--- local servers = {"pyright", "tsserver"}
--- for _, lsp in ipairs(servers) do nvim_lsp[lsp].setup {on_attach = on_attach} end
 return lsp_config

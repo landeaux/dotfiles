@@ -1,6 +1,3 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 require("lspconfig").html.setup({
     cmd = {
         "node",
@@ -8,9 +5,9 @@ require("lspconfig").html.setup({
             .. "/lspinstall/html/vscode-html/html-language-features/server/dist/node/htmlServerMain.js",
         "--stdio",
     },
-    on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
     flags = {
         debounce_text_changes = 150,
     },
-    capabilities = capabilities,
+    capabilities = require("config.lsp.nvim-lsp-settings").capabilities,
+    on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
 })

@@ -3,9 +3,10 @@ require("lspconfig").bashls.setup({
         vim.fn.stdpath("data") .. "/lspinstall/bash/node_modules/.bin/bash-language-server",
         "start",
     },
-    on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
+    filetypes = { "sh", "zsh" },
     flags = {
         debounce_text_changes = 150,
     },
-    filetypes = { "sh", "zsh" },
+    capabilities = require("config.lsp.nvim-lsp-settings").capabilities,
+    on_attach = require("config.lsp.nvim-lsp-settings").common_on_attach,
 })
