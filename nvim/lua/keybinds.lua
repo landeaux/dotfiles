@@ -40,11 +40,14 @@ bind("c", "<C-e>", "<end>", {})
 -- Toggle highlighting
 bind("n", "<leader>th", ":set hlsearch!<CR>", opts)
 
--- Toggle whitespace chars
-bind("n", "<leader>tw", ":set list!<CR>", opts)
+-- Toggle relativenumber
+bind("n", "<leader>tr", ":set invrelativenumber<CR>", opts)
 
 -- Toggle spelling
 bind("n", "<leader>ts", ":set spell!<CR>", opts)
+
+-- Toggle whitespace chars
+bind("n", "<leader>tw", ":set list!<CR>", opts)
 
 -- Clipboard
 bind("", "<Leader>y", '"+y', opts) -- copy any selected text to clipboard
@@ -114,7 +117,13 @@ local keys = {
     Q = "Quit all without save",
     r = "Replace word under cursor",
     R = "Replace WORD under cursor",
-    t = { name = "+ui-toggle", h = "Highlighting", w = "Whitespace", s = "Spelling" },
+    t = {
+        name = "+ui-toggle",
+        h = "Highlighting",
+        r = "Relative Number",
+        s = "Spelling",
+        w = "Whitespace",
+    },
     v = { name = "+vim", c = "Edit config", r = "Reload", R = "Restart", v = "Version" },
     w = {
         name = "+windows",
