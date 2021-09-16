@@ -1,5 +1,6 @@
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local wk = require("whichkey_setup")
 
 local set_prompt_to_entry_value = function(prompt_bufnr)
     local entry = action_state.get_selected_entry()
@@ -133,6 +134,7 @@ bind_picker("<Leader>ft", "treesitter")
 bind_picker("<Leader>fw", "grep_string")
 
 vim.api.nvim_set_keymap("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
+vim.api.nvim_set_keymap("v", "<Leader>f", '"zy:Telescope live_grep default_text=<C-r>z<CR>', {})
 
 local keys = {
     f = {
@@ -166,4 +168,7 @@ keys.f.d = {
     f = "Frames",
 }
 
-require("whichkey_setup").register_keymap("leader", keys)
+wk.register_keymap("leader", keys)
+wk.register_keymap("visual", {
+    f = "Live grep visual selection",
+})
