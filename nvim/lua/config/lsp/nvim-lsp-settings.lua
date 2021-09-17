@@ -80,6 +80,7 @@ function lsp_config.common_on_attach(client, bufnr)
     buf_set_keymap("n", "<Leader>lp", ":Lspsaga preview_definition<CR>", opts)
     buf_set_keymap("n", "<Leader>lr", ":Lspsaga rename<CR>", opts)
     buf_set_keymap("n", "<Leader>lc", ":Lspsaga code_action<CR>", opts)
+    buf_set_keymap("n", "<Leader>li", ":Lspsaga lsp_finder<CR>", opts)
 
     buf_set_keymap("n", "<Leader>ldk", ":Lspsaga show_cursor_diagnostics<CR>", opts)
     buf_set_keymap("n", "<Leader>lds", ":Lspsaga show_line_diagnostics<CR>", opts)
@@ -142,6 +143,7 @@ function lsp_config.common_on_attach(client, bufnr)
                 w = "Workspace Diagnostics",
             },
             c = "Code Actions",
+            i = "Find cursor definition and references",
             w = {
                 name = "+workspace",
                 a = "Add workspace folder",
