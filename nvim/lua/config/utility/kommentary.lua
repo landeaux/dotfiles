@@ -23,6 +23,10 @@ config.configure_language(
     "lua",
     { single_line_comment_string = "--", prefer_single_line_comments = true }
 )
+config.configure_language("php", {
+    single_line_comment_string = "//",
+    prefer_single_line_comments = true,
+})
 
 bind("n", "<leader>/", "<Plug>kommentary_line_default", {})
 bind("n", "<leader>cct", "<Plug>kommentary_line_default", {})
