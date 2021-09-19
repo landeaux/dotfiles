@@ -133,7 +133,14 @@ bind_picker("<Leader>fo", "oldfiles")
 bind_picker("<Leader>ft", "treesitter")
 bind_picker("<Leader>fw", "grep_string")
 
-vim.api.nvim_set_keymap("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
+-- vim.api.nvim_set_keymap("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
+vim.api.nvim_set_keymap("n", "<Leader>fF", ":Telescope find_files no_ignore=true<CR>", {})
+vim.api.nvim_set_keymap(
+    "n",
+    "<Leader>fG",
+    ':Telescope live_grep vimgrep_arguments={"rg","--color=never","--no-heading","--with-filename","--line-number","--column","--smart-case","-u"}<CR>',
+    {}
+)
 vim.api.nvim_set_keymap("v", "<Leader>f", '"zy:Telescope live_grep default_text=<C-r>z<CR>', {})
 
 local keys = {
