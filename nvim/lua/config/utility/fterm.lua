@@ -1,4 +1,10 @@
-require("FTerm").setup()
+require("FTerm").setup({
+    border = "rounded",
+    dimensions = {
+        height = 0.9,
+        width = 0.9,
+    },
+})
 
 local bind = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
