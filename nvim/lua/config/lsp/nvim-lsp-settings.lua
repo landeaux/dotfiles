@@ -1,31 +1,3 @@
-vim.lsp.protocol.CompletionItemKind = {
-    "   (Text) ",
-    "   (Method)",
-    "   (Function)",
-    "   (Constructor)",
-    " ﴲ  (Field)",
-    "[] (Variable)",
-    "   (Class)",
-    " ﰮ  (Interface)",
-    "   (Module)",
-    " 襁 (Property)",
-    "   (Unit)",
-    "   (Value)",
-    " 練 (Enum)",
-    "   (Keyword)",
-    " ﬌  (Snippet)",
-    "   (Color)",
-    "   (File)",
-    "   (Reference)",
-    "   (Folder)",
-    "   (EnumMember)",
-    " ﲀ  (Constant)",
-    " ﳤ  (Struct)",
-    "   (Event)",
-    "   (Operator)",
-    "   (TypeParameter)",
-}
-
 local function documentHighlight(client, _)
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
@@ -47,15 +19,9 @@ end
 
 local lsp_config = {}
 
-lsp_config.capabilities = vim.lsp.protocol.make_client_capabilities()
-lsp_config.capabilities.textDocument.completion.completionItem.snippetSupport = true
-lsp_config.capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-        "documentation",
-        "detail",
-        "additionalTextEdits",
-    },
-}
+lsp_config.capabilities = require("cmp_nvim_lsp").update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+)
 
 function lsp_config.common_on_attach(client, bufnr)
     local function buf_set_keymap(...)

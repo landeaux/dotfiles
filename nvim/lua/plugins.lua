@@ -83,11 +83,6 @@ return require("packer").startup(function(use)
     -- Editorconfig
     use("editorconfig/editorconfig-vim")
 
-    -- Snippets
-    use("hrsh7th/vim-vsnip")
-    use("hrsh7th/vim-vsnip-integ")
-    use("rafamadriz/friendly-snippets")
-
     -- LSP
     use("neovim/nvim-lspconfig")
     use("kabouzeid/nvim-lspinstall")
@@ -109,7 +104,17 @@ return require("packer").startup(function(use)
     use("brooth/far.vim")
 
     -- Completion
-    use("hrsh7th/nvim-compe")
+    -- use("hrsh7th/nvim-compe")
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-calc")
+    use("hrsh7th/cmp-path")
+    use("f3fora/cmp-spell")
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-vsnip")
+    use("hrsh7th/vim-vsnip")
+    use("hrsh7th/vim-vsnip-integ")
+    use("rafamadriz/friendly-snippets")
 
     -- Tresitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

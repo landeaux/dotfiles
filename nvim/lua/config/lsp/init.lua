@@ -22,6 +22,7 @@ require("config.lsp.efm-ls")
 require("config.lsp.diagnostics")
 
 -- LSP plugin config
-require("config.lsp.nvim-compe")
+-- require("config.lsp.nvim-compe")
+require("config.lsp.nvim-cmp")
 -- require('config.lsp.lspkind')
 require("config.lsp.nvim-lightbulb")
