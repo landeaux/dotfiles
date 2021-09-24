@@ -76,7 +76,7 @@ function lsp_config.common_on_attach(client, bufnr)
     -- scroll up hover doc
     buf_set_keymap(
         "n",
-        "<C-b>",
+        "<C-d>",
         ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>",
         opts
     )
