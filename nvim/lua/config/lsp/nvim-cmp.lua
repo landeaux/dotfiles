@@ -3,7 +3,7 @@ local cmp = require("cmp")
 
 cmp.setup({
     documentation = {
-        border = { "", "", "", " ", "", "", "", " " }, -- the border option is the same as `|help nvim_open_win|`
+        border = "rounded",
         winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
         maxwidth = 120,
         maxheight = math.floor(vim.o.lines * 0.3),
@@ -14,15 +14,18 @@ cmp.setup({
         end,
     },
     mapping = {
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-5),
+        ["<C-f>"] = cmp.mapping.scroll_docs(5),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
+        ["<C-c>"] = cmp.mapping.close(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
         ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
         ["<C-n"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
         ["<C-p>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
     },
     sources = {
         { name = "buffer" },
@@ -72,7 +75,7 @@ cmp.setup({
             return vim_item
         end,
     },
-    experimental = {
-        ghost_text = true,
-    },
+    -- experimental = {
+    --     ghost_text = true,
+    -- },
 })
