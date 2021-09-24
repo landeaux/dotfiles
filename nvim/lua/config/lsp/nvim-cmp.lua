@@ -1,4 +1,3 @@
--- Setup nvim-cmp.
 local cmp = require("cmp")
 
 cmp.setup({
@@ -33,6 +32,7 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "spell" },
+        { name = "tmux" },
         { name = "vsnip" },
     },
     formatting = {
@@ -43,6 +43,7 @@ cmp.setup({
                 nvim_lsp = "  [lsp]",
                 path = "  [path]",
                 spell = "  [spell]",
+                tmux = " ◫ [tmux]",
                 vsnip = "  [vsnip]",
             })[entry.source.name]
             vim_item.kind = ({

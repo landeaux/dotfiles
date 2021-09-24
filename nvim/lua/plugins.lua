@@ -105,12 +105,17 @@ return require("packer").startup(function(use)
 
     -- Completion
     -- use("hrsh7th/nvim-compe")
-    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/nvim-cmp")
+
+    ---- Completion Sources
+    use("f3fora/cmp-spell")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-calc")
+    use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-path")
-    use("f3fora/cmp-spell")
-    use("hrsh7th/nvim-cmp")
+    use({ "andersevenrud/compe-tmux", branch = "cmp" })
+
+    ---- Snippets
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/vim-vsnip")
     use("hrsh7th/vim-vsnip-integ")
