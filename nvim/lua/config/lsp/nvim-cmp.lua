@@ -18,7 +18,7 @@ cmp.setup({
         ["<C-f>"] = cmp.mapping.scroll_docs(5),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
-        ["<C-c>"] = cmp.mapping.close(),
+        ["<C-c>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
         ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
