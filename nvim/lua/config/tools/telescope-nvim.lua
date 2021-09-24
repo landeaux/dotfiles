@@ -89,6 +89,8 @@ require("telescope").setup({
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                ["<C-f>"] = actions.preview_scrolling_down,
+                ["<C-d>"] = actions.preview_scrolling_up,
 
                 -- To disable a keymap, put [map] = false
                 -- So, to not map "<C-n>", just put
@@ -108,6 +110,8 @@ require("telescope").setup({
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                ["<C-f>"] = actions.preview_scrolling_down,
+                ["<C-d>"] = actions.preview_scrolling_up,
                 ["q"] = actions.close,
             },
         },
