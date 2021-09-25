@@ -104,7 +104,6 @@ return require("packer").startup(function(use)
     use("brooth/far.vim")
 
     -- Completion
-    -- use("hrsh7th/nvim-compe")
     use("hrsh7th/nvim-cmp")
 
     ---- Completion Sources
