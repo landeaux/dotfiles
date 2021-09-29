@@ -27,26 +27,25 @@ cmp.setup({
         ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
     },
     sources = {
-        { name = "buffer" },
+        -- NOTE: The order of these are important as it determines priority.
         { name = "calc" },
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
         { name = "path" },
         { name = "spell" },
-        { name = "tmux" },
+        { name = "nvim_lua" },
+        { name = "nvim_lsp" },
         { name = "vsnip" },
+        { name = "buffer" },
     },
     formatting = {
         format = function(entry, vim_item)
             vim_item.menu = ({
-                buffer = "  [buffer]",
                 calc = "  [calc]",
-                nvim_lsp = "  [lsp]",
-                nvim_lua = "  [lua]",
                 path = "  [path]",
                 spell = "  [spell]",
-                tmux = " ◫ [tmux]",
+                nvim_lua = "  [lua]",
+                nvim_lsp = "  [lsp]",
                 vsnip = "  [vsnip]",
+                buffer = "  [buffer]",
             })[entry.source.name]
             vim_item.kind = ({
                 Class = "  (Class)",
