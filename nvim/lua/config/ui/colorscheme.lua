@@ -45,10 +45,16 @@ M.colors = {
     warning = colors.warning,
     hint = colors.hint,
     info = colors.info,
-    breakpoint_icon_color = util.darken(colors.red, 0.8),
-    breakpoint_line_color = util.darken(colors.red, 0.3),
-    stopped_icon_color = util.darken(colors.blue, 0.8),
-    stopped_line_color = util.darken(colors.blue, 0.3),
+    debugging = {
+        breakpoint_icon = util.darken(colors.red, 0.8),
+        breakpoint_line = util.darken(colors.red, 0.3),
+        conditional_breakpoint_icon = util.darken(colors.orange, 0.8),
+        conditional_breakpoint_line = util.darken(colors.orange, 0.3),
+        log_point_icon = util.darken(colors.yellow, 0.8),
+        log_point_line = util.darken(colors.yellow, 0.3),
+        stopped_icon = util.darken(colors.blue, 0.8),
+        stopped_line = util.darken(colors.blue, 0.3),
+    },
 }
 
 return M
