@@ -1,4 +1,19 @@
 local cmp = require("cmp")
+local utils = require("utils")
+
+local has_words_before = function()
+    if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+        return false
+    end
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
+        :sub(col, col)
+        :match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+    vim.api.nvim_feedkeys(utils.t(key), mode, true)
+end
 
 cmp.setup({
     documentation = {
@@ -19,8 +34,31 @@ cmp.setup({
         ["<C-e>"] = cmp.mapping.close(),
         ["<C-c>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
-        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
-        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if vim.fn.pumvisible() == 1 then
+                feedkey("<C-n>", "n")
+            elseif vim.fn["vsnip#available"]() == 1 then
+                feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+            end
+        end, {
+            "i",
+            "s",
+        }),
+
+        ["<S-Tab>"] = cmp.mapping(function()
+            if vim.fn.pumvisible() == 1 then
+                feedkey("<C-p>", "n")
+            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+                feedkey("<Plug>(vsnip-jump-prev)", "")
+            end
+        end, {
+            "i",
+            "s",
+        }),
         ["<C-n"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
         ["<C-p>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
         ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
