@@ -1,53 +1,48 @@
 local dap = require("dap")
 
--- javascript: node
-dap.adapters.node2 = {
-    type = "executable",
-    command = "node",
-    args = { vim.fn.stdpath("data") .. "/debuggers/vscode-node-debug2/out/src/nodeDebug.js" },
-}
-dap.configurations.javascript = {
-    {
-        type = "node2",
-        request = "launch",
-        program = "${workspaceFolder}/${file}",
-        cwd = vim.fn.getcwd(),
-        sourceMaps = true,
-        protocol = "inspector",
-        console = "integratedTerminal",
-    },
+local node2 = {
+    type = "node2",
+    request = "launch",
+    name = "Launch node2 debugger",
+    program = "${workspaceFolder}/${file}",
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = "inspector",
+    console = "integratedTerminal",
 }
 
--- javascript: chrome
-dap.adapters.chrome = {
-    type = "executable",
-    command = "node",
-    args = { vim.fn.stdpath("data") .. "/debuggers/vscode-chrome-debug/out/src/chromeDebug.js" },
+local chrome = {
+    type = "chrome",
+    request = "attach",
+    name = "Attach to Chrome debugger",
+    program = "${file}",
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = "inspector",
+    port = 9222,
+    webRoot = "${workspaceFolder}",
 }
-dap.configurations.javascriptreact = { -- change this to javascript if needed
-    {
-        type = "chrome",
-        request = "attach",
-        program = "${file}",
-        cwd = vim.fn.getcwd(),
-        sourceMaps = true,
-        protocol = "inspector",
-        port = 9222,
-        webRoot = "${workspaceFolder}",
-    },
+
+dap.configurations.javascript = {
+    node2,
+    chrome,
 }
-dap.configurations.typescriptreact = { -- change to typescript if needed
-    {
-        type = "chrome",
-        request = "attach",
-        program = "${file}",
-        cwd = vim.fn.getcwd(),
-        sourceMaps = true,
-        protocol = "inspector",
-        port = 9222,
-        webRoot = "${workspaceFolder}",
-    },
+
+dap.configurations.typescript = {
+    node2,
+    chrome,
 }
+
+dap.configurations.javascriptreact = {
+    node2,
+    chrome,
+}
+
+dap.configurations.typescriptreact = {
+    node2,
+    chrome,
+}
+
 dap.configurations.vue = {
     {
         type = "chrome",
@@ -70,7 +65,6 @@ dap.configurations.vue = {
     },
 }
 
--- python
 dap.configurations.python = {
     {
         type = "python",
