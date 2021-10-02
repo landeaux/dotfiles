@@ -111,6 +111,7 @@ alias prettifyjson="python -m json.tool"
 if command -v tmux_workspace 1>/dev/null 2>&1; then
   alias tmw="tmux_workspace"
 fi
+alias google-debug="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222"
 
 # Marker command palette (https://github.com/pindexis/marker)
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
