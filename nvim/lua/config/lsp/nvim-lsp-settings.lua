@@ -81,8 +81,6 @@ function lsp_config.common_on_attach(client, bufnr)
         opts
     )
 
-    vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
-
     local function buf_bind_picker(...)
         require("config.tools.telescope-nvim-utils").buf_bind_picker(bufnr, ...)
     end
