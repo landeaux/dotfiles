@@ -1,6 +1,6 @@
 local luasnip = require("luasnip")
 local cmp = require("cmp")
--- local utils = require("utils")
+local utils = require("utils")
 
 local has_words_before = function()
     if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
@@ -13,7 +13,7 @@ local has_words_before = function()
 end
 
 local feedkey = function(key)
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "n", true)
+    vim.api.nvim_feedkeys(utils.t(key), "n", true)
 end
 
 cmp.setup({
