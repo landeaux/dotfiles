@@ -23,5 +23,5 @@ require("config.lsp.diagnostics")
 
 -- LSP plugin config
 require("config.lsp.nvim-cmp")
--- require('config.lsp.lspkind')
+require("config.lsp.luasnip")
 require("config.lsp.nvim-lightbulb")

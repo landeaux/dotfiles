@@ -91,7 +91,8 @@ set_opt("o", "smartcase", true)
 set_opt("o", "inccommand", "nosplit")
 
 -- Completion
-set_opt("o", "completeopt", "menu,menuone,preview,noselect")
+-- set_opt("o", "completeopt", "menu,menuone,preview,noselect")
+set_opt("o", "completeopt", "menuone,noselect")
 append_opt("o", "shortmess", "c")
 
 -- Split options

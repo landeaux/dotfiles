@@ -86,7 +86,6 @@ return require("packer").startup(function(use)
     -- LSP
     use("neovim/nvim-lspconfig")
     use("kabouzeid/nvim-lspinstall")
-    -- use 'onsails/lspkind-nvim'
     use("glepnir/lspsaga.nvim")
     -- use 'ray-x/lsp_signature.nvim'
     use("kosayoda/nvim-lightbulb")
@@ -116,9 +115,11 @@ return require("packer").startup(function(use)
     use("hrsh7th/cmp-vsnip")
 
     -- Snippets
-    use("hrsh7th/vim-vsnip")
-    use("hrsh7th/vim-vsnip-integ")
+    -- use("hrsh7th/vim-vsnip")
+    -- use("hrsh7th/vim-vsnip-integ")
     use("rafamadriz/friendly-snippets")
+    use("L3MON4D3/LuaSnip")
+    use("saadparwaiz1/cmp_luasnip")
 
     -- Tresitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
