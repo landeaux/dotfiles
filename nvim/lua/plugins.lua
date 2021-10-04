@@ -68,8 +68,8 @@ return require("packer").startup(function(use)
     use("b3nj5m1n/kommentary")
     use("JoosepAlviste/nvim-ts-context-commentstring")
 
-    -- Delimit
-    use("Raimondi/delimitMate")
+    -- Automatic pair insertion
+    use({ "windwp/nvim-autopairs", config = require("nvim-autopairs").setup({}) })
 
     -- Remember last location in file
     use("farmergreg/vim-lastplace")
