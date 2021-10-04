@@ -38,10 +38,11 @@ cmp.setup({
         ["<C-y>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
         ["<C-c>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        }),
+        -- NOTE: This is being mapped by nvim-autopairs.completion.cmp now (see below)
+        -- ["<CR>"] = cmp.mapping.confirm({
+        --     behavior = cmp.ConfirmBehavior.Replace,
+        --     select = true,
+        -- }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if vim.fn.pumvisible() == 1 then
                 feedkey("<C-n>")
@@ -128,8 +129,4 @@ require("nvim-autopairs.completion.cmp").setup({
     map_complete = true,
     auto_select = true,
     insert = false,
-    map_char = {
-        all = "(",
-        tex = "{",
-    },
 })
