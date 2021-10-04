@@ -1,0 +1,31 @@
+{
+  "vue": {
+    "prefix": "vue",
+    "body": [
+      "<script>",
+      "/**",
+      " * $TM_FILENAME_BASE",
+      " *",
+      " * ${1:Description of component...}",
+      " */",
+      "export default {",
+      "\tname: '$TM_FILENAME_BASE',",
+      "\tprops: {${2}},",
+      "\tdata () {",
+      "\t\treturn {}",
+      "\t},",
+      "\tcomputed: {},",
+      "\tmethods: {},",
+      "}",
+      "</script>",
+      "",
+      "<template>",
+      "\t<div></div>",
+      "</template>",
+      "",
+      "<style lang=\"sass\">",
+      "</style>"
+    ],
+    "description": "Vue SFC Scaffold"
+  }
+}
