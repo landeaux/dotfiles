@@ -1,0 +1,7 @@
+{
+  "console.log a variable": {
+    "prefix": "cv",
+    "body": ["console.log('${1}:', ${1})${0}"],
+    "description": "console.log a variable"
+  }
+}

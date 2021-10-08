@@ -1,0 +1,18 @@
+{
+  "pytest: parametrized test": {
+    "prefix": "ptp",
+    "body": [
+      "@pytest.mark.parametrize(",
+      "\t\"${2:param}\"",
+      "\t[",
+      "\t\t# Case 0: ${3}",
+      "\t\t(",
+      "\t\t\t${4}",
+      "\t\t)",
+      "\t]",
+      ")",
+      "def test_${1:something}(${2}):",
+      "\t${0:pass}"
+    ]
+  }
+}
