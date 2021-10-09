@@ -18,3 +18,6 @@ require("keybinds")
 
 -- Load configuration
 require("plugins.config")
+
+-- Load colorscheme settings
+require("colorscheme")
