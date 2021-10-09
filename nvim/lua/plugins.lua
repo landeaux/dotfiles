@@ -30,7 +30,7 @@ return require("packer").startup(function(use)
     use("glepnir/dashboard-nvim")
 
     -- Colorize color codes
-    use("chrisbra/Colorizer")
+    use("norcalli/nvim-colorizer.lua")
 
     -- Neovim icons
     use("kyazdani42/nvim-web-devicons")
