@@ -1,6 +1,7 @@
 new-window -c $DOTFILES
 rename-window "main"
-send-keys "nvim +PackerSync" C-m
+send-keys "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'" C-m
+send-keys "nvim" C-m
 
 split-pane -h -c $DOTFILES
 resize-pane -x 38%
