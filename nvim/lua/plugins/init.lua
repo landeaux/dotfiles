@@ -28,7 +28,13 @@ return require("packer").startup(function(use)
     })
 
     -- Statusline
-    use("glepnir/galaxyline.nvim")
+    use({
+        "glepnir/galaxyline.nvim",
+        after = "tokyonight.nvim",
+        config = function()
+            require("plugins.config.ui.galaxyline")
+        end,
+    })
 
     -- Tab bar
     use("akinsho/nvim-bufferline.lua")
