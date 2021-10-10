@@ -1,6 +1,3 @@
--- Make Terminal use GUI colors
-vim.o.termguicolors = true
-
 require("colorizer").setup()
 
 vim.api.nvim_set_keymap("n", "<Leader>tc", ":ColorizerToggle<CR>", { noremap = true })
