@@ -2,8 +2,6 @@
 local g = vim.g
 local bind = vim.api.nvim_set_keymap
 
-g.nvim_tree_side = "left"
-g.nvim_tree_width = 40 -- can be width_in_columns or 'width_in_percent%'
 g.nvim_tree_ignore = { ".git", "node_modules", ".cache" }
 g.nvim_tree_gitignore = 1
 g.nvim_tree_quit_on_open = 1 -- closes the tree when you open a file
@@ -16,7 +14,6 @@ g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
 g.nvim_tree_group_empty = 1 -- compact folders that only contain a single folder into one node in the file tree
 g.nvim_tree_disable_window_picker = 1
 g.nvim_tree_auto_ignore_ft = { "dashboard" }
-g.nvim_tree_width_allow_resize = 1
 g.nvim_tree_show_icons = { git = 1, folders = 1, files = 1, folder_arrows = 1 }
 g.nvim_tree_icons = {
     default = "",
@@ -81,7 +78,7 @@ require("nvim-tree").setup({
         { key = "g?", cb = tree_cb("toggle_help") },
     },
     -- show lsp diagnostics in the signcolumn. See :help nvim_tree_lsp_diagnostics
-    lsp_diagnostics = true,
+    diagnostics = { enable = true },
     -- not sure what this does yet
     tree_follow = true,
     -- disables netrw completely
@@ -117,6 +114,23 @@ require("nvim-tree").setup({
         cmd = nil,
         -- the command arguments as a list
         args = {},
+    },
+    view = {
+        -- width of the window, can be either a number (columns) or a string in `%`, for left or right side placement
+        width = 45,
+        -- height of the window, can be either a number (columns) or a string in `%`, for top or bottom side placement
+        height = 30,
+        -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
+        side = "left",
+        -- if true the tree will resize itself after opening a file
+        auto_resize = false,
+        mappings = {
+            -- custom only false will merge the list with the default mappings
+            -- if true, it will only use your list to set the mappings
+            custom_only = false,
+            -- list of mappings to set on the tree manually
+            list = {},
+        },
     },
 })
 
