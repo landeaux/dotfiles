@@ -23,7 +23,7 @@ return require("packer").startup(function(use)
     use({
         "folke/tokyonight.nvim",
         config = function()
-            require("plugins.config.ui.tokyonight")
+            require("plugins.config.colorscheme")
         end,
     })
 

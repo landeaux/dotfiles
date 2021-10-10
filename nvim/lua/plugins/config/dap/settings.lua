@@ -1,6 +1,6 @@
 local g = vim.g
 local dap = require("dap")
-local colors = require("colorscheme").colors
+local colors = require("plugins.config.ui.colorscheme").colors
 
 -- Enable DAP virtual text
 g.dap_virtual_text = true

@@ -1,3 +1,4 @@
+require("plugins.config.ui.colorscheme")
 require("plugins.config.ui.dashboard-nvim")
 require("plugins.config.ui.galaxyline")
 require("plugins.config.ui.gitsigns")
