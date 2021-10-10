@@ -1,4 +1,5 @@
 require("plugins.config.ui.dashboard-nvim")
+require("plugins.config.ui.galaxyline")
 require("plugins.config.ui.gitsigns")
 require("plugins.config.ui.nvim-bufferline")
 require("plugins.config.ui.nvim-web-devicons")
