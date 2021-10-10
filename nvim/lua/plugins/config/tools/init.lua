@@ -1,6 +1,0 @@
-require("plugins.config.tools.vcoolor")
-require("plugins.config.tools.nvim_tree")
-require("plugins.config.tools.undotree")
-require("plugins.config.tools.fugitive_gv")
-require("plugins.config.tools.telescope-nvim")
-require("plugins.config.tools.nvim-reload")

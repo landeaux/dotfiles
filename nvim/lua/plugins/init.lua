@@ -20,12 +20,7 @@ return require("packer").startup(function(use)
     -- Colorscheme
     -- use 'dracula/vim'
     -- use("christianchiarulli/nvcode-color-schemes.vim")
-    use({
-        "folke/tokyonight.nvim",
-        config = function()
-            require("plugins.config.colorscheme")
-        end,
-    })
+    use("folke/tokyonight.nvim")
 
     -- Statusline
     use("glepnir/galaxyline.nvim")

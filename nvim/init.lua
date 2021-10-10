@@ -17,4 +17,4 @@ require("plugins")
 require("keybinds")
 
 -- Load configuration
-require("plugins.config")
+require("config")
