@@ -2,11 +2,11 @@ local bind = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- DAP
-bind("n", "<leader>dc", ':lua require("dap").continue()<CR>', opts)
-bind("n", "<leader>dC", ':lua require("config.dap.utils").reload_continue()<CR>', opts)
-bind("n", "<leader>dj", ':lua require("dap").step_over()<CR>', opts)
-bind("n", "<leader>dl", ':lua require("dap").step_into()<CR>', opts)
-bind("n", "<leader>dk", ':lua require("dap").step_out()<CR>', opts)
+bind("n", "<Leader>dc", ':lua require("dap").continue()<CR>', opts)
+bind("n", "<Leader>dC", ':lua require("config.dap.utils").reload_continue()<CR>', opts)
+bind("n", "<Leader>dj", ':lua require("dap").step_over()<CR>', opts)
+bind("n", "<Leader>dl", ':lua require("dap").step_into()<CR>', opts)
+bind("n", "<Leader>dk", ':lua require("dap").step_out()<CR>', opts)
 bind("n", "<Leader>dt", ':lua require("dap").toggle_breakpoint()<CR>', opts)
 bind(
     "n",
@@ -20,24 +20,24 @@ bind(
     ':lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>',
     opts
 )
-bind("n", "<leader>dbe", ':lua require("dap").set_exception_breakpoints({"all"})<CR>', opts)
+bind("n", "<Leader>dbe", ':lua require("dap").set_exception_breakpoints({"all"})<CR>', opts)
 bind("n", "<Leader>dr", ':lua require("dap").repl.open({}, "vsplit")<CR><C-w>l', opts)
 bind("n", "<Leader>dR", ':lua require("dap").run_last()<CR>', opts)
 
 -- DAP UI
-bind("n", "<leader>du", ':lua require("dapui").toggle()<CR>', opts)
-bind("n", "<leader>d?", ':lua require("dap.ui.variables").scopes()<CR>', opts)
+bind("n", "<Leader>du", ':lua require("dapui").toggle()<CR>', opts)
+bind("n", "<Leader>d?", ':lua require("dap.ui.variables").scopes()<CR>', opts)
 bind(
     "n",
-    "<leader>di",
+    "<Leader>di",
     ':lua require("dap.ui.variables").hover(function () return vim.fn.expand("<cexpr>") end)<CR>',
     opts
 )
-bind("v", "<leader>di", ':lua require("dap.ui.variables").visual_hover()<CR>', opts)
-bind("n", "<leader>dh", ':lua require("dap.ui.widgets").hover()<CR>', opts)
+bind("v", "<Leader>di", ':lua require("dap.ui.variables").visual_hover()<CR>', opts)
+bind("n", "<Leader>dh", ':lua require("dap.ui.widgets").hover()<CR>', opts)
 bind(
     "n",
-    "<leader>df",
+    "<Leader>df",
     ':lua local widgets=require("dap.ui.widgets");widgets.centered_float(widgets.scopes)<CR>',
     opts
 )
