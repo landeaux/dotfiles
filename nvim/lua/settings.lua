@@ -44,6 +44,9 @@ set_opt("o", "backspace", "indent,eol,start")
 -- Make last window always have a status line
 set_opt("o", "laststatus", 2)
 
+-- Faster macros
+set_opt("o", "lazyredraw", true)
+
 -- Indent
 set_opt("b", "tabstop", indent)
 set_opt("b", "softtabstop", indent)
