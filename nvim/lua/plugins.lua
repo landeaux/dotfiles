@@ -71,7 +71,7 @@ return require("packer").startup(function(use)
     use("JoosepAlviste/nvim-ts-context-commentstring")
 
     -- Automatic pair insertion
-    use({ "windwp/nvim-autopairs", commit = "7becc6bc9d8baa62eb0dbf65305f8e7f1470ace7" })
+    use("windwp/nvim-autopairs")
 
     -- Remember last location in file
     use("farmergreg/vim-lastplace")
