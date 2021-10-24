@@ -9,7 +9,7 @@ local has_words_before = function()
 end
 
 cmp.setup({
-    completion = { autocomplete = true },
+    -- completion = { autocomplete = false },
     documentation = {
         border = "rounded",
         winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
