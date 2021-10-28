@@ -22,6 +22,6 @@ reload.post_reload_hook = function()
     vim.cmd([[nohl]])
     -- recompile packer
     vim.cmd([[packadd packer.nvim]])
-    require("my.plugins").compile()
+    require("my.pluginsInit").compile()
     -- require('feline').reset_highlights()
 end

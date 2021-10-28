@@ -1,19 +1,13 @@
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local packer_bootstrap
+local present, my_packer = pcall(require, "my.packer")
 
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
-    })
+if not present then
+    return false
 end
 
-return require("packer").startup(function(use)
+local packer = my_packer.packer
+local use = packer.use
+
+return packer.startup(function()
     -- Packer
     use("wbthomason/packer.nvim")
 
@@ -163,9 +157,7 @@ return require("packer").startup(function(use)
     -- Fix python indentation
     use("Vimjas/vim-python-pep8-indent")
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if packer_bootstrap then
-        require("packer").sync()
+    if my_packer.first_install then
+        packer.sync()
     end
 end)
