@@ -3,9 +3,9 @@ local cmp = require("cmp")
 
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0
-        and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s")
-            == nil
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
+        :sub(col, col)
+        :match("%s") == nil
 end
 
 cmp.setup({
@@ -31,11 +31,10 @@ cmp.setup({
         ["<C-y>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
         ["<C-c>"] = cmp.mapping.abort(),
-        -- NOTE: This is being mapped by nvim-autopairs.completion.cmp now (see below)
-        -- ["<CR>"] = cmp.mapping.confirm({
-        --     behavior = cmp.ConfirmBehavior.Replace,
-        --     select = true,
-        -- }),
+        ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        }),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -117,9 +116,18 @@ cmp.setup({
     },
 })
 
-require("nvim-autopairs.completion.cmp").setup({
-    map_cr = true,
-    map_complete = true,
-    auto_select = true,
-    insert = false,
+-- Use buffer source for `/`.
+cmp.setup.cmdline("/", {
+    sources = {
+        { name = "buffer" },
+    },
+})
+
+-- Use cmdline & path source for ':'.
+cmp.setup.cmdline(":", {
+    sources = cmp.config.sources({
+        { name = "path" },
+    }, {
+        { name = "cmdline" },
+    }),
 })
