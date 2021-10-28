@@ -1,20 +1,5 @@
--- Set mapleader to space
-vim.g.mapleader = " "
+local ok, err = pcall(require, "my")
 
--- Set localleader to comma
-vim.g.maplocalleader = ","
-
--- Sensible defaults
-require("settings")
-
--- Autocmd
-require("autocmd")
-
--- Load plugins
-require("plugins")
-
--- Load keybinds
-require("keybinds")
-
--- Load configuration
-require("config")
+if not ok then
+    error(("Error loading core...\n\n%s"):format(err))
+end
