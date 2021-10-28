@@ -1,4 +1,6 @@
-require("colorizer").setup()
+require("colorizer").setup({
+    "!packer",
+})
 
 vim.api.nvim_set_keymap("n", "<Leader>tc", ":ColorizerToggle<CR>", { noremap = true })
 
