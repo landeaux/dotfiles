@@ -4,7 +4,7 @@ local colors = require("my.config.ui.colorscheme").colors
 
 local gls = gl.section
 
-gl.short_line_list = { "NvimTree", "vista", "dbui", "packer" }
+gl.short_line_list = { "NvimTree", "packer" }
 
 gls.left[1] = {
     ViMode = {

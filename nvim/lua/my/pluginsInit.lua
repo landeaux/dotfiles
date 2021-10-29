@@ -29,14 +29,14 @@ return packer.startup(function()
     })
 
     -- Statusline
-    -- use({
-    --     "glepnir/galaxyline.nvim",
-    --     requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    --     config = function()
-    --         require("my.config.ui.galaxyline")
-    --     end,
-    --     after = "nvim-web-devicons",
-    -- })
+    use({
+        "glepnir/galaxyline.nvim",
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        config = function()
+            require("my.config.ui.galaxyline")
+        end,
+        after = "nvim-web-devicons",
+    })
 
     -- Tab bar
     -- use({
