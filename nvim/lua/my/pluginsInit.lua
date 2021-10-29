@@ -17,6 +17,7 @@ return packer.startup(function()
         config = function()
             require("my.config.ui.tokyonight")
         end,
+        -- disable = true,
     })
 
     -- Neovim icons
@@ -26,6 +27,7 @@ return packer.startup(function()
             require("my.config.ui.nvim-web-devicons")
         end,
         after = "tokyonight.nvim",
+        -- disable = true,
     })
 
     -- Statusline
@@ -36,6 +38,7 @@ return packer.startup(function()
             require("my.config.ui.galaxyline")
         end,
         after = "nvim-web-devicons",
+        -- disable = true,
     })
 
     -- TODO: specify all plugins which use whichkey to load after it
@@ -48,6 +51,7 @@ return packer.startup(function()
         config = function()
             require("my.config.ui.nvim-bufferline")
         end,
+        -- disable = true,
     })
 
     -- Start screen
@@ -57,6 +61,7 @@ return packer.startup(function()
             require("my.config.ui.dashboard-nvim")
         end,
         -- TODO: specify this to run after Telescope
+        -- disable = true,
     })
 
     -- Indent guides
@@ -65,6 +70,7 @@ return packer.startup(function()
         config = function()
             require("my.config.ui.indent-blankline")
         end,
+        -- disable = true,
     })
 
     -- Colorize color codes
@@ -74,6 +80,7 @@ return packer.startup(function()
         config = function()
             require("my.config.utility.nvim-colorizer")
         end,
+        -- disable = true,
     })
 
     -- File Tree
@@ -83,6 +90,7 @@ return packer.startup(function()
             require("my.config.tools.nvim-tree")
         end,
         after = "nvim-web-devicons",
+        -- disable = true,
     })
 
     -- Git
@@ -93,12 +101,14 @@ return packer.startup(function()
         config = function()
             require("my.config.ui.gitsigns")
         end,
+        -- disable = true,
     })
     use({
         "tpope/vim-fugitive",
         config = function()
             require("my.config.tools.fugitive")
         end,
+        -- disable = true,
     })
     use({
         "junegunn/gv.vim",
@@ -106,6 +116,7 @@ return packer.startup(function()
             require("my.config.tools.gv")
         end,
         requires = { "tpope/vim-fugitive" },
+        -- disable = true,
     })
 
     -- Undo Tree
@@ -114,6 +125,7 @@ return packer.startup(function()
         config = function()
             require("my.config.tools.undotree")
         end,
+        -- disable = true,
     })
 
     -- Register Preview
@@ -158,10 +170,22 @@ return packer.startup(function()
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "nvim-lua/plenary.nvim" } })
 
     -- Telescope
-    -- use({
-    --     "nvim-telescope/telescope.nvim",
-    --     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-    -- })
+    use({
+        "nvim-telescope/telescope.nvim",
+        requires = {
+            "nvim-lua/popup.nvim",
+            "nvim-lua/plenary.nvim",
+            -- {
+            --     "nvim-telescope/telescope-fzf-native.nvim",
+            --     run = "make",
+            -- },
+            "mfussenegger/nvim-dap",
+            "nvim-telescope/telescope-dap.nvim",
+        },
+        config = function()
+            require("my.config.tools.telescope-nvim")
+        end,
+    })
 
     -- Search and replace across multiple files
     use("brooth/far.vim")
