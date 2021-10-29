@@ -1,11 +1,11 @@
 local my_modules = {
     "my.disabled",
     "my.settings",
-    "my.autocmd",
     "my.pluginsInit",
-    "my.compiled",
-    "my.keybinds",
     "my.config",
+    "my.compiled",
+    "my.autocmd",
+    "my.keybinds",
 }
 
 for _, mod in ipairs(my_modules) do
