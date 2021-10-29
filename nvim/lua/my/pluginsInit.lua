@@ -12,37 +12,81 @@ return packer.startup(function()
     use("wbthomason/packer.nvim")
 
     -- Colorscheme
-    -- use 'dracula/vim'
-    -- use("christianchiarulli/nvcode-color-schemes.vim")
-    use("folke/tokyonight.nvim")
+    use({
+        "folke/tokyonight.nvim",
+        config = function()
+            require("my.config.ui.tokyonight")
+        end,
+    })
+
+    -- Neovim icons
+    use({
+        "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("my.config.ui.nvim-web-devicons")
+        end,
+        after = "tokyonight.nvim",
+    })
 
     -- Statusline
-    use("glepnir/galaxyline.nvim")
+    -- use({
+    --     "glepnir/galaxyline.nvim",
+    --     requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    --     config = function()
+    --         require("my.config.ui.galaxyline")
+    --     end,
+    --     after = "nvim-web-devicons",
+    -- })
 
     -- Tab bar
-    use("akinsho/nvim-bufferline.lua")
+    -- use({
+    --     "akinsho/nvim-bufferline.lua",
+    --     config = function()
+    --         require("my.config.ui.nvim-bufferline")
+    --     end,
+    -- })
 
     -- Start screen
-    use("glepnir/dashboard-nvim")
+    -- use({
+    --     "glepnir/dashboard-nvim",
+    --     config = function()
+    --         require("my.config.ui.dashboard-nvim")
+    --     end,
+    -- })
 
     -- Colorize color codes
     use("norcalli/nvim-colorizer.lua")
 
-    -- Neovim icons
-    use("kyazdani42/nvim-web-devicons")
-
     -- Indent guides
-    use("lukas-reineke/indent-blankline.nvim")
+    -- use({
+    --     "lukas-reineke/indent-blankline.nvim",
+    --     config = function()
+    --         require("my.config.ui.indent-blankline")
+    --     end,
+    -- })
 
     -- Which Key
     use({ "AckslD/nvim-whichkey-setup.lua", requires = { "liuchengxu/vim-which-key" } })
 
     -- File Tree
-    use("kyazdani42/nvim-tree.lua")
+    use({
+        "kyazdani42/nvim-tree.lua",
+        config = function()
+            require("my.config.tools.nvim_tree")
+        end,
+        after = "nvim-web-devicons",
+    })
 
     -- Git
     use("tpope/vim-fugitive")
-    use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
+    -- use({
+    --     "lewis6991/gitsigns.nvim",
+    --     requires = { "nvim-lua/plenary.nvim" },
+    --     event = "BufRead",
+    --     config = function()
+    --         require("my.config.ui.gitsigns")
+    --     end,
+    -- })
     use("junegunn/gv.vim")
 
     -- Undo Tree
@@ -90,10 +134,10 @@ return packer.startup(function()
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "nvim-lua/plenary.nvim" } })
 
     -- Telescope
-    use({
-        "nvim-telescope/telescope.nvim",
-        requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-    })
+    -- use({
+    --     "nvim-telescope/telescope.nvim",
+    --     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+    -- })
 
     -- Search and replace across multiple files
     use("brooth/far.vim")
@@ -111,8 +155,6 @@ return packer.startup(function()
     use("hrsh7th/cmp-vsnip")
 
     -- Snippets
-    -- use("hrsh7th/vim-vsnip")
-    -- use("hrsh7th/vim-vsnip-integ")
     use("rafamadriz/friendly-snippets")
     use("L3MON4D3/LuaSnip")
     use("saadparwaiz1/cmp_luasnip")
@@ -122,11 +164,11 @@ return packer.startup(function()
     use("nvim-treesitter/nvim-treesitter-textobjects")
 
     -- Debugging
-    use("mfussenegger/nvim-dap")
-    use("mfussenegger/nvim-dap-python")
-    use("theHamsta/nvim-dap-virtual-text")
-    use("nvim-telescope/telescope-dap.nvim")
-    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+    -- use("mfussenegger/nvim-dap")
+    -- use("mfussenegger/nvim-dap-python")
+    -- use("theHamsta/nvim-dap-virtual-text")
+    -- use("nvim-telescope/telescope-dap.nvim")
+    -- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
     -- Markdown preview
     use({

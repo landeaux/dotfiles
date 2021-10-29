@@ -1,15 +1,15 @@
 local M = {}
 
 -- Make Terminal use GUI colors
-vim.o.termguicolors = true
+-- vim.o.termguicolors = true
 
 -- Set background color
-vim.o.background = "dark"
+-- vim.o.background = "dark"
 
 -- TOKYO NIGHT
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
-vim.cmd("colorscheme tokyonight")
+-- vim.g.tokyonight_style = "storm"
+-- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+-- vim.cmd("colorscheme tokyonight")
 
 local config = require("tokyonight.config")
 local colors = require("tokyonight.colors").setup(config)
