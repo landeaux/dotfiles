@@ -111,8 +111,17 @@ bind("n", "<Leader>vv", ":version<CR>", opts)
 bind("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true })
 bind("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]], { noremap = true })
 
+-- Handling merge conflicts
+bind("n", "<Leader>gf", ":diffget //2<CR>", {}) -- choose our change
+bind("n", "<Leader>gj", ":diffget //3<CR>", {}) -- choose incoming change
+
 local keys = {
     a = "Yank file to clipboard",
+    g = {
+        name = "+git",
+        f = "Choose our change",
+        j = "Choose incoming change",
+    },
     q = "Quit all",
     Q = "Quit all without save",
     r = "Replace word under cursor",

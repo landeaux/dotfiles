@@ -86,7 +86,6 @@ return packer.startup(function()
     })
 
     -- Git
-    use("tpope/vim-fugitive")
     use({
         "lewis6991/gitsigns.nvim",
         requires = { "nvim-lua/plenary.nvim" },
@@ -95,7 +94,19 @@ return packer.startup(function()
             require("my.config.ui.gitsigns")
         end,
     })
-    use("junegunn/gv.vim")
+    use({
+        "tpope/vim-fugitive",
+        config = function()
+            require("my.config.tools.fugitive")
+        end,
+    })
+    use({
+        "junegunn/gv.vim",
+        config = function()
+            require("my.config.tools.gv")
+        end,
+        requires = { "tpope/vim-fugitive" },
+    })
 
     -- Undo Tree
     use("mbbill/undotree")
