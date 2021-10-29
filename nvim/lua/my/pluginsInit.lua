@@ -109,7 +109,12 @@ return packer.startup(function()
     })
 
     -- Undo Tree
-    use("mbbill/undotree")
+    use({
+        "mbbill/undotree",
+        config = function()
+            require("my.config.tools.undotree")
+        end,
+    })
 
     -- Register Preview
     use("gennaro-tedesco/nvim-peekup")
