@@ -77,12 +77,21 @@ return packer.startup(function()
     })
 
     -- File Tree
+    -- TODO: figure out how to make it expand to current file on first load
     use({
         "kyazdani42/nvim-tree.lua",
+        setup = function()
+            vim.api.nvim_set_keymap("n", "<Leader>tn", ":NvimTreeToggle<CR>", { noremap = true })
+            require("whichkey_setup").register_keymap(
+                "leader",
+                { t = { name = "+ui-toggle", n = "NvimTree" } }
+            )
+        end,
         config = function()
             require("my.config.tools.nvim_tree")
         end,
         after = "nvim-web-devicons",
+        cmd = "NvimTreeToggle",
     })
 
     -- Git
