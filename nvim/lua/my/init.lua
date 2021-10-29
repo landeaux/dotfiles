@@ -1,9 +1,3 @@
--- Set mapleader to space
-vim.g.mapleader = " "
-
--- Set localleader to comma
-vim.g.maplocalleader = ","
-
 local my_modules = {
     "my.disabled",
     "my.settings",
