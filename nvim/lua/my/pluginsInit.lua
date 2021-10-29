@@ -39,20 +39,20 @@ return packer.startup(function()
     })
 
     -- Tab bar
-    -- use({
-    --     "akinsho/nvim-bufferline.lua",
-    --     config = function()
-    --         require("my.config.ui.nvim-bufferline")
-    --     end,
-    -- })
+    use({
+        "akinsho/nvim-bufferline.lua",
+        config = function()
+            require("my.config.ui.nvim-bufferline")
+        end,
+    })
 
     -- Start screen
-    -- use({
-    --     "glepnir/dashboard-nvim",
-    --     config = function()
-    --         require("my.config.ui.dashboard-nvim")
-    --     end,
-    -- })
+    use({
+        "glepnir/dashboard-nvim",
+        config = function()
+            require("my.config.ui.dashboard-nvim")
+        end,
+    })
 
     -- Colorize color codes
     use("norcalli/nvim-colorizer.lua")
