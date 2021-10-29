@@ -68,7 +68,13 @@ return packer.startup(function()
     })
 
     -- Colorize color codes
-    use("norcalli/nvim-colorizer.lua")
+    -- TODO: figure out how to make this enabled on start up
+    use({
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("my.config.utility.nvim-colorizer")
+        end,
+    })
 
     -- File Tree
     use({
@@ -81,14 +87,14 @@ return packer.startup(function()
 
     -- Git
     use("tpope/vim-fugitive")
-    -- use({
-    --     "lewis6991/gitsigns.nvim",
-    --     requires = { "nvim-lua/plenary.nvim" },
-    --     event = "BufRead",
-    --     config = function()
-    --         require("my.config.ui.gitsigns")
-    --     end,
-    -- })
+    use({
+        "lewis6991/gitsigns.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        event = "BufRead",
+        config = function()
+            require("my.config.ui.gitsigns")
+        end,
+    })
     use("junegunn/gv.vim")
 
     -- Undo Tree

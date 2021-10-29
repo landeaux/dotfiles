@@ -5,6 +5,6 @@ require("my.utils").create_augroup(
 )
 
 require("my.utils").create_augroup({
-    { "BufWritePost", "plugins.lua", "source <afile> | PackerCompile" },
+    { "BufWritePost", "my.pluginsInit", "source <afile> | PackerCompile" },
     -- { "User", "PackerComplete", "++once", "Restart" },
 }, "_packer")

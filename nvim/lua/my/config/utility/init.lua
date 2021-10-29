@@ -1,4 +1,4 @@
-require("my.config.utility.nvim-colorizer")
+-- require("my.config.utility.nvim-colorizer")
 require("my.config.utility.tree-sitter")
 require("my.config.utility.rooter")
 require("my.config.utility.markdown-preview")
