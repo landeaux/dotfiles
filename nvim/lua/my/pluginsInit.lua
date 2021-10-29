@@ -38,6 +38,10 @@ return packer.startup(function()
         after = "nvim-web-devicons",
     })
 
+    -- TODO: specify all plugins which use whichkey to load after it
+    -- Which Key
+    use({ "AckslD/nvim-whichkey-setup.lua", requires = { "liuchengxu/vim-which-key" } })
+
     -- Tab bar
     use({
         "akinsho/nvim-bufferline.lua",
@@ -52,21 +56,19 @@ return packer.startup(function()
         config = function()
             require("my.config.ui.dashboard-nvim")
         end,
+        -- TODO: specify this to run after Telescope
+    })
+
+    -- Indent guides
+    use({
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("my.config.ui.indent-blankline")
+        end,
     })
 
     -- Colorize color codes
     use("norcalli/nvim-colorizer.lua")
-
-    -- Indent guides
-    -- use({
-    --     "lukas-reineke/indent-blankline.nvim",
-    --     config = function()
-    --         require("my.config.ui.indent-blankline")
-    --     end,
-    -- })
-
-    -- Which Key
-    use({ "AckslD/nvim-whichkey-setup.lua", requires = { "liuchengxu/vim-which-key" } })
 
     -- File Tree
     use({
