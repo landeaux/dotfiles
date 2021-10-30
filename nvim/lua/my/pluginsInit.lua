@@ -165,7 +165,12 @@ return packer.startup(function()
     use("tpope/vim-eunuch")
 
     -- Automatically change current directory
-    use("airblade/vim-rooter")
+    use({
+        "airblade/vim-rooter",
+        config = function()
+            require("my.config.utility.rooter")
+        end,
+    })
 
     -- Editorconfig
     use("editorconfig/editorconfig-vim")
