@@ -60,7 +60,7 @@ return packer.startup(function()
         config = function()
             require("my.config.ui.dashboard-nvim")
         end,
-        -- TODO: specify this to run after Telescope
+        after = "telescope.nvim",
         -- disable = true,
     })
 
