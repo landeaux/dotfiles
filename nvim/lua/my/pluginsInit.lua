@@ -41,9 +41,14 @@ return packer.startup(function()
         -- disable = true,
     })
 
-    -- TODO: specify all plugins which use whichkey to load after it
     -- Which Key
-    use({ "AckslD/nvim-whichkey-setup.lua", requires = { "liuchengxu/vim-which-key" } })
+    use({
+        "AckslD/nvim-whichkey-setup.lua",
+        requires = { "liuchengxu/vim-which-key" },
+        config = function()
+            require("my.config.utility.whichkey")
+        end,
+    })
 
     -- Tab bar
     use({
