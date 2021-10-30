@@ -194,19 +194,36 @@ return packer.startup(function()
         after = "tokyonight.nvim",
         -- disable = true,
     })
-    -- use("mfussenegger/nvim-dap-python")
-    -- use({
-    --     "theHamsta/nvim-dap-virtual-text",
-    --     config = function()
-    --         vim.g.dap_virtual_text = true
-    --     end,
-    --     requires = {
-    --         "mfussenegger/nvim-dap",
-    --         "nvim-treesitter/nvim-treesitter",
-    --     },
-    -- })
-    -- use("nvim-telescope/telescope-dap.nvim")
-    -- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+    use({
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+            vim.g.dap_virtual_text = true
+        end,
+        requires = {
+            "mfussenegger/nvim-dap",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        after = "nvim-dap",
+        -- disable = true,
+    })
+    use({
+        "rcarriga/nvim-dap-ui",
+        requires = { "mfussenegger/nvim-dap" },
+        config = function()
+            require("my.config.dap.ui")
+        end,
+        after = "nvim-dap",
+        -- disable = true,
+    })
+    use({
+        "mfussenegger/nvim-dap-python",
+        requires = { "mfussenegger/nvim-dap" },
+        config = function()
+            require("my.config.dap.python")
+        end,
+        after = "nvim-dap",
+        -- disable = true,
+    })
 
     -- Telescope
     use({
