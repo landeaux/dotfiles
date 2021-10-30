@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 local g = vim.g
-local set_opt = require("my.utils").set_opt
+local opt = vim.opt
 local append_opt = require("my.utils").append_opt
 
 local soft_column_limit = 80
@@ -11,64 +11,68 @@ vim.o.termguicolors = true
 g.mapleader = " "
 g.maplocalleader = ","
 
+-- Misc
+opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
+
 -- Set encoding
-set_opt("o", "encoding", "utf-8")
+opt.encoding = "utf-8"
 
 -- Wildmenu
-set_opt("o", "wildmode", "longest,list,full")
-set_opt("o", "wildmenu", true)
+opt.wildmode = "longest,list,full"
+opt.wildmenu = true
 
 -- Hidden buffers to switch buffers without saving
-set_opt("o", "hidden", true)
+opt.hidden = true
 
 -- Enable mouse support
--- set_opt("o", "mouse", "a")
+-- opt.mouse = "a"
 
 -- Project specific vimrc with secure
-set_opt("o", "exrc", true)
-set_opt("o", "secure", true)
+opt.exrc = true
+opt.secure = true
 
 -- GUI cursor
-set_opt(
-    "o",
-    "guicursor",
-    "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,"
-        .. "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,"
-        .. "sm:block-blinkwait175-blinkoff150-blinkon175"
-)
+opt.guicursor = {
+    "n-v-c:block",
+    "i-ci-ve:ver25",
+    "r-cr:hor20",
+    "o:hor50",
+    "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+    "sm:block-blinkwait175-blinkoff150-blinkon175",
+}
 
 -- Persistent undo
-set_opt("o", "undofile", true)
+opt.undofile = true
 
 -- Auto read file changes
-set_opt("o", "autoread", true)
+opt.autoread = true
 
 -- Backspace
-set_opt("o", "backspace", "indent,eol,start")
+opt.backspace = "indent,eol,start"
 
 -- Make last window always have a status line
-set_opt("o", "laststatus", 2)
+opt.laststatus = 2
 
 -- Faster macros
-set_opt("o", "lazyredraw", true)
+opt.lazyredraw = true
 
 -- Indent
-set_opt("b", "tabstop", indent)
-set_opt("b", "softtabstop", indent)
-set_opt("b", "shiftwidth", indent)
-set_opt("b", "expandtab", true)
-set_opt("b", "autoindent", true)
-set_opt("b", "smartindent", true)
+opt.tabstop = indent
+opt.softtabstop = indent
+opt.shiftwidth = indent
+opt.expandtab = true
+opt.autoindent = true
+opt.smartindent = true
 
 -- Spelling
-set_opt("b", "spellfile", vim.fn.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add")
+opt.spellfile = vim.fn.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add"
 
 -- Listchars
-set_opt("w", "listchars", "tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»")
+opt.listchars = "tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»"
 
 -- Linebreak and wrap behavior
-set_opt("w", "linebreak", true)
-set_opt("w", "breakindent", true)
+opt.linebreak = true
+opt.breakindent = true
 
 -- Show column limit indicators
 -- cmd('let &colorcolumn = join(range(' .. tostring(fill_column) .. ',999), ",")')
@@ -81,42 +85,42 @@ cmd(
 )
 
 -- Line numbers: Hybrid
-set_opt("w", "number", true)
-set_opt("w", "relativenumber", true)
+opt.number = true
+opt.relativenumber = true
 
 -- Folding (with Treesitter)
-set_opt("w", "foldmethod", "expr")
-set_opt("w", "foldexpr", "nvim_treesitter#foldexpr()")
-set_opt("w", "foldlevel", 99)
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldlevel = 99
 
 -- Search
-set_opt("o", "hlsearch", true)
-set_opt("o", "incsearch", true)
-set_opt("o", "ignorecase", true)
-set_opt("o", "smartcase", true)
+opt.hlsearch = true
+opt.incsearch = true
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Incremental command
-set_opt("o", "inccommand", "nosplit")
+opt.inccommand = "nosplit"
 
 -- Completion
--- set_opt("o", "completeopt", "menu,menuone,preview,noselect")
-set_opt("o", "completeopt", "menuone,noselect")
+opt.completeopt = "menu,menuone,preview,noselect"
+opt.completeopt = "menuone,noselect"
 append_opt("o", "shortmess", "c")
 
 -- Split options
-set_opt("o", "splitbelow", true)
-set_opt("o", "splitright", true)
+opt.splitbelow = true
+opt.splitright = true
 
 -- Faster update time
-set_opt("o", "updatetime", 0)
-set_opt("o", "signcolumn", "yes")
+opt.updatetime = 0
+opt.signcolumn = "yes"
 
 -- Highlight current line
-set_opt("o", "cursorline", true)
+opt.cursorline = true
 
 -- Scroll offsets
-set_opt("o", "scrolloff", 0)
-set_opt("o", "sidescrolloff", 5)
+opt.scrolloff = 0
+opt.sidescrolloff = 5
 
 -- Enable filetype plugin
 cmd("filetype plugin on")
@@ -125,7 +129,7 @@ cmd("filetype plugin on")
 cmd("syntax enable")
 
 -- Enable clipboard
-set_opt("o", "clipboard", "unnamed,unnamedplus")
+opt.clipboard = "unnamed,unnamedplus"
 
 -- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
 cmd([[
