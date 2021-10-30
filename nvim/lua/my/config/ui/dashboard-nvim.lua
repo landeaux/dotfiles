@@ -23,7 +23,7 @@ g.dashboard_custom_section = {
     f = { description = { "  Marks              " }, command = "Telescope marks" },
     g = {
         description = { "  Settings           " },
-        command = ":e ~/.config/nvim/lua/settings.lua",
+        command = ":e ~/.config/nvim/lua/my/settings.lua",
     },
 }
 
