@@ -1,6 +1,6 @@
 local gl = require("galaxyline")
 local condition = require("galaxyline.condition")
-local colors = require("my.config.ui.colorscheme").colors
+local colors = require("my.config.ui.colors")
 
 local gls = gl.section
 
