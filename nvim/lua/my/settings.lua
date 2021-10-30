@@ -10,17 +10,40 @@ g.mapleader = " "
 g.maplocalleader = ","
 
 -- Misc
+opt.syntax = "enable" -- enable syntax highlighting
+opt.hidden = true -- allow for switching buffers without saving
+opt.encoding = "utf-8"
+opt.clipboard = { "unnamed", "unnamedplus" }
+opt.backspace = { "eol", "start", "indent" }
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 
--- Set encoding
-opt.encoding = "utf-8"
+-- Indent
+opt.autoindent = true
+opt.smartindent = true
+
+-- Tabs
+opt.tabstop = indent
+opt.softtabstop = indent
+opt.shiftwidth = indent
+opt.expandtab = true
 
 -- Wildmenu
 opt.wildmode = { "longest", "list", "full" }
+opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*" }
 opt.wildmenu = true
 
--- Hidden buffers to switch buffers without saving
-opt.hidden = true
+-- Search
+opt.ignorecase = true
+opt.smartcase = true
+opt.incsearch = true
+opt.hlsearch = true
+
+-- UI
+opt.number = true
+opt.relativenumber = true
+opt.cursorline = true -- highlight current line
+opt.signcolumn = "yes"
+opt.laststatus = 2 -- make last window always have a status line
 
 -- Enable mouse support
 -- opt.mouse = "a"
@@ -45,22 +68,8 @@ opt.undofile = true
 -- Auto read file changes
 opt.autoread = true
 
--- Backspace
-opt.backspace = { "eol", "start", "indent" }
-
--- Make last window always have a status line
-opt.laststatus = 2
-
 -- Faster macros
 opt.lazyredraw = true
-
--- Indent
-opt.tabstop = indent
-opt.softtabstop = indent
-opt.shiftwidth = indent
-opt.expandtab = true
-opt.autoindent = true
-opt.smartindent = true
 
 -- Spelling
 opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
@@ -91,16 +100,6 @@ cmd(
         .. ',999),",")'
 )
 
--- Line numbers: Hybrid
-opt.number = true
-opt.relativenumber = true
-
--- Search
-opt.hlsearch = true
-opt.incsearch = true
-opt.ignorecase = true
-opt.smartcase = true
-
 -- Incremental command
 opt.inccommand = "nosplit"
 
@@ -114,10 +113,6 @@ opt.splitright = true
 
 -- Faster update time
 opt.updatetime = 0
-opt.signcolumn = "yes"
-
--- Highlight current line
-opt.cursorline = true
 
 -- Scroll offsets
 opt.scrolloff = 0
@@ -128,9 +123,6 @@ cmd("filetype plugin on")
 
 -- Enable syntax highlighting
 cmd("syntax enable")
-
--- Enable clipboard
-opt.clipboard = { "unnamed", "unnamedplus" }
 
 -- theme
 opt.termguicolors = true
