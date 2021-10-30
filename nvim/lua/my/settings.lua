@@ -1,7 +1,6 @@
 local cmd = vim.cmd
 local g = vim.g
 local opt = vim.opt
-local append_opt = require("my.utils").append_opt
 
 local soft_column_limit = 80
 local hard_column_limit = 120
@@ -105,7 +104,7 @@ opt.inccommand = "nosplit"
 -- Completion
 opt.completeopt = "menu,menuone,preview,noselect"
 opt.completeopt = "menuone,noselect"
-append_opt("o", "shortmess", "c")
+opt.shortmess = opt.shortmess + { c = true }
 
 -- Split options
 opt.splitbelow = true
