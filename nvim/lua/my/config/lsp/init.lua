@@ -22,6 +22,4 @@ require("my.config.lsp.efm-ls")
 require("my.config.lsp.diagnostics")
 
 -- LSP plugin config
-require("my.config.lsp.nvim-cmp")
-require("my.config.lsp.luasnip")
 require("my.config.lsp.nvim-lightbulb")

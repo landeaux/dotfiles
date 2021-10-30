@@ -158,9 +158,6 @@ return packer.startup(function()
         requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
     })
 
-    -- Automatic pair insertion
-    use("windwp/nvim-autopairs")
-
     -- Remember last location in file
     use("farmergreg/vim-lastplace")
 
@@ -260,22 +257,38 @@ return packer.startup(function()
     -- Search and replace across multiple files
     use("brooth/far.vim")
 
+    -- Automatic pair insertion
+    use({
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup({})
+        end,
+    })
+
     -- Completion
-    use("hrsh7th/nvim-cmp")
-
-    ---- Completion Sources
-    use("f3fora/cmp-spell")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-calc")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-nvim-lua")
-    use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-vsnip")
-
-    -- Snippets
-    use("rafamadriz/friendly-snippets")
-    use("L3MON4D3/LuaSnip")
-    use("saadparwaiz1/cmp_luasnip")
+    use({
+        "hrsh7th/nvim-cmp",
+        config = function()
+            require("my.config.lsp.nvim-cmp")
+        end,
+        requires = {
+            "f3fora/cmp-spell",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-calc",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "L3MON4D3/LuaSnip",
+            "windwp/nvim-autopairs",
+        },
+    })
+    use({
+        "rafamadriz/friendly-snippets",
+        config = function()
+            require("my.config.lsp.luasnip")
+        end,
+    })
 
     -- Markdown preview
     use({
