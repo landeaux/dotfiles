@@ -37,17 +37,27 @@ bind("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silen
 bind("c", "<C-a>", "<home>", {})
 bind("c", "<C-e>", "<end>", {})
 
+-- Quickfix navigation
+bind("n", "[q", ":cprev<CR>", opts) -- choose our change
+bind("n", "]q", ":cnext<CR>", opts) -- choose our change
+
+-- Buffer navigation
+bind("n", "[b", ":bprev<CR>", opts) -- choose our change
+bind("n", "]b", ":bnext<CR>", opts) -- choose our change
+
+------------------------------- LEADER MAPPINGS -------------------------------
+
 -- Toggle highlighting
-bind("n", "<leader>th", ":set hlsearch!<CR>", opts)
+bind("n", "<Leader>th", ":set hlsearch!<CR>", opts)
 
 -- Toggle relativenumber
-bind("n", "<leader>tr", ":set invrelativenumber<CR>", opts)
+bind("n", "<Leader>tr", ":set invrelativenumber<CR>", opts)
 
 -- Toggle spelling
-bind("n", "<leader>ts", ":set spell!<CR>", opts)
+bind("n", "<Leader>ts", ":set spell!<CR>", opts)
 
 -- Toggle whitespace chars
-bind("n", "<leader>tw", ":set list!<CR>", opts)
+bind("n", "<Leader>tw", ":set list!<CR>", opts)
 
 -- Clipboard
 bind("", "<Leader>y", '"+y', opts) -- copy any selected text to clipboard
@@ -110,8 +120,8 @@ bind("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true }
 bind("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]], { noremap = true })
 
 -- Handling merge conflicts
-bind("n", "<Leader>gf", ":diffget //2<CR>", {}) -- choose our change
-bind("n", "<Leader>gj", ":diffget //3<CR>", {}) -- choose incoming change
+bind("n", "<Leader>gf", ":diffget //2<CR>", opts) -- choose our change
+bind("n", "<Leader>gj", ":diffget //3<CR>", opts) -- choose incoming change
 
 -- Toggle folding
 bind("n", "<Space><Space>", "za", opts)
