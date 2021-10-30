@@ -102,8 +102,6 @@ bind("n", "<Leader>wv", ":wincmd v<CR>", opts)
 
 -- Keybinds for editing vim config
 bind("n", "<Leader>vc", ":edit $MYVIMRC<CR>", opts)
-bind("n", "<Leader>vr", ":Reload<CR>", opts)
-bind("n", "<Leader>vR", ":Restart<CR>", opts)
 bind("n", "<Leader>vv", ":version<CR>", opts)
 
 -- Search and Replace
@@ -137,7 +135,7 @@ local keys = {
         s = "Spelling",
         w = "Whitespace",
     },
-    v = { name = "+vim", c = "Edit config", r = "Reload", R = "Restart", v = "Version" },
+    v = { name = "+vim", c = "Edit config", v = "Version" },
     w = {
         name = "+windows",
         ["1"] = "Window 1",

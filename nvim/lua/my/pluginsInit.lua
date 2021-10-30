@@ -311,11 +311,6 @@ return packer.startup(function()
     -- Startuptime
     use("tweekmonster/startuptime.vim")
 
-    use({
-        "famiu/nvim-reload",
-        requires = { "nvim-lua/plenary.nvim" },
-    })
-
     -- Autogenerate python docstrings
     use({ "heavenshell/vim-pydocstring", run = "make install" })
 
