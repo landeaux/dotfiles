@@ -44,6 +44,21 @@ opt.relativenumber = true
 opt.cursorline = true -- highlight current line
 opt.signcolumn = "yes"
 opt.laststatus = 2 -- make last window always have a status line
+opt.wrap = true
+opt.scrolloff = 0
+opt.sidescrolloff = 5
+opt.list = false
+opt.listchars = {
+    eol = "¬",
+    extends = "»",
+    lead = "·",
+    nbsp = "␣",
+    precedes = "«",
+    space = "·",
+    tab = "|→",
+    trail = "•",
+}
+opt.showmode = false
 
 -- Enable mouse support
 -- opt.mouse = "a"
@@ -74,18 +89,6 @@ opt.lazyredraw = true
 -- Spelling
 opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 
--- Listchars
-opt.listchars = {
-    eol = "¬",
-    extends = "»",
-    lead = "·",
-    nbsp = "␣",
-    precedes = "«",
-    space = "·",
-    tab = "|→",
-    trail = "•",
-}
-
 -- Linebreak and wrap behavior
 opt.linebreak = true
 opt.breakindent = true
@@ -113,10 +116,6 @@ opt.splitright = true
 
 -- Faster update time
 opt.updatetime = 0
-
--- Scroll offsets
-opt.scrolloff = 0
-opt.sidescrolloff = 5
 
 -- Enable filetype plugin
 cmd("filetype plugin on")
