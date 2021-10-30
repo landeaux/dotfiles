@@ -169,6 +169,46 @@ return packer.startup(function()
     -- TypeScript
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "nvim-lua/plenary.nvim" } })
 
+    -- Tresitter
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        requires = {
+            "windwp/nvim-ts-autotag",
+            "JoosepAlviste/nvim-ts-context-commentstring",
+            "nvim-treesitter/nvim-treesitter-refactor",
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        },
+        run = ":TSUpdate",
+        config = function()
+            require("my.config.utility.tree-sitter")
+        end,
+        -- disable = true,
+    })
+
+    -- Debugging
+    use({
+        "mfussenegger/nvim-dap",
+        config = function()
+            require("my.config.dap.settings")
+            require("my.config.dap.mapping")
+        end,
+        after = "tokyonight.nvim",
+        -- disable = true,
+    })
+    -- use("mfussenegger/nvim-dap-python")
+    -- use({
+    --     "theHamsta/nvim-dap-virtual-text",
+    --     config = function()
+    --         vim.g.dap_virtual_text = true
+    --     end,
+    --     requires = {
+    --         "mfussenegger/nvim-dap",
+    --         "nvim-treesitter/nvim-treesitter",
+    --     },
+    -- })
+    -- use("nvim-telescope/telescope-dap.nvim")
+    -- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+
     -- Telescope
     use({
         "nvim-telescope/telescope.nvim",
@@ -206,25 +246,6 @@ return packer.startup(function()
     use("rafamadriz/friendly-snippets")
     use("L3MON4D3/LuaSnip")
     use("saadparwaiz1/cmp_luasnip")
-
-    -- Tresitter
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    use("nvim-treesitter/nvim-treesitter-textobjects")
-
-    -- Debugging
-    use({
-        "mfussenegger/nvim-dap",
-        config = function()
-            require("my.config.dap.settings")
-            require("my.config.dap.mapping")
-        end,
-        after = "tokyonight.nvim",
-        -- disable = true,
-    })
-    -- use("mfussenegger/nvim-dap-python")
-    -- use("theHamsta/nvim-dap-virtual-text")
-    -- use("nvim-telescope/telescope-dap.nvim")
-    -- use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
     -- Markdown preview
     use({
