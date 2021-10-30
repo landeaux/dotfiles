@@ -136,7 +136,7 @@ function lsp_config.common_on_attach(client, bufnr)
     documentHighlight(client, bufnr)
 
     -- LSP Signatures
-    -- require('lsp_signature').on_attach()
+    require("lsp_signature").on_attach()
 end
 
 return lsp_config

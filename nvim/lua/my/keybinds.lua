@@ -102,8 +102,6 @@ bind("n", "<Leader>wv", ":wincmd v<CR>", opts)
 
 -- Keybinds for editing vim config
 bind("n", "<Leader>vc", ":edit $MYVIMRC<CR>", opts)
-bind("n", "<Leader>vr", ":Reload<CR>", opts)
-bind("n", "<Leader>vR", ":Restart<CR>", opts)
 bind("n", "<Leader>vv", ":version<CR>", opts)
 
 -- Search and Replace
@@ -111,8 +109,21 @@ bind("n", "<Leader>vv", ":version<CR>", opts)
 bind("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true })
 bind("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]], { noremap = true })
 
+-- Handling merge conflicts
+bind("n", "<Leader>gf", ":diffget //2<CR>", {}) -- choose our change
+bind("n", "<Leader>gj", ":diffget //3<CR>", {}) -- choose incoming change
+
+-- Toggle folding
+bind("n", "<Space><Space>", "za", opts)
+bind("v", "<Space><Space>", "za", opts)
+
 local keys = {
     a = "Yank file to clipboard",
+    g = {
+        name = "+git",
+        f = "Choose our change",
+        j = "Choose incoming change",
+    },
     q = "Quit all",
     Q = "Quit all without save",
     r = "Replace word under cursor",
@@ -124,7 +135,7 @@ local keys = {
         s = "Spelling",
         w = "Whitespace",
     },
-    v = { name = "+vim", c = "Edit config", r = "Reload", R = "Restart", v = "Version" },
+    v = { name = "+vim", c = "Edit config", v = "Version" },
     w = {
         name = "+windows",
         ["1"] = "Window 1",
@@ -163,4 +174,5 @@ local keys = {
     },
     y = "Yank to clipboard",
 }
+
 require("whichkey_setup").register_keymap("leader", keys)

@@ -12,60 +12,156 @@ return packer.startup(function()
     use("wbthomason/packer.nvim")
 
     -- Colorscheme
-    -- use 'dracula/vim'
-    -- use("christianchiarulli/nvcode-color-schemes.vim")
-    use("folke/tokyonight.nvim")
-
-    -- Statusline
-    use("glepnir/galaxyline.nvim")
-
-    -- Tab bar
-    use("akinsho/nvim-bufferline.lua")
-
-    -- Start screen
-    use("glepnir/dashboard-nvim")
-
-    -- Colorize color codes
-    use("norcalli/nvim-colorizer.lua")
+    use({
+        "folke/tokyonight.nvim",
+        config = function()
+            require("my.config.ui.tokyonight")
+        end,
+        -- disable = true,
+    })
 
     -- Neovim icons
-    use("kyazdani42/nvim-web-devicons")
+    use({
+        "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("my.config.ui.nvim-web-devicons")
+        end,
+        after = "tokyonight.nvim",
+        -- disable = true,
+    })
 
-    -- Indent guides
-    use("lukas-reineke/indent-blankline.nvim")
+    -- Statusline
+    use({
+        "glepnir/galaxyline.nvim",
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        config = function()
+            require("my.config.ui.galaxyline")
+        end,
+        after = "nvim-web-devicons",
+        -- disable = true,
+    })
 
     -- Which Key
-    use({ "AckslD/nvim-whichkey-setup.lua", requires = { "liuchengxu/vim-which-key" } })
+    use({
+        "AckslD/nvim-whichkey-setup.lua",
+        requires = { "liuchengxu/vim-which-key" },
+        config = function()
+            require("my.config.utility.whichkey")
+        end,
+    })
+
+    -- Tab bar
+    use({
+        "akinsho/nvim-bufferline.lua",
+        config = function()
+            require("my.config.ui.nvim-bufferline")
+        end,
+        -- disable = true,
+    })
+
+    -- Start screen
+    use({
+        "glepnir/dashboard-nvim",
+        config = function()
+            require("my.config.ui.dashboard-nvim")
+        end,
+        after = "telescope.nvim",
+        -- disable = true,
+    })
+
+    -- Indent guides
+    use({
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("my.config.ui.indent-blankline")
+        end,
+        -- disable = true,
+    })
+
+    -- Colorize color codes
+    -- TODO: figure out how to make this enabled on start up
+    use({
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("my.config.utility.nvim-colorizer")
+        end,
+        -- disable = true,
+    })
 
     -- File Tree
-    use("kyazdani42/nvim-tree.lua")
+    use({
+        "kyazdani42/nvim-tree.lua",
+        config = function()
+            require("my.config.tools.nvim-tree")
+        end,
+        after = "nvim-web-devicons",
+        -- disable = true,
+    })
 
     -- Git
-    use("tpope/vim-fugitive")
-    use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
-    use("junegunn/gv.vim")
+    use({
+        "lewis6991/gitsigns.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("my.config.ui.gitsigns")
+        end,
+        -- disable = true,
+    })
+    use({
+        "tpope/vim-fugitive",
+        config = function()
+            require("my.config.tools.fugitive")
+        end,
+        -- disable = true,
+    })
+    use({
+        "junegunn/gv.vim",
+        config = function()
+            require("my.config.tools.gv")
+        end,
+        requires = { "tpope/vim-fugitive" },
+        -- disable = true,
+    })
 
     -- Undo Tree
-    use("mbbill/undotree")
+    use({
+        "mbbill/undotree",
+        config = function()
+            require("my.config.tools.undotree")
+        end,
+        -- disable = true,
+    })
 
     -- Register Preview
     use("gennaro-tedesco/nvim-peekup")
 
     -- Floating Terminal
-    use("numtostr/FTerm.nvim")
+    use({
+        "numtostr/FTerm.nvim",
+        config = function()
+            require("my.config.utility.fterm")
+        end,
+    })
 
     -- Color Picker
-    use("KabbAmine/vCoolor.vim")
+    use({
+        "KabbAmine/vCoolor.vim",
+        config = function()
+            require("my.config.tools.vcoolor")
+        end,
+    })
 
     -- Surround
     use("tpope/vim-surround")
 
     -- Comments
-    use("b3nj5m1n/kommentary")
-    use("JoosepAlviste/nvim-ts-context-commentstring")
-
-    -- Automatic pair insertion
-    use("windwp/nvim-autopairs")
+    use({
+        "b3nj5m1n/kommentary",
+        config = function()
+            require("my.config.utility.kommentary")
+        end,
+        requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
+    })
 
     -- Remember last location in file
     use("farmergreg/vim-lastplace")
@@ -74,65 +170,151 @@ return packer.startup(function()
     use("tpope/vim-eunuch")
 
     -- Automatically change current directory
-    use("airblade/vim-rooter")
+    use({
+        "airblade/vim-rooter",
+        config = function()
+            require("my.config.utility.rooter")
+        end,
+    })
 
     -- Editorconfig
     use("editorconfig/editorconfig-vim")
 
     -- LSP
-    use("neovim/nvim-lspconfig")
-    use("kabouzeid/nvim-lspinstall")
-    use("glepnir/lspsaga.nvim")
-    -- use 'ray-x/lsp_signature.nvim'
-    use("kosayoda/nvim-lightbulb")
+    use({ -- lsp
+        "kabouzeid/nvim-lspinstall",
+        requires = {
+            "neovim/nvim-lspconfig",
+            "ray-x/lsp_signature.nvim",
+            "jose-elias-alvarez/nvim-lsp-ts-utils",
+            -- "glepnir/lspsaga.nvim",
+            { "tami5/lspsaga.nvim", branch = "nvim51" },
+            "kosayoda/nvim-lightbulb",
+            "hrsh7th/cmp-nvim-lsp",
+        },
+        config = function()
+            require("my.config.lsp")
+        end,
+    })
 
-    -- TypeScript
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "nvim-lua/plenary.nvim" } })
+    -- Tresitter
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        requires = {
+            "windwp/nvim-ts-autotag",
+            "JoosepAlviste/nvim-ts-context-commentstring",
+            "nvim-treesitter/nvim-treesitter-refactor",
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        },
+        run = ":TSUpdate",
+        config = function()
+            require("my.config.utility.tree-sitter")
+        end,
+        -- disable = true,
+    })
+
+    -- Debugging
+    use({
+        "mfussenegger/nvim-dap",
+        config = function()
+            require("my.config.dap")
+        end,
+        after = "tokyonight.nvim",
+        -- disable = true,
+    })
+    use({
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+            vim.g.dap_virtual_text = true
+        end,
+        requires = {
+            "mfussenegger/nvim-dap",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        after = "nvim-dap",
+        -- disable = true,
+    })
+    use({
+        "rcarriga/nvim-dap-ui",
+        requires = { "mfussenegger/nvim-dap" },
+        config = function()
+            require("my.config.dap.ui")
+        end,
+        after = "nvim-dap",
+        -- disable = true,
+    })
+    use({
+        "mfussenegger/nvim-dap-python",
+        requires = { "mfussenegger/nvim-dap" },
+        config = function()
+            require("my.config.dap.python")
+        end,
+        after = "nvim-dap",
+        -- disable = true,
+    })
 
     -- Telescope
     use({
         "nvim-telescope/telescope.nvim",
-        requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+        requires = {
+            "nvim-lua/popup.nvim",
+            "nvim-lua/plenary.nvim",
+            -- {
+            --     "nvim-telescope/telescope-fzf-native.nvim",
+            --     run = "make",
+            -- },
+            "nvim-telescope/telescope-dap.nvim",
+        },
+        config = function()
+            require("my.config.tools.telescope-nvim")
+        end,
+        after = "nvim-dap",
     })
 
     -- Search and replace across multiple files
     use("brooth/far.vim")
 
+    -- Automatic pair insertion
+    use({
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup({})
+        end,
+    })
+
     -- Completion
-    use("hrsh7th/nvim-cmp")
-
-    ---- Completion Sources
-    use("f3fora/cmp-spell")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-calc")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-nvim-lua")
-    use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-vsnip")
-
-    -- Snippets
-    -- use("hrsh7th/vim-vsnip")
-    -- use("hrsh7th/vim-vsnip-integ")
-    use("rafamadriz/friendly-snippets")
-    use("L3MON4D3/LuaSnip")
-    use("saadparwaiz1/cmp_luasnip")
-
-    -- Tresitter
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    use("nvim-treesitter/nvim-treesitter-textobjects")
-
-    -- Debugging
-    use("mfussenegger/nvim-dap")
-    use("mfussenegger/nvim-dap-python")
-    use("theHamsta/nvim-dap-virtual-text")
-    use("nvim-telescope/telescope-dap.nvim")
-    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+    use({
+        "hrsh7th/nvim-cmp",
+        config = function()
+            require("my.config.lsp.nvim-cmp")
+        end,
+        requires = {
+            "f3fora/cmp-spell",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-calc",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "L3MON4D3/LuaSnip",
+            "windwp/nvim-autopairs",
+        },
+    })
+    use({
+        "rafamadriz/friendly-snippets",
+        config = function()
+            require("my.config.lsp.luasnip")
+        end,
+    })
 
     -- Markdown preview
     use({
         "iamcco/markdown-preview.nvim",
         run = function()
             vim.fn["mkdp#util#install"]()
+        end,
+        config = function()
+            require("my.config.utility.markdown-preview")
         end,
     })
 
@@ -146,13 +328,14 @@ return packer.startup(function()
     -- Startuptime
     use("tweekmonster/startuptime.vim")
 
-    use({
-        "famiu/nvim-reload",
-        requires = { "nvim-lua/plenary.nvim" },
-    })
-
     -- Autogenerate python docstrings
-    use({ "heavenshell/vim-pydocstring", run = "make install" })
+    use({
+        "heavenshell/vim-pydocstring",
+        run = "make install",
+        config = function()
+            require("my.config.utility.vim-pydocstring")
+        end,
+    })
 
     -- Fix python indentation
     use("Vimjas/vim-python-pep8-indent")
