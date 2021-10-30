@@ -115,6 +115,10 @@ bind("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]], { noremap = true }
 bind("n", "<Leader>gf", ":diffget //2<CR>", {}) -- choose our change
 bind("n", "<Leader>gj", ":diffget //3<CR>", {}) -- choose incoming change
 
+-- Toggle folding
+bind("n", "<Space><Space>", "za", opts)
+bind("v", "<Space><Space>", "za", opts)
+
 local keys = {
     a = "Yank file to clipboard",
     g = {
@@ -172,4 +176,5 @@ local keys = {
     },
     y = "Yank to clipboard",
 }
+
 require("whichkey_setup").register_keymap("leader", keys)

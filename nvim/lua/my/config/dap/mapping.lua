@@ -42,10 +42,6 @@ bind(
     opts
 )
 
--- Toggle folding
-bind("n", "<Space><Space>", "za", opts)
-bind("v", "<Space><Space>", "za", opts)
-
 local keys = {
     d = {
         name = "+dap",
