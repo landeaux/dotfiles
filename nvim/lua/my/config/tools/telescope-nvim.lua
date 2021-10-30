@@ -1,6 +1,7 @@
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local wk = require("whichkey_setup")
+local bind = vim.api.nvim_set_keymap
 
 local set_prompt_to_entry_value = function(prompt_bufnr)
     local entry = action_state.get_selected_entry()
@@ -146,15 +147,15 @@ bind_picker("<Leader>fo", "oldfiles")
 bind_picker("<Leader>ft", "treesitter")
 bind_picker("<Leader>fw", "grep_string")
 
--- vim.api.nvim_set_keymap("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
-vim.api.nvim_set_keymap("n", "<Leader>fF", ":Telescope find_files no_ignore=true<CR>", {})
-vim.api.nvim_set_keymap(
+-- bind("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
+bind("n", "<Leader>fF", ":Telescope find_files no_ignore=true<CR>", {})
+bind(
     "n",
     "<Leader>fG",
     ':Telescope live_grep vimgrep_arguments={"rg","--color=never","--no-heading","--with-filename","--line-number","--column","--smart-case","-u"}<CR>',
     {}
 )
-vim.api.nvim_set_keymap("v", "<Leader>f", '"zy:Telescope live_grep default_text=<C-r>z<CR>', {})
+bind("v", "<Leader>f", '"zy:Telescope live_grep default_text=<C-r>z<CR>', {})
 
 local keys = {
     f = {
@@ -163,8 +164,9 @@ local keys = {
         a = "Builtins",
         b = "Buffers",
         f = "Find files",
-        F = "Find files in given directories",
+        F = "Find files (include ignored)",
         g = "Live grep",
+        G = "Live grep (include ignored)",
         h = "Help tags",
         o = "Old files",
         t = "Treesitter",
