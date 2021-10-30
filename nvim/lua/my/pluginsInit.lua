@@ -188,8 +188,7 @@ return packer.startup(function()
     use({
         "mfussenegger/nvim-dap",
         config = function()
-            require("my.config.dap.settings")
-            require("my.config.dap.mapping")
+            require("my.config.dap")
         end,
         after = "tokyonight.nvim",
         -- disable = true,
