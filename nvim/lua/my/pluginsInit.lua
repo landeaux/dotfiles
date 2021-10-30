@@ -176,14 +176,21 @@ return packer.startup(function()
     use("editorconfig/editorconfig-vim")
 
     -- LSP
-    use("neovim/nvim-lspconfig")
-    use("kabouzeid/nvim-lspinstall")
-    use("glepnir/lspsaga.nvim")
-    -- use 'ray-x/lsp_signature.nvim'
-    use("kosayoda/nvim-lightbulb")
-
-    -- TypeScript
-    use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "nvim-lua/plenary.nvim" } })
+    use({ -- lsp
+        "kabouzeid/nvim-lspinstall",
+        requires = {
+            "neovim/nvim-lspconfig",
+            "ray-x/lsp_signature.nvim",
+            "jose-elias-alvarez/nvim-lsp-ts-utils",
+            -- "glepnir/lspsaga.nvim",
+            { "tami5/lspsaga.nvim", branch = "nvim51" },
+            "kosayoda/nvim-lightbulb",
+            "hrsh7th/cmp-nvim-lsp",
+        },
+        config = function()
+            require("my.config.lsp")
+        end,
+    })
 
     -- Tresitter
     use({
