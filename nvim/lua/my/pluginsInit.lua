@@ -312,7 +312,13 @@ return packer.startup(function()
     use("tweekmonster/startuptime.vim")
 
     -- Autogenerate python docstrings
-    use({ "heavenshell/vim-pydocstring", run = "make install" })
+    use({
+        "heavenshell/vim-pydocstring",
+        run = "make install",
+        config = function()
+            require("my.config.utility.vim-pydocstring")
+        end,
+    })
 
     -- Fix python indentation
     use("Vimjas/vim-python-pep8-indent")
