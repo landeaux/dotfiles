@@ -1,6 +1,1 @@
-require("my.config.tools.vcoolor")
--- require("my.config.tools.nvim_tree")
--- require("my.config.tools.undotree")
--- require("my.config.tools.fugitive_gv")
--- require("my.config.tools.telescope-nvim")
 require("my.config.tools.nvim-reload")

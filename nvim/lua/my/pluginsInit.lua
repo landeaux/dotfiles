@@ -139,7 +139,12 @@ return packer.startup(function()
     })
 
     -- Color Picker
-    use("KabbAmine/vCoolor.vim")
+    use({
+        "KabbAmine/vCoolor.vim",
+        config = function()
+            require("my.config.tools.vcoolor")
+        end,
+    })
 
     -- Surround
     use("tpope/vim-surround")
