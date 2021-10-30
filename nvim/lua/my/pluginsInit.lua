@@ -131,7 +131,12 @@ return packer.startup(function()
     use("gennaro-tedesco/nvim-peekup")
 
     -- Floating Terminal
-    use("numtostr/FTerm.nvim")
+    use({
+        "numtostr/FTerm.nvim",
+        config = function()
+            require("my.config.utility.fterm")
+        end,
+    })
 
     -- Color Picker
     use("KabbAmine/vCoolor.vim")
