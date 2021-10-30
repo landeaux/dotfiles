@@ -1,74 +1,77 @@
 local cmd = vim.cmd
-local opt = vim.opt
 local g = vim.g
+local set_opt = require("my.utils").set_opt
+local append_opt = require("my.utils").append_opt
 
 local soft_column_limit = 80
 local hard_column_limit = 120
-local indent = 2
+local indent = 4
 
-cmd([[
-	filetype plugin indent on
-	autocmd BufWritePre * :%s/\s\+$//e
-]])
-
+vim.o.termguicolors = true
 g.mapleader = " "
 g.maplocalleader = ","
 
--- Misc
-opt.syntax = "enable"
-opt.hidden = true
-opt.encoding = "utf-8"
--- opt.clipboard = "unnamed,unnamedplus"
-opt.clipboard = "unnamedplus"
-opt.backspace = { "eol", "start", "indent" }
-opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
+-- Set encoding
+set_opt("o", "encoding", "utf-8")
 
--- Indentation
-opt.autoindent = true
-opt.smartindent = true
+-- Wildmenu
+set_opt("o", "wildmode", "longest,list,full")
+set_opt("o", "wildmenu", true)
 
--- Tabs
-opt.tabstop = indent
-opt.softtabstop = indent
-opt.shiftwidth = indent
-opt.expandtab = true
+-- Hidden buffers to switch buffers without saving
+set_opt("o", "hidden", true)
 
--- Search
-opt.wildmenu = true
-opt.wildmode = "longest,list,full"
-opt.wildignore = opt.wildignore
-    + { "*/node_modules/*", "*/wp-includes/*", "*/wp-admin/*", "*/vendor/*" }
-opt.ignorecase = true
-opt.smartcase = true
-opt.hlsearch = true
-opt.incsearch = true
-opt.inccommand = "nosplit"
+-- Enable mouse support
+-- set_opt("o", "mouse", "a")
 
--- UI
-opt.number = true
-opt.relativenumber = true
-opt.cursorline = true
-opt.signcolumn = "yes"
-opt.laststatus = 2
-opt.scrolloff = 0
-opt.sidescrolloff = 5
-opt.listchars = {
-    eol = "¬",
-    extends = "»",
-    lead = "·",
-    nbsp = "␣",
-    precedes = "«",
-    tab = "❘-",
-    -- tab = "→\\ ",
-    trail = "•",
-}
-opt.showmode = false
-opt.lazyredraw = true
-opt.splitright = true
-opt.splitbelow = true
-opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,"
-    .. "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,"
-    .. "sm:block-blinkwait175-blinkoff150-blinkon175"
+-- Project specific vimrc with secure
+set_opt("o", "exrc", true)
+set_opt("o", "secure", true)
+
+-- GUI cursor
+set_opt(
+    "o",
+    "guicursor",
+    "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,"
+        .. "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,"
+        .. "sm:block-blinkwait175-blinkoff150-blinkon175"
+)
+
+-- Persistent undo
+set_opt("o", "undofile", true)
+
+-- Auto read file changes
+set_opt("o", "autoread", true)
+
+-- Backspace
+set_opt("o", "backspace", "indent,eol,start")
+
+-- Make last window always have a status line
+set_opt("o", "laststatus", 2)
+
+-- Faster macros
+set_opt("o", "lazyredraw", true)
+
+-- Indent
+set_opt("b", "tabstop", indent)
+set_opt("b", "softtabstop", indent)
+set_opt("b", "shiftwidth", indent)
+set_opt("b", "expandtab", true)
+set_opt("b", "autoindent", true)
+set_opt("b", "smartindent", true)
+
+-- Spelling
+set_opt("b", "spellfile", vim.fn.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add")
+
+-- Listchars
+set_opt("w", "listchars", "tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»")
+
+-- Linebreak and wrap behavior
+set_opt("w", "linebreak", true)
+set_opt("w", "breakindent", true)
+
+-- Show column limit indicators
+-- cmd('let &colorcolumn = join(range(' .. tostring(fill_column) .. ',999), ",")')
 cmd(
     'let &colorcolumn="'
         .. tostring(soft_column_limit)
@@ -76,43 +79,53 @@ cmd(
         .. tostring(hard_column_limit)
         .. ',999),",")'
 )
-opt.linebreak = true
-opt.breakindent = true
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldlevel = 99
-opt.termguicolors = true
 
--- Backups
-opt.swapfile = false
-opt.backup = false
-opt.writebackup = false
+-- Line numbers: Hybrid
+set_opt("w", "number", true)
+set_opt("w", "relativenumber", true)
 
--- Persistent undo
-opt.undofile = true
+-- Folding (with Treesitter)
+set_opt("w", "foldmethod", "expr")
+set_opt("w", "foldexpr", "nvim_treesitter#foldexpr()")
+set_opt("w", "foldlevel", 99)
 
--- Auto read file changes
-opt.autoread = true
+-- Search
+set_opt("o", "hlsearch", true)
+set_opt("o", "incsearch", true)
+set_opt("o", "ignorecase", true)
+set_opt("o", "smartcase", true)
+
+-- Incremental command
+set_opt("o", "inccommand", "nosplit")
 
 -- Completion
--- opt.completeopt = "menu,menuone,preview,noselect"
--- opt.completeopt = "menuone,noselect"
-opt.completeopt = { "menu", "menuone", "noselect" }
-opt.shortmess = opt.shortmess + { c = true }
+-- set_opt("o", "completeopt", "menu,menuone,preview,noselect")
+set_opt("o", "completeopt", "menuone,noselect")
+append_opt("o", "shortmess", "c")
 
--- Performance
-opt.updatetime = 0
--- opt.updatetime = 100
-opt.timeoutlen = 400
-opt.redrawtime = 1500
-opt.ttimeoutlen = 10
+-- Split options
+set_opt("o", "splitbelow", true)
+set_opt("o", "splitright", true)
 
--- Project specific vimrc with secure
-opt.exrc = true
-opt.secure = true
+-- Faster update time
+set_opt("o", "updatetime", 0)
+set_opt("o", "signcolumn", "yes")
 
--- Spelling
-opt.spellfile = vim.fn.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add"
+-- Highlight current line
+set_opt("o", "cursorline", true)
+
+-- Scroll offsets
+set_opt("o", "scrolloff", 0)
+set_opt("o", "sidescrolloff", 5)
+
+-- Enable filetype plugin
+cmd("filetype plugin on")
+
+-- Enable syntax highlighting
+cmd("syntax enable")
+
+-- Enable clipboard
+set_opt("o", "clipboard", "unnamed,unnamedplus")
 
 -- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
 cmd([[
