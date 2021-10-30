@@ -296,6 +296,9 @@ return packer.startup(function()
         run = function()
             vim.fn["mkdp#util#install"]()
         end,
+        config = function()
+            require("my.config.utility.markdown-preview")
+        end,
     })
 
     -- Meta

@@ -36,3 +36,21 @@ g.mkdp_page_title = "「${name}」"
 -- recognized filetypes
 -- these filetypes will have MarkdownPreview... commands
 g.mkdp_filetypes = { "markdown" }
+
+-- Markdown filetype settings
+function MarkdownSettings()
+    require("my.utils").set_buffer_soft_line_nagivation()
+
+    bind(0, "n", "<LocalLeader>p", "<Plug>MarkdownPreview", {})
+    bind(0, "n", "<LocalLeader>s", "<Plug>MarkdownPreviewStop", {})
+    bind(0, "n", "<LocalLeader>t", "<Plug>MarkdownPreviewToggle", {})
+
+    local keys = { p = "Preview", s = "Stop preview", t = "Toggle preview" }
+
+    require("whichkey_setup").register_keymap("localleader", keys)
+end
+
+require("my.utils").create_augroup(
+    { { "FileType", "markdown", "lua MarkdownSettings()" } },
+    "markdown"
+)
