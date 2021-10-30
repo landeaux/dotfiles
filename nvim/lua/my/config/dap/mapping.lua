@@ -23,9 +23,6 @@ bind(
 bind("n", "<Leader>dbe", ':lua require("dap").set_exception_breakpoints({"all"})<CR>', opts)
 bind("n", "<Leader>dr", ':lua require("dap").repl.open({}, "vsplit")<CR><C-w>l', opts)
 bind("n", "<Leader>dR", ':lua require("dap").run_last()<CR>', opts)
-
--- DAP UI
-bind("n", "<Leader>du", ':lua require("dapui").toggle()<CR>', opts)
 bind("n", "<Leader>d?", ':lua require("dap.ui.variables").scopes()<CR>', opts)
 bind(
     "n",
@@ -59,7 +56,6 @@ local keys = {
         },
         r = "Open REPL",
         R = "Run last",
-        u = "Toggle DAP UI",
         ["?"] = "Variable scopes",
         i = "Variable info",
         h = "Widget hover",

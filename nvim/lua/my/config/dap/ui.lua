@@ -1,4 +1,6 @@
 local dap, dapui = require("dap"), require("dapui")
+local bind = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 
 dapui.setup({
     icons = { expanded = "", collapsed = "", circular = "↺" },
@@ -50,3 +52,14 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
 end
+
+bind("n", "<Leader>du", ':lua require("dapui").toggle()<CR>', opts)
+
+local keys = {
+    d = {
+        name = "+dap",
+        u = "Toggle DAP UI",
+    },
+}
+
+require("whichkey_setup").register_keymap("leader", keys)

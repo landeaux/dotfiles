@@ -1,9 +1,9 @@
-local g = vim.g
+-- local g = vim.g
 local dap = require("dap")
-local colors = require("my.config.ui.colorscheme").colors
+local colors = require("my.config.ui.colors")
 
 -- Enable DAP virtual text
-g.dap_virtual_text = true
+-- g.dap_virtual_text = true
 
 -- Customize symbols and highlights
 vim.cmd("hi DapBreakpointIcon guifg=" .. colors.debugging.breakpoint_icon)

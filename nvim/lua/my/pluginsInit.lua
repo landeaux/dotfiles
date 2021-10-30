@@ -179,12 +179,12 @@ return packer.startup(function()
             --     "nvim-telescope/telescope-fzf-native.nvim",
             --     run = "make",
             -- },
-            "mfussenegger/nvim-dap",
             "nvim-telescope/telescope-dap.nvim",
         },
         config = function()
             require("my.config.tools.telescope-nvim")
         end,
+        after = "nvim-dap",
     })
 
     -- Search and replace across multiple files
@@ -212,7 +212,15 @@ return packer.startup(function()
     use("nvim-treesitter/nvim-treesitter-textobjects")
 
     -- Debugging
-    -- use("mfussenegger/nvim-dap")
+    use({
+        "mfussenegger/nvim-dap",
+        config = function()
+            require("my.config.dap.settings")
+            require("my.config.dap.mapping")
+        end,
+        after = "tokyonight.nvim",
+        -- disable = true,
+    })
     -- use("mfussenegger/nvim-dap-python")
     -- use("theHamsta/nvim-dap-virtual-text")
     -- use("nvim-telescope/telescope-dap.nvim")
