@@ -1,7 +1,10 @@
 local wk = require("whichkey_setup")
+local opt = vim.opt
 
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+-- Enable folding
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldlevel = 99
 
 -- Tree-sitter
 require("nvim-treesitter.configs").setup({

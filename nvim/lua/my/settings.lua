@@ -6,7 +6,6 @@ local soft_column_limit = 80
 local hard_column_limit = 120
 local indent = 4
 
-vim.o.termguicolors = true
 g.mapleader = " "
 g.maplocalleader = ","
 
@@ -17,7 +16,7 @@ opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.encoding = "utf-8"
 
 -- Wildmenu
-opt.wildmode = "longest,list,full"
+opt.wildmode = { "longest", "list", "full" }
 opt.wildmenu = true
 
 -- Hidden buffers to switch buffers without saving
@@ -47,7 +46,7 @@ opt.undofile = true
 opt.autoread = true
 
 -- Backspace
-opt.backspace = "indent,eol,start"
+opt.backspace = { "eol", "start", "indent" }
 
 -- Make last window always have a status line
 opt.laststatus = 2
@@ -64,10 +63,19 @@ opt.autoindent = true
 opt.smartindent = true
 
 -- Spelling
-opt.spellfile = vim.fn.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add"
+opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 
 -- Listchars
-opt.listchars = "tab:→\\ ,space:·,nbsp:␣,trail:•,eol:¬,precedes:«,extends:»"
+opt.listchars = {
+    eol = "¬",
+    extends = "»",
+    lead = "·",
+    nbsp = "␣",
+    precedes = "«",
+    space = "·",
+    tab = "|→",
+    trail = "•",
+}
 
 -- Linebreak and wrap behavior
 opt.linebreak = true
@@ -87,11 +95,6 @@ cmd(
 opt.number = true
 opt.relativenumber = true
 
--- Folding (with Treesitter)
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldlevel = 99
-
 -- Search
 opt.hlsearch = true
 opt.incsearch = true
@@ -102,9 +105,8 @@ opt.smartcase = true
 opt.inccommand = "nosplit"
 
 -- Completion
-opt.completeopt = "menu,menuone,preview,noselect"
-opt.completeopt = "menuone,noselect"
-opt.shortmess = opt.shortmess + { c = true }
+opt.completeopt = { "menu", "menuone", "noselect" }
+opt.shortmess:append("c")
 
 -- Split options
 opt.splitbelow = true
@@ -128,7 +130,10 @@ cmd("filetype plugin on")
 cmd("syntax enable")
 
 -- Enable clipboard
-opt.clipboard = "unnamed,unnamedplus"
+opt.clipboard = { "unnamed", "unnamedplus" }
+
+-- theme
+opt.termguicolors = true
 
 -- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
 cmd([[
