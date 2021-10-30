@@ -150,8 +150,13 @@ return packer.startup(function()
     use("tpope/vim-surround")
 
     -- Comments
-    use("b3nj5m1n/kommentary")
-    use("JoosepAlviste/nvim-ts-context-commentstring")
+    use({
+        "b3nj5m1n/kommentary",
+        config = function()
+            require("my.config.utility.kommentary")
+        end,
+        requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
+    })
 
     -- Automatic pair insertion
     use("windwp/nvim-autopairs")
