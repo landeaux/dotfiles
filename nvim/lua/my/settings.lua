@@ -9,8 +9,10 @@ local indent = 4
 g.mapleader = " "
 g.maplocalleader = ","
 
--- Enable filetype plugin
 cmd("filetype plugin on")
+
+-- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
+vim.g.os = vim.fn.system("uname"):gsub("\n", "")
 
 -- Misc
 -- (NOTE: don't use opt.synax = "enable" here. It will not work!)
@@ -20,22 +22,13 @@ opt.encoding = "utf-8"
 opt.clipboard = { "unnamed", "unnamedplus" }
 opt.backspace = { "eol", "start", "indent" }
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
+opt.autoread = true -- auto read file changes
+opt.undofile = true -- persistent undo
+opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 
 -- Project specific vimrc with secure
 opt.exrc = true
 opt.secure = true
-
--- Persistent undo
-opt.undofile = true
-
--- Auto read file changes
-opt.autoread = true
-
--- Spelling
-opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
-
--- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
-vim.g.os = vim.fn.system("uname"):gsub("\n", "")
 
 -- Indent
 opt.autoindent = true
@@ -84,7 +77,6 @@ opt.listchars = {
     trail = "•",
 }
 opt.showmode = false
-opt.lazyredraw = true -- faster macros
 -- opt.mouse = "a"
 opt.splitbelow = true
 opt.splitright = true
@@ -104,8 +96,11 @@ cmd(
         .. ',999),",")'
 ) -- show column limit indicators
 
--- Faster update time
-opt.updatetime = 0
+-- Performance
+opt.updatetime = 100
+opt.lazyredraw = true -- faster macros
+opt.redrawtime = 1500
+opt.ttimeoutlen = 10
 
 -- Completion
 opt.completeopt = { "menu", "menuone", "noselect" }
