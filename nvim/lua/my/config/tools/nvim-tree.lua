@@ -1,6 +1,8 @@
 -- Nvim Tree
 local g = vim.g
 local bind = vim.api.nvim_set_keymap
+local lib = require("nvim-tree.lib")
+local utils = require("nvim-tree.utils")
 
 g.nvim_tree_gitignore = 1
 g.nvim_tree_quit_on_open = 1 -- closes the tree when you open a file
@@ -37,7 +39,35 @@ g.nvim_tree_icons = {
     },
 }
 
-local tree_cb = require("nvim-tree.config").nvim_tree_callback
+-- Custom callbacks
+function _NvimTreeSearch(search_type)
+    local supported_search_types = { "find_files", "live_grep" }
+
+    if not vim.tbl_contains(supported_search_types, search_type) then
+        vim.notify("'" .. search_type .. "' is not a supported search_type")
+        return
+    end
+
+    local node = lib.get_node_at_cursor()
+    if not node then
+        return
+    end
+
+    local absolute_path = node.absolute_path
+    local relative_path = utils.path_relative(absolute_path, lib.Tree.cwd)
+    local search_dir = node.entries ~= nil and utils.path_add_trailing(relative_path)
+        or relative_path
+
+    vim.cmd("Telescope " .. search_type .. " search_dirs=" .. search_dir)
+end
+
+function NvimTreeLiveGrep()
+    return _NvimTreeSearch("live_grep")
+end
+
+function NvimTreeFindFiles()
+    return _NvimTreeSearch("find_files")
+end
 
 -- following options are the default
 require("nvim-tree").setup({
@@ -71,7 +101,10 @@ require("nvim-tree").setup({
         auto_resize = false,
         mappings = {
             custom_only = false,
-            list = {},
+            list = {
+                { key = { "ff" }, cb = ":lua NvimTreeFindFiles()<cr>", mode = "n" },
+                { key = { "fg" }, cb = ":lua NvimTreeLiveGrep()<cr>", mode = "n" },
+            },
         },
     },
 })
