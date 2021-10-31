@@ -137,6 +137,7 @@ local bind_picker = require("my.config.tools.telescope-nvim-utils").bind_picker
 bind_picker("<S-A-p>", "commands")
 
 -- Normal
+bind_picker("<Leader>f.", "file_browser")
 bind_picker("<Leader>f/", "current_buffer_fuzzy_find")
 bind_picker("<Leader>fa", "builtin")
 bind_picker("<Leader>fb", "buffers")
