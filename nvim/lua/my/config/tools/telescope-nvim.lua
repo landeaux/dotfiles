@@ -12,6 +12,9 @@ local set_prompt_to_entry_value = function(prompt_bufnr)
     action_state.get_current_picker(prompt_bufnr):reset_prompt(entry.ordinal)
 end
 
+-- TODO: add custom picker binding to search_dirs to find_files/live_grep in a
+-- given directory (e.g. pressing "f" in normal mode on a directory)
+
 -- Telescope setup
 require("telescope").setup({
     defaults = {
