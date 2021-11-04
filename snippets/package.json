@@ -10,6 +10,10 @@
         "path": "./javascript/javascript.json"
       },
       {
+        "language": "php",
+        "path": "./php/jamroom.json"
+      },
+      {
         "language": "python",
         "path": "./python/python.json"
       },

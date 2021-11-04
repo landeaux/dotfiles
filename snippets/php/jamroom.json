@@ -1,0 +1,11 @@
+{
+  "jamroom: fdebug": {
+    "prefix": "jrd",
+    "body": [
+      "fdebug(array(",
+      "\t'where' => __FUNCTION__,",
+      "\t'${1}' => ${1},",
+      "));${0}"
+    ]
+  }
+}
