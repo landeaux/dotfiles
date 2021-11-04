@@ -116,21 +116,5 @@ cmp.setup({
     },
 })
 
--- Use buffer source for `/`.
-cmp.setup.cmdline("/", {
-    sources = {
-        { name = "buffer" },
-    },
-})
-
--- Use cmdline & path source for ':'.
-cmp.setup.cmdline(":", {
-    sources = cmp.config.sources({
-        { name = "path" },
-    }, {
-        { name = "cmdline" },
-    }),
-})
-
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
