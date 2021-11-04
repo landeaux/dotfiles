@@ -12,7 +12,7 @@ cmp.setup({
     -- completion = { autocomplete = false },
     documentation = {
         border = "rounded",
-        winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+        winhighlight = "NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder",
         maxwidth = 120,
         maxheight = math.floor(vim.o.lines * 0.3),
     },
