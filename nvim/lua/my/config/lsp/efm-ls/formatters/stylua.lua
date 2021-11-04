@@ -1,5 +1,5 @@
 local stylua = {
-    formatCommand = "stylua --config-path ~/.config/stylua.toml -",
+    formatCommand = "stylua -",
     formatStdin = true,
 }
 
