@@ -9,12 +9,14 @@ rm_and_symlink() {
 export -f rm_and_symlink
 
 # tmux
-tmux_home_path="${HOME}/.tmux.conf"
-rm_and_symlink "$tmux_home_path" "${BASEDIR}/tmux/tmux.conf"
+tmux_conf_path="${HOME}/.tmux.conf"
+tmux_home_path="${HOME}/.tmux"
+mkdir -p "${tmux_home_path}"
+rm_and_symlink "$tmux_conf_path" "${BASEDIR}/tmux/tmux.conf"
 find tmux -name '*.proj' \
 	| awk -F '/' '{print $2}' \
-	| xargs -I {} bash -c "rm_and_symlink '${HOME}/.tmux/{}' '${BASEDIR}/tmux/{}'"
-[ -n "$TMUX" ] && tmux source-file "$tmux_home_path"
+	| xargs -I {} bash -c "rm_and_symlink '${tmux_home_path}/{}' '${BASEDIR}/tmux/{}'"
+[ -n "$TMUX" ] && tmux source-file "$tmux_conf_path"
 tic -x ./terminfo/tmux-256color.terminfo # custom terminfo w/ italics
 
 # zsh
