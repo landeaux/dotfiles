@@ -8,15 +8,9 @@ return {
         "typescriptreact",
         "typescript.tsx",
     },
-    root_dir = require("lspconfig/util").root_pattern(
-        "package.json",
-        "tsconfig.json",
-        "jsconfig.json",
-        ".git"
-    ),
     settings = { documentFormatting = false },
     on_attach = function(client, bufnr)
-        require("my.config.lsp.nvim-lsp-settings").common_on_attach(client, bufnr)
+        require("my.config.lsp.providers.defaults").on_attach(client, bufnr)
 
         client.resolved_capabilities.document_formatting = false
 
