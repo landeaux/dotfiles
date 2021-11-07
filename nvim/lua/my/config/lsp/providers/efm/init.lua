@@ -17,7 +17,7 @@ table.insert(python_args, isort)
 -- lua
 local lua_args = {}
 
-local lua_formatter = "stylua"
+local lua_formatter = 'stylua'
 
 local lua_format = require("my.config.lsp.efm-ls.formatters.lua-format")
 local luafmt = require("my.config.lsp.efm-ls.formatters.luafmt")
@@ -86,16 +86,8 @@ end
 
 local efm_config = os.getenv("HOME") .. "/.config/efm-langserver/config.yaml"
 
-require("lspconfig").efm.setup({
-    cmd = {
-        vim.fn.stdpath("data") .. "/lspinstall/efm/efm-langserver",
-        "-c",
-        efm_config,
-    },
+return {
     init_options = { documentFormatting = true, codeAction = false },
-    flags = {
-        debounce_text_changes = 150,
-    },
     filetypes = {
         "css",
         "html",
@@ -126,4 +118,4 @@ require("lspconfig").efm.setup({
         },
     },
     on_attach = on_attach,
-})
+}

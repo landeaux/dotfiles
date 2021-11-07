@@ -1,13 +1,5 @@
 -- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
-local sumneko_root_path = vim.fn.stdpath("data") .. "/lspinstall/lua"
-local sumneko_binary = sumneko_root_path .. "/sumneko-lua-language-server"
-
-require("lspconfig").sumneko_lua.setup({
-    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-    flags = {
-        debounce_text_changes = 150,
-    },
-    capabilities = require("my.config.lsp.nvim-lsp-settings").capabilities,
+return {
     settings = {
         Lua = {
             runtime = {
@@ -30,5 +22,4 @@ require("lspconfig").sumneko_lua.setup({
             },
         },
     },
-    on_attach = require("my.config.lsp.nvim-lsp-settings").common_on_attach,
-})
+}

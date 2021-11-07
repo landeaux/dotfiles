@@ -1,9 +1,4 @@
-require("lspconfig").vuels.setup({
-    cmd = { vim.fn.stdpath("data") .. "/lspinstall/vue/node_modules/.bin/vls", "--stdio" },
-    flags = {
-        debounce_text_changes = 150,
-    },
-    capabilities = require("my.config.lsp.nvim-lsp-settings").capabilities,
+return {
     settings = {
         vetur = {
             ignoreProjectWarning = false,
@@ -49,4 +44,4 @@ require("lspconfig").vuels.setup({
         require("my.config.lsp.nvim-lsp-settings").common_on_attach(client, bufnr)
         client.resolved_capabilities.document_formatting = false
     end,
-})
+}

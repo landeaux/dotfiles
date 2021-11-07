@@ -1,9 +1,10 @@
+local M = {}
+
+local format_on_save = true
+local auto_format_lock = false
+
 local function documentHighlight(client, _)
-    -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
-        -- hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
-        -- hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
-        -- hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
         vim.api.nvim_exec(
             [[
       augroup lsp_document_highlight
@@ -17,13 +18,7 @@ local function documentHighlight(client, _)
     end
 end
 
-local lsp_config = {}
-
-lsp_config.capabilities = require("cmp_nvim_lsp").update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
-
-function lsp_config.common_on_attach(client, bufnr)
+function M.on_attach(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -31,7 +26,25 @@ function lsp_config.common_on_attach(client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
 
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  if client.name == "efm" then
+    client.resolved_capabilities.document_formatting = true
+    client.resolved_capabilities.document_range_formatting = true
+
+    if format_on_save and not auto_format_lock then
+        auto_format_lock = true -- just run autocommand once
+        -- Format on save
+        require("my.utils").create_augroup(
+            { { "BufWritePre", "*", "lua vim.lsp.buf.formatting_sync(nil, 1000)" } },
+            "lsp_auto_format"
+        )
+    end
+  else
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end
 
     -- Mappings.
     local opts = { noremap = true, silent = true }
@@ -134,9 +147,31 @@ function lsp_config.common_on_attach(client, bufnr)
     wk.register_keymap("g", keymap_g)
 
     documentHighlight(client, bufnr)
-
-    -- LSP Signatures
-    require("lsp_signature").on_attach()
+  require('lsp_signature').on_attach({
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+    handler_opts = {
+      border = 'single',
+    },
+  }, bufnr)
 end
 
-return lsp_config
+M.flags = {
+  debounce_text_changes = 150,
+}
+
+M.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+M.root_dir = function(fname)
+  local util = require('lspconfig').util
+  return util.root_pattern('.git')(fname)
+    or util.root_pattern('tsconfig.base.json')(fname)
+    or util.root_pattern('package.json')(fname)
+    or util.root_pattern('.eslintrc.js')(fname)
+    or util.root_pattern('tsconfig.json')(fname)
+    or vim.loop.cwd()
+end
+
+M.autostart = true
+
+return M
+
