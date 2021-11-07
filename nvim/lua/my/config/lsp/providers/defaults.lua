@@ -1,4 +1,5 @@
 local M = {}
+local wk = require("whichkey_setup")
 
 local format_on_save = true
 local auto_format_lock = false
@@ -19,9 +20,12 @@ local function documentHighlight(client, _)
 end
 
 function M.on_attach(client, bufnr)
+    local opts = { noremap = true, silent = true }
+
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
+
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
@@ -33,8 +37,28 @@ function M.on_attach(client, bufnr)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
 
+    if client.name == "efm" then
+        print(vim.inspect(client.resolved_capabilities))
+        client.resolved_capabilities.document_formatting = true
+        client.resolved_capabilities.document_range_formatting = true
+
+        if format_on_save and not auto_format_lock then
+            auto_format_lock = true -- just run autocommand once
+            -- Format on save
+            require("my.utils").create_augroup(
+                { { "BufWritePre", "*", "lua vim.lsp.buf.formatting_sync(nil, 1000)" } },
+                "lsp_auto_format"
+            )
+        end
+
+        -- Mappings
+        buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+        local keys = { l = { name = "+lsp", f = "Format" } }
+        wk.register_keymap("leader", keys)
+    end
+
     -- Mappings.
-    local opts = { noremap = true, silent = true }
     buf_set_keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
     buf_set_keymap("n", "gy", ":lua vim.lsp.buf.type_definition()<CR>", opts)
     buf_set_keymap("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
@@ -129,11 +153,11 @@ function M.on_attach(client, bufnr)
         y = "Go to type definition",
     }
 
-    local wk = require("whichkey_setup")
     wk.register_keymap("leader", keymap_leader)
     wk.register_keymap("g", keymap_g)
 
     documentHighlight(client, bufnr)
+
     require("lsp_signature").on_attach({
         bind = true, -- This is mandatory, otherwise border config won't get registered.
         handler_opts = {
