@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # run system configuration commands
-setxkbmap -option caps:escape  # re-map caps-lock to escape
+setxkbmap -option caps:escape # re-map caps-lock to escape
 
 ########## update apt and upgrade packages
-sudo apt update  # update apt package index
-sudo apt upgrade -y  # upgrade existing packages
+sudo apt update     # update apt package index
+sudo apt upgrade -y # upgrade existing packages
 
 ########## install additional packages
 sudo apt install -y build-essential git curl wget tree xclip tmux
