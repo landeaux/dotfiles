@@ -70,4 +70,4 @@ return {
         local wk = require("whichkey_setup")
         wk.register_keymap("leader", keymap_leader)
     end,
-})
+}

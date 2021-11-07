@@ -1,12 +1,12 @@
 -- python
 local python_args = {}
 
-local flake8 = require("my.config.lsp.efm-ls.linters.flake8")
-local mypy = require("my.config.lsp.efm-ls.linters.mypy")
-local pydocstyle = require("my.config.lsp.efm-ls.linters.pydocstyle")
+local flake8 = require("my.config.lsp.providers.efm.linters.flake8")
+local mypy = require("my.config.lsp.providers.efm.linters.mypy")
+local pydocstyle = require("my.config.lsp.providers.efm.linters.pydocstyle")
 
-local black = require("my.config.lsp.efm-ls.formatters.black")
-local isort = require("my.config.lsp.efm-ls.formatters.isort")
+local black = require("my.config.lsp.providers.efm.formatters.black")
+local isort = require("my.config.lsp.providers.efm.formatters.isort")
 
 table.insert(python_args, flake8)
 table.insert(python_args, mypy)
@@ -17,11 +17,11 @@ table.insert(python_args, isort)
 -- lua
 local lua_args = {}
 
-local lua_formatter = 'stylua'
+local lua_formatter = "stylua"
 
-local lua_format = require("my.config.lsp.efm-ls.formatters.lua-format")
-local luafmt = require("my.config.lsp.efm-ls.formatters.luafmt")
-local stylua = require("my.config.lsp.efm-ls.formatters.stylua")
+local lua_format = require("my.config.lsp.providers.efm.formatters.lua-format")
+local luafmt = require("my.config.lsp.providers.efm.formatters.luafmt")
+local stylua = require("my.config.lsp.providers.efm.formatters.stylua")
 
 if lua_formatter == "lua-format" then
     table.insert(lua_args, lua_format)
@@ -34,19 +34,19 @@ end
 -- sh
 local sh_arguments = {}
 
-local shfmt = require("my.config.lsp.efm-ls.formatters.shfmt")
-local shellcheck = require("my.config.lsp.efm-ls.linters.shellcheck")
+local shfmt = require("my.config.lsp.providers.efm.formatters.shfmt")
+local shellcheck = require("my.config.lsp.providers.efm.linters.shellcheck")
 
 table.insert(sh_arguments, shfmt)
 table.insert(sh_arguments, shellcheck)
 
 -- javascript react, vue, json, html, css, yaml
--- local prettier = require "config.lsp.efm-ls.formatters.prettier"
--- local prettier = require "config.lsp.efm-ls.formatters.prettier_d_slim"
-local prettier = require("my.config.lsp.efm-ls.formatters.prettierd")
+-- local prettier = require "config.lsp.providers.efm.formatters.prettier"
+-- local prettier = require "config.lsp.providers.efm.formatters.prettier_d_slim"
+local prettier = require("my.config.lsp.providers.efm.formatters.prettierd")
 
--- local eslint = require "config.lsp.efm-ls.linters.eslint"
-local eslint = require("my.config.lsp.efm-ls.linters.eslint_d")
+-- local eslint = require "config.lsp.providers.efm.linters.eslint"
+local eslint = require("my.config.lsp.providers.efm.linters.eslint_d")
 
 local tsserver_args = {}
 
@@ -59,10 +59,25 @@ table.insert(vue_args, prettier)
 table.insert(vue_args, eslint)
 
 -- markdown
--- local markdownlint = require "config.lsp.efm-ls.linters.markdownlint"
-local markdownPandocFormat = require("my.config.lsp.efm-ls.formatters.pandoc")
+-- local markdownlint = require "config.lsp.providers.efm.linters.markdownlint"
+local markdownPandocFormat = require("my.config.lsp.providers.efm.formatters.pandoc")
+
+local format_on_save = true
+local auto_format_lock = false
 
 local on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = true
+    client.resolved_capabilities.document_range_formatting = true
+
+    if format_on_save and not auto_format_lock then
+        auto_format_lock = true -- just run autocommand once
+        -- Format on save
+        require("my.utils").create_augroup(
+            { { "BufWritePre", "*", "lua vim.lsp.buf.formatting_sync(nil, 1000)" } },
+            "lsp_auto_format"
+        )
+    end
+
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -71,16 +86,7 @@ local on_attach = function(client, bufnr)
     local opts = { noremap = true, silent = true }
     buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-    -- Format on save
-    require("my.utils").create_augroup(
-        { { "BufWritePre", "*", "lua vim.lsp.buf.formatting_sync(nil, 1000)" } },
-        "lsp_auto_format"
-    )
-    -- Also find way to toggle format on save
-    -- maybe this will help: https://superuser.com/questions/439078/how-to-disable-autocmd-or-augroup-in-vim
-
     local keys = { l = { name = "+lsp", f = "Format" } }
-
     require("whichkey_setup").register_keymap("leader", keys)
 end
 
