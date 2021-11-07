@@ -3,9 +3,9 @@
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 rm_and_symlink() {
-  if [[ -e "$1" ]] || [[ -L "$1" ]]; then
-    rm -rf "$1"
-  fi
+	if [[ -e $1 ]] || [[ -L $1 ]]; then
+		rm -rf "$1"
+	fi
 	ln -s "$2" "$1"
 }
 export -f rm_and_symlink
