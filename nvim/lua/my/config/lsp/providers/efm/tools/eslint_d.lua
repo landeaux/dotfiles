@@ -1,5 +1,6 @@
 -- npm add --global eslint_d
 local eslint = {
+    prefix = "eslint",
     lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
     -- lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
     lintIgnoreExitCode = true,
