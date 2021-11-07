@@ -1,4 +1,6 @@
-local eslint = {
+-- npm install eslint
+
+return {
     prefix = "eslint",
     lintCommand = "./node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}",
     lintIgnoreExitCode = true,
@@ -7,5 +9,3 @@ local eslint = {
     formatCommand = "./node_modules/.bin/eslint --fix-to-stdout --stdin --stdin-filename=${INPUT}",
     formatStdin = true,
 }
-
-return eslint

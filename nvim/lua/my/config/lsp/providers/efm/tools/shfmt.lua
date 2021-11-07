@@ -1,3 +1,6 @@
-local shfmt = { formatCommand = "shfmt -ci -s -bn", formatStdin = true }
+-- go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
-return shfmt
+return {
+    formatCommand = "shfmt -ci -s -bn",
+    formatStdin = true,
+}

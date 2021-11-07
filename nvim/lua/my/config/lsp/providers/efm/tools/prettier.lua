@@ -1,7 +1,7 @@
 -- You can look for project scope Prettier and Eslint with e.g.
 -- vim.fn.glob("node_modules/.bin/prettier") etc. If it is not found revert to
 -- global Prettier where needed.
-local prettier = {
+return {
     formatCommand = [[
         ./node_modules/.bin/prettier \
             --semi false \
@@ -12,5 +12,3 @@ local prettier = {
     ]],
     formatStdin = true,
 }
-
-return prettier

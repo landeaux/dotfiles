@@ -1,3 +1,6 @@
-local black = { formatCommand = "black --fast --quiet -", formatStdin = true }
+-- pip install black
 
-return black
+return {
+    formatCommand = "black --fast --quiet -",
+    formatStdin = true,
+}

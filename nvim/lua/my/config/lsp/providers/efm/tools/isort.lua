@@ -1,3 +1,6 @@
-local isort = { formatCommand = "isort --stdout --profile black -", formatStdin = true }
+-- pip install isort
 
-return isort
+return {
+    formatCommand = "isort --stdout --profile black -",
+    formatStdin = true,
+}
