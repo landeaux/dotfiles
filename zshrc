@@ -131,9 +131,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# add Go binary to PATH
+# add Go and Go package binaries to PATH
 go_path="/usr/local/go/bin"
-[ -d $go_path ] && export PATH=$PATH:$go_path
+[ -d $go_path ] && export PATH=$PATH:$go_path:/home/adam/go/bin
 
 # direnv hook
 if command -v direnv 1>/dev/null 2>&1; then
