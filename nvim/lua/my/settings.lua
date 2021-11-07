@@ -4,7 +4,7 @@ local opt = vim.opt
 
 local soft_column_limit = 80
 local hard_column_limit = 120
-local indent = 4
+local indent = 2
 
 g.mapleader = " "
 g.maplocalleader = ","
