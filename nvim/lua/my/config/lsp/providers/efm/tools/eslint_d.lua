@@ -1,4 +1,4 @@
--- npm add --global eslint_d
+-- npm install -g eslint_d
 
 return {
     prefix = "eslint",
