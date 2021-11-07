@@ -14,6 +14,6 @@ return {
     prettier = require("my.config.lsp.providers.efm.tools.prettierd"),
     eslint = require("my.config.lsp.providers.efm.tools.eslint_d"),
     -- markdown
-    -- markdownlint = require("config.lsp.providers.efm.tools.markdownlint"),
+    markdownlint = require("my.config.lsp.providers.efm.tools.markdownlint"),
     pandoc = require("my.config.lsp.providers.efm.tools.pandoc"),
 }

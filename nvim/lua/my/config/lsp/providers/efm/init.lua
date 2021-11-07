@@ -58,7 +58,10 @@ return {
             },
             json = { tools.prettier },
             lua = { tools.stylua },
-            markdown = { tools.pandoc },
+            markdown = {
+                tools.markdownlint,
+                tools.pandoc,
+            },
             python = {
                 tools.flake8,
                 tools.mypy,
