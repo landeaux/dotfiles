@@ -1,66 +1,4 @@
--- python
-local python_args = {}
-
-local flake8 = require("my.config.lsp.providers.efm.linters.flake8")
-local mypy = require("my.config.lsp.providers.efm.linters.mypy")
-local pydocstyle = require("my.config.lsp.providers.efm.linters.pydocstyle")
-
-local black = require("my.config.lsp.providers.efm.formatters.black")
-local isort = require("my.config.lsp.providers.efm.formatters.isort")
-
-table.insert(python_args, flake8)
-table.insert(python_args, mypy)
-table.insert(python_args, pydocstyle)
-table.insert(python_args, black)
-table.insert(python_args, isort)
-
--- lua
-local lua_args = {}
-
-local lua_formatter = "stylua"
-
-local lua_format = require("my.config.lsp.providers.efm.formatters.lua-format")
-local luafmt = require("my.config.lsp.providers.efm.formatters.luafmt")
-local stylua = require("my.config.lsp.providers.efm.formatters.stylua")
-
-if lua_formatter == "lua-format" then
-    table.insert(lua_args, lua_format)
-elseif lua_formatter == "lua-fmt" then
-    table.insert(lua_args, luafmt)
-elseif lua_formatter == "stylua" then
-    table.insert(lua_args, stylua)
-end
-
--- sh
-local sh_arguments = {}
-
-local shfmt = require("my.config.lsp.providers.efm.formatters.shfmt")
-local shellcheck = require("my.config.lsp.providers.efm.linters.shellcheck")
-
-table.insert(sh_arguments, shfmt)
-table.insert(sh_arguments, shellcheck)
-
--- javascript react, vue, json, html, css, yaml
--- local prettier = require "config.lsp.providers.efm.formatters.prettier"
--- local prettier = require "config.lsp.providers.efm.formatters.prettier_d_slim"
-local prettier = require("my.config.lsp.providers.efm.formatters.prettierd")
-
--- local eslint = require "config.lsp.providers.efm.linters.eslint"
-local eslint = require("my.config.lsp.providers.efm.linters.eslint_d")
-
-local tsserver_args = {}
-
-table.insert(tsserver_args, prettier)
-table.insert(tsserver_args, eslint)
-
-local vue_args = {}
-
-table.insert(vue_args, prettier)
-table.insert(vue_args, eslint)
-
--- markdown
--- local markdownlint = require "config.lsp.providers.efm.linters.markdownlint"
-local markdownPandocFormat = require("my.config.lsp.providers.efm.formatters.pandoc")
+local tools = require("my.config.lsp.providers.efm.tools")
 
 local format_on_save = true
 local auto_format_lock = false
@@ -90,10 +28,8 @@ local on_attach = function(client, bufnr)
     require("whichkey_setup").register_keymap("leader", keys)
 end
 
-local efm_config = os.getenv("HOME") .. "/.config/efm-langserver/config.yaml"
-
 return {
-    init_options = { documentFormatting = true, codeAction = false },
+    init_options = { documentFormatting = true, codeAction = true },
     filetypes = {
         "css",
         "html",
@@ -110,17 +46,35 @@ return {
     settings = {
         rootMarkers = { "package.json", ".git" },
         languages = {
-            css = { prettier },
-            html = { prettier },
-            javascript = tsserver_args,
-            javascriptreact = tsserver_args,
-            json = { prettier },
-            lua = lua_args,
-            markdown = { markdownPandocFormat },
-            python = python_args,
-            sh = sh_arguments,
-            vue = vue_args,
-            yaml = { prettier },
+            css = { tools.prettier },
+            html = { tools.prettier },
+            javascript = {
+                tools.prettier,
+                tools.eslint,
+            },
+            javascriptreact = {
+                tools.prettier,
+                tools.eslint,
+            },
+            json = { tools.prettier },
+            lua = { tools.stylua },
+            markdown = { tools.pandoc },
+            python = {
+                tools.flake8,
+                tools.mypy,
+                tools.pydocstyle,
+                tools.black,
+                tools.isort,
+            },
+            sh = {
+                tools.shfmt,
+                tools.shellcheck,
+            },
+            vue = {
+                tools.prettier,
+                tools.eslint,
+            },
+            yaml = { tools.prettier },
         },
     },
     on_attach = on_attach,
