@@ -8,6 +8,10 @@ return {
                     url = "https://json.schemastore.org/package.json",
                 },
                 {
+                    fileMatch = { "jsconfig*.json" },
+                    url = "https://json.schemastore.org/jsconfig.json",
+                },
+                {
                     fileMatch = { "tsconfig*.json" },
                     url = "https://json.schemastore.org/tsconfig.json",
                 },
