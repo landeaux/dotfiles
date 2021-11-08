@@ -40,8 +40,4 @@ return {
         emmet = {},
         stylusSupremacy = {},
     },
-    on_attach = function(client, bufnr)
-        require("my.config.lsp.nvim-lsp-settings").common_on_attach(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-    end,
 }

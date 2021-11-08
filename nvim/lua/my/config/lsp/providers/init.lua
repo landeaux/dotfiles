@@ -30,8 +30,8 @@ local requested_servers = {
     "intelliphense",
     "pyright",
     "vimls",
-    "volar",
-    "vue",
+    -- "volar", -- NOTE: This can't exist alongside vuels
+    "vuels",
     "yamlls",
 }
 
