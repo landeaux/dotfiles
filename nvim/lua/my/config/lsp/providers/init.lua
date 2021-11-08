@@ -52,9 +52,9 @@ lsp_installer.on_server_ready(function(server)
     opts.autostart = true
 
     local custom_config_path = "my.config.lsp.providers." .. server.name
-    local custom_config_exists, _ = pcall(require, custom_config_path)
+    local custom_config_exists, config = pcall(require, custom_config_path)
     if custom_config_exists then
-        opts = vim.tbl_deep_extend("force", opts, require(custom_config_path))
+        opts = vim.tbl_deep_extend("force", opts, config)
     end
 
     -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
