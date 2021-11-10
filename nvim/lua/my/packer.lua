@@ -31,12 +31,13 @@ if not present then
 end
 
 packer.init({
-    display = {
-        open_fn = function()
-            return require("packer.util").float({ border = "single" })
-        end,
-        prompt_border = "single",
-    },
+    -- TODO: restore this once there is support for better diff view
+    -- display = {
+    --     open_fn = function()
+    --         return require("packer.util").float({ border = "single" })
+    --     end,
+    --     prompt_border = "single",
+    -- },
     git = {
         clone_timeout = 800, -- Timeout, in seconds, for git clones
     },
