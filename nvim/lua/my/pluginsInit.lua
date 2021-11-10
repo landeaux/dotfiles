@@ -59,16 +59,6 @@ return packer.startup(function()
         -- disable = true,
     })
 
-    -- Start screen
-    use({
-        "glepnir/dashboard-nvim",
-        config = function()
-            require("my.config.ui.dashboard-nvim")
-        end,
-        after = "telescope.nvim",
-        -- disable = true,
-    })
-
     -- Indent guides
     use({
         "lukas-reineke/indent-blankline.nvim",

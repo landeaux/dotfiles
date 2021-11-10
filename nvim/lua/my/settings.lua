@@ -104,7 +104,7 @@ opt.ttimeoutlen = 10
 
 -- Completion
 opt.completeopt = { "menu", "menuone", "noselect" }
-opt.shortmess:append("c")
+opt.shortmess:append("cI")
 
 -- theme
 opt.termguicolors = true
