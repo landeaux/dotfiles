@@ -9,7 +9,12 @@ local use = packer.use
 
 return packer.startup(function()
     -- Packer
-    use("wbthomason/packer.nvim")
+    use({
+        "wbthomason/packer.nvim",
+        "lewis6991/impatient.nvim",
+        "nathom/filetype.nvim",
+        "nvim-lua/plenary.nvim",
+    })
 
     -- Colorscheme
     use({
@@ -84,6 +89,15 @@ return packer.startup(function()
         config = function()
             require("my.config.tools.nvim-tree")
         end,
+        cmd = {
+            "NvimTreeClipboard",
+            "NvimTreeClose",
+            "NvimTreeFindFile",
+            "NvimTreeOpen",
+            "NvimTreeRefresh",
+            "NvimTreeToggle",
+        },
+        keys = "<Leader>tn",
         after = "nvim-web-devicons",
         -- disable = true,
     })
@@ -102,6 +116,16 @@ return packer.startup(function()
         config = function()
             require("my.config.tools.fugitive")
         end,
+        cmd = {
+            "G",
+            "GBrowse",
+            "GDelete",
+            "GMove",
+            "GRename",
+            "Gdiffsplit",
+            "Git",
+        },
+        keys = "<Leader>g",
         -- disable = true,
     })
     use({
@@ -119,6 +143,8 @@ return packer.startup(function()
         config = function()
             require("my.config.tools.undotree")
         end,
+        keys = "<Leader>tu",
+        cmd = "UndotreeToggle",
         -- disable = true,
     })
 
@@ -128,6 +154,7 @@ return packer.startup(function()
         config = function()
             require("my.config.utility.fterm")
         end,
+        keys = "<A-i>",
     })
 
     -- Surround
@@ -182,7 +209,6 @@ return packer.startup(function()
         requires = {
             "windwp/nvim-ts-autotag",
             "JoosepAlviste/nvim-ts-context-commentstring",
-            "nvim-treesitter/nvim-treesitter-refactor",
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
         run = ":TSUpdate",
@@ -247,11 +273,24 @@ return packer.startup(function()
         config = function()
             require("my.config.tools.telescope-nvim")
         end,
+        cmd = "Telescope",
+        keys = { "<Leader>f", "<S-A-p>" },
+        module = "telescope",
         after = "nvim-dap",
     })
 
     -- Search and replace across multiple files
-    use("brooth/far.vim")
+    use({
+        "brooth/far.vim",
+        cmd = {
+            "Far",
+            "Fardo",
+            "Farf",
+            "Farp",
+            "Farr",
+            "Farundo",
+        },
+    })
 
     -- Automatic pair insertion
     use({
@@ -275,15 +314,16 @@ return packer.startup(function()
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-path",
             "saadparwaiz1/cmp_luasnip",
-            "L3MON4D3/LuaSnip",
+            {
+                "L3MON4D3/LuaSnip",
+                config = function()
+                    require("my.config.lsp.luasnip")
+                end,
+                requires = "rafamadriz/friendly-snippets",
+            },
             "windwp/nvim-autopairs",
         },
-    })
-    use({
-        "rafamadriz/friendly-snippets",
-        config = function()
-            require("my.config.lsp.luasnip")
-        end,
+        -- event = "InsertEnter *",
     })
 
     -- Markdown preview
@@ -295,10 +335,11 @@ return packer.startup(function()
         config = function()
             require("my.config.utility.markdown-preview")
         end,
+        ft = "markdown",
     })
 
     -- Startuptime
-    use("tweekmonster/startuptime.vim")
+    use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
 
     -- Autogenerate python docstrings
     use({
@@ -310,7 +351,7 @@ return packer.startup(function()
     })
 
     -- Fix python indentation
-    use("Vimjas/vim-python-pep8-indent")
+    use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
 
     if my_packer.first_install then
         packer.sync()
