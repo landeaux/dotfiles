@@ -122,22 +122,11 @@ return packer.startup(function()
         -- disable = true,
     })
 
-    -- Register Preview
-    use("gennaro-tedesco/nvim-peekup")
-
     -- Floating Terminal
     use({
         "numtostr/FTerm.nvim",
         config = function()
             require("my.config.utility.fterm")
-        end,
-    })
-
-    -- Color Picker
-    use({
-        "KabbAmine/vCoolor.vim",
-        config = function()
-            require("my.config.tools.vcoolor")
         end,
     })
 
@@ -307,10 +296,6 @@ return packer.startup(function()
             require("my.config.utility.markdown-preview")
         end,
     })
-
-    -- Meta
-    -- Read line and column from the command line
-    use("wsdjeg/vim-fetch")
 
     -- Profiler
     use({ "norcalli/profiler.nvim", opt = true })
