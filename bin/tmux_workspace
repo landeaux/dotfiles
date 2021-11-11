@@ -6,9 +6,8 @@ if [[ -n $1 ]]; then
 	setup_file="$HOME/.tmux/$1.proj"
 	if [[ -e $setup_file ]]; then
 		# only set up workspace if session doesn't already exist
-		tmux has-session -t "$session"
-		if [ $? != 0 ]; then
-			$(which tmux) new-session -d -s "$session" "tmux $2 source-file $setup_file"
+		if ! tmux has-session -t "$session"; then
+			tmux new-session -d -s "$session" "tmux $2 source-file $setup_file"
 		fi
 
 		if [ -n "$TMUX" ]; then
