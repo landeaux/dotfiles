@@ -8,6 +8,9 @@ opt.foldlevel = 99
 
 -- Tree-sitter
 require("nvim-treesitter.configs").setup({
+    autotag = {
+        enable = true,
+    },
     ensure_installed = {
         "bash",
         "c",
