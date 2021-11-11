@@ -297,9 +297,6 @@ return packer.startup(function()
         end,
     })
 
-    -- Profiler
-    use({ "norcalli/profiler.nvim", opt = true })
-
     -- Startuptime
     use("tweekmonster/startuptime.vim")
 
