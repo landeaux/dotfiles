@@ -76,6 +76,10 @@ opt.listchars = {
     tab = "|→",
     trail = "•",
 }
+opt.fillchars = {
+    diff = " ",
+    eob = " ",
+}
 opt.showmode = false
 -- opt.mouse = "a"
 opt.splitbelow = true
