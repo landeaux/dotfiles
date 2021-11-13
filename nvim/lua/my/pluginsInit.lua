@@ -194,7 +194,7 @@ return packer.startup(function()
             "ray-x/lsp_signature.nvim",
             "jose-elias-alvarez/nvim-lsp-ts-utils",
             -- "glepnir/lspsaga.nvim",
-            { "tami5/lspsaga.nvim", branch = "nvim51" },
+            "tami5/lspsaga.nvim",
             "kosayoda/nvim-lightbulb",
             "hrsh7th/cmp-nvim-lsp",
         },

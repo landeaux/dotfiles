@@ -50,7 +50,6 @@ function M.on_attach(client, bufnr)
             )
         end
 
-        -- Mappings
         buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
         local keys = { l = { name = "+lsp", f = "Format" } }
@@ -65,29 +64,20 @@ function M.on_attach(client, bufnr)
     buf_set_keymap("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
     buf_set_keymap("n", "K", ":Lspsaga hover_doc<CR>", opts)
 
-    buf_set_keymap("n", "<C-k>", ":Lspsaga signature_help<CR>", opts)
+    buf_set_keymap("n", "<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", opts)
+    -- buf_set_keymap("n", "<C-k>", ":Lspsaga signature_help<CR>", opts)
     buf_set_keymap("n", "<Leader>lp", ":Lspsaga preview_definition<CR>", opts)
     buf_set_keymap("n", "<Leader>lr", ":Lspsaga rename<CR>", opts)
     buf_set_keymap("n", "<Leader>lc", ":Lspsaga code_action<CR>", opts)
+    buf_set_keymap("x", "<Leader>lc", ":<c-u>Lspsaga range_code_action<cr>", opts)
     buf_set_keymap("n", "<Leader>li", ":Lspsaga lsp_finder<CR>", opts)
 
     buf_set_keymap("n", "<Leader>ldk", ":Lspsaga show_cursor_diagnostics<CR>", opts)
     buf_set_keymap("n", "<Leader>lds", ":Lspsaga show_line_diagnostics<CR>", opts)
     buf_set_keymap("n", "<Leader>ldp", ":Lspsaga diagnostic_jump_prev<CR>", opts)
-    buf_set_keymap("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", opts)
     buf_set_keymap("n", "<Leader>ldn", ":Lspsaga diagnostic_jump_next<CR>", opts)
+    buf_set_keymap("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", opts)
     buf_set_keymap("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", opts)
-
-    buf_set_keymap("n", "<Leader>lwa", ":lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-    buf_set_keymap("n", "<Leader>lwr", ":lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-    buf_set_keymap(
-        "n",
-        "<Leader>lwl",
-        ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-        opts
-    )
-
-    buf_set_keymap("n", "<Leader>lI", ":LspInfo<CR>", opts)
 
     -- scroll down hover doc or scroll in definition preview
     buf_set_keymap(
@@ -103,6 +93,17 @@ function M.on_attach(client, bufnr)
         ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>",
         opts
     )
+
+    buf_set_keymap("n", "<Leader>lwa", ":lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", "<Leader>lwr", ":lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+    buf_set_keymap(
+        "n",
+        "<Leader>lwl",
+        ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+        opts
+    )
+
+    buf_set_keymap("n", "<Leader>lI", ":LspInfo<CR>", opts)
 
     local function buf_bind_picker(...)
         require("my.config.tools.telescope-nvim-utils").buf_bind_picker(bufnr, ...)
