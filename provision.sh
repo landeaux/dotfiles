@@ -42,7 +42,9 @@ nvm install --lts
 ########## install kitty
 # see scripts/install_kitty.sh
 
-# install neovim
+########## install neovim
+curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -o ~/.local/bin/nvim
+chmod +x ~/.local/bin/nvim
 
 # install neovim package dependencies
 # - python3.8-venv
