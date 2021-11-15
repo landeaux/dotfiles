@@ -11,12 +11,6 @@ sudo apt autoremove  # clean up packages no longer needed
 ########## install additional packages
 sudo apt install -y build-essential git curl tree xclip tmux
 
-########## install docker
-# see scripts/install_docker.sh
-
-########## install zsh and oh-my-zsh
-# see scripts/install_zsh.sh
-
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
@@ -36,6 +30,12 @@ git clone --depth=1 https://github.com/pindexis/marker ~/.marker
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 command -v nvm
 nvm install --lts
+
+########## install docker
+# see scripts/install_docker.sh
+
+########## install zsh and oh-my-zsh
+# see scripts/install_zsh.sh
 
 ########## install kitty
 # see scripts/install_kitty.sh
