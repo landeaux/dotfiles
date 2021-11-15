@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
 # run system configuration commands
-setxkbmap -option caps:escape # re-map caps-lock to escape
+setxkbmap -option caps:escape # re-map caps-lock to escape (NOTE: this doesn't seem to be persistant between logins)
 
 ########## update apt and upgrade packages
-sudo apt update     # update apt package index
-sudo apt upgrade -y # upgrade existing packages
+sudo apt update      # update apt package index
+sudo apt upgrade -y  # upgrade existing packages
+sudo apt autoremove  # clean up packages no longer needed
 
 ########## install additional packages
-sudo apt install -y build-essential git curl wget tree xclip tmux
+sudo apt install -y build-essential git curl tree xclip tmux
 
 ########## install docker
 # see scripts/install_docker.sh
