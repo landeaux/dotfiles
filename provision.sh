@@ -37,10 +37,10 @@ nvm install --lts
 ########## install zsh and oh-my-zsh
 # see scripts/install_zsh.sh
 
+# install fonts
+
 ########## install kitty
 # see scripts/install_kitty.sh
-
-# install fonts
 
 # install neovim
 
