@@ -32,17 +32,17 @@ git clone --depth=1 https://github.com/pindexis/marker ~/.marker
 ########## install pyenv + plugins
 # see scripts/install_pyenv.sh
 
+########## install nvm (node + npm)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+command -v nvm
+nvm install --lts
+
 ########## install kitty
 # see scripts/install_kitty.sh
 
 # install fonts
 
 # install neovim
-
-# install nvm (node + npm)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-command -v nvm
-nvm install --lts
 
 # install neovim package dependencies
 # - python3.8-venv
