@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# See: https://github.com/pyenv/pyenv-installer
+
 set -e
 
 # install dependencies
