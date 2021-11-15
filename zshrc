@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # add custom scripts location to PATH (if path exists)
-[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[[ ":$PATH:" == *:$HOME/bin:* ]] || [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[[ ":$PATH:" == *:$HOME/.local/bin:* ]] || [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -135,7 +136,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # add Go and Go package binaries to PATH
 go_path="/usr/local/go/bin"
-[ -d $go_path ] && export PATH=$PATH:$go_path:/home/adam/go/bin
+go_pkg_path="${HOME}/go/bin"
+[ -d "${go_path}" ] && export PATH="${PATH}:${go_path}"
+[ -d "${go_pkg_path}" ] && export PATH="${PATH}:${go_pkg_path}"
 
 # direnv hook
 if command -v direnv 1>/dev/null 2>&1; then
