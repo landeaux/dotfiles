@@ -18,8 +18,8 @@ sudo apt install -y build-essential git curl tree xclip tmux
 # see scripts/install_zsh.sh
 
 # install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf --all
-~/.fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all
 
 # install marker
 # NOTE: this install script tries to call python (via /usr/bin/env python),
