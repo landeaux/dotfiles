@@ -4,12 +4,15 @@
 setxkbmap -option caps:escape # re-map caps-lock to escape (NOTE: this doesn't seem to be persistant between logins)
 
 ########## update apt and upgrade packages
-sudo apt update      # update apt package index
-sudo apt upgrade -y  # upgrade existing packages
-sudo apt autoremove  # clean up packages no longer needed
+sudo apt update     # update apt package index
+sudo apt upgrade -y # upgrade existing packages
+sudo apt autoremove # clean up packages no longer needed
 
 ########## install additional packages
 sudo apt install -y build-essential git curl tree xclip tmux
+
+########## install zsh and oh-my-zsh
+# see scripts/install_zsh.sh
 
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -34,10 +37,8 @@ nvm install --lts
 ########## install docker
 # see scripts/install_docker.sh
 
-########## install zsh and oh-my-zsh
-# see scripts/install_zsh.sh
-
-# install fonts
+########## install fonts
+# TODO: add way to install fonts from ./fonts/{Linux,MacOS} to ~/.fonts
 
 ########## install kitty
 # see scripts/install_kitty.sh
