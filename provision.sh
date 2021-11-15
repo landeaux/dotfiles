@@ -18,11 +18,16 @@ sudo apt install -y build-essential git curl tree xclip tmux
 # see scripts/install_zsh.sh
 
 # install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf --all
 ~/.fzf/install
 
 # install marker
-git clone --depth=1 https://github.com/pindexis/marker ~/.marker && ~/.marker/install.py
+# NOTE: this install script tries to call python (via /usr/bin/env python),
+# but new versions of Ubuntu don't have python, they have python3. Symlinking
+# /usr/bin/python to /usr/bin/python3 should do the trick
+[ ! -e /usr/bin/python ] && [ -e /usr/bin/python3 ] && sudo ln -s /usr/bin/python3 /usr/bin/python
+git clone --depth=1 https://github.com/pindexis/marker ~/.marker
+~/.marker/install.py
 
 ########## install pyenv + plugins
 # see scripts/install_pyenv.sh
