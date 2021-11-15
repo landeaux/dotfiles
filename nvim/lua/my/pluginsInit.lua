@@ -187,19 +187,30 @@ return packer.startup(function()
 
     -- LSP
     use({ -- lsp
-        "williamboman/nvim-lsp-installer",
-        requires = {
-            "neovim/nvim-lspconfig",
-            "ray-x/lsp_signature.nvim",
-            "jose-elias-alvarez/nvim-lsp-ts-utils",
-            -- "glepnir/lspsaga.nvim",
-            "tami5/lspsaga.nvim",
-            "kosayoda/nvim-lightbulb",
-            "hrsh7th/cmp-nvim-lsp",
-        },
+        "neovim/nvim-lspconfig",
         config = function()
             require("my.config.lsp")
         end,
+        requires = {
+            {
+                "ray-x/lsp_signature.nvim",
+                config = function()
+                    -- must happen after servers are set up
+                    require("lsp_signature").setup({
+                        bind = true, -- This is mandatory, otherwise border config won't get registered.
+                        handler_opts = {
+                            border = "rounded",
+                        },
+                    })
+                end,
+                after = "nvim-lspconfig",
+            },
+            { "tami5/lspsaga.nvim" },
+            { "kosayoda/nvim-lightbulb" },
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "jose-elias-alvarez/nvim-lsp-ts-utils" },
+            { "williamboman/nvim-lsp-installer" },
+        },
     })
 
     -- Tresitter

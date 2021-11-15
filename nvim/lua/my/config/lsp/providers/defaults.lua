@@ -157,13 +157,6 @@ function M.on_attach(client, bufnr)
     wk.register_keymap("g", keymap_g)
 
     documentHighlight(client, bufnr)
-
-    require("lsp_signature").on_attach({
-        bind = true, -- This is mandatory, otherwise border config won't get registered.
-        handler_opts = {
-            border = "single",
-        },
-    }, bufnr)
 end
 
 M.flags = {
