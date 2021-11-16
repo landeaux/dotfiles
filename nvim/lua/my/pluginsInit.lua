@@ -213,6 +213,14 @@ return packer.startup(function()
         },
     })
 
+    use({
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+            require("my.config.lsp.providers.null_ls")
+        end,
+        requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    })
+
     -- Tresitter
     use({
         "nvim-treesitter/nvim-treesitter",

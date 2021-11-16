@@ -37,7 +37,7 @@ function M.on_attach(client, bufnr)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
 
-    if client.name == "efm" then
+    if client.name == "null-ls" then
         client.resolved_capabilities.document_formatting = true
         client.resolved_capabilities.document_range_formatting = true
 

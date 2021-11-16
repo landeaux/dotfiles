@@ -21,7 +21,7 @@ local requested_servers = {
     "bashls",
     "cssls",
     "dockerls",
-    "efm",
+    -- "efm",
     -- 'eslint',
     "html",
     "jsonls",
