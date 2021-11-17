@@ -19,6 +19,14 @@ local function documentHighlight(client, _)
     end
 end
 
+local allowed_to_format = {
+    "dockerls",
+    "efm",
+    -- "jsonls",
+    -- "tsserver",
+    -- "vuels",
+}
+
 function M.on_attach(client, bufnr)
     local opts = { noremap = true, silent = true }
 
@@ -33,14 +41,10 @@ function M.on_attach(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    -- Don't format for non-efm lang servers
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-
-    if client.name == "efm" then
-        client.resolved_capabilities.document_formatting = true
-        client.resolved_capabilities.document_range_formatting = true
-
+    if
+        client.resolved_capabilities.document_formatting
+        and vim.tbl_contains(allowed_to_format, client.name)
+    then
         if format_on_save and not auto_format_lock then
             auto_format_lock = true -- just run autocommand once
             -- Format on save
@@ -51,9 +55,7 @@ function M.on_attach(client, bufnr)
         end
 
         buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
-        local keys = { l = { name = "+lsp", f = "Format" } }
-        wk.register_keymap("leader", keys)
+        wk.register_keymap("leader", { l = { name = "+lsp", f = "Format" } })
     end
 
     -- Mappings.
@@ -74,8 +76,6 @@ function M.on_attach(client, bufnr)
 
     buf_set_keymap("n", "<Leader>ldk", ":Lspsaga show_cursor_diagnostics<CR>", opts)
     buf_set_keymap("n", "<Leader>lds", ":Lspsaga show_line_diagnostics<CR>", opts)
-    buf_set_keymap("n", "<Leader>ldp", ":Lspsaga diagnostic_jump_prev<CR>", opts)
-    buf_set_keymap("n", "<Leader>ldn", ":Lspsaga diagnostic_jump_next<CR>", opts)
     buf_set_keymap("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", opts)
     buf_set_keymap("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", opts)
 
