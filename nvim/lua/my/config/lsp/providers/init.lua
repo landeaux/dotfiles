@@ -16,7 +16,7 @@ lsp_installer.settings({
     },
 })
 
--- initial default serverse
+-- initial default servers
 local requested_servers = {
     "bashls",
     "cssls",
