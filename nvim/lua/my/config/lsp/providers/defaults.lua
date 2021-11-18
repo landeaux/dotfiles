@@ -74,8 +74,18 @@ function M.on_attach(client, bufnr)
     buf_set_keymap("x", "<Leader>lc", ":<c-u>Lspsaga range_code_action<cr>", opts)
     buf_set_keymap("n", "<Leader>li", ":Lspsaga lsp_finder<CR>", opts)
 
-    buf_set_keymap("n", "<Leader>ldk", ":Lspsaga show_cursor_diagnostics<CR>", opts)
-    buf_set_keymap("n", "<Leader>lds", ":Lspsaga show_line_diagnostics<CR>", opts)
+    buf_set_keymap(
+        "n",
+        "<Leader>ldk",
+        ':lua vim.diagnostic.open_float(0, { scope = "cursor" })<CR>',
+        opts
+    )
+    buf_set_keymap(
+        "n",
+        "<Leader>lds",
+        ':lua vim.diagnostic.open_float(0, { scope = "line" })<CR>',
+        opts
+    )
     buf_set_keymap("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", opts)
     buf_set_keymap("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", opts)
 

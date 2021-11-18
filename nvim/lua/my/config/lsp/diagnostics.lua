@@ -1,20 +1,27 @@
 -- Diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-        underline = true,
-        virtual_text = {
-            source = "always",
-            spacing = 4,
-            prefix = "■", -- ﱢ
-        },
-        signs = {
-            enable = true,
-            priority = 20,
-        },
-        update_in_insert = false,
-    }
-)
+local diagnostic_config = {
+    underline = true,
+    float = {
+        show_header = false,
+        source = "always",
+        border = "rounded",
+    },
+    virtual_text = {
+        source = "always",
+        spacing = 4,
+        prefix = "■", -- ﱢ
+        -- severity = {
+        --     min = vim.diagnostic.severity.HINT,
+        -- },
+    },
+    signs = {
+        enable = true,
+        priority = 20,
+    },
+    update_in_insert = false,
+}
+
+vim.diagnostic.config(diagnostic_config)
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
