@@ -23,6 +23,7 @@ null_ls.config({
         -- null_ls.builtins.diagnostics.luacheck,
         -- null_ls.builtins.diagnostics.stylint,
         -- null_ls.builtins.diagnostics.yamllint,
+        null_ls.builtins.code_actions.eslint_d,
         -- null_ls.builtins.hover.dictionary,
     },
 })
