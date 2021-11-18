@@ -204,7 +204,6 @@ return packer.startup(function()
                     })
                 end,
                 after = "nvim-lspconfig",
-                disable = true,
             },
             { "kosayoda/nvim-lightbulb" },
             { "hrsh7th/cmp-nvim-lsp" },
