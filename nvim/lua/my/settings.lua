@@ -101,7 +101,7 @@ cmd(
 ) -- show column limit indicators
 
 -- Performance
-opt.updatetime = 100
+opt.updatetime = 0
 opt.lazyredraw = true -- faster macros
 opt.redrawtime = 1500
 opt.ttimeoutlen = 10

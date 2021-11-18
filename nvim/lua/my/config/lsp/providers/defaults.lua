@@ -64,15 +64,12 @@ function M.on_attach(client, bufnr)
     buf_set_keymap("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "gI", ":lua vim.lsp.buf.implementation()<CR>", opts)
     buf_set_keymap("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
-    buf_set_keymap("n", "K", ":Lspsaga hover_doc<CR>", opts)
+    buf_set_keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
 
     buf_set_keymap("n", "<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", opts)
-    -- buf_set_keymap("n", "<C-k>", ":Lspsaga signature_help<CR>", opts)
-    buf_set_keymap("n", "<Leader>lp", ":Lspsaga preview_definition<CR>", opts)
-    buf_set_keymap("n", "<Leader>lr", ":Lspsaga rename<CR>", opts)
-    buf_set_keymap("n", "<Leader>lc", ":Lspsaga code_action<CR>", opts)
-    buf_set_keymap("x", "<Leader>lc", ":<c-u>Lspsaga range_code_action<cr>", opts)
-    buf_set_keymap("n", "<Leader>li", ":Lspsaga lsp_finder<CR>", opts)
+    buf_set_keymap("n", "<Leader>lr", ":lua vim.lsp.buf.rename()<CR>", opts)
+    buf_set_keymap("n", "<Leader>lc", ":lua vim.lsp.buf.code_action()<CR>", opts)
+    buf_set_keymap("x", "<Leader>lc", ":lua vim.lsp.buf.range_code_action()<CR>", opts)
 
     buf_set_keymap(
         "n",
@@ -86,23 +83,8 @@ function M.on_attach(client, bufnr)
         ':lua vim.diagnostic.open_float(0, { scope = "line" })<CR>',
         opts
     )
-    buf_set_keymap("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>", opts)
-    buf_set_keymap("n", "]d", ":Lspsaga diagnostic_jump_next<CR>", opts)
-
-    -- scroll down hover doc or scroll in definition preview
-    buf_set_keymap(
-        "n",
-        "<C-f>",
-        ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>",
-        opts
-    )
-    -- scroll up hover doc
-    buf_set_keymap(
-        "n",
-        "<C-d>",
-        ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>",
-        opts
-    )
+    buf_set_keymap("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
+    buf_set_keymap("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
 
     buf_set_keymap("n", "<Leader>lwa", ":lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
     buf_set_keymap("n", "<Leader>lwr", ":lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)

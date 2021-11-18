@@ -204,8 +204,8 @@ return packer.startup(function()
                     })
                 end,
                 after = "nvim-lspconfig",
+                disable = true,
             },
-            { "tami5/lspsaga.nvim" },
             { "kosayoda/nvim-lightbulb" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "jose-elias-alvarez/nvim-lsp-ts-utils" },

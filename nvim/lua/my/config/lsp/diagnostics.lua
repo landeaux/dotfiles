@@ -2,7 +2,7 @@
 local diagnostic_config = {
     underline = true,
     float = {
-        show_header = false,
+        header = "",
         source = "always",
         border = "rounded",
     },
