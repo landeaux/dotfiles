@@ -56,6 +56,8 @@ function M.on_attach(client, bufnr)
 
         buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
         wk.register_keymap("leader", { l = { name = "+lsp", f = "Format" } })
+    else
+        client.resolved_capabilities.document_formatting = false
     end
 
     -- Mappings.
