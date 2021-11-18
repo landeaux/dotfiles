@@ -1,8 +1,6 @@
 local on_attach = require("my.config.lsp.providers.defaults").on_attach
 local null_ls = require("null-ls")
 
--- TODO: add handler for pandoc (maybe the markdownlint formatter is better?)
--- TODO: add handler for and pydocstyle
 -- TODO: check out remaining commented-out builtins to see if they are a good fit
 
 null_ls.config({
