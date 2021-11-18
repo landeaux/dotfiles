@@ -8,7 +8,7 @@ null_ls.config({
     sources = {
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
-        -- null_ls.builtins.formatting.phpcsfixer,
+        null_ls.builtins.formatting.phpcsfixer,
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.shfmt,
         -- null_ls.builtins.formatting.stylint,
