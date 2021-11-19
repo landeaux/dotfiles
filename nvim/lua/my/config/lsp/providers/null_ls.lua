@@ -32,6 +32,10 @@ local pydocstyle = {
     method = null_ls.methods.DIAGNOSTICS,
     filetypes = { "python" },
     generator = null_ls.generator({
+        runtime_condition = function(params)
+            local fname = vim.fn.fnamemodify(params.bufname, ":t:r")
+            return not vim.startswith(fname, "test_")
+        end,
         command = "pydocstyle",
         args = {
             -- Default config discovery ignores CWD and uses the directory the temp-file is in.
