@@ -46,8 +46,5 @@ rm_and_symlink "${HOME}/.gitmessage" "${BASEDIR}/gitmessage"
 # pylint
 rm_and_symlink "${HOME}/.config/pylintrc" "${BASEDIR}/pylintrc"
 
-# stylua
-rm_and_symlink "${HOME}/.config/stylua.toml" "${BASEDIR}/stylua.toml"
-
 # custom bin
 rm_and_symlink "${HOME}/bin" "${BASEDIR}/bin"
