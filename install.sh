@@ -43,8 +43,5 @@ rm_and_symlink "${HOME}/.gitconfig" "${BASEDIR}/gitconfig"
 rm_and_symlink "${HOME}/.gitignore" "${BASEDIR}/gitignore"
 rm_and_symlink "${HOME}/.gitmessage" "${BASEDIR}/gitmessage"
 
-# pylint
-rm_and_symlink "${HOME}/.config/pylintrc" "${BASEDIR}/pylintrc"
-
 # custom bin
 rm_and_symlink "${HOME}/bin" "${BASEDIR}/bin"

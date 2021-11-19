@@ -1,4 +1,0 @@
-[MASTER]
-init-hook=
-    import pylint_venv
-    pylint_venv.inithook(force_venv_activation=True)
