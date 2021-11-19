@@ -43,5 +43,8 @@ rm_and_symlink "${HOME}/.gitconfig" "${BASEDIR}/gitconfig"
 rm_and_symlink "${HOME}/.gitignore" "${BASEDIR}/gitignore"
 rm_and_symlink "${HOME}/.gitmessage" "${BASEDIR}/gitmessage"
 
+# marker
+rm_and_symlink "${HOME}/.local/share/marker/user_commands.txt" "${BASEDIR}/marker/user_commands.txt"
+
 # custom bin
 rm_and_symlink "${HOME}/bin" "${BASEDIR}/bin"

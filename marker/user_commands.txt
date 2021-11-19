@@ -1,0 +1,14 @@
+nvm install lts/* --reinstall-packages-from=node##Install latest stable (LTS) node version using nvm
+git diff {{first-branch}} {{second-branch}} -- {{path/to/file}}##Show git diff between two branches for a specific file
+psql -U postgres##Connect to Postgres using the postgres role
+git stash show -p stash@{0}##Show diff between last stash and last commit
+git log --author={{pattern}} --after={{date}}##Show commits by a certain author after a certain date
+python -m json.tool {{file_path}}##Pretty print json from a file
+npm list -g --depth 0##List all globally install npm packages
+git diff {{branch1}}..{{branch2}}##Compare two branches using git diff
+sed -n {{start}},{{end}}p {{file_path}}##Print specific range of line numbers in a given file
+cat /etc/*-release##Display Linux distro version
+lsb_release -a##Display Linux distro name and version
+for i in {1..{{N}}}; do {{some_command}} & done##Do some command N times in parallel in the background
+python3 -m http.server##Start an HTTP server with python3
+python -m SimpleHTTPServer 8000##Start an HTTP server with python2
