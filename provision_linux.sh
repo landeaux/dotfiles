@@ -47,10 +47,17 @@ nvm install --lts
 curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -o ~/.local/bin/nvim
 chmod +x ~/.local/bin/nvim
 
-# install neovim package dependencies
+########## install neovim package dependencies
 # - python3.8-venv
+sudo apt install python3.8-venv
+
 # - ripgrep (for telescope)
-# - efm linters (black, flake8, prettier, etc.)
+curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
+sudo dpkg -i ripgrep_13.0.0_amd64.deb
+rm ripgrep_13.0.0_amd64.deb
+
+# - null-ls linters/formatters (prettierd, eslint_d, etc.)
+npm install -g eslint_d @fsouza/prettierd markdownlint-cli
 
 # create Development dir and cd into it
 
