@@ -220,7 +220,7 @@ return packer.startup(function()
         requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     })
 
-    -- Tresitter
+    -- Treesitter
     use({
         "nvim-treesitter/nvim-treesitter",
         requires = {
