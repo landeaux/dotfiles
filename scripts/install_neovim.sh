@@ -12,6 +12,8 @@ install_on_linux() {
 }
 
 install_on_macos() {
+	brew uninstall neovim
+	brew cleanup --prune=all
 	brew install --HEAD neovim
 }
 
