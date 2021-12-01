@@ -11,8 +11,8 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --yes --dearm
 
 # set up the stable repository
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+	"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
 # update the package index again
 sudo apt-get update
@@ -24,7 +24,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo groupadd docker
 
 # add $USER to docker group
-sudo usermod -aG docker $USER
+sudo usermod -aG docker "$USER"
 
 # apply the new group changes without logging out
 newgrp docker
