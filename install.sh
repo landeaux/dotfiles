@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eu
+
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 rm_and_symlink() {
@@ -32,11 +34,6 @@ rm_and_symlink "${HOME}/.config/nvim" "${BASEDIR}/nvim"
 mkdir -p "${HOME}/.config/kitty"
 rm_and_symlink "${HOME}/.config/kitty/kitty.conf" "${BASEDIR}/kitty/kitty.conf"
 rm_and_symlink "${HOME}/.config/kitty/kitty_tokyonight_night.conf" "${BASEDIR}/kitty/kitty_tokyonight_night.conf"
-
-# efm
-# efm_home_path="${HOME}/.config/efm-langserver"
-# mkdir -p "${efm_home_path}"
-# rm_and_symlink "${efm_home_path}/config.yaml" "${BASEDIR}/efm-langserver/config.yaml"
 
 # git
 rm_and_symlink "${HOME}/.gitconfig" "${BASEDIR}/gitconfig"
