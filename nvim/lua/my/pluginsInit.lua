@@ -56,11 +56,11 @@ return packer.startup(function()
 
     -- Tab bar
     use({
-        "akinsho/nvim-bufferline.lua",
+        "akinsho/bufferline.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
         config = function()
             require("my.config.ui.nvim-bufferline")
         end,
-        -- disable = true,
     })
 
     -- Indent guides
