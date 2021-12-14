@@ -1,7 +1,7 @@
 local on_attach = require("my.config.lsp.providers.defaults").on_attach
 local null_ls = require("null-ls")
 
-null_ls.config({
+null_ls.setup({
     -- debug = true,
     sources = {
         -- Code Actions
@@ -21,6 +21,7 @@ null_ls.config({
         null_ls.builtins.formatting.shfmt,
         null_ls.builtins.formatting.stylua,
     },
+    on_attach = on_attach,
 })
 
 local pydocstyle = {
@@ -86,7 +87,3 @@ local pydocstyle = {
 }
 
 null_ls.register(pydocstyle)
-
-require("lspconfig")["null-ls"].setup({
-    on_attach = on_attach,
-})
