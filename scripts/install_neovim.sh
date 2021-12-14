@@ -46,7 +46,11 @@ install_on_linux() {
 install_on_macos() {
 	brew uninstall neovim
 	brew cleanup --prune=all
-	brew install --HEAD neovim
+	if [[ $NIGHTLY ]]; then
+		brew install --HEAD neovim
+	else
+		brew install neovim
+	fi
 }
 
 case "$OSTYPE" in
