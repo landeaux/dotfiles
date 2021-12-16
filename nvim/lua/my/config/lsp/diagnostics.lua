@@ -6,14 +6,15 @@ local diagnostic_config = {
         source = "always",
         border = "rounded",
     },
-    virtual_text = {
-        source = "always",
-        spacing = 4,
-        prefix = "■", -- ﱢ
-        -- severity = {
-        --     min = vim.diagnostic.severity.HINT,
-        -- },
-    },
+    virtual_text = false,
+    -- virtual_text = {
+    --     source = "always",
+    --     spacing = 4,
+    --     prefix = "■", -- ﱢ
+    --     -- severity = {
+    --     --     min = vim.diagnostic.severity.HINT,
+    --     -- },
+    -- },
     signs = {
         enable = true,
         priority = 20,
