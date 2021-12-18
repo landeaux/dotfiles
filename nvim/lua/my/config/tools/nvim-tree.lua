@@ -111,4 +111,6 @@ require("nvim-tree").setup({
 
 -- Mappings
 bind("n", "<Leader>tn", ":NvimTreeToggle<CR>", { noremap = true })
-require("whichkey_setup").register_keymap("leader", { t = { name = "+ui-toggle", n = "NvimTree" } })
+require("whichkey_setup").register_keymap("leader", {
+    t = { name = "+ui-toggle", n = "NvimTree" },
+})

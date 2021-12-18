@@ -14,7 +14,7 @@ for _, mod in ipairs(my_modules) do
 end
 
 -- use pcall on compiled.lua in case it doesn't exist already
-local packer_compiled, _ = pcall(require, 'my.compiled')
+local packer_compiled, _ = pcall(require, "my.compiled")
 if not packer_compiled then
     local packer_exists, _ = pcall(require, "packer")
     if packer_exists then
