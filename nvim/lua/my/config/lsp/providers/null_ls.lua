@@ -14,11 +14,18 @@ null_ls.setup({
         null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.diagnostics.shellcheck,
         -- Formatting
-        null_ls.builtins.formatting.black,
+        -- NOTE: these must be placed in the order we want them to run
+        -- python
         null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.black,
+        -- php
         null_ls.builtins.formatting.phpcsfixer,
+        -- javascript, typescript, vue
         null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.eslint_d,
+        -- sh, bash, zsh
         null_ls.builtins.formatting.shfmt,
+        -- lua
         null_ls.builtins.formatting.stylua,
     },
     on_attach = on_attach,
