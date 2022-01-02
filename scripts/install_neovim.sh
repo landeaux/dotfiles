@@ -25,7 +25,7 @@ install_on_linux() {
 	if [[ $NIGHTLY ]]; then
 		NVIM_TAG=nightly
 	else
-		NVIM_TAG=v0.6.0
+		NVIM_TAG=v0.6.1
 	fi
 
 	BASE_URL="https://github.com/neovim/neovim/releases/download/${NVIM_TAG}"
