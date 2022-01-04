@@ -36,11 +36,11 @@ return packer.startup(function()
 
     -- Statusline
     use({
-        "glepnir/galaxyline.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        "NTBBloodbath/galaxyline.nvim",
         config = function()
             require("my.config.ui.galaxyline")
         end,
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
         after = "nvim-web-devicons",
         -- disable = true,
     })
