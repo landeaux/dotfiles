@@ -1,13 +1,14 @@
 require("indent_blankline").setup({
     buftype_exclude = { "terminal", "nofile", "help" },
     filetype_exclude = {
-        "help",
-        "dashboard",
         "NvimTree",
-        "undotree",
-        "packer",
+        "dashboard",
         "git",
         "gitcommit",
+        "help",
+        "markdown",
+        "packer",
+        "undotree",
     },
     char = "▏",
     -- char = "|",
