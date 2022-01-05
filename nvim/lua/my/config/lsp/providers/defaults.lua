@@ -106,9 +106,11 @@ function M.on_attach(client, bufnr)
     -- Telescope LSP
     buf_bind_picker("<Leader>lsd", "lsp_document_symbols")
     buf_bind_picker("<Leader>lsw", "lsp_workspace_symbols")
-    buf_bind_picker("<Leader>ldd", "lsp_document_diagnostics")
-    buf_bind_picker("<Leader>ldw", "lsp_workspace_diagnostics")
     buf_bind_picker("<Leader>lad", "lsp_code_actions")
+
+    -- TODO: Move these to telescope config now that diagnostics have been abstracted away from LSP
+    buf_set_keymap("n", "<Leader>ldd", ":Telescope diagnostics bufnr=0<CR>", opts)
+    buf_set_keymap("n", "<Leader>ldw", ":Telescope diagnostics<CR>", opts)
 
     local keymap_leader = {
         l = {
