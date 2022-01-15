@@ -99,14 +99,10 @@ function M.on_attach(client, bufnr)
 
     buf_set_keymap("n", "<Leader>lI", ":LspInfo<CR>", opts)
 
-    local function buf_bind_picker(...)
-        require("my.config.tools.telescope-nvim-utils").buf_bind_picker(bufnr, ...)
-    end
-
     -- Telescope LSP
-    buf_bind_picker("<Leader>lsd", "lsp_document_symbols")
-    buf_bind_picker("<Leader>lsw", "lsp_workspace_symbols")
-    buf_bind_picker("<Leader>lad", "lsp_code_actions")
+    buf_set_keymap("n", "<Leader>lsd", ":Telescope lsp_document_symbols<CR>", opts)
+    buf_set_keymap("n", "<Leader>lsw", ":Telescope lsp_workspace_symbols<CR>", opts)
+    buf_set_keymap("n", "<Leader>lad", ":Telescope lsp_code_actions<CR>", opts)
 
     -- TODO: Move these to telescope config now that diagnostics have been abstracted away from LSP
     buf_set_keymap("n", "<Leader>ldd", ":Telescope diagnostics bufnr=0<CR>", opts)

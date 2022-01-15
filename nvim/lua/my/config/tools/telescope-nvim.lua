@@ -134,32 +134,37 @@ require("telescope").setup({
 require("telescope").load_extension("dap")
 require("telescope").load_extension("fzf")
 
-local bind_picker = require("my.config.tools.telescope-nvim-utils").bind_picker
-
--- Alt-Shift-P command palette
-bind_picker("<S-A-p>", "commands")
-
 -- Normal
-bind_picker("<Leader>f.", "file_browser")
-bind_picker("<Leader>f/", "current_buffer_fuzzy_find")
-bind_picker("<Leader>fa", "builtin")
-bind_picker("<Leader>fb", "buffers")
-bind_picker("<Leader>ff", "find_files")
-bind_picker("<Leader>fg", "live_grep")
-bind_picker("<Leader>fh", "help_tags")
-bind_picker("<Leader>fo", "oldfiles")
-bind_picker("<Leader>ft", "treesitter")
-bind_picker("<Leader>fw", "grep_string")
-
--- bind("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
+-- TODO: deprecated; update to use extension
+-- bind_picker("<Leader>f.", "file_browser")
+bind("n", "<Leader>f/", ":Telescope current_buffer_fuzzy_find<CR>", {})
+bind("n", "<Leader>fa", ":Telescope builtin<CR>", {})
+bind("n", "<Leader>fb", ":Telescope buffers<CR>", {})
+bind("n", "<Leader>fc", ":Telescope commands<CR>", {})
+bind("n", "<Leader>ff", ":Telescope find_files<CR>", {})
 bind("n", "<Leader>fF", ":Telescope find_files no_ignore=true<CR>", {})
+-- bind("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
+bind("n", "<Leader>fg", ":Telescope live_grep<CR>", {})
 bind(
     "n",
     "<Leader>fG",
     ':Telescope live_grep vimgrep_arguments={"rg","--color=never","--no-heading","--with-filename","--line-number","--column","--smart-case","-u"}<CR>',
     {}
 )
+bind("n", "<Leader>fh", ":Telescope help_tags<CR>", {})
+bind("n", "<Leader>fo", ":Telescope oldfiles<CR>", {})
+bind("n", "<Leader>ft", ":Telescope treesitter<CR>", {})
+bind("n", "<Leader>fw", ":Telescope grep_string<CR>", {})
+
+-- Visual
 bind("v", "<Leader>f", '"zy:Telescope live_grep default_text=<C-r>z<CR>', {})
+
+-- DAP
+bind("n", "<Leader>fdc", ":Telescope dap commands<CR>", {})
+bind("n", "<Leader>fds", ":Telescope dap configurations<CR>", {})
+bind("n", "<Leader>fdl", ":Telescope dap list_breakpoints<CR>", {})
+bind("n", "<Leader>fdv", ":Telescope dap variables<CR>", {})
+bind("n", "<Leader>fdf", ":Telescope dap frames<CR>", {})
 
 local keys = {
     f = {
@@ -175,23 +180,16 @@ local keys = {
         o = "Old files",
         t = "Treesitter",
         w = "Find word under cursor",
+        -- Extensions
+        d = {
+            name = "+dap",
+            c = "Commands",
+            s = "Configurations",
+            l = "List breakpoints",
+            v = "Variables",
+            f = "Frames",
+        },
     },
-}
-
--- DAP
-bind_picker("<Leader>fdc", "commands", "dap")
-bind_picker("<Leader>fds", "configurations", "dap")
-bind_picker("<Leader>fdl", "list_breakpoints", "dap")
-bind_picker("<Leader>fdv", "variables", "dap")
-bind_picker("<Leader>fdf", "frames", "dap")
-
-keys.f.d = {
-    name = "+dap",
-    c = "Commands",
-    s = "Configurations",
-    l = "List breakpoints",
-    v = "Variables",
-    f = "Frames",
 }
 
 wk.register_keymap("leader", keys)
