@@ -142,12 +142,18 @@ bind("n", "<Leader>fa", ":Telescope builtin<CR>", {})
 bind("n", "<Leader>fb", ":Telescope buffers<CR>", {})
 bind("n", "<Leader>fc", ":Telescope commands<CR>", {})
 bind("n", "<Leader>ff", ":Telescope find_files<CR>", {})
-bind("n", "<Leader>fF", ":Telescope find_files no_ignore=true<CR>", {})
+bind("n", "<Leader>fFi", ":Telescope find_files no_ignore=true<CR>", {})
 -- bind("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
 bind("n", "<Leader>fg", ":Telescope live_grep<CR>", {})
 bind(
     "n",
-    "<Leader>fG",
+    "<Leader>fGf",
+    ":lua require('my.config.tools.telescope-pickers').live_grep_in_folder()<CR>",
+    {}
+)
+bind(
+    "n",
+    "<Leader>fGi",
     ':Telescope live_grep vimgrep_arguments={"rg","--color=never","--no-heading","--with-filename","--line-number","--column","--smart-case","-u"}<CR>',
     {}
 )
@@ -173,9 +179,16 @@ local keys = {
         a = "Builtins",
         b = "Buffers",
         f = "Find files",
-        F = "Find files (include ignored)",
+        F = {
+            name = "+find_files",
+            i = "No ignore",
+        },
         g = "Live grep",
-        G = "Live grep (include ignored)",
+        G = {
+            name = "+live_grep",
+            f = "In folder(s)",
+            i = "No ignore",
+        },
         h = "Help tags",
         o = "Old files",
         t = "Treesitter",
