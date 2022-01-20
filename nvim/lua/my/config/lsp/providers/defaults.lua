@@ -131,7 +131,6 @@ function M.on_attach(client, bufnr)
                 l = "List workspace folders",
             },
             r = "Rename",
-            p = "Preview definition",
             I = "LSP Info",
         },
     }

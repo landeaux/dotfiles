@@ -74,6 +74,14 @@ require("nvim-treesitter.configs").setup({
             goto_previous_start = { ["[m"] = "@function.outer", ["[["] = "@class.outer" },
             goto_previous_end = { ["[M"] = "@function.outer", ["[]"] = "@class.outer" },
         },
+        lsp_interop = {
+            enable = true,
+            border = "rounded",
+            peek_definition_code = {
+                ["<leader>lpf"] = "@function.outer",
+                ["<leader>lpc"] = "@class.outer",
+            },
+        },
     },
     context_commentstring = { enable = true, enable_autocmd = false },
 })
@@ -82,6 +90,17 @@ local keymap_g = { name = "+goto", l = { name = "+ts-selection", i = "Initialize
 
 wk.register_keymap("g", keymap_g)
 
-local keymap_leader = { [">"] = "TS: Swap next parameter", ["<"] = "TS: Swap previous parameter" }
+local keymap_leader = {
+    [">"] = "TS: Swap next parameter",
+    ["<"] = "TS: Swap previous parameter",
+    l = {
+        name = "+lsp",
+        p = {
+            name = "+peek_definition_code",
+            f = "Peek funtion definition",
+            c = "Peek class definition",
+        },
+    },
+}
 
 wk.register_keymap("leader", keymap_leader)
