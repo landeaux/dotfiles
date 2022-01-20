@@ -15,20 +15,8 @@ end
 -- Telescope setup
 require("telescope").setup({
     defaults = {
-        vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-        },
         prompt_prefix = " ",
         selection_caret = " ",
-        entry_prefix = "  ",
-        initial_mode = "insert",
-        selection_strategy = "reset",
         sorting_strategy = "ascending",
         layout_strategy = "flex",
         layout_config = {
@@ -58,15 +46,8 @@ require("telescope").setup({
                 flip_columns = 120,
             },
         },
-        file_sorter = require("telescope.sorters").get_fzy_sorter,
-        -- file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = {},
-        generic_sorter = require("telescope.sorters").get_fzy_sorter,
-        -- generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        -- path_display = { shorten = 3 },
         path_display = { "smart" },
-        winblend = 0,
-        border = {},
+
         -- borderchars = {'▄', '▌', '▀', '▐', '▗', '▖', '▘', '▝'},
         -- borderchars = {'━', '┃', '━', '┃', '┏', '┓', '┛', '┗'},
         -- borderchars = {'─', '│', '─', '│', '┌', '┐', '┘', '└'},
@@ -74,16 +55,9 @@ require("telescope").setup({
         -- borderchars = {'═', '│', '═', '│', '╒', '╕', '╛', '╘'},
         -- borderchars = {'─', '║', '─', '║', '╓', '╖', '╜', '╙'},
         -- borderchars = {'⠉', '⢸', '⣀', '⡇', '⡏', '⢹', '⣸', '⣇'},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        color_devicons = true,
-        use_less = true,
-        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+        -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 
-        -- Developer configurations: Not meant for general override
-        buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+        -- set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
 
         mappings = {
             i = {
