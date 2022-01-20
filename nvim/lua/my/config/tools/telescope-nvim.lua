@@ -2,6 +2,7 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local wk = require("whichkey_setup")
 local bind = vim.api.nvim_set_keymap
+local custom_pickers = require("my.config.tools.telescope-pickers")
 
 local set_prompt_to_entry_value = function(prompt_bufnr)
     local entry = action_state.get_selected_entry()
@@ -99,6 +100,24 @@ require("telescope").setup({
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
         },
     },
+    pickers = {
+        oldfiles = {
+            sort_lastused = true,
+            cwd_only = true,
+        },
+        find_files = {
+            hidden = false,
+        },
+        live_grep = {
+            path_display = { "shorten" },
+            mappings = {
+                i = {
+                    ["<c-x>"] = custom_pickers.actions.set_extension,
+                    ["<c-l>"] = custom_pickers.actions.set_folders,
+                },
+            },
+        },
+    },
 })
 
 -- Extensions
@@ -115,13 +134,13 @@ bind("n", "<Leader>fc", ":Telescope commands<CR>", {})
 bind("n", "<Leader>ff", ":Telescope find_files<CR>", {})
 bind("n", "<Leader>fFi", ":Telescope find_files no_ignore=true<CR>", {})
 -- bind("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
-bind("n", "<Leader>fg", ":Telescope live_grep<CR>", {})
-bind(
-    "n",
-    "<Leader>fGf",
-    ":lua require('my.config.tools.telescope-pickers').live_grep_in_folder()<CR>",
-    {}
-)
+bind("n", "<Leader>fg", ":lua require('my.config.tools.telescope-pickers').live_grep()<CR>", {})
+-- bind(
+--     "n",
+--     "<Leader>fGf",
+--     ":lua require('my.config.tools.telescope-pickers').live_grep_in_folder()<CR>",
+--     {}
+-- )
 bind(
     "n",
     "<Leader>fGi",
@@ -157,7 +176,7 @@ local keys = {
         g = "Live grep",
         G = {
             name = "+live_grep",
-            f = "In folder(s)",
+            -- f = "In folder(s)",
             i = "No ignore",
         },
         h = "Help tags",
