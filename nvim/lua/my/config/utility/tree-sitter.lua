@@ -28,6 +28,7 @@ require("nvim-treesitter.configs").setup({
         "make",
         "markdown",
         "php",
+        -- "phpdoc", -- TODO: check this out
         "python",
         "r",
         "regex",
@@ -58,8 +59,6 @@ require("nvim-treesitter.configs").setup({
                 ["if"] = "@function.inner",
                 ["ac"] = "@class.outer",
                 ["ic"] = "@class.inner",
-
-                ["iF"] = { python = "(function_definition) @function" },
             },
         },
         swap = {
@@ -78,16 +77,6 @@ require("nvim-treesitter.configs").setup({
     },
     context_commentstring = { enable = true, enable_autocmd = false },
 })
-
--- custom md
--- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
--- parser_config.markdown = {
---     install_info = {
---         url = "https://github.com/ikatyang/tree-sitter-markdown",
---         files = { "src/parser.c", "src/scanner.cc" },
---     },
---     filetype = "md",
--- }
 
 local keymap_g = { name = "+goto", l = { name = "+ts-selection", i = "Initialize selection" } }
 
