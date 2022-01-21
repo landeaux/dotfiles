@@ -26,7 +26,6 @@ require("telescope").setup({
             width = 0.95,
             height = 0.85,
             prompt_position = "top",
-
             horizontal = {
                 width = 0.9,
                 preview_cutoff = 60,
@@ -78,9 +77,8 @@ require("telescope").setup({
         },
     },
     pickers = {
-        oldfiles = {
-            sort_lastused = true,
-            cwd_only = true,
+        current_buffer_fuzzy_find = {
+            skip_empty_lines = true,
         },
         find_files = {
             hidden = true,
@@ -93,6 +91,10 @@ require("telescope").setup({
                     ["<c-l>"] = custom_pickers.actions.set_folders,
                 },
             },
+        },
+        oldfiles = {
+            sort_lastused = true,
+            cwd_only = true,
         },
     },
 })
