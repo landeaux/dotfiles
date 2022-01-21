@@ -16,6 +16,8 @@ end
 -- Telescope setup
 require("telescope").setup({
     defaults = {
+        file_ignore_patterns = { ".git/" },
+        path_display = { "smart" },
         prompt_prefix = " ",
         selection_caret = " ",
         sorting_strategy = "ascending",
@@ -47,19 +49,6 @@ require("telescope").setup({
                 flip_columns = 120,
             },
         },
-        path_display = { "smart" },
-
-        -- borderchars = {'▄', '▌', '▀', '▐', '▗', '▖', '▘', '▝'},
-        -- borderchars = {'━', '┃', '━', '┃', '┏', '┓', '┛', '┗'},
-        -- borderchars = {'─', '│', '─', '│', '┌', '┐', '┘', '└'},
-        -- borderchars = {'═', '║', '═', '║', '╔', '╗', '╝', '╚'},
-        -- borderchars = {'═', '│', '═', '│', '╒', '╕', '╛', '╘'},
-        -- borderchars = {'─', '║', '─', '║', '╓', '╖', '╜', '╙'},
-        -- borderchars = {'⠉', '⢸', '⣀', '⡇', '⡏', '⢹', '⣸', '⣇'},
-        -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-
-        -- set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-
         mappings = {
             i = {
                 ["<C-j>"] = actions.move_selection_next,
@@ -67,22 +56,10 @@ require("telescope").setup({
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                 ["<C-f>"] = actions.preview_scrolling_down,
                 ["<C-d>"] = actions.preview_scrolling_up,
-
-                -- To disable a keymap, put [map] = false
-                -- So, to not map "<C-n>", just put
-                -- ["<c-x>"] = false,
-
-                -- Otherwise, just set the mapping to the function that you want it to be.
-                -- ["<C-i>"] = actions.select_horizontal,
-
-                -- Add up multiple actions
                 ["<CR>"] = actions.select_default + actions.center,
                 ["<C-y>"] = set_prompt_to_entry_value,
-                -- You can perform as many actions in a row as you like
-                -- ["<CR>"] = actions.select_default + actions.center + my_cool_custom_action,
             },
             n = {
-                -- ["<C-i>"] = my_cool_custom_action,
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
@@ -106,13 +83,13 @@ require("telescope").setup({
             cwd_only = true,
         },
         find_files = {
-            hidden = false,
+            hidden = true,
         },
         live_grep = {
             path_display = { "shorten" },
             mappings = {
                 i = {
-                    ["<c-x>"] = custom_pickers.actions.set_extension,
+                    ["<c-e>"] = custom_pickers.actions.set_extension,
                     ["<c-l>"] = custom_pickers.actions.set_folders,
                 },
             },
@@ -124,9 +101,7 @@ require("telescope").setup({
 require("telescope").load_extension("dap")
 require("telescope").load_extension("fzf")
 
--- Normal
--- TODO: deprecated; update to use extension
--- bind_picker("<Leader>f.", "file_browser")
+-- Bindings
 bind("n", "<Leader>f/", ":Telescope current_buffer_fuzzy_find<CR>", {})
 bind("n", "<Leader>fa", ":Telescope builtin<CR>", {})
 bind("n", "<Leader>fb", ":Telescope buffers<CR>", {})
@@ -151,8 +126,6 @@ bind("n", "<Leader>fh", ":Telescope help_tags<CR>", {})
 bind("n", "<Leader>fo", ":Telescope oldfiles<CR>", {})
 bind("n", "<Leader>ft", ":Telescope treesitter<CR>", {})
 bind("n", "<Leader>fw", ":Telescope grep_string<CR>", {})
-
--- Visual
 bind("v", "<Leader>f", '"zy:Telescope live_grep default_text=<C-r>z<CR>', {})
 
 -- DAP
@@ -162,7 +135,7 @@ bind("n", "<Leader>fdl", ":Telescope dap list_breakpoints<CR>", {})
 bind("n", "<Leader>fdv", ":Telescope dap variables<CR>", {})
 bind("n", "<Leader>fdf", ":Telescope dap frames<CR>", {})
 
-local keys = {
+wk.register_keymap("leader", {
     f = {
         name = "+telescope",
         ["/"] = "Current buffer fuzzy find",
@@ -193,9 +166,7 @@ local keys = {
             f = "Frames",
         },
     },
-}
-
-wk.register_keymap("leader", keys)
+})
 wk.register_keymap("visual", {
     f = "Live grep visual selection",
 })
