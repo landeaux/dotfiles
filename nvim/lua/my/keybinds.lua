@@ -1,8 +1,7 @@
 local bind = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
--- Make Y key yank to end of line
-bind("n", "Y", "y$", { noremap = true })
+-- Yank to end of line in visual mode and go back to original cursor position
 bind("v", "Y", "<Esc>y$gv", { noremap = true })
 
 -- Make U redo
