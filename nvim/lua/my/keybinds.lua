@@ -48,7 +48,9 @@ bind("n", "]b", ":bnext<CR>", opts) -- choose our change
 
 -- Insert ISO date
 bind("n", "<C-i>d", [["=strftime("%F")<CR>P]], opts)
+bind("n", "<C-i>D", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
 bind("i", "<C-i>d", [[<C-r>=strftime("%F")<CR>]], opts)
+bind("i", "<C-i>D", [[<C-r>=strftime("%Y-%m-%dT%H:%M:%S")<CR>]], opts)
 
 ------------------------------- LEADER MAPPINGS -------------------------------
 
