@@ -1,7 +1,7 @@
 local M = {}
 local wk = require("whichkey_setup")
 
-local format_on_save = true
+local format_on_save = false
 local auto_format_lock = false
 
 local function documentHighlight(client, _)
