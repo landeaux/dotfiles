@@ -46,6 +46,10 @@ bind("n", "]q", ":cnext<CR>", opts) -- choose our change
 bind("n", "[b", ":bprev<CR>", opts) -- choose our change
 bind("n", "]b", ":bnext<CR>", opts) -- choose our change
 
+-- Insert ISO date
+bind("n", "<C-i>d", [["=strftime("%F")<CR>P]], opts)
+bind("i", "<C-i>d", [[<C-r>=strftime("%F")<CR>]], opts)
+
 ------------------------------- LEADER MAPPINGS -------------------------------
 
 -- Toggle highlighting
@@ -127,10 +131,6 @@ bind("n", "<Leader>gj", ":diffget //3<CR>", opts) -- choose incoming change
 -- Toggle folding
 bind("n", "<Space><Space>", "za", opts)
 bind("v", "<Space><Space>", "za", opts)
-
--- Insert ISO date
-bind("n", "<Leader>id", [["=strftime("%F")<CR>P]], opts)
-bind("i", "<C-i>d", [[<C-r>=strftime("%F")<CR>]], opts)
 
 local keys = {
     a = "Yank file to clipboard",
