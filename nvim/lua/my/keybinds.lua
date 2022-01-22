@@ -33,8 +33,10 @@ bind("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silen
 bind("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 
 -- Beginning and end of line in `:` command mode
-bind("c", "<C-a>", "<home>", {})
-bind("c", "<C-e>", "<end>", {})
+bind("c", "<C-a>", "<Home>", {})
+bind("c", "<C-e>", "<End>", {})
+bind("c", "<C-b>", "<Left>", {})
+bind("c", "<C-f>", "<Right>", {})
 
 -- Quickfix navigation
 bind("n", "[q", ":cprev<CR>", opts) -- choose our change
@@ -125,6 +127,10 @@ bind("n", "<Leader>gj", ":diffget //3<CR>", opts) -- choose incoming change
 -- Toggle folding
 bind("n", "<Space><Space>", "za", opts)
 bind("v", "<Space><Space>", "za", opts)
+
+-- Insert ISO date
+bind("n", "<Leader>id", [["=strftime("%F")<CR>P]], opts)
+bind("i", "<C-i>d", [[<C-r>=strftime("%F")<CR>]], opts)
 
 local keys = {
     a = "Yank file to clipboard",
