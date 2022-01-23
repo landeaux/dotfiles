@@ -61,7 +61,7 @@ bind(
     { noremap = true, expr = true }
 )
 
-bind("n", "<leader>hb", '<cmd>lua require"gitsigns".blame_line()<CR>', opts)
+bind("n", "<leader>hb", '<cmd>lua require"gitsigns".blame_line({full = true})<CR>', opts)
 bind("n", "<leader>hp", '<cmd>lua require"gitsigns".preview_hunk()<CR>', opts)
 bind("n", "<leader>hr", '<cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
 bind("v", "<leader>hr", '<cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
@@ -70,6 +70,11 @@ bind("n", "<leader>hs", '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
 bind("v", "<leader>hs", '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
 bind("n", "<leader>hS", '<cmd>lua require"gitsigns".stage_buffer()<CR>', opts)
 bind("n", "<leader>hu", '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', opts)
+bind("n", "<leader>tb", '<cmd>lua require"gitsigns".toggle_current_line_blame()<CR>', opts)
+bind("n", "<leader>td", '<cmd>lua require"gitsigns".toggle_deleted()<CR>', opts)
+
+bind("o", "ih", '<cmd>Gitsigns select_hunk<CR>', opts)
+bind("x", "ih", '<cmd>Gitsigns select_hunk<CR>', opts)
 
 local wk = require("whichkey_setup")
 
@@ -83,6 +88,10 @@ wk.register_keymap("leader", {
         s = "Stage hunk",
         S = "Stage buffer",
         u = "Undo stage hunk",
+    },
+    t = {
+        b = "Current line blame",
+        d = "Deleted hunks",
     },
 })
 
