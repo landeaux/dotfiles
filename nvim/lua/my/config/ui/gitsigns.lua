@@ -61,37 +61,24 @@ bind(
     { noremap = true, expr = true }
 )
 
-bind(
-    "n",
-    "<leader>ghn",
-    "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'",
-    { noremap = true, expr = true }
-)
-bind(
-    "n",
-    "<leader>ghp",
-    "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'",
-    { noremap = true, expr = true }
-)
-
-bind("n", "<leader>ghs", '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
-bind("n", "<leader>ghu", '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', opts)
-bind("n", "<leader>ghr", '<cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
-bind("n", "<leader>ghv", '<cmd>lua require"gitsigns".preview_hunk()<CR>', opts)
-bind("n", "<leader>ghb", '<cmd>lua require"gitsigns".blame_line()<CR>', opts)
+bind("n", "<leader>hb", '<cmd>lua require"gitsigns".blame_line()<CR>', opts)
+bind("n", "<leader>hp", '<cmd>lua require"gitsigns".preview_hunk()<CR>', opts)
+bind("n", "<leader>hr", '<cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
+bind("n", "<leader>hR", '<cmd>lua require"gitsigns".reset_buffer()<CR>', opts)
+bind("n", "<leader>hs", '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
+bind("n", "<leader>hS", '<cmd>lua require"gitsigns".stage_buffer()<CR>', opts)
+bind("n", "<leader>hu", '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', opts)
 
 local keys = {
-    g = {
-        h = {
-            name = "+hunk",
-            n = "Next hunk",
-            p = "Previous hunk",
-            s = "Stage hunk",
-            u = "Undo hunk",
-            v = "Preview hunk",
-            r = "Reset hunk",
-            b = "Blame line",
-        },
+    h = {
+        name = "+hunk",
+        b = "Blame line",
+        p = "Preview hunk",
+        r = "Reset hunk",
+        R = "Reset buffer",
+        s = "Stage hunk",
+        S = "Stage buffer",
+        u = "Undo stage hunk",
     },
 }
 
