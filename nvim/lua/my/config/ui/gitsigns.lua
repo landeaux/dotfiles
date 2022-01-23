@@ -64,12 +64,16 @@ bind(
 bind("n", "<leader>hb", '<cmd>lua require"gitsigns".blame_line()<CR>', opts)
 bind("n", "<leader>hp", '<cmd>lua require"gitsigns".preview_hunk()<CR>', opts)
 bind("n", "<leader>hr", '<cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
+bind("v", "<leader>hr", '<cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
 bind("n", "<leader>hR", '<cmd>lua require"gitsigns".reset_buffer()<CR>', opts)
 bind("n", "<leader>hs", '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
+bind("v", "<leader>hs", '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
 bind("n", "<leader>hS", '<cmd>lua require"gitsigns".stage_buffer()<CR>', opts)
 bind("n", "<leader>hu", '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', opts)
 
-local keys = {
+local wk = require("whichkey_setup")
+
+wk.register_keymap("leader", {
     h = {
         name = "+hunk",
         b = "Blame line",
@@ -80,6 +84,12 @@ local keys = {
         S = "Stage buffer",
         u = "Undo stage hunk",
     },
-}
+})
 
-require("whichkey_setup").register_keymap("leader", keys)
+wk.register_keymap("visual", {
+    h = {
+        name = "+hunk",
+        r = "Reset hunk",
+        s = "Stage hunk",
+    },
+})
