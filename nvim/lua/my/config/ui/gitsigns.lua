@@ -1,5 +1,3 @@
-local bind = vim.api.nvim_buf_set_keymap
-
 require("gitsigns").setup({
     signs = {
         add = {
@@ -44,38 +42,33 @@ require("gitsigns").setup({
         internal = true,
     },
     on_attach = function(bufnr)
-        -- Default keymap options
-        local opts = { noremap = true }
+        local default_opts = { noremap = true }
 
-        bind(
-            bufnr,
-            "n",
-            "]h",
-            "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'",
-            { noremap = true, expr = true }
-        )
-        bind(
-            bufnr,
-            "n",
-            "[h",
-            "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'",
-            { noremap = true, expr = true }
-        )
+        local function map(mode, l, r, opts)
+            opts = opts or {}
+            local merged_opts = vim.tbl_deep_extend("force", opts, default_opts)
+            vim.api.nvim_buf_set_keymap(bufnr, mode, l, r, merged_opts)
+        end
 
-        bind(bufnr, "n", "<leader>hb", '<cmd>lua require"gitsigns".blame_line({full = true})<CR>', opts)
-        bind(bufnr, "n", "<leader>hp", '<cmd>lua require"gitsigns".preview_hunk()<CR>', opts)
-        bind(bufnr, "n", "<leader>hr", '<cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
-        bind(bufnr, "v", "<leader>hr", '<cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
-        bind(bufnr, "n", "<leader>hR", '<cmd>lua require"gitsigns".reset_buffer()<CR>', opts)
-        bind(bufnr, "n", "<leader>hs", '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
-        bind(bufnr, "v", "<leader>hs", '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
-        bind(bufnr, "n", "<leader>hS", '<cmd>lua require"gitsigns".stage_buffer()<CR>', opts)
-        bind(bufnr, "n", "<leader>hu", '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', opts)
-        bind(bufnr, "n", "<leader>tb", '<cmd>lua require"gitsigns".toggle_current_line_blame()<CR>', opts)
-        bind(bufnr, "n", "<leader>td", '<cmd>lua require"gitsigns".toggle_deleted()<CR>', opts)
+        -- Navigation
+        map("n", "]h", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
+        map("n", "[h", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
 
-        bind(bufnr, "o", "ih", "<cmd>Gitsigns select_hunk<CR>", opts)
-        bind(bufnr, "x", "ih", "<cmd>Gitsigns select_hunk<CR>", opts)
+        -- Actions
+        map("n", "<leader>hb", '<cmd>lua require"gitsigns".blame_line({full = true})<CR>')
+        map("n", "<leader>hp", '<cmd>lua require"gitsigns".preview_hunk()<CR>')
+        map("n", "<leader>hr", '<cmd>lua require"gitsigns".reset_hunk()<CR>')
+        map("v", "<leader>hr", '<cmd>lua require"gitsigns".reset_hunk()<CR>')
+        map("n", "<leader>hR", '<cmd>lua require"gitsigns".reset_buffer()<CR>')
+        map("n", "<leader>hs", '<cmd>lua require"gitsigns".stage_hunk()<CR>')
+        map("v", "<leader>hs", '<cmd>lua require"gitsigns".stage_hunk()<CR>')
+        map("n", "<leader>hS", '<cmd>lua require"gitsigns".stage_buffer()<CR>')
+        map("n", "<leader>hu", '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>')
+        map("n", "<leader>tb", '<cmd>lua require"gitsigns".toggle_current_line_blame()<CR>')
+
+        -- Text object
+        map("o", "ih", "<cmd>Gitsigns select_hunk<CR>")
+        map("x", "ih", "<cmd>Gitsigns select_hunk<CR>")
 
         local wk = require("whichkey_setup")
 
