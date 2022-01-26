@@ -1,3 +1,5 @@
+require("my.config.lsp.providers.volar")
+
 local default_config = require("my.config.lsp.providers.defaults")
 local lsp_installer = require("nvim-lsp-installer")
 
@@ -50,13 +52,18 @@ lsp_installer.on_server_ready(function(server)
 
     opts.autostart = true
 
-    local custom_config_path = "my.config.lsp.providers." .. server.name
-    local custom_config_exists, config = pcall(require, custom_config_path)
-    if custom_config_exists then
-        opts = vim.tbl_deep_extend("force", opts, config)
+    if vim.startswith(server.name, "volar") then
+        server:setup(opts)
+    else
+        local custom_config_path = "my.config.lsp.providers." .. server.name
+        local custom_config_exists, config = pcall(require, custom_config_path)
+        if custom_config_exists then
+            opts = vim.tbl_deep_extend("force", opts, config)
+        end
+
+        -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
+        server:setup(opts)
     end
 
-    -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-    server:setup(opts)
     vim.cmd([[ do User LspAttachBuffers ]])
 end)
