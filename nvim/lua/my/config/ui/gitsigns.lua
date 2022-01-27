@@ -66,7 +66,7 @@ require("gitsigns").setup({
         enable = false,
     },
     on_attach = function(bufnr)
-        local default_opts = { noremap = true }
+        local default_opts = { noremap = true, silent = true }
 
         local function map(mode, l, r, opts)
             opts = opts or {}
@@ -79,7 +79,7 @@ require("gitsigns").setup({
         map("n", "[h", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
 
         -- Actions
-        map("n", "<leader>hb", "<cmd>Gitsigns blame_line<CR>")
+        map("n", "<leader>hb", '<cmd>lua require"gitsigns".blame_line({full = true})<CR>')
         map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>")
         map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
         map("v", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
@@ -89,6 +89,7 @@ require("gitsigns").setup({
         map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
         map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<CR>")
         map("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
+        map("n", "<leader>td", "<cmd>Gitsigns toggle_deleted<CR>")
 
         -- Text object
         map("o", "ih", "<cmd>Gitsigns select_hunk<CR>")
@@ -109,6 +110,7 @@ require("gitsigns").setup({
             },
             t = {
                 b = "Current line blame",
+                d = "Deleted lines"
             },
         })
 
