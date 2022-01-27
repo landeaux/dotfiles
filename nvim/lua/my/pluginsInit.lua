@@ -370,6 +370,9 @@ return packer.startup(function()
     -- Fix python indentation
     use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
 
+    -- Syntax highlighting for .mdx
+    use({ "jxnblk/vim-mdx-js" })
+
     if my_packer.first_install then
         packer.sync()
     end
