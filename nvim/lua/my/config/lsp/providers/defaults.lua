@@ -79,12 +79,8 @@ function M.on_attach(client, bufnr)
         ':lua vim.diagnostic.open_float(0, { scope = "cursor" })<CR>',
         opts
     )
-    buf_set_keymap(
-        "n",
-        "<Leader>lds",
-        ':lua vim.diagnostic.open_float(0, { scope = "line" })<CR>',
-        opts
-    )
+    buf_set_keymap("n", "<Leader>lds", ":lua vim.diagnostic.open_float()<CR>", opts)
+    buf_set_keymap("n", "<Leader>ldq", ":lua vim.diagnostic.setloclist()<CR>", opts)
     buf_set_keymap("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
     buf_set_keymap("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
 
@@ -118,6 +114,7 @@ function M.on_attach(client, bufnr)
                 k = "Show cursor diagnostics",
                 s = "Show line diagnostics",
                 p = "Goto prev",
+                q = "Set loclist",
                 n = "Goto next",
                 d = "Document Diagnostics",
                 w = "Workspace Diagnostics",
