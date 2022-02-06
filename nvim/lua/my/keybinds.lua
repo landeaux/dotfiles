@@ -39,12 +39,16 @@ bind("c", "<C-b>", "<Left>", {})
 bind("c", "<C-f>", "<Right>", {})
 
 -- Quickfix navigation
-bind("n", "[q", ":cprev<CR>", opts) -- choose our change
-bind("n", "]q", ":cnext<CR>", opts) -- choose our change
+bind("n", "[q", ":cprev<CR>", opts)
+bind("n", "]q", ":cnext<CR>", opts)
+
+-- Loclist navigation
+bind("n", "[l", ":lprev<CR>", opts)
+bind("n", "]l", ":lnext<CR>", opts)
 
 -- Buffer navigation
-bind("n", "[b", ":bprev<CR>", opts) -- choose our change
-bind("n", "]b", ":bnext<CR>", opts) -- choose our change
+bind("n", "[b", ":bprev<CR>", opts)
+bind("n", "]b", ":bnext<CR>", opts)
 
 -- Insert ISO date
 bind("n", "<C-i>d", [["=strftime("%F")<CR>P]], opts)
