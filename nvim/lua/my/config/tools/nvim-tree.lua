@@ -1,43 +1,7 @@
--- Nvim Tree
 local g = vim.g
 local bind = vim.api.nvim_set_keymap
 local lib = require("nvim-tree.lib")
 local utils = require("nvim-tree.utils")
-
-g.nvim_tree_gitignore = 1
-g.nvim_tree_quit_on_open = 1 -- closes the tree when you open a file
-g.nvim_tree_indent_markers = 1 -- shows indent markers when folders are open
-g.nvim_tree_git_hl = 1 -- enable file highlight for git attributes (can be used without the icons)
-g.nvim_tree_highlight_opened_files = 1 -- enable folder and file icon highlight for opened files/directories.
-g.nvim_tree_root_folder_modifier = ":~" -- see :help filename-modifiers for more options
-g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
-g.nvim_tree_group_empty = 1 -- compact folders that only contain a single folder into one node in the file tree
-g.nvim_tree_disable_window_picker = 1
-g.nvim_tree_auto_ignore_ft = { "dashboard" }
-g.nvim_tree_show_icons = { git = 1, folders = 1, files = 1, folder_arrows = 1 }
-g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
-    git = {
-        unstaged = "",
-        staged = "✓",
-        unmerged = "",
-        renamed = "➜",
-        untracked = "★",
-        deleted = "✗",
-        ignored = "◌",
-    },
-    folder = {
-        arrow_open = "",
-        arrow_closed = "",
-        default = "",
-        open = "",
-        empty = "",
-        empty_open = "",
-        symlink = "",
-        symlink_open = "",
-    },
-}
 
 -- Custom callbacks
 function _NvimTreeSearch(search_type)
@@ -69,38 +33,30 @@ function NvimTreeFindFiles()
     return _NvimTreeSearch("find_files")
 end
 
--- following options are the default
+g.nvim_tree_indent_markers = 1 -- shows indent markers when folders are open
+-- g.nvim_tree_git_hl = 1 -- enable file highlight for git attributes (can be used without the icons)
+-- g.nvim_tree_highlight_opened_files = 1 -- enable folder and file icon highlight for opened files/directories.
+g.nvim_tree_disable_window_picker = 1
+
 require("nvim-tree").setup({
-    auto_close = false,
+    actions = {
+        open_file = {
+            quit_on_open = true,
+        },
+    },
     diagnostics = { enable = true },
     disable_netrw = false,
     filters = {
-        dotfiles = true,
+        dotfiles = false,
         custom = { ".git", "node_modules", ".cache" },
     },
-    hijack_cursor = true,
-    hijack_netrw = true,
-    ignore_ft_on_setup = {},
-    open_on_setup = false,
-    open_on_tab = false,
-    system_open = {
-        cmd = nil,
-        args = {},
-    },
-    tree_follow = true,
-    update_cwd = false,
+    hijack_cursor = false, -- NOTE: setting this to true breaks stuff
     update_focused_file = {
         enable = true,
-        update_cwd = false,
-        ignore_list = {},
     },
     view = {
         width = 45,
-        height = 30,
-        side = "left",
-        auto_resize = false,
         mappings = {
-            custom_only = false,
             list = {
                 { key = { "ff" }, cb = ":lua NvimTreeFindFiles()<cr>", mode = "n" },
                 { key = { "fg" }, cb = ":lua NvimTreeLiveGrep()<cr>", mode = "n" },
