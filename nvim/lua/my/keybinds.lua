@@ -39,12 +39,12 @@ bind("c", "<C-b>", "<Left>", {})
 bind("c", "<C-f>", "<Right>", {})
 
 -- Quickfix navigation
-bind("n", "[q", ":cprev<CR>", opts)
-bind("n", "]q", ":cnext<CR>", opts)
+bind("n", "[q", ":cprev<CR>zz", opts)
+bind("n", "]q", ":cnext<CR>zz", opts)
 
 -- Loclist navigation
-bind("n", "[l", ":lprev<CR>", opts)
-bind("n", "]l", ":lnext<CR>", opts)
+bind("n", "[l", ":lprev<CR>zz", opts)
+bind("n", "]l", ":lnext<CR>zz", opts)
 
 -- Buffer navigation
 bind("n", "[b", ":bprev<CR>", opts)
