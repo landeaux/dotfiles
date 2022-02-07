@@ -56,12 +56,6 @@ bind("n", "<C-i>D", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
 bind("i", "<C-i>d", [[<C-r>=strftime("%F")<CR>]], opts)
 bind("i", "<C-i>D", [[<C-r>=strftime("%Y-%m-%dT%H:%M:%S")<CR>]], opts)
 
--- resize with arrows
-bind('n', '<C-Up>', ':resize -2<CR>', opts)
-bind('n', '<C-Down>', ':resize +2<CR>', opts)
-bind('n', '<C-Left>', ':vertical resize -2<CR>', opts)
-bind('n', '<C-Right>', ':vertical resize +2<CR>', opts)
-
 ------------------------------- LEADER MAPPINGS -------------------------------
 
 -- Toggle highlighting
@@ -85,17 +79,6 @@ bind("n", "<Leader>q", ":quitall<CR>", opts)
 bind("n", "<Leader>Q", ":quitall!<CR>", opts)
 
 -- Window keybinds
--- Goto window number
-bind("n", "<Leader>w1", ':exe 1 . "wincmd w"<CR>', opts)
-bind("n", "<Leader>w2", ':exe 2 . "wincmd w"<CR>', opts)
-bind("n", "<Leader>w3", ':exe 3 . "wincmd w"<CR>', opts)
-bind("n", "<Leader>w4", ':exe 4 . "wincmd w"<CR>', opts)
-bind("n", "<Leader>w5", ':exe 5 . "wincmd w"<CR>', opts)
-bind("n", "<Leader>w6", ':exe 6 . "wincmd w"<CR>', opts)
-bind("n", "<Leader>w7", ':exe 7 . "wincmd w"<CR>', opts)
-bind("n", "<Leader>w8", ':exe 8 . "wincmd w"<CR>', opts)
-bind("n", "<Leader>w9", ':exe 9 . "wincmd w"<CR>', opts)
-
 -- Goto window above/below/left/right
 bind("n", "<Leader>wh", ":wincmd h<CR>", opts)
 bind("n", "<Leader>wj", ":wincmd j<CR>", opts)
@@ -103,15 +86,15 @@ bind("n", "<Leader>wk", ":wincmd k<CR>", opts)
 bind("n", "<Leader>wl", ":wincmd l<CR>", opts)
 
 -- Resize windows
-bind("n", "<Leader>wr=", ":wincmd =<CR>", opts)
-bind("n", "<Leader>wr+", ":wincmd +<CR>", opts)
-bind("n", "<Leader>wr-", ":wincmd -<CR>", opts)
-bind("n", "<Leader>wr>", ":wincmd ><CR>", opts)
-bind("n", "<Leader>wr<", ":wincmd <<CR>", opts)
+bind("n", "<Leader>w=", ":wincmd =<CR>", opts)
+bind('n', '<C-Up>', ':resize -2<CR>', opts)
+bind('n', '<C-Down>', ':resize +2<CR>', opts)
+bind('n', '<C-Left>', ':vertical resize -2<CR>', opts)
+bind('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
 -- Rotate windows
-bind("n", "<Leader>wRb", ":wincmd r<CR>", opts)
-bind("n", "<Leader>wRu", ":wincmd R<CR>", opts)
+bind("n", "<Leader>wr", ":wincmd r<CR>", opts)
+bind("n", "<Leader>wR", ":wincmd R<CR>", opts)
 
 -- Move windows
 bind("n", "<Leader>wmx", ":wincmd x<CR>", opts)
@@ -165,28 +148,13 @@ local keys = {
     v = { name = "+vim", c = "Edit config", v = "Version" },
     w = {
         name = "+windows",
-        ["1"] = "Window 1",
-        ["2"] = "Window 2",
-        ["3"] = "Window 3",
-        ["4"] = "Window 4",
-        ["5"] = "Window 5",
-        ["6"] = "Window 6",
-        ["7"] = "Window 7",
-        ["8"] = "Window 8",
-        ["9"] = "Window 9",
+        ["="] = "Balance windows",
         h = "Go to window left",
         j = "Go to window below",
         k = "Go to window above",
         l = "Go to window right",
-        r = {
-            name = "+resize",
-            ["="] = "Balance windows",
-            ["+"] = "Increase window height",
-            ["-"] = "Decrease window height",
-            [">"] = "Increase window width",
-            ["<"] = "Decrease window width",
-        },
-        R = { name = "+rotate", b = "Rotate down/right", u = "Rotate up/left" },
+        r = "Rotate down/right",
+        R = "Rotate up/left",
         m = {
             name = "+move",
             x = "Exchange windows",
