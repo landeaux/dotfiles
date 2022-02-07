@@ -56,6 +56,12 @@ bind("n", "<C-i>D", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
 bind("i", "<C-i>d", [[<C-r>=strftime("%F")<CR>]], opts)
 bind("i", "<C-i>D", [[<C-r>=strftime("%Y-%m-%dT%H:%M:%S")<CR>]], opts)
 
+-- resize with arrows
+bind('n', '<C-Up>', ':resize -2<CR>', opts)
+bind('n', '<C-Down>', ':resize +2<CR>', opts)
+bind('n', '<C-Left>', ':vertical resize -2<CR>', opts)
+bind('n', '<C-Right>', ':vertical resize +2<CR>', opts)
+
 ------------------------------- LEADER MAPPINGS -------------------------------
 
 -- Toggle highlighting
