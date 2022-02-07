@@ -100,7 +100,10 @@ unsetopt AUTO_CD
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-export EDITOR="nvim"
+if [[ "$(command -v nvim)" ]]; then
+  export EDITOR='nvim'
+fi
+
 export PYTHONDONTWRITEBYTECODE=1
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
