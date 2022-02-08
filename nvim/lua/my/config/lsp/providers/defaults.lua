@@ -120,7 +120,6 @@ function M.on_attach(client, bufnr)
                 w = "Workspace Diagnostics",
             },
             c = "Code Actions",
-            i = "Find cursor definition and references",
             w = {
                 name = "+workspace",
                 a = "Add workspace folder",
