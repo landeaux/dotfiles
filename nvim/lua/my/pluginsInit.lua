@@ -84,21 +84,35 @@ return packer.startup(function()
 
     -- File Tree
     use({
-        "kyazdani42/nvim-tree.lua",
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v1.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
         config = function()
-            require("my.config.tools.nvim-tree")
+            require("my.config.tools.neo-tree")
         end,
         cmd = {
-            "NvimTreeClipboard",
-            "NvimTreeClose",
-            "NvimTreeFindFile",
-            "NvimTreeOpen",
-            "NvimTreeRefresh",
-            "NvimTreeToggle",
+            "NeoTreeClose",
+            "NeoTreeFloat",
+            "NeoTreeFloatToggle",
+            "NeoTreeFocus",
+            "NeoTreeFocusToggle",
+            "NeoTreeLogs",
+            "NeoTreePasteConfig",
+            "NeoTreeReveal",
+            "NeoTreeRevealInSplit",
+            "NeoTreeRevealInSplitToggle",
+            "NeoTreeRevealToggle",
+            "NeoTreeSetLogLevel",
+            "NeoTreeShow",
+            "NeoTreeShowInSplit",
+            "NeoTreeShowInSplitToggle",
+            "NeoTreeShowToggle",
         },
         keys = "<Leader>tn",
         after = "nvim-web-devicons",
-        -- disable = true,
     })
 
     -- Git
