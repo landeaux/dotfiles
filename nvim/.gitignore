@@ -1,5 +1,6 @@
-pack/**
-sessions/**
 .netrwhist
-plugin/
 lua/my/compiled.lua
+pack/**
+plugin/
+sessions/**
+spell/
