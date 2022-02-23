@@ -109,8 +109,8 @@ require("neo-tree").setup({
                 -- ["/"] = "filter_as_you_type", -- this was the default until v1.28
                 -- ["/"] = "none" -- Assigning a key to "none" will remove the default mapping
                 -- ["f"] = "filter_on_submit",
-                ["f"] = find_files,
-                ["g"] = live_grep,
+                ["ff"] = find_files,
+                ["fg"] = live_grep,
                 ["<c-x>"] = "clear_filter",
                 ["a"] = "add",
                 ["d"] = "delete",
