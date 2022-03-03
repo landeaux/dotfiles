@@ -8,5 +8,15 @@
     "prefix": "/**",
     "body": ["/**\n * ${0}\n */"],
     "description": "multiline comment"
+  },
+  "it.each()": {
+    "prefix": "ite",
+    "body": ["it.each([[${4:'a'}], [${5:'b'}]])('${1:test name}', (${2:a}, ${3:b}) => {\n\t${0}\n})"],
+    "description": "it.each()"
+  },
+  "it.each``": {
+    "prefix": "ites",
+    "body": ["it.each`\n\t${4:a} | ${5:b}\n`('${1:test name}', ({ ${2:a}, ${3:b} }) => {\n\t${0}\n})"],
+    "description": "it.each``"
   }
 }
