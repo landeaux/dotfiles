@@ -41,7 +41,13 @@ require("nvim-treesitter.configs").setup({
         "vue",
         "yaml",
     },
-    highlight = { enable = true, disable = {} },
+    highlight = {
+        enable = true,
+        disable = {},
+        -- additional_vim_regex_highlighting = {
+        --     "javascript",
+        -- },
+    },
     incremental_selection = {
         enable = true,
         keymaps = {
