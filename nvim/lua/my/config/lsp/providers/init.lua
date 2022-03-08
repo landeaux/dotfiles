@@ -31,6 +31,7 @@ local requested_servers = {
     "jsonls",
     "sumneko_lua",
     "tsserver",
+    "taplo",
     "intelliphense",
     "pyright",
     "vimls",

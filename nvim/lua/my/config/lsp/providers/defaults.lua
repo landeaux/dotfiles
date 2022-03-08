@@ -22,6 +22,7 @@ end
 local allowed_to_format = {
     "dockerls",
     "null-ls",
+    "taplo",
     -- "jsonls",
     -- "tsserver",
     -- "vuels",
