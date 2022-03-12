@@ -1,6 +1,14 @@
 local bind = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+-- Disable some mappings
+bind("i", "<C-l>", "<Nop>", {})
+bind("v", "<C-l>", "<Nop>", {})
+bind("i", "<C-h>", "<Nop>", {})
+bind("v", "<C-h>", "<Nop>", {})
+bind("i", "<C-j>", "<Nop>", {})
+bind("v", "<C-j>", "<Nop>", {})
+
 -- Yank to end of line in visual mode and go back to original cursor position
 bind("v", "Y", "<Esc>y$gv", { noremap = true })
 
