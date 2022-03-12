@@ -3,9 +3,51 @@ local luasnip = require("luasnip")
 
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
-        :sub(col, col)
-        :match("%s") == nil
+    return col ~= 0
+        and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s")
+            == nil
+end
+
+local select_next_snippet_choice_or_cmp_item = function(fallback)
+    if luasnip.choice_active() then
+        luasnip.change_choice(1)
+    elseif cmp.visible() then
+        cmp.select_next_item()
+    else
+        fallback()
+    end
+end
+
+local select_prev_snippet_choice_or_cmp_item = function(fallback)
+    if luasnip.choice_active() then
+        luasnip.change_choice(-1)
+    elseif cmp.visible() then
+        cmp.select_prev_item()
+    else
+        fallback()
+    end
+end
+
+local expand_jump_or_select_next_cmp_item = function(fallback)
+    if luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
+    elseif cmp.visible() then
+        cmp.select_next_item()
+    elseif has_words_before() then
+        cmp.complete()
+    else
+        fallback()
+    end
+end
+
+local jump_or_select_prev_cmp_item = function(fallback)
+    if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+    elseif cmp.visible() then
+        cmp.select_prev_item()
+    else
+        fallback()
+    end
 end
 
 cmp.setup({
@@ -22,48 +64,20 @@ cmp.setup({
         end,
     },
     mapping = {
-        ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
-        ["<C-n"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
-        ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
-        ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        ["<C-n>"] = cmp.mapping(select_next_snippet_choice_or_cmp_item, { "i", "s" }),
+        ["<C-j>"] = cmp.mapping(select_next_snippet_choice_or_cmp_item, { "i", "s" }),
+        ["<C-p>"] = cmp.mapping(select_prev_snippet_choice_or_cmp_item, { "i", "s" }),
+        ["<C-k>"] = cmp.mapping(select_prev_snippet_choice_or_cmp_item, { "i", "s" }),
         ["<C-d>"] = cmp.mapping.scroll_docs(-5),
         ["<C-f>"] = cmp.mapping.scroll_docs(5),
         ["<C-y>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
         ["<C-c>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            elseif cmp.visible() then
-                cmp.select_next_item()
-            elseif has_words_before() then
-                cmp.complete()
-            else
-                -- The fallback function sends an already mapped key. In this
-                -- case, it's probably `<Tab>`.
-                fallback()
-            end
-        end, {
-            "i",
-            "s",
-        }),
-
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, {
-            "i",
-            "s",
-        }),
+        ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+        ["<Tab>"] = cmp.mapping(expand_jump_or_select_next_cmp_item, { "i", "s" }),
+        ["<C-l>"] = cmp.mapping(expand_jump_or_select_next_cmp_item, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(jump_or_select_prev_cmp_item, { "i", "s" }),
+        ["<C-h>"] = cmp.mapping(jump_or_select_prev_cmp_item, { "i", "s" }),
     },
     sources = {
         -- NOTE: The order of these are important as it determines priority.
