@@ -50,12 +50,6 @@ bind("n", "]l", ":lnext<CR>zz", opts)
 bind("n", "[b", ":bprev<CR>", opts)
 bind("n", "]b", ":bnext<CR>", opts)
 
--- Insert ISO date
-bind("n", "<C-i>d", [["=strftime("%F")<CR>P]], opts)
-bind("n", "<C-i>D", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
-bind("i", "<C-i>d", [[<C-r>=strftime("%F")<CR>]], opts)
-bind("i", "<C-i>D", [[<C-r>=strftime("%Y-%m-%dT%H:%M:%S")<CR>]], opts)
-
 ------------------------------- LEADER MAPPINGS -------------------------------
 
 -- Toggle highlighting
@@ -127,12 +121,23 @@ bind("n", "<Leader>gj", ":diffget //3<CR>", opts) -- choose incoming change
 bind("n", "<Space><Space>", "za", opts)
 bind("v", "<Space><Space>", "za", opts)
 
+-- Insert Stuff
+-- ISO-date: YYYY-MM-DD
+bind("n", "<Leader>id", [["=strftime("%F")<CR>P]], opts)
+-- ISO-datetime: YYYY-MM-DDTHH:MM:SS
+bind("n", "<Leader>iD", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
+
 local keys = {
     a = "Yank file to clipboard",
     g = {
         name = "+git",
         f = "Choose our change",
         j = "Choose incoming change",
+    },
+    i = {
+        name = "+insert",
+        d = "YYYY-MM-DD",
+        D = "YYYY-MM-DDTHH:MM:SS",
     },
     q = "Quit all",
     Q = "Quit all without save",
