@@ -57,6 +57,7 @@ ls.snippets = {
         s("dt:ymd", p(os.date, "%Y-%M-%d")),
         s("dt:ymdt", p(os.date, "%Y-%M-%dT%H:%M:%S")),
     },
+    python = require("my.config.lsp.luasnip.snippets.python"),
     java = {
         -- Very long example for a java class.
         s("fn", {
