@@ -72,10 +72,6 @@ bind("n", "<Leader>b9", ":BufferLineGoToBuffer 9<CR>", opts)
 -- Pick buffer
 bind("n", "<Leader>bc", ":BufferLinePick<CR>", opts)
 
--- Close / kill buffer
-bind("n", "<Leader>bd", ":bdelete<CR>", opts)
-bind("n", "<Leader>bk", ":bwipeout<CR>", opts)
-
 local keys = {
     b = {
         name = "+buffer",
@@ -91,8 +87,6 @@ local keys = {
         c = "Choose",
         n = "Next",
         p = "Previous",
-        d = "Close",
-        k = "Kill",
         m = { name = "+move", n = "Next", p = "Previous" },
         o = { name = "+sort", d = "By Directory", e = "By Extension", i = "By ID" },
     },

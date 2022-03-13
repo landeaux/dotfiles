@@ -80,7 +80,11 @@ bind("n", "<Leader>a", "<cmd> %+y<CR>", opts) -- copy any selected text to clipb
 bind("n", "<Leader>q", ":quitall<CR>", opts)
 bind("n", "<Leader>Q", ":quitall!<CR>", opts)
 
--- Window keybinds
+-- Buffer
+bind("n", "<Leader>bd", ":bdelete<CR>", opts)
+bind("n", "<Leader>bD", ":bdelete!<CR>", opts)
+
+-- Window
 -- Goto window above/below/left/right
 bind("n", "<Leader>wh", ":wincmd h<CR>", opts)
 bind("n", "<Leader>wj", ":wincmd j<CR>", opts)
@@ -137,6 +141,11 @@ bind("n", "<Leader>iD", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
 
 local keys = {
     a = "Yank file to clipboard",
+    b = {
+        name = "+buffer",
+        d = "Delete",
+        D = "Force Delete",
+    },
     g = {
         name = "+git",
         f = "Choose our change",
