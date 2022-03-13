@@ -10,6 +10,9 @@ local d = ls.dynamic_node
 local p = require("luasnip.extras").partial
 local types = require("luasnip.util.types")
 
+vim.api.nvim_set_hl(0, "LuaSnipChoiceNodeVirtText", { fg = "#ff8800" })
+vim.api.nvim_set_hl(0, "LuaSnipInsertNodeVirtText", { fg = "#4488ff" })
+
 ls.config.set_config({
     history = true,
     store_selection_keys = "<CR>",
@@ -18,7 +21,12 @@ ls.config.set_config({
     ext_opts = {
         [types.choiceNode] = {
             active = {
-                virt_text = { { "choiceNode", "Comment" } },
+                virt_text = { { "●", "LuaSnipChoiceNodeVirtText" } },
+            },
+        },
+        [types.insertNode] = {
+            active = {
+                virt_text = { { "●", "LuaSnipInsertNodeVirtText" } },
             },
         },
     },
