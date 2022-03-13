@@ -33,7 +33,7 @@ local function node_with_virtual_text(pos, node, text)
                         node_pos[1],
                         0,
                         {
-                            virt_text = { { text, "GruvboxOrange" } },
+                            virt_text = { { text, "LuaSnipChoiceNodeVirtText" } },
                         }
                     )
                 end,
@@ -92,7 +92,7 @@ return {
                             1,
                             fmt(
                                 [[
-                                    """{desc}"""
+                                    """{desc}."""
 
                                 ]],
                                 { desc = i(1) }
@@ -102,13 +102,16 @@ return {
                             2,
                             fmt(
                                 [[
-                                    """{desc}
+                                    """{desc}.
 
-                                    Args:
+                                    Parameters
+                                    ----------
                                     {args}
 
-                                    Returns:
+                                    Returns
+                                    -------
                                     {returns}
+
                                     """
 
                                 ]],
@@ -126,7 +129,7 @@ return {
                             "(full docstring)",
                         },
                     }),
-                }, "$PARENT_INDENT\t"),
+                }, "$PARENT_INDENT    "),
                 body = i(0),
             }
         )
