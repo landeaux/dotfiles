@@ -7,7 +7,7 @@ local hard_column_limit = 120
 local indent = 2
 
 g.mapleader = " "
-g.maplocalleader = ","
+g.maplocalleader = "\\"
 
 cmd("filetype plugin on")
 
