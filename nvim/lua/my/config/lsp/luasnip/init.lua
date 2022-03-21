@@ -25,18 +25,9 @@ ls.config.set_config({
     -- enable_autosnippets = true,
 })
 
-ls.snippets = {
-    -- When trying to expand a snippet, luasnip first searches the tables for
-    -- each filetype specified in 'filetype' followed by 'all'.
-    -- If ie. the filetype is 'lua.c'
-    --     - luasnip.lua
-    --     - luasnip.c
-    --     - luasnip.all
-    -- are searched in that order.
-    all = require("my.config.lsp.luasnip.snippets.all"),
-    python = require("my.config.lsp.luasnip.snippets.python"),
-    java = require("my.config.lsp.luasnip.snippets.java"),
-}
+ls.add_snippets("all", require("my.config.lsp.luasnip.snippets.all"))
+ls.add_snippets("python", require("my.config.lsp.luasnip.snippets.python"))
+ls.add_snippets("java", require("my.config.lsp.luasnip.snippets.java"))
 
 -- autotriggered snippets have to be defined in a separate table, luasnip.autosnippets.
 -- ls.autosnippets = {
