@@ -117,6 +117,7 @@ alias prettifyjson="python -m json.tool"
 if command -v tmux_workspace 1>/dev/null 2>&1; then
   alias tmw="tmux_workspace"
 fi
+alias dx="docker exec -it"
 
 # Marker command palette (https://github.com/pindexis/marker)
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
