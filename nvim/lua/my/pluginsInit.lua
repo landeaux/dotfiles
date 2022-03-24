@@ -387,6 +387,14 @@ return packer.startup(function()
     -- Syntax highlighting for .mdx
     use({ "jxnblk/vim-mdx-js" })
 
+    -- zk
+    use({
+        "mickael-menu/zk-nvim",
+        config = function()
+            require("zk").setup()
+        end,
+    })
+
     if my_packer.first_install then
         packer.sync()
     end

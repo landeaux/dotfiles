@@ -175,6 +175,9 @@ if command -v direnv 1>/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
 fi
 
+# zk
+export ZK_NOTEBOOK_DIR="$HOME/Notes"
+
 ###############################################################################
 
 # allow overrides (NOTE: This must stay at the bottom of the file!)
