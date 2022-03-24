@@ -110,14 +110,38 @@ export PYTHONDONTWRITEBYTECODE=1
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+
+# General
 alias rm="rm -i"
+alias prettifyjson="python -m json.tool"
+
+# Zsh
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias prettifyjson="python -m json.tool"
+
+# Tmux
 if command -v tmux_workspace 1>/dev/null 2>&1; then
   alias tmw="tmux_workspace"
 fi
-alias dx="docker exec -it"
+
+# Docker
+if command -v docker 1>/dev/null 2>&1; then
+  alias dc="docker container"
+  alias dci="docker container inspect"
+  alias dcl="docker container ls"
+  alias dcla="docker container ls -a"
+  alias dcp="docker container prune"
+  alias dcr="docker container rm"
+  alias di="docker image inspect"
+  alias dii="docker image inspect"
+  alias dil="docker image ls"
+  alias dila="docker image ls -a"
+  alias dip="docker image prune"
+  alias dir="docker image rm"
+  alias dr="docker run"
+  alias drr="docker run --rm --no-deps"
+  alias dx="docker exec -it"
+fi
 
 # Marker command palette (https://github.com/pindexis/marker)
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
