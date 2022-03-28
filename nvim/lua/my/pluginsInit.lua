@@ -211,10 +211,12 @@ return packer.startup(function()
                 config = function()
                     -- must happen after servers are set up
                     require("lsp_signature").setup({
+                        floating_window = false,
                         bind = true, -- This is mandatory, otherwise border config won't get registered.
                         handler_opts = {
                             border = "rounded",
                         },
+                        hint_prefix = " ",
                     })
                 end,
                 after = "nvim-lspconfig",
