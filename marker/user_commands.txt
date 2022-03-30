@@ -12,3 +12,5 @@ python -m SimpleHTTPServer 8000##Start an HTTP server with python2
 python -m json.tool {{file_path}}##Pretty print json from a file
 python3 -m http.server##Start an HTTP server with python3
 sed -n {{start}},{{end}}p {{file_path}}##Print specific range of line numbers in a given file
+pmset -g thermlog##Check CPU thermal throttling (MacOS only)
+free -h --si##Check RAM Usage
