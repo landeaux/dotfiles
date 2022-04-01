@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-unsetopt AUTO_CD
+unsetopt AUTO_CD  # don't automatically change into directories
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -99,12 +99,6 @@ unsetopt AUTO_CD
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-if [[ "$(command -v nvim)" ]]; then
-  export EDITOR='nvim'
-fi
-
-export PYTHONDONTWRITEBYTECODE=1
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -143,11 +137,23 @@ if command -v docker 1>/dev/null 2>&1; then
   alias dx="docker exec -it"
 fi
 
+if [[ "$(command -v nvim)" ]]; then
+  export EDITOR='nvim'
+elif [[ "$(command -v vim)" ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vi'
+fi
+
 # Marker command palette (https://github.com/pindexis/marker)
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 export MARKER_KEY_GET="\C-J"
-export MARKER_KEY_NEXT_PLACEHOLDER="\C-{"
+export MARKER_KEY_NEXT_PLACEHOLDER="\C-/"
 
+# stop python from writing pycs
+export PYTHONDONTWRITEBYTECODE=1
+
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -157,6 +163,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
 
+# pipenv
+export PIPENV_VENV_IN_PROJECT=1  # make sure venv is always in the project dir
+
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # nvm config
