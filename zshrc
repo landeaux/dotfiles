@@ -178,6 +178,17 @@ fi
 # zk
 export ZK_NOTEBOOK_DIR="$HOME/Notes"
 
+# for "yeet firefox".  requires utils/flip
+function yeet() {
+  if [ ! $1 ]; then
+    echo "Usage: yeet process_name"
+  elif killall $1; then
+    echo
+    echo " (╯°□°）╯︵$(echo $1 | flip)"
+    echo
+  fi
+}
+
 ###############################################################################
 
 # allow overrides (NOTE: This must stay at the bottom of the file!)
