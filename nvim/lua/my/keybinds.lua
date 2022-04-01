@@ -46,6 +46,8 @@ bind("c", "<C-e>", "<End>", {})
 bind("c", "<C-b>", "<Left>", {})
 bind("c", "<C-f>", "<Right>", {})
 
+bind("c", "<C-d>", "<C-r>=strftime('%F')<CR>", {})
+
 -- Quickfix navigation
 bind("n", "[q", ":cprev<CR>zz", opts)
 bind("n", "]q", ":cnext<CR>zz", opts)
