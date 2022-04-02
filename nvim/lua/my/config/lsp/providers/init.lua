@@ -38,6 +38,7 @@ local requested_servers = {
     -- "volar", -- NOTE: This can't exist alongside vuels
     -- "vuels",
     "yamlls",
+    "prosemd_lsp",
 }
 
 -- go through requested_servers and ensure installation
