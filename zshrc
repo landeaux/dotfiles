@@ -120,21 +120,23 @@ fi
 
 # Docker
 if command -v docker 1>/dev/null 2>&1; then
-  alias dc="docker container"
   alias dci="docker container inspect"
   alias dcl="docker container ls"
   alias dcla="docker container ls -a"
   alias dcp="docker container prune"
-  alias dcr="docker container rm"
-  alias di="docker image inspect"
+  alias dcrm="docker container rm"
   alias dii="docker image inspect"
   alias dil="docker image ls"
   alias dila="docker image ls -a"
   alias dip="docker image prune"
-  alias dir="docker image rm"
-  alias dr="docker run"
-  alias drr="docker run --rm --no-deps"
+  alias dirm="docker image rm"
+  alias dr="docker run --rm --no-deps"
   alias dx="docker exec -it"
+fi
+
+# Docker Compose
+if command -v docker-compose 1>/dev/null 2>&1; then
+  alias dkr="docker-compose run --rm --no-deps"
 fi
 
 if [[ "$(command -v nvim)" ]]; then
