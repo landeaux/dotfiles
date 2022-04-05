@@ -1,28 +1,6 @@
--- See ":help neo-tree-highlights" for a list of available highlight groups
-vim.cmd([[
-    hi link NeoTreeDirectoryName Directory
-    hi link NeoTreeDirectoryIcon NeoTreeDirectoryName
-    hi link NeoTreeIndentMarker IndentBlanklineChar
-]])
-
--- NOTE: NeoTree still relies on these legacy signs instead of DiagnosticsSign*
--- from neovim 6.x, so we have to define them here
-vim.fn.sign_define("LspDiagnosticsSignError", {
-    text = " ",
-    texthl = "LspDiagnosticsSignError",
-})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {
-    text = " ",
-    texthl = "LspDiagnosticsSignWarning",
-})
-vim.fn.sign_define("LspDiagnosticsSignInformation", {
-    text = " ",
-    texthl = "LspDiagnosticsSignInformation",
-})
-vim.fn.sign_define("LspDiagnosticsSignHint", {
-    text = "",
-    texthl = "LspDiagnosticsSignHint",
-})
+-- Unless you are still migrating, remove the deprecated commands from v1.x
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+vim.cmd([[ hi link NeoTreeIndentMarker IndentBlanklineChar ]])
 
 -- Custom commands
 local _search = function(state, search_type)
@@ -58,91 +36,117 @@ require("neo-tree").setup({
         indent = {
             indent_size = 2,
             padding = 1, -- extra padding on left hand side
+            -- indent guides
             with_markers = true,
             indent_marker = "│",
             last_indent_marker = "└",
             highlight = "NeoTreeIndentMarker",
+            -- expander config, needed for nesting files
+            with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
+            expander_collapsed = "",
+            expander_expanded = "",
+            expander_highlight = "NeoTreeExpander",
         },
         icon = {
-            folder_closed = "",
-            folder_open = "",
+            folder_closed = "",
+            folder_open = "",
             folder_empty = "ﰊ",
             default = "*",
+        },
+        modified = {
+            symbol = "[+]",
+            highlight = "NeoTreeModified",
         },
         name = {
             trailing_slash = false,
             use_git_status_colors = true,
         },
         git_status = {
-            highlight = "NeoTreeDimText", -- if you remove this the status will be colorful
+            symbols = {
+                -- Change type
+                added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                deleted = "", -- this can only be used in the git_status source
+                renamed = "", -- this can only be used in the git_status source
+                -- Status type
+                untracked = "",
+                ignored = "",
+                unstaged = "",
+                staged = "",
+                conflict = "",
+            },
         },
     },
-    filesystem = {
-        filters = { --These filters are applied to both browsing and searching
-            show_hidden = true,
-            respect_gitignore = true,
+    window = {
+        position = "left",
+        width = 40,
+        mappings = {
+            ["t"] = "toggle_node",
+            ["<2-LeftMouse>"] = "open",
+            ["<cr>"] = "open",
+            ["S"] = "open_split",
+            ["v"] = "open_vsplit",
+            ["T"] = "open_tabnew",
+            ["C"] = "close_node",
+            ["a"] = "add",
+            ["A"] = "add_directory",
+            ["d"] = "delete",
+            ["r"] = "rename",
+            ["y"] = "copy_to_clipboard",
+            ["x"] = "cut_to_clipboard",
+            ["p"] = "paste_from_clipboard",
+            ["c"] = "copy", -- takes text input for destination
+            ["m"] = "move", -- takes text input for destination
+            ["q"] = "close_window",
+            ["R"] = "refresh",
         },
-        follow_current_file = false, -- This will find and focus the file in the active buffer every
+    },
+    nesting_rules = {},
+    filesystem = {
+        filtered_items = {
+            visible = false, -- when true, they will just be displayed differently than normal items
+            hide_dotfiles = false,
+            hide_gitignored = true,
+            hide_by_name = {
+                ".DS_Store",
+                "thumbs.db",
+                --"node_modules"
+            },
+            never_show = { -- remains hidden even if visible is toggled to true
+                --".DS_Store",
+                --"thumbs.db"
+            },
+        },
+        follow_current_file = true, -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
-        use_libuv_file_watcher = true, -- This will use the OS level file watchers
-        -- to detect changes instead of relying on nvim autocmd events.
         hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
-        -- "open_split",  -- netrw disabled, opening a directory opens within the
+        -- "open_current",  -- netrw disabled, opening a directory opens within the
         -- window like netrw would, regardless of window.position
         -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
+        use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
+        -- instead of relying on nvim autocmd events.
         window = {
-            position = "left",
-            width = 40,
             mappings = {
-                ["<2-LeftMouse>"] = "open",
-                ["<cr>"] = "open",
-                ["s"] = "open_split",
-                ["v"] = "open_vsplit",
-                ["C"] = "close_node",
                 ["<bs>"] = "navigate_up",
                 ["."] = "set_root",
                 ["H"] = "toggle_hidden",
                 ["I"] = "toggle_gitignore",
-                ["R"] = "refresh",
                 ["/"] = "fuzzy_finder",
-                -- ["/"] = "filter_as_you_type", -- this was the default until v1.28
-                -- ["/"] = "none" -- Assigning a key to "none" will remove the default mapping
-                -- ["f"] = "filter_on_submit",
-                ["f"] = "none",
+                ["F"] = "filter_on_submit",
                 ["ff"] = find_files,
                 ["fg"] = live_grep,
                 ["<c-x>"] = "clear_filter",
-                ["a"] = "add",
-                ["d"] = "delete",
-                ["r"] = "rename",
-                ["c"] = "copy_to_clipboard",
-                ["x"] = "cut_to_clipboard",
-                ["p"] = "paste_from_clipboard",
-                ["m"] = "move", -- takes text input for destination
-                ["q"] = "close_window",
             },
         },
     },
     buffers = {
         show_unloaded = true,
         window = {
-            position = "left",
             mappings = {
-                ["<2-LeftMouse>"] = "open",
-                ["<cr>"] = "open",
-                ["s"] = "open_split",
-                ["v"] = "open_vsplit",
+                ["bd"] = "buffer_delete",
                 ["<bs>"] = "navigate_up",
                 ["."] = "set_root",
-                ["R"] = "refresh",
-                ["a"] = "add",
-                ["d"] = "delete",
-                ["r"] = "rename",
-                ["c"] = "copy_to_clipboard",
-                ["x"] = "cut_to_clipboard",
-                ["p"] = "paste_from_clipboard",
-                ["bd"] = "buffer_delete",
             },
         },
     },
@@ -150,32 +154,25 @@ require("neo-tree").setup({
         window = {
             position = "float",
             mappings = {
-                ["<2-LeftMouse>"] = "open",
-                ["<cr>"] = "open",
-                ["s"] = "open_split",
-                ["v"] = "open_vsplit",
-                ["C"] = "close_node",
-                ["R"] = "refresh",
-                ["d"] = "delete",
-                ["r"] = "rename",
-                ["c"] = "copy_to_clipboard",
-                ["x"] = "cut_to_clipboard",
-                ["p"] = "paste_from_clipboard",
                 ["A"] = "git_add_all",
                 ["gu"] = "git_unstage_file",
                 ["ga"] = "git_add_file",
                 ["gr"] = "git_revert_file",
                 ["gc"] = "git_commit",
                 ["gp"] = "git_push",
-                ["gP"] = "git_commit_and_push",
+                ["gg"] = "git_commit_and_push",
             },
         },
     },
 })
 
-
 -- Mappings
-vim.api.nvim_set_keymap("n", "<Leader>tn", ":NeoTreeRevealToggle<CR>", { noremap = true })
+vim.api.nvim_set_keymap(
+    "n",
+    "<Leader>tn",
+    ":Neotree filesystem reveal left toggle<CR>",
+    { noremap = true }
+)
 
 require("whichkey_setup").register_keymap("leader", {
     t = { name = "+ui-toggle", n = "File Tree" },
