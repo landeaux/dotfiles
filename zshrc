@@ -109,6 +109,10 @@ unsetopt AUTO_CD  # don't automatically change into directories
 alias rm="rm -i"
 alias prettifyjson="python -m json.tool"
 
+if ! command -v sha256sum 1>/dev/null 2>&1; then
+  alias sha256sum="shasum -a 256"
+fi
+
 # Zsh
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
