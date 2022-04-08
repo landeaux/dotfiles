@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-set -e
+set -euxo pipefail
 
 for i in "$@"; do
 	case $i in
 	--nightly)
 		NIGHTLY=1
+		;;
+	--use-brew)
+		USE_BREW=1
 		;;
 	*)
 		echo "unknown option: ${i}"
@@ -43,7 +46,53 @@ install_on_linux() {
 	chmod +x "${NVIM_BIN_PATH}"
 }
 
-install_on_macos() {
+install_on_mac() {
+	if [[ $USE_BREW ]]; then
+		install_on_macos_with_brew
+	else
+		install_on_mac_from_repo
+	fi
+}
+
+install_on_mac_from_repo() {
+	if command -v nvim 1>/dev/null 2>&1; then
+		sudo rm "$(command -v nvim)"
+	fi
+
+	HOME_LOCAL_BIN_PATH="${HOME}/.local/bin"
+	mkdir -p "${HOME_LOCAL_BIN_PATH}"
+
+	NVIM_DIR_NAME="nvim-osx64"
+	NVIM_DIR_PATH="${HOME_LOCAL_BIN_PATH}/${NVIM_DIR_NAME}"
+
+	if [[ -d "${NVIM_DIR_PATH}" ]]; then
+		rm -rf "${NVIM_DIR_PATH}"
+	fi
+
+	if [[ $NIGHTLY ]]; then
+		NVIM_TAG=nightly
+	else
+		NVIM_TAG=v0.6.1
+	fi
+
+	BASE_URL="https://github.com/neovim/neovim/releases/download/${NVIM_TAG}"
+
+	NVIM_TARBALL_NAME="nvim-macos.tar.gz"
+	curl -L -O "${BASE_URL}/${NVIM_TARBALL_NAME}"
+
+	NVIM_CHECKSUM_NAME="${NVIM_TARBALL_NAME}.sha256sum"
+	curl -L -O "${BASE_URL}/${NVIM_CHECKSUM_NAME}"
+	shasum -a 256 -c "${NVIM_CHECKSUM_NAME}"
+	rm "${NVIM_CHECKSUM_NAME}"
+
+	tar -xzf "${NVIM_TARBALL_NAME}"
+	mv "${NVIM_DIR_NAME}" "${HOME_LOCAL_BIN_PATH}"
+	NVIM_BIN_PATH="${NVIM_DIR_PATH}/bin/nvim"
+	chmod +x "${NVIM_BIN_PATH}"
+	ln -s "${NVIM_BIN_PATH}" "${HOME_LOCAL_BIN_PATH}/nvim"
+}
+
+install_on_macos_with_brew() {
 	brew uninstall neovim
 	brew cleanup --prune=all
 	if [[ $NIGHTLY ]]; then
@@ -54,7 +103,7 @@ install_on_macos() {
 }
 
 case "$OSTYPE" in
-darwin*) install_on_macos ;;
+darwin*) install_on_mac ;;
 linux*) install_on_linux ;;
 *) echo "unknown OSTYPE: $OSTYPE" && exit 1 ;;
 esac
