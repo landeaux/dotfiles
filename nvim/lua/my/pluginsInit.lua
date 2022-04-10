@@ -73,7 +73,6 @@ return packer.startup(function()
     })
 
     -- Colorize color codes
-    -- TODO: figure out how to make this enabled on start up
     use({
         "norcalli/nvim-colorizer.lua",
         config = function()
