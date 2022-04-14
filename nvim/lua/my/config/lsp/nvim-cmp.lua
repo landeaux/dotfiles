@@ -8,17 +8,16 @@ local has_words_before = function()
             == nil
 end
 
-local select_next_snippet_choice_or_cmp_item = function(fallback)
-    if luasnip.choice_active() then
-        luasnip.change_choice(1)
-    elseif cmp.visible() then
+
+local select_next_cmp_item = function(fallback)
+    if cmp.visible() then
         cmp.select_next_item()
     else
         fallback()
     end
 end
 
-local select_prev_snippet_choice_or_cmp_item = function(fallback)
+local select_prev_cmp_item = function(fallback)
     if luasnip.choice_active() then
         luasnip.change_choice(-1)
     elseif cmp.visible() then
@@ -50,6 +49,22 @@ local jump_or_select_prev_cmp_item = function(fallback)
     end
 end
 
+local select_next_snippet_choice = function(fallback)
+    if luasnip.choice_active() then
+        luasnip.change_choice(1)
+    else
+        fallback()
+    end
+end
+
+local select_prev_snippet_choice = function(fallback)
+    if luasnip.choice_active() then
+        luasnip.change_choice(-1)
+    else
+        fallback()
+    end
+end
+
 cmp.setup({
     -- completion = { autocomplete = false },
     window = {
@@ -62,19 +77,19 @@ cmp.setup({
         end,
     },
     mapping = cmp.mapping.preset.insert({
-        ["<C-n>"] = cmp.mapping(select_next_snippet_choice_or_cmp_item, { "i", "s" }),
-        ["<C-j>"] = cmp.mapping(select_next_snippet_choice_or_cmp_item, { "i", "s" }),
-        ["<C-p>"] = cmp.mapping(select_prev_snippet_choice_or_cmp_item, { "i", "s" }),
-        ["<C-k>"] = cmp.mapping(select_prev_snippet_choice_or_cmp_item, { "i", "s" }),
+        -- General mappings
+        ["<C-n>"] = cmp.mapping(select_next_cmp_item, { "i", "s" }),
+        ["<C-p>"] = cmp.mapping(select_prev_cmp_item, { "i", "s" }),
         ["<C-d>"] = cmp.mapping.scroll_docs(-5),
         ["<C-f>"] = cmp.mapping.scroll_docs(5),
         ["<C-y>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
         ["<C-e>"] = cmp.mapping.close(),
         ["<C-c>"] = cmp.mapping.abort(),
-        ["<Tab>"] = cmp.mapping(expand_jump_or_select_next_cmp_item, { "i", "s" }),
+        -- Snippet mappings
         ["<C-l>"] = cmp.mapping(expand_jump_or_select_next_cmp_item, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(jump_or_select_prev_cmp_item, { "i", "s" }),
         ["<C-h>"] = cmp.mapping(jump_or_select_prev_cmp_item, { "i", "s" }),
+        ["<C-j>"] = cmp.mapping(select_next_snippet_choice, { "i", "s" }),
+        ["<C-k>"] = cmp.mapping(select_prev_snippet_choice, { "i", "s" }),
     }),
     sources = {
         -- NOTE: The order of these are important as it determines priority.
