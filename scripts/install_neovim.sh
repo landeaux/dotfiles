@@ -87,6 +87,7 @@ install_on_mac_from_repo() {
 	NVIM_BIN_PATH="${NVIM_DIR_PATH}/bin/nvim"
 	chmod +x "${NVIM_BIN_PATH}"
 	ln -s "${NVIM_BIN_PATH}" "${HOME_LOCAL_BIN_PATH}/nvim"
+  rm "${NVIM_TARBALL_NAME}"
 }
 
 install_on_macos_with_brew() {
