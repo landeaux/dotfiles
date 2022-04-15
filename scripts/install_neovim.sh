@@ -2,6 +2,9 @@
 
 set -euxo pipefail
 
+NIGHTLY=0
+USE_BREW=0
+
 for i in "$@"; do
 	case $i in
 	--nightly)
@@ -17,6 +20,12 @@ for i in "$@"; do
 	esac
 done
 
+if [[ $NIGHTLY -eq "1" ]]; then
+  NVIM_TAG=nightly
+else
+  NVIM_TAG=v0.7.0
+fi
+
 install_on_linux() {
 	if command -v nvim 1>/dev/null 2>&1; then
 		sudo rm "$(command -v nvim)"
@@ -24,12 +33,6 @@ install_on_linux() {
 
 	HOME_LOCAL_BIN_PATH="${HOME}/.local/bin"
 	mkdir -p "${HOME_LOCAL_BIN_PATH}"
-
-	if [[ $NIGHTLY ]]; then
-		NVIM_TAG=nightly
-	else
-		NVIM_TAG=v0.6.1
-	fi
 
 	BASE_URL="https://github.com/neovim/neovim/releases/download/${NVIM_TAG}"
 
@@ -47,7 +50,7 @@ install_on_linux() {
 }
 
 install_on_mac() {
-	if [[ $USE_BREW ]]; then
+	if [[ $USE_BREW -eq "1" ]]; then
 		install_on_macos_with_brew
 	else
 		install_on_mac_from_repo
@@ -67,12 +70,6 @@ install_on_mac_from_repo() {
 
 	if [[ -d "${NVIM_DIR_PATH}" ]]; then
 		rm -rf "${NVIM_DIR_PATH}"
-	fi
-
-	if [[ $NIGHTLY ]]; then
-		NVIM_TAG=nightly
-	else
-		NVIM_TAG=v0.6.1
 	fi
 
 	BASE_URL="https://github.com/neovim/neovim/releases/download/${NVIM_TAG}"
@@ -95,7 +92,7 @@ install_on_mac_from_repo() {
 install_on_macos_with_brew() {
 	brew uninstall neovim
 	brew cleanup --prune=all
-	if [[ $NIGHTLY ]]; then
+	if [[ $NIGHTLY -eq "1" ]]; then
 		brew install --HEAD neovim
 	else
 		brew install neovim
