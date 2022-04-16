@@ -19,13 +19,3 @@ create_augroup({
         opts = { pattern = "*", command = ":%s/\\s\\+$//e" },
     },
 }, "_trim_trailing_whitespace")
-
-create_augroup({
-    {
-        event = "BufWritePost",
-        opts = {
-            pattern = "pluginsInit.lua",
-            command = "source <afile> | PackerCompile",
-        },
-    },
-}, "_packer")

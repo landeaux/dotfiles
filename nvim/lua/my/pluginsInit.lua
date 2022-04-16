@@ -7,6 +7,16 @@ end
 local packer = my_packer.packer
 local use = packer.use
 
+require("my.utils").create_augroup({
+    {
+        event = "BufWritePost",
+        opts = {
+            pattern = "pluginsInit.lua",
+            command = "source <afile> | PackerCompile",
+        },
+    },
+}, "_packer")
+
 return packer.startup(function()
     -- Packer
     use({
