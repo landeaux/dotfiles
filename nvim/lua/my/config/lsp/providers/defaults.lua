@@ -49,10 +49,15 @@ function M.on_attach(client, bufnr)
         if format_on_save and not auto_format_lock then
             auto_format_lock = true -- just run autocommand once
             -- Format on save
-            require("my.utils").create_augroup(
-                { { "BufWritePre", "*", "lua vim.lsp.buf.formatting_sync(nil, 1000)" } },
-                "lsp_auto_format"
-            )
+            require("my.utils").create_augroup({
+                {
+                    event = "BufWritePre",
+                    opts = {
+                        pattern = "*",
+                        command = "lua vim.lsp.buf.formatting_sync(nil, 1000)",
+                    },
+                },
+            }, "_lsp_auto_format")
         end
 
         buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)

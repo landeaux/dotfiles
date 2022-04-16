@@ -50,7 +50,9 @@ function MarkdownSettings()
     require("whichkey_setup").register_keymap("localleader", keys)
 end
 
-require("my.utils").create_augroup(
-    { { "FileType", "markdown", "lua MarkdownSettings()" } },
-    "markdown"
-)
+require("my.utils").create_augroup({
+    {
+        event = "FileType",
+        opts = { pattern = "markdown", command = "lua MarkdownSettings()" },
+    },
+}, "_markdown")

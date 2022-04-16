@@ -44,10 +44,12 @@ vim.fn.sign_define("DapStopped", {
 })
 
 -- DAP REPL autocomplete
-require("my.utils").create_augroup(
-    { { "FileType", "dap-repl", 'lua require("dap.ext.autocompl").attach()' } },
-    "dap_repl"
-)
+require("my.utils").create_augroup({
+    {
+        event = "FileType",
+        opts = { pattern = "dap-repl", command = 'lua require("dap.ext.autocompl").attach()' },
+    },
+}, "_dap_repl")
 
 -- DAP Terminal settings
 local external_terminal = nil

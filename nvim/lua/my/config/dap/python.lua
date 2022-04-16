@@ -19,9 +19,14 @@ function M.dap_python_bindings()
     require("whichkey_setup").register_keymap("localvisual", visual_keys)
 end
 
-require("my.utils").create_augroup(
-    { { "FileType", "python", 'lua require("my.config.dap.python").dap_python_bindings()' } },
-    "dap_python"
-)
+require("my.utils").create_augroup({
+    {
+        event = "FileType",
+        opts = {
+            pattern = "python",
+            command = 'lua require("my.config.dap.python").dap_python_bindings()',
+        },
+    },
+}, "_dap_python")
 
 return M

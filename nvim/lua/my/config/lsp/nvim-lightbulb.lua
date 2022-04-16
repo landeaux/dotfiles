@@ -34,7 +34,9 @@ require("nvim-lightbulb").update_lightbulb({
 -- Change Lightbulb sign
 vim.fn.sign_define("LightBulbSign", { text = "" })
 
-require("my.utils").create_augroup(
-    { { "CursorHold,CursorHoldI", "*", 'lua require("nvim-lightbulb").update_lightbulb()' } },
-    "nvim-lightbulb"
-)
+require("my.utils").create_augroup({
+    {
+        event = "CursorHold,CursorHoldI",
+        opts = { pattern = "*", command = 'lua require("nvim-lightbulb").update_lightbulb()' },
+    },
+}, "nvim-lightbulb")

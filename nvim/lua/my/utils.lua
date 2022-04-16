@@ -1,17 +1,13 @@
 local M = {}
 
 -- Create an augroup
-function M.create_augroup(autocmds, name)
-    local cmd = vim.cmd
-
-    cmd("augroup " .. name)
-    cmd("autocmd!")
+function M.create_augroup(autocmds, group_name)
+    local group = vim.api.nvim_create_augroup(group_name, { clear = true })
 
     for _, autocmd in ipairs(autocmds) do
-        cmd("autocmd " .. table.concat(autocmd, " "))
+        local opts = vim.tbl_deep_extend("force", autocmd.opts, { group = group })
+        vim.api.nvim_create_autocmd(autocmd.event, opts)
     end
-
-    cmd("augroup END")
 end
 
 -- Make navigation keys navigate through display lines instead of physical lines
