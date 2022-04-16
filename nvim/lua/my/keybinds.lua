@@ -9,9 +9,6 @@ bind("v", "<C-h>", "<Nop>", {})
 bind("i", "<C-j>", "<Nop>", {})
 bind("v", "<C-j>", "<Nop>", {})
 
--- Yank to end of line in visual mode and go back to original cursor position
-bind("v", "Y", "<Esc>y$gv", { noremap = true })
-
 -- Make U redo
 bind("n", "U", "undo", { noremap = true })
 
@@ -95,10 +92,10 @@ bind("n", "<Leader>wl", ":wincmd l<CR>", opts)
 
 -- Resize windows
 bind("n", "<Leader>w=", ":wincmd =<CR>", opts)
-bind('n', '<C-Up>', ':resize -2<CR>', opts)
-bind('n', '<C-Down>', ':resize +2<CR>', opts)
-bind('n', '<C-Left>', ':vertical resize -2<CR>', opts)
-bind('n', '<C-Right>', ':vertical resize +2<CR>', opts)
+bind("n", "<C-Up>", ":resize -2<CR>", opts)
+bind("n", "<C-Down>", ":resize +2<CR>", opts)
+bind("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+bind("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Rotate windows
 bind("n", "<Leader>wr", ":wincmd r<CR>", opts)
