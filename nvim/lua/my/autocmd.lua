@@ -4,7 +4,12 @@ local create_augroup = require("my.utils").create_augroup
 create_augroup({
     {
         event = "TextYankPost",
-        opts = { pattern = "*", command = "silent! lua vim.highlight.on_yank()" },
+        opts = {
+            pattern = "*",
+            callback = function()
+                vim.highlight.on_yank()
+            end,
+        },
     },
 }, "_highlight_on_yank")
 
