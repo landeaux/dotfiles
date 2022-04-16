@@ -20,9 +20,6 @@ bind("v", "<", "<gv^", { noremap = true })
 bind("v", "<Tab>", ">", {})
 bind("v", "<S-Tab>", "<", {})
 
--- Use Alt-L to clear the highlighting of :set hlsearch.
-bind("n", "<A-l>", ":nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>", opts)
-
 -- Easier escape from insert mode
 bind("i", "kk", "<ESC>", opts)
 bind("i", "kj", "<ESC>", opts)
