@@ -1,15 +1,8 @@
 require("bufferline").setup({
     options = {
-        view = "multiwindow",
-        numbers = "ordinal",
-        buffer_close_icon = "",
-        modified_icon = "●",
-        close_icon = "",
-        left_trunc_marker = "",
-        right_trunc_marker = "",
-        max_name_length = 18,
-        max_prefix_length = 15, -- prefix used when a buffer is deduplicated
-        tab_size = 18,
+        numbers = function (opts)
+            return string.format('%s', opts.raise(opts.ordinal))
+        end, -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(count, level, diagnostics_dict)
             local icon = level:match("error") and " " or " "
@@ -22,16 +15,10 @@ require("bufferline").setup({
                 return true
             end
         end,
+        offsets = { { filetype = "neo-tree", text = "File Explorer", text_align = "left" } },
         show_buffer_close_icons = false,
         show_close_icon = false,
-        show_tab_indicators = true,
-        -- whether or not custom sorted buffers should persist
-        persist_buffer_sort = true,
-        -- separator_style = "slant" | "thick" | "thin" | { 'any', 'any' },
-        separator_style = "thick",
-        enforce_regular_tabs = true,
-        always_show_bufferline = true,
-        sort_by = "id",
+        separator_style = "thick", -- "slant" | "thick" | "thin" | { 'any', 'any' },
     },
 })
 
