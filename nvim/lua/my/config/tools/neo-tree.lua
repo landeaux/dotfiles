@@ -172,7 +172,7 @@ vim.api.nvim_set_keymap(
     "n",
     "<Leader>tn",
     ":Neotree filesystem reveal left toggle<CR>",
-    { noremap = true }
+    { noremap = true, silent = true }
 )
 
 require("whichkey_setup").register_keymap("leader", {
