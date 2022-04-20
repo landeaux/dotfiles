@@ -1,7 +1,7 @@
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local wk = require("whichkey_setup")
-local bind = vim.api.nvim_set_keymap
+local wk = require("which-key")
+local map = vim.keymap.set
 local custom_pickers = require("my.config.tools.telescope-pickers")
 
 local set_prompt_to_entry_value = function(prompt_bufnr)
@@ -122,40 +122,53 @@ require("telescope").load_extension("dap")
 require("telescope").load_extension("fzf")
 
 -- Bindings
-bind("n", "<Leader>f/", ":Telescope current_buffer_fuzzy_find<CR>", {})
-bind("n", "<Leader>fa", ":Telescope builtin<CR>", {})
-bind("n", "<Leader>fb", ":Telescope buffers<CR>", {})
-bind("n", "<Leader>fc", ":Telescope commands<CR>", {})
-bind("n", "<Leader>ff", ":Telescope find_files<CR>", {})
-bind("n", "<Leader>fFi", ":Telescope find_files no_ignore=true<CR>", {})
+map("n", "<Leader>f/", ":Telescope current_buffer_fuzzy_find<CR>")
+map("n", "<Leader>fa", ":Telescope builtin<CR>")
+map("n", "<Leader>fb", ":Telescope buffers<CR>")
+map("n", "<Leader>fc", ":Telescope commands<CR>")
+map("n", "<Leader>ff", ":Telescope find_files<CR>")
+map("n", "<Leader>fFi", ":Telescope find_files no_ignore=true<CR>")
 -- bind("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
-bind("n", "<Leader>fg", ":lua require('my.config.tools.telescope-pickers').live_grep()<CR>", {})
+map("n", "<Leader>fg", require("my.config.tools.telescope-pickers").live_grep)
 -- bind(
 --     "n",
 --     "<Leader>fGf",
 --     ":lua require('my.config.tools.telescope-pickers').live_grep_in_folder()<CR>",
 --     {}
 -- )
-bind(
-    "n",
-    "<Leader>fGi",
-    ':Telescope live_grep vimgrep_arguments={"rg","--color=never","--no-heading","--with-filename","--line-number","--column","--smart-case","-u"}<CR>',
-    {}
-)
-bind("n", "<Leader>fh", ":Telescope help_tags<CR>", {})
-bind("n", "<Leader>fo", ":Telescope oldfiles<CR>", {})
-bind("n", "<Leader>ft", ":Telescope treesitter<CR>", {})
-bind("n", "<Leader>fw", ":Telescope grep_string<CR>", {})
-bind("v", "<Leader>f", '"zy:Telescope live_grep default_text=<C-r>z<CR>', {})
+-- map(
+--     "n",
+--     "<Leader>fGi",
+--     ':Telescope live_grep vimgrep_arguments={"rg","--color=never","--no-heading","--with-filename","--line-number","--column","--smart-case","-u"}<CR>'
+-- )
+map("n", "<Leader>fGi", function()
+    require("telescope.builtin").live_grep({
+        vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "-u",
+        },
+    })
+end)
+map("n", "<Leader>fh", ":Telescope help_tags<CR>")
+map("n", "<Leader>fo", ":Telescope oldfiles<CR>")
+map("n", "<Leader>ft", ":Telescope treesitter<CR>")
+map("n", "<Leader>fw", ":Telescope grep_string<CR>")
+map("v", "<Leader>f", '"zy:Telescope live_grep default_text=<C-r>z<CR>')
 
 -- DAP
-bind("n", "<Leader>fdc", ":Telescope dap commands<CR>", {})
-bind("n", "<Leader>fds", ":Telescope dap configurations<CR>", {})
-bind("n", "<Leader>fdl", ":Telescope dap list_breakpoints<CR>", {})
-bind("n", "<Leader>fdv", ":Telescope dap variables<CR>", {})
-bind("n", "<Leader>fdf", ":Telescope dap frames<CR>", {})
+map("n", "<Leader>fdc", ":Telescope dap commands<CR>")
+map("n", "<Leader>fds", ":Telescope dap configurations<CR>")
+map("n", "<Leader>fdl", ":Telescope dap list_breakpoints<CR>")
+map("n", "<Leader>fdv", ":Telescope dap variables<CR>")
+map("n", "<Leader>fdf", ":Telescope dap frames<CR>")
 
-wk.register_keymap("leader", {
+wk.register("leader", {
     f = {
         name = "+telescope",
         ["/"] = "Current buffer fuzzy find",
@@ -187,6 +200,6 @@ wk.register_keymap("leader", {
         },
     },
 })
-wk.register_keymap("visual", {
+wk.register("visual", {
     f = "Live grep visual selection",
 })

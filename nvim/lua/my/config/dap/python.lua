@@ -15,8 +15,8 @@ function M.dap_python_bindings()
 
     local visual_keys = { d = { name = "+dap", s = "Debug selection" } }
 
-    require("whichkey_setup").register_keymap("localleader", keys)
-    require("whichkey_setup").register_keymap("localvisual", visual_keys)
+    require("which-key").register(keys, { prefix = "<localleader>" })
+    require("which-key").register(visual_keys, { mode = "v", prefix = "<localleader>" })
 end
 
 require("my.utils").create_augroup({

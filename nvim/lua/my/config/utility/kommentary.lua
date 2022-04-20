@@ -1,6 +1,6 @@
 local bind = vim.api.nvim_set_keymap
 local config = require("kommentary.config")
-local wk = require("whichkey_setup")
+local wk = require("which-key")
 
 config.configure_language({ "javascript", "typescript" }, {
     prefer_single_line_comments = true,
@@ -38,7 +38,7 @@ bind("v", "<leader>ct", "<Plug>kommentary_visual_default", {})
 bind("v", "<leader>ci", "<Plug>kommentary_visual_increase", {})
 bind("v", "<leader>cd", "<Plug>kommentary_visual_decrease", {})
 
-wk.register_keymap("leader", {
+wk.register({
     ["/"] = "Toggle commenting level for line",
     c = {
         name = "+comment",
@@ -52,9 +52,11 @@ wk.register_keymap("leader", {
             t = "Toggle commenting level for line",
         },
     },
+}, {
+    prefix = "<leader>",
 })
 
-wk.register_keymap("visual", {
+wk.register({
     ["/"] = "Toggle commenting level",
     c = {
         name = "+comment",
@@ -62,4 +64,7 @@ wk.register_keymap("visual", {
         d = "Decrease commenting level",
         t = "Toggle commenting level",
     },
+}, {
+    mode = "v",
+    prefix = "<leader>",
 })

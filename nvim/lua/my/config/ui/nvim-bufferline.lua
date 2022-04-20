@@ -1,7 +1,7 @@
 require("bufferline").setup({
     options = {
-        numbers = function (opts)
-            return string.format('%s', opts.raise(opts.ordinal))
+        numbers = function(opts)
+            return string.format("%s", opts.raise(opts.ordinal))
         end, -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(count, level, diagnostics_dict)
@@ -79,4 +79,4 @@ local keys = {
     },
 }
 
-require("whichkey_setup").register_keymap("leader", keys)
+require("which-key").register(keys, { prefix = "<leader>" })

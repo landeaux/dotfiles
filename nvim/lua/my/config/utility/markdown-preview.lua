@@ -47,7 +47,7 @@ function MarkdownSettings()
 
     local keys = { p = "Preview", s = "Stop preview", t = "Toggle preview" }
 
-    require("whichkey_setup").register_keymap("localleader", keys)
+    require("which-key").register(keys, { prefix = "<localleader>" })
 end
 
 require("my.utils").create_augroup({

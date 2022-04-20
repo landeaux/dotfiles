@@ -175,6 +175,8 @@ vim.api.nvim_set_keymap(
     { noremap = true, silent = true }
 )
 
-require("whichkey_setup").register_keymap("leader", {
+require("which-key").register({
     t = { name = "+ui-toggle", n = "File Tree" },
+}, {
+    prefix = "<leader>",
 })

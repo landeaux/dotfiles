@@ -65,5 +65,5 @@ local keys = {
 
 local visual_keys = { d = { name = "+dap", i = "Variable info" } }
 
-require("whichkey_setup").register_keymap("leader", keys)
-require("whichkey_setup").register_keymap("visual", visual_keys)
+require("which-key").register(keys, { prefix = "<leader>" })
+require("which-key").register(visual_keys, { mode = "v", prefix = "<leader>" })

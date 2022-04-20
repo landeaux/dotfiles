@@ -74,7 +74,7 @@ return {
             },
         }
 
-        local wk = require("whichkey_setup")
-        wk.register_keymap("leader", keymap_leader)
+        local wk = require("which-key")
+        wk.register("leader", keymap_leader)
     end,
 }

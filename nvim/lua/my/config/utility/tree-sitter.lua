@@ -1,4 +1,4 @@
-local wk = require("whichkey_setup")
+local wk = require("which-key")
 local opt = vim.opt
 
 -- Enable folding
@@ -98,7 +98,7 @@ require("nvim-treesitter.configs").setup({
 
 local keymap_g = { name = "+goto", l = { name = "+ts-selection", i = "Initialize selection" } }
 
-wk.register_keymap("g", keymap_g)
+wk.register(keymap_g, { prefix = "g" })
 
 local keymap_leader = {
     [">"] = "TS: Swap next parameter",
@@ -113,4 +113,4 @@ local keymap_leader = {
     },
 }
 
-wk.register_keymap("leader", keymap_leader)
+wk.register(keymap_leader, { prefix = "<leader>" })

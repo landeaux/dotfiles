@@ -2,9 +2,9 @@ require("colorizer").setup({
     "!packer",
 })
 
-vim.api.nvim_set_keymap("n", "<Leader>tc", ":ColorizerToggle<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>tc", ":ColorizerToggle<CR>")
 
-require("whichkey_setup").register_keymap(
-    "leader",
-    { t = { name = "+ui-toggle", c = "Colorizer" } }
+require("which-key").register(
+    { t = { name = "+ui-toggle", c = "Colorizer" } },
+    { prefix = "<leader>" }
 )

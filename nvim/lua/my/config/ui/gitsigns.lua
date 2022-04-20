@@ -95,9 +95,9 @@ require("gitsigns").setup({
         map("o", "ih", "<cmd>Gitsigns select_hunk<CR>")
         map("x", "ih", "<cmd>Gitsigns select_hunk<CR>")
 
-        local wk = require("whichkey_setup")
+        local wk = require("which-key")
 
-        wk.register_keymap("leader", {
+        wk.register({
             h = {
                 name = "+hunk",
                 b = "Blame line",
@@ -110,16 +110,21 @@ require("gitsigns").setup({
             },
             t = {
                 b = "Current line blame",
-                d = "Deleted lines"
+                d = "Deleted lines",
             },
+        }, {
+            prefix = "<leader>",
         })
 
-        wk.register_keymap("visual", {
+        wk.register({
             h = {
                 name = "+hunk",
                 r = "Reset hunk",
                 s = "Stage hunk",
             },
+        }, {
+            prefix = "<leader>",
+            mode = "v",
         })
     end,
 })

@@ -1,5 +1,5 @@
 local M = {}
-local wk = require("whichkey_setup")
+local wk = require("which-key")
 
 local format_on_save = false
 local auto_format_lock = false
@@ -61,7 +61,7 @@ function M.on_attach(client, bufnr)
         end
 
         buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        wk.register_keymap("leader", { l = { name = "+lsp", f = "Format" } })
+        wk.register("leader", { l = { name = "+lsp", f = "Format" } })
     else
         client.resolved_capabilities.document_formatting = false
     end
@@ -146,8 +146,8 @@ function M.on_attach(client, bufnr)
         y = "Go to type definition",
     }
 
-    wk.register_keymap("leader", keymap_leader)
-    wk.register_keymap("g", keymap_g)
+    wk.register("leader", keymap_leader)
+    wk.register("g", keymap_g)
 
     documentHighlight(client, bufnr)
 end
