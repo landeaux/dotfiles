@@ -136,11 +136,6 @@ map("n", "<Leader>fg", require("my.config.tools.telescope-pickers").live_grep)
 --     ":lua require('my.config.tools.telescope-pickers').live_grep_in_folder()<CR>",
 --     {}
 -- )
--- map(
---     "n",
---     "<Leader>fGi",
---     ':Telescope live_grep vimgrep_arguments={"rg","--color=never","--no-heading","--with-filename","--line-number","--column","--smart-case","-u"}<CR>'
--- )
 map("n", "<Leader>fGi", function()
     require("telescope.builtin").live_grep({
         vimgrep_arguments = {
