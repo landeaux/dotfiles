@@ -18,7 +18,6 @@ require("indent_blankline").setup({
     show_first_indent_level = true,
     show_trailing_blankline_indent = false,
     show_current_context = true,
-    show_current_context_start = true,
     show_end_of_line = false,
     space_char_blankline = " ",
     use_treesitter = true,
