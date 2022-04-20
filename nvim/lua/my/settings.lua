@@ -6,7 +6,10 @@ local soft_column_limit = 80
 local hard_column_limit = 120
 local indent = 2
 
+vim.keymap.set({ "n", "v" }, "<Space>", "", { silent = true })
 g.mapleader = " "
+
+vim.keymap.set({ "n", "v" }, "\\", "", { silent = true })
 g.maplocalleader = "\\"
 
 cmd("filetype plugin on")

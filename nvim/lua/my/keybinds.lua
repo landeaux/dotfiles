@@ -1,139 +1,134 @@
-local bind = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local map = vim.keymap.set
+local opts = { silent = true }
 
 -- Disable some mappings
-bind("i", "<C-l>", "<Nop>", {})
-bind("v", "<C-l>", "<Nop>", {})
-bind("i", "<C-h>", "<Nop>", {})
-bind("v", "<C-h>", "<Nop>", {})
-bind("i", "<C-j>", "<Nop>", {})
-bind("v", "<C-j>", "<Nop>", {})
+map({ "i", "v" }, "<C-l>", "", {})
+map({ "i", "v" }, "<C-h>", "", {})
+map({ "i", "v" }, "<C-j>", "", {})
 
 -- Make U redo
-bind("n", "U", "undo", { noremap = true })
+map("n", "U", "undo", {})
 
 -- Don't leave visual mode after indenting
-bind("v", ">", ">gv^", { noremap = true })
-bind("v", "<", "<gv^", { noremap = true })
+map("v", ">", ">gv^", {})
+map("v", "<", "<gv^", {})
 
 -- Indent with Tab and Shift-Tab
-bind("v", "<Tab>", ">", {})
-bind("v", "<S-Tab>", "<", {})
+map("v", "<Tab>", ">gv^", {})
+map("v", "<S-Tab>", "<gv^", {})
 
 -- Easier escape from insert mode
-bind("i", "kk", "<ESC>", opts)
-bind("i", "kj", "<ESC>", opts)
-bind("i", "jk", "<ESC>", opts)
-bind("i", "jj", "<ESC>", opts)
+map("i", "kk", "<ESC>", opts)
+map("i", "kj", "<ESC>", opts)
+map("i", "jk", "<ESC>", opts)
+map("i", "jj", "<ESC>", opts)
 
 -- Move selected line / block of text in visual mode
-bind("x", "J", ":move '>+1<CR>gv-gv", opts)
-bind("x", "K", ":move '<-2<CR>gv-gv", opts)
+map("x", "J", ":move '>+1<CR>gv-gv", opts)
+map("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Remap for dealing with word wrap
-bind("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-bind("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Beginning and end of line in `:` command mode
-bind("c", "<C-a>", "<Home>", {})
-bind("c", "<C-e>", "<End>", {})
-bind("c", "<C-b>", "<Left>", {})
-bind("c", "<C-f>", "<Right>", {})
-
-bind("c", "<C-d>", "<C-r>=strftime('%F')<CR>", {})
+map("c", "<C-a>", "<Home>", {})
+map("c", "<C-e>", "<End>", {})
+map("c", "<C-b>", "<Left>", {})
+map("c", "<C-f>", "<Right>", {})
 
 -- Quickfix navigation
-bind("n", "[q", ":cprev<CR>zz", opts)
-bind("n", "]q", ":cnext<CR>zz", opts)
+map("n", "[q", ":cprev<CR>zz", opts)
+map("n", "]q", ":cnext<CR>zz", opts)
 
 -- Loclist navigation
-bind("n", "[l", ":lprev<CR>zz", opts)
-bind("n", "]l", ":lnext<CR>zz", opts)
+map("n", "[l", ":lprev<CR>zz", opts)
+map("n", "]l", ":lnext<CR>zz", opts)
 
 -- Buffer navigation
-bind("n", "[b", ":bprev<CR>", opts)
-bind("n", "]b", ":bnext<CR>", opts)
+map("n", "[b", ":bprev<CR>", opts)
+map("n", "]b", ":bnext<CR>", opts)
 
 ------------------------------- LEADER MAPPINGS -------------------------------
 
 -- Toggle highlighting
-bind("n", "<Leader>th", ":set hlsearch!<CR>", opts)
+map("n", "<Leader>th", ":set hlsearch!<CR>", opts)
 
 -- Toggle relativenumber
-bind("n", "<Leader>tr", ":set invrelativenumber<CR>", opts)
+map("n", "<Leader>tr", ":set invrelativenumber<CR>", opts)
 
 -- Toggle spelling
-bind("n", "<Leader>ts", ":set spell!<CR>", opts)
+map("n", "<Leader>ts", ":set spell!<CR>", opts)
 
 -- Toggle whitespace chars
-bind("n", "<Leader>tw", ":set list!<CR>", opts)
+map("n", "<Leader>tw", ":set list!<CR>", opts)
 
 -- Clipboard
-bind("", "<Leader>y", '"+y', opts) -- copy any selected text to clipboard
-bind("n", "<Leader>a", "<cmd> %+y<CR>", opts) -- copy any selected text to clipboard
+map("", "<Leader>y", '"+y', opts) -- copy any selected text to clipboard
+map("n", "<Leader>a", "<cmd> %+y<CR>", opts) -- copy any selected text to clipboard
 
 -- Quit
-bind("n", "<Leader>q", ":quitall<CR>", opts)
-bind("n", "<Leader>Q", ":quitall!<CR>", opts)
+map("n", "<Leader>q", ":quitall<CR>", opts)
+map("n", "<Leader>Q", ":quitall!<CR>", opts)
 
 -- Buffer
-bind("n", "<Leader>bd", ":bdelete<CR>", opts)
-bind("n", "<Leader>bD", ":bdelete!<CR>", opts)
+map("n", "<Leader>bd", ":bdelete<CR>", opts)
+map("n", "<Leader>bD", ":bdelete!<CR>", opts)
 
 -- Window
 -- Goto window above/below/left/right
-bind("n", "<Leader>wh", ":wincmd h<CR>", opts)
-bind("n", "<Leader>wj", ":wincmd j<CR>", opts)
-bind("n", "<Leader>wk", ":wincmd k<CR>", opts)
-bind("n", "<Leader>wl", ":wincmd l<CR>", opts)
+map("n", "<Leader>wh", ":wincmd h<CR>", opts)
+map("n", "<Leader>wj", ":wincmd j<CR>", opts)
+map("n", "<Leader>wk", ":wincmd k<CR>", opts)
+map("n", "<Leader>wl", ":wincmd l<CR>", opts)
 
 -- Resize windows
-bind("n", "<Leader>w=", ":wincmd =<CR>", opts)
-bind("n", "<C-Up>", ":resize -2<CR>", opts)
-bind("n", "<C-Down>", ":resize +2<CR>", opts)
-bind("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-bind("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+map("n", "<Leader>w=", ":wincmd =<CR>", opts)
+map("n", "<C-Up>", ":resize -2<CR>", opts)
+map("n", "<C-Down>", ":resize +2<CR>", opts)
+map("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Rotate windows
-bind("n", "<Leader>wr", ":wincmd r<CR>", opts)
-bind("n", "<Leader>wR", ":wincmd R<CR>", opts)
+map("n", "<Leader>wr", ":wincmd r<CR>", opts)
+map("n", "<Leader>wR", ":wincmd R<CR>", opts)
 
 -- Move windows
-bind("n", "<Leader>wmx", ":wincmd x<CR>", opts)
-bind("n", "<Leader>wmh", ":wincmd h<CR>", opts)
-bind("n", "<Leader>wmj", ":wincmd j<CR>", opts)
-bind("n", "<Leader>wmk", ":wincmd k<CR>", opts)
-bind("n", "<Leader>wml", ":wincmd l<CR>", opts)
+map("n", "<Leader>wmx", ":wincmd x<CR>", opts)
+map("n", "<Leader>wmh", ":wincmd h<CR>", opts)
+map("n", "<Leader>wmj", ":wincmd j<CR>", opts)
+map("n", "<Leader>wmk", ":wincmd k<CR>", opts)
+map("n", "<Leader>wml", ":wincmd l<CR>", opts)
 
 -- Delete window
-bind("n", "<Leader>wq", ":wincmd q<CR>", opts)
+map("n", "<Leader>wq", ":wincmd q<CR>", opts)
 
 -- Split window
-bind("n", "<Leader>ws", ":wincmd s<CR>", opts)
-bind("n", "<Leader>wv", ":wincmd v<CR>", opts)
+map("n", "<Leader>ws", ":wincmd s<CR>", opts)
+map("n", "<Leader>wv", ":wincmd v<CR>", opts)
 
 -- Keybinds for editing vim config
-bind("n", "<Leader>vc", ":edit $MYVIMRC<CR>", opts)
-bind("n", "<Leader>vv", ":version<CR>", opts)
+map("n", "<Leader>vc", ":edit $MYVIMRC<CR>", opts)
+map("n", "<Leader>vv", ":version<CR>", opts)
 
 -- Search and Replace
 -- '<Leader>r' for word, '<Leader>R' for WORD
-bind("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true })
-bind("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]], { noremap = true })
+map("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], {})
+map("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]], {})
 
 -- Handling merge conflicts
-bind("n", "<Leader>gf", ":diffget //2<CR>", opts) -- choose our change
-bind("n", "<Leader>gj", ":diffget //3<CR>", opts) -- choose incoming change
+map("n", "<Leader>gf", ":diffget //2<CR>", opts) -- choose our change
+map("n", "<Leader>gj", ":diffget //3<CR>", opts) -- choose incoming change
 
 -- Toggle folding
-bind("n", "<Space><Space>", "za", opts)
-bind("v", "<Space><Space>", "za", opts)
+map({ "n", "v" }, "<Space><Space>", "za", opts)
 
--- Insert Stuff
--- ISO-date: YYYY-MM-DD
-bind("n", "<Leader>id", [["=strftime("%F")<CR>P]], opts)
--- ISO-datetime: YYYY-MM-DDTHH:MM:SS
-bind("n", "<Leader>iD", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
+-- Insert ISO-date: YYYY-MM-DD
+map("n", "<Leader>id", [["=strftime("%F")<CR>P]], opts)
+map("c", "<C-d>", "<C-r>=strftime('%F')<CR>", {})
+
+-- Insert ISO-datetime: YYYY-MM-DDTHH:MM:SS
+map("n", "<Leader>iD", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
 
 local keys = {
     a = "Yank file to clipboard",
