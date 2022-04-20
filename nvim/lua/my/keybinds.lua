@@ -2,20 +2,20 @@ local map = vim.keymap.set
 local opts = { silent = true }
 
 -- Disable some mappings
-map({ "i", "v" }, "<C-l>", "", {})
-map({ "i", "v" }, "<C-h>", "", {})
-map({ "i", "v" }, "<C-j>", "", {})
+map({ "i", "v" }, "<C-l>", "")
+map({ "i", "v" }, "<C-h>", "")
+map({ "i", "v" }, "<C-j>", "")
 
 -- Make U redo
-map("n", "U", "undo", {})
+map("n", "U", "undo")
 
 -- Don't leave visual mode after indenting
-map("v", ">", ">gv^", {})
-map("v", "<", "<gv^", {})
+map("v", ">", ">gv^")
+map("v", "<", "<gv^")
 
 -- Indent with Tab and Shift-Tab
-map("v", "<Tab>", ">gv^", {})
-map("v", "<S-Tab>", "<gv^", {})
+map("v", "<Tab>", ">gv^")
+map("v", "<S-Tab>", "<gv^")
 
 -- Easier escape from insert mode
 map("i", "kk", "<ESC>", opts)
@@ -32,10 +32,10 @@ map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Beginning and end of line in `:` command mode
-map("c", "<C-a>", "<Home>", {})
-map("c", "<C-e>", "<End>", {})
-map("c", "<C-b>", "<Left>", {})
-map("c", "<C-f>", "<Right>", {})
+map("c", "<C-a>", "<Home>")
+map("c", "<C-e>", "<End>")
+map("c", "<C-b>", "<Left>")
+map("c", "<C-f>", "<Right>")
 
 -- Quickfix navigation
 map("n", "[q", ":cprev<CR>zz", opts)
@@ -113,8 +113,8 @@ map("n", "<Leader>vv", ":version<CR>", opts)
 
 -- Search and Replace
 -- '<Leader>r' for word, '<Leader>R' for WORD
-map("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], {})
-map("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]], {})
+map("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
+map("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]])
 
 -- Handling merge conflicts
 map("n", "<Leader>gf", ":diffget //2<CR>", opts) -- choose our change
@@ -125,7 +125,7 @@ map({ "n", "v" }, "<Space><Space>", "za", opts)
 
 -- Insert ISO-date: YYYY-MM-DD
 map("n", "<Leader>id", [["=strftime("%F")<CR>P]], opts)
-map("c", "<C-d>", "<C-r>=strftime('%F')<CR>", {})
+map("c", "<C-d>", "<C-r>=strftime('%F')<CR>")
 
 -- Insert ISO-datetime: YYYY-MM-DDTHH:MM:SS
 map("n", "<Leader>iD", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
