@@ -54,12 +54,7 @@ require("indent_blankline").setup({
     },
 })
 
-vim.api.nvim_set_keymap(
-    "n",
-    "<Leader>ti",
-    "<cmd>IndentBlanklineToggle<CR>",
-    { noremap = true, silent = true }
-)
+vim.keymap.set("n", "<Leader>ti", "<cmd>IndentBlanklineToggle<CR>", { silent = true })
 
 require("which-key").register(
     { t = { name = "+ui-toggle", i = "Indent guides" } },

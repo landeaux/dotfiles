@@ -1,8 +1,8 @@
-local bind = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
-bind("n", "<Space>gvc", ":GV!<CR>", {})
-bind("n", "<Space>gvl", ":GV?<CR>", {})
-bind("n", "<Space>gvo", ":GV<CR>", {})
+map("n", "<Leader>gvc", ":GV!<CR>")
+map("n", "<Leader>gvl", ":GV?<CR>")
+map("n", "<Leader>gvo", ":GV<CR>")
 
 local keys = {
     g = {

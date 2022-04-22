@@ -1,43 +1,56 @@
-local bind = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local map = vim.keymap.set
+local opts = { silent = true }
 
 -- DAP
-bind("n", "<Leader>dc", ':lua require("dap").continue()<CR>', opts)
-bind("n", "<Leader>dC", ':lua require("my.config.dap.utils").reload_continue()<CR>', opts)
-bind("n", "<Leader>dj", ':lua require("dap").step_over()<CR>', opts)
-bind("n", "<Leader>dl", ':lua require("dap").step_into()<CR>', opts)
-bind("n", "<Leader>dk", ':lua require("dap").step_out()<CR>', opts)
-bind("n", "<Leader>dt", ':lua require("dap").toggle_breakpoint()<CR>', opts)
-bind(
-    "n",
-    "<Leader>dbc",
-    ':lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>',
-    opts
-)
-bind(
-    "n",
-    "<Leader>dbl",
-    ':lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>',
-    opts
-)
-bind("n", "<Leader>dbe", ':lua require("dap").set_exception_breakpoints({"all"})<CR>', opts)
-bind("n", "<Leader>dr", ':lua require("dap").repl.open({}, "vsplit")<CR><C-w>l', opts)
-bind("n", "<Leader>dR", ':lua require("dap").run_last()<CR>', opts)
-bind("n", "<Leader>d?", ':lua require("dap.ui.variables").scopes()<CR>', opts)
-bind(
-    "n",
-    "<Leader>di",
-    ':lua require("dap.ui.variables").hover(function () return vim.fn.expand("<cexpr>") end)<CR>',
-    opts
-)
-bind("v", "<Leader>di", ':lua require("dap.ui.variables").visual_hover()<CR>', opts)
-bind("n", "<Leader>dh", ':lua require("dap.ui.widgets").hover()<CR>', opts)
-bind(
-    "n",
-    "<Leader>df",
-    ':lua local widgets=require("dap.ui.widgets");widgets.centered_float(widgets.scopes)<CR>',
-    opts
-)
+map("n", "<Leader>dc", function()
+    require("dap").continue()
+end, opts)
+map("n", "<Leader>dC", function()
+    require("my.config.dap.utils").reload_continue()
+end, opts)
+map("n", "<Leader>dj", function()
+    require("dap").step_over()
+end, opts)
+map("n", "<Leader>dl", function()
+    require("dap").step_into()
+end, opts)
+map("n", "<Leader>dk", function()
+    require("dap").step_out()
+end, opts)
+map("n", "<Leader>dt", function()
+    require("dap").toggle_breakpoint()
+end, opts)
+map("n", "<Leader>dbc", function()
+    require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, opts)
+map("n", "<Leader>dbl", function()
+    require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end, opts)
+map("n", "<Leader>dbe", function()
+    require("dap").set_exception_breakpoints({ "all" })
+end, opts)
+map("n", "<Leader>dr", ':lua require("dap").repl.open({}, "vsplit")<CR><C-w>l', opts)
+map("n", "<Leader>dR", function()
+    require("dap").run_last()
+end, opts)
+map("n", "<Leader>d?", function()
+    require("dap.ui.variables").scopes()
+end, opts)
+map("n", "<Leader>di", function()
+    require("dap.ui.variables").hover(function()
+        return vim.fn.expand("<cexpr>")
+    end)
+end, opts)
+map("v", "<Leader>di", function()
+    require("dap.ui.variables").visual_hover()
+end, opts)
+map("n", "<Leader>dh", function()
+    require("dap.ui.widgets").hover()
+end, opts)
+map("n", "<Leader>df", function()
+    local widgets = require("dap.ui.widgets")
+    widgets.centered_float(widgets.scopes)
+end, opts)
 
 local keys = {
     d = {
