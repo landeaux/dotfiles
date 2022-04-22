@@ -163,7 +163,7 @@ map("n", "<Leader>fdl", ":Telescope dap list_breakpoints<CR>")
 map("n", "<Leader>fdv", ":Telescope dap variables<CR>")
 map("n", "<Leader>fdf", ":Telescope dap frames<CR>")
 
-wk.register("leader", {
+wk.register({
     f = {
         name = "+telescope",
         ["/"] = "Current buffer fuzzy find",
@@ -194,7 +194,10 @@ wk.register("leader", {
             f = "Frames",
         },
     },
+}, {
+    prefix = "<leader>",
 })
-wk.register("visual", {
+
+wk.register({
     f = "Live grep visual selection",
-})
+}, { mode = "v", prefix = "<leader>" })
