@@ -29,11 +29,8 @@ local allowed_to_format = {
 }
 
 function M.on_attach(client, bufnr)
-    local opts = { noremap = true, silent = true }
-
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
+    local map = vim.keymap.set
+    local opts = { buffer = bufnr, silent = true }
 
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
@@ -54,61 +51,57 @@ function M.on_attach(client, bufnr)
                     event = "BufWritePre",
                     opts = {
                         pattern = "*",
-                        command = "lua vim.lsp.buf.formatting_sync(nil, 1000)",
+                        callback = function()
+                            vim.lsp.buf.formatting_sync(nil, 1000)
+                        end,
                     },
                 },
             }, "_lsp_auto_format")
         end
 
-        buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        wk.register("leader", { l = { name = "+lsp", f = "Format" } })
+        map("n", "<Leader>lf", vim.lsp.buf.formatting, opts)
+        wk.register({ l = { name = "+lsp", f = "Format" } }, { prefix = "<leader>" })
     else
         client.resolved_capabilities.document_formatting = false
     end
 
     -- Mappings.
-    buf_set_keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "gy", ":lua vim.lsp.buf.type_definition()<CR>", opts)
-    buf_set_keymap("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "gI", ":lua vim.lsp.buf.implementation()<CR>", opts)
-    buf_set_keymap("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
-    buf_set_keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
+    map("n", "gd", vim.lsp.buf.definition, opts)
+    map("n", "gy", vim.lsp.buf.type_definition, opts)
+    map("n", "gD", vim.lsp.buf.declaration, opts)
+    map("n", "gI", vim.lsp.buf.implementation, opts)
+    map("n", "gr", vim.lsp.buf.references, opts)
+    map("n", "K", vim.lsp.buf.hover, opts)
 
-    buf_set_keymap("n", "<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", opts)
-    buf_set_keymap("n", "<Leader>lr", ":lua vim.lsp.buf.rename()<CR>", opts)
-    buf_set_keymap("n", "<Leader>lc", ":lua vim.lsp.buf.code_action()<CR>", opts)
-    buf_set_keymap("x", "<Leader>lc", ":lua vim.lsp.buf.range_code_action()<CR>", opts)
+    map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+    map("n", "<Leader>lr", vim.lsp.buf.rename, opts)
+    map("n", "<Leader>lc", vim.lsp.buf.code_action, opts)
+    map("x", "<Leader>lc", vim.lsp.buf.range_code_action, opts)
 
-    buf_set_keymap(
-        "n",
-        "<Leader>ldk",
-        ':lua vim.diagnostic.open_float(0, { scope = "cursor" })<CR>',
-        opts
-    )
-    buf_set_keymap("n", "<Leader>lds", ":lua vim.diagnostic.open_float()<CR>", opts)
-    buf_set_keymap("n", "<Leader>ldq", ":lua vim.diagnostic.setloclist()<CR>", opts)
-    buf_set_keymap("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
-    buf_set_keymap("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
+    map("n", "<Leader>ldk", function()
+        vim.diagnostic.open_float(0, { scope = "cursor" })
+    end, opts)
+    map("n", "<Leader>lds", vim.diagnostic.open_float, opts)
+    map("n", "<Leader>ldq", vim.diagnostic.setloclist, opts)
+    map("n", "[d", vim.diagnostic.goto_prev, opts)
+    map("n", "]d", vim.diagnostic.goto_next, opts)
 
-    buf_set_keymap("n", "<Leader>lwa", ":lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-    buf_set_keymap("n", "<Leader>lwr", ":lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-    buf_set_keymap(
-        "n",
-        "<Leader>lwl",
-        ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-        opts
-    )
+    map("n", "<Leader>lwa", vim.lsp.buf.add_workspace_folder, opts)
+    map("n", "<Leader>lwr", vim.lsp.buf.remove_workspace_folder, opts)
+    map("n", "<Leader>lwl", function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
 
-    buf_set_keymap("n", "<Leader>lI", ":LspInfo<CR>", opts)
+    map("n", "<Leader>lI", ":LspInfo<CR>", opts)
 
     -- Telescope LSP
-    buf_set_keymap("n", "<Leader>lsd", ":Telescope lsp_document_symbols<CR>", opts)
-    buf_set_keymap("n", "<Leader>lsw", ":Telescope lsp_workspace_symbols<CR>", opts)
-    buf_set_keymap("n", "<Leader>lad", ":Telescope lsp_code_actions<CR>", opts)
+    map("n", "<Leader>lsd", ":Telescope lsp_document_symbols<CR>", opts)
+    map("n", "<Leader>lsw", ":Telescope lsp_workspace_symbols<CR>", opts)
+    map("n", "<Leader>lad", ":Telescope lsp_code_actions<CR>", opts)
 
     -- TODO: Move these to telescope config now that diagnostics have been abstracted away from LSP
-    buf_set_keymap("n", "<Leader>ldd", ":Telescope diagnostics bufnr=0<CR>", opts)
-    buf_set_keymap("n", "<Leader>ldw", ":Telescope diagnostics<CR>", opts)
+    map("n", "<Leader>ldd", ":Telescope diagnostics bufnr=0<CR>", opts)
+    map("n", "<Leader>ldw", ":Telescope diagnostics<CR>", opts)
 
     local keymap_leader = {
         l = {
@@ -146,8 +139,8 @@ function M.on_attach(client, bufnr)
         y = "Go to type definition",
     }
 
-    wk.register("leader", keymap_leader)
-    wk.register("g", keymap_g)
+    wk.register(keymap_leader, { prefix = "<leader>" })
+    wk.register(keymap_g, { prefix = "g" })
 
     documentHighlight(client, bufnr)
 end
