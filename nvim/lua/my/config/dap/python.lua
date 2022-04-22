@@ -1,22 +1,23 @@
 local M = {}
 
-local bind = vim.api.nvim_buf_set_keymap
-local opts = { noremap = true, silent = true }
-
 require("dap-python").setup("~/.pyenv/versions/debugpy/bin/python")
 require("dap-python").test_runner = "pytest"
 
 function M.dap_python_bindings()
-    bind(0, "n", "<LocalLeader>dm", ':lua require("dap-python").test_method()<CR>', opts)
-    bind(0, "n", "<LocalLeader>dc", ':lua require("dap-python").test_class()<CR>', opts)
-    bind(0, "v", "<LocalLeader>ds", '<ESC>:lua require("dap-python").debug_selection()<CR>', opts)
+    local map = vim.keymap.set
+    local opts = { buffer = true, silent = true }
+    local dap_python = require("dap-python")
+
+    map("n", "<LocalLeader>dm", dap_python.test_method, opts)
+    map("n", "<LocalLeader>dc", dap_python.test_class, opts)
+    map("v", "<LocalLeader>ds", '<ESC>:lua require("dap-python").debug_selection()<CR>', opts)
 
     local keys = { d = { name = "+dap", m = "Test method", c = "Test class" } }
-
     local visual_keys = { d = { name = "+dap", s = "Debug selection" } }
+    local wk = require("which-key")
 
-    require("which-key").register(keys, { prefix = "<localleader>" })
-    require("which-key").register(visual_keys, { mode = "v", prefix = "<localleader>" })
+    wk.register(keys, { prefix = "<localleader>" })
+    wk.register(visual_keys, { mode = "v", prefix = "<localleader>" })
 end
 
 require("my.utils").create_augroup({
@@ -24,7 +25,7 @@ require("my.utils").create_augroup({
         event = "FileType",
         opts = {
             pattern = "python",
-            command = 'lua require("my.config.dap.python").dap_python_bindings()',
+            callback = M.dap_python_bindings,
         },
     },
 }, "_dap_python")
