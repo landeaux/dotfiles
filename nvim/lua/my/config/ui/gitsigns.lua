@@ -66,34 +66,33 @@ require("gitsigns").setup({
         enable = false,
     },
     on_attach = function(bufnr)
-        local default_opts = { noremap = true, silent = true }
+        local default_opts = { buffer = bufnr, silent = true }
 
         local function map(mode, l, r, opts)
             opts = opts or {}
             local merged_opts = vim.tbl_deep_extend("force", opts, default_opts)
-            vim.api.nvim_buf_set_keymap(bufnr, mode, l, r, merged_opts)
+            vim.keymap.set(mode, l, r, merged_opts)
         end
 
         -- Navigation
-        map("n", "]h", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
-        map("n", "[h", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+        map("n", "]h", "&diff ? ']c' : ':Gitsigns next_hunk<CR>'", { expr = true })
+        map("n", "[h", "&diff ? '[c' : ':Gitsigns prev_hunk<CR>'", { expr = true })
 
         -- Actions
-        map("n", "<leader>hb", '<cmd>lua require"gitsigns".blame_line({full = true})<CR>')
-        map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>")
-        map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
-        map("v", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
-        map("n", "<leader>hR", "<cmd>Gitsigns reset_buffer<CR>")
-        map("n", "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>")
-        map("v", "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>")
-        map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
-        map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<CR>")
-        map("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
-        map("n", "<leader>td", "<cmd>Gitsigns toggle_deleted<CR>")
+        map("n", "<leader>hb", function()
+            require("gitsigns").blame_line({ full = true })
+        end)
+        map("n", "<leader>hp", ":Gitsigns preview_hunk<CR>")
+        map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
+        map("n", "<leader>hR", ":Gitsigns reset_buffer<CR>")
+        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
+        map("n", "<leader>hS", ":Gitsigns stage_buffer<CR>")
+        map("n", "<leader>hu", ":Gitsigns undo_stage_hunk<CR>")
+        map("n", "<leader>tb", ":Gitsigns toggle_current_line_blame<CR>")
+        map("n", "<leader>td", ":Gitsigns toggle_deleted<CR>")
 
         -- Text object
-        map("o", "ih", "<cmd>Gitsigns select_hunk<CR>")
-        map("x", "ih", "<cmd>Gitsigns select_hunk<CR>")
+        map({ "o", "x" }, "ih", ":Gitsigns select_hunk<CR>")
 
         local wk = require("which-key")
 
