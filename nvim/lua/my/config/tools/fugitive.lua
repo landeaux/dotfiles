@@ -1,13 +1,13 @@
-local bind = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
-bind("n", "<Space>ga", ":Git add -p<CR>", {})
-bind("n", "<Space>gb", ":Git blame<CR>", {})
-bind("n", "<Space>gc", ":Git commit -v<CR>", {})
-bind("n", "<Space>gd", ":Gdiffsplit<CR>", {})
-bind("n", "<Space>gm", ":Git commit --amend<CR>", {})
-bind("n", "<Space>gp", ":Git push<CR>", {})
-bind("n", "<Space>gs", ":G<CR>", {})
-bind("n", "<Space>gw", ":Gwrite<CR>", {})
+map("n", "<Leader>ga", ":Git add -p<CR>")
+map("n", "<Leader>gb", ":Git blame<CR>")
+map("n", "<Leader>gc", ":Git commit -v<CR>")
+map("n", "<Leader>gd", ":Gdiffsplit<CR>")
+map("n", "<Leader>gm", ":Git commit --amend<CR>")
+map("n", "<Leader>gp", ":Git push<CR>")
+map("n", "<Leader>gs", ":G<CR>")
+map("n", "<Leader>gw", ":Gwrite<CR>")
 
 local keys = {
     g = {

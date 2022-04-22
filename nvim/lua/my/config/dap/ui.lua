@@ -1,5 +1,5 @@
 local dap, dapui = require("dap"), require("dapui")
-local bind = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 dapui.setup({
@@ -53,7 +53,9 @@ dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
 end
 
-bind("n", "<Leader>du", ':lua require("dapui").toggle()<CR>', opts)
+map("n", "<Leader>du", function()
+    require("dapui").toggle()
+end, opts)
 
 local keys = {
     d = {

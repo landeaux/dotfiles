@@ -23,41 +23,40 @@ require("bufferline").setup({
 })
 
 -- Keybinds
-local bind = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local map = vim.keymap.set
+local opts = { silent = true }
 
 -- These commands will navigate through buffers in order regardless of which mode you are using
 -- e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
-bind("n", "<Leader>bn", ":BufferLineCycleNext<CR>", opts)
-bind("n", "<Leader>bp", ":BufferLineCyclePrev<CR>", opts)
+map("n", "<Leader>bn", ":BufferLineCycleNext<CR>", opts)
+map("n", "<Leader>bp", ":BufferLineCyclePrev<CR>", opts)
 
 -- These commands will move the current buffer backwards or forwards in the bufferline
-bind("n", "<Leader>bmn", ":BufferLineMoveNext<CR>", opts)
-bind("n", "<Leader>bmp", ":BufferLineMovePrev<CR>", opts)
+map("n", "<Leader>bmn", ":BufferLineMoveNext<CR>", opts)
+map("n", "<Leader>bmp", ":BufferLineMovePrev<CR>", opts)
 
 -- These commands will sort buffers by directory, language, or a custom criteria
-bind("n", "<Leader>boe", ":BufferLineSortByExtension<CR>", opts)
-bind("n", "<Leader>bod", ":BufferLineSortByDirectory<CR>", opts)
-bind(
-    "n",
-    "<Leader>boi",
-    ":lua require'bufferline'.sort_buffers_by(function (buf_a, buf_b) return buf_a.id < buf_b.id end)<CR>",
-    opts
-)
+map("n", "<Leader>boe", ":BufferLineSortByExtension<CR>", opts)
+map("n", "<Leader>bod", ":BufferLineSortByDirectory<CR>", opts)
+map("n", "<Leader>boi", function()
+    require("bufferline").sort_buffers_by(function(buf_a, buf_b)
+        return buf_a.id < buf_b.id
+    end)
+end, opts)
 
 -- Goto buffer
-bind("n", "<Leader>b1", ":BufferLineGoToBuffer 1<CR>", opts)
-bind("n", "<Leader>b2", ":BufferLineGoToBuffer 2<CR>", opts)
-bind("n", "<Leader>b3", ":BufferLineGoToBuffer 3<CR>", opts)
-bind("n", "<Leader>b4", ":BufferLineGoToBuffer 4<CR>", opts)
-bind("n", "<Leader>b5", ":BufferLineGoToBuffer 5<CR>", opts)
-bind("n", "<Leader>b6", ":BufferLineGoToBuffer 6<CR>", opts)
-bind("n", "<Leader>b7", ":BufferLineGoToBuffer 7<CR>", opts)
-bind("n", "<Leader>b8", ":BufferLineGoToBuffer 8<CR>", opts)
-bind("n", "<Leader>b9", ":BufferLineGoToBuffer 9<CR>", opts)
+map("n", "<Leader>b1", ":BufferLineGoToBuffer 1<CR>", opts)
+map("n", "<Leader>b2", ":BufferLineGoToBuffer 2<CR>", opts)
+map("n", "<Leader>b3", ":BufferLineGoToBuffer 3<CR>", opts)
+map("n", "<Leader>b4", ":BufferLineGoToBuffer 4<CR>", opts)
+map("n", "<Leader>b5", ":BufferLineGoToBuffer 5<CR>", opts)
+map("n", "<Leader>b6", ":BufferLineGoToBuffer 6<CR>", opts)
+map("n", "<Leader>b7", ":BufferLineGoToBuffer 7<CR>", opts)
+map("n", "<Leader>b8", ":BufferLineGoToBuffer 8<CR>", opts)
+map("n", "<Leader>b9", ":BufferLineGoToBuffer 9<CR>", opts)
 
 -- Pick buffer
-bind("n", "<Leader>bc", ":BufferLinePick<CR>", opts)
+map("n", "<Leader>bc", ":BufferLinePick<CR>", opts)
 
 local keys = {
     b = {

@@ -1,4 +1,4 @@
-local bind = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local wk = require("which-key")
 
 local formatter = "numpy"
@@ -9,9 +9,9 @@ vim.g.pydocstring_templates_path = vim.fn.stdpath("config")
 vim.g.pydocstring_formatter = formatter
 
 local opts = { silent = true }
-bind("n", "<leader>pl", "<Plug>(pydocstring)", opts)
-bind("n", "<leader>pf", ":PydocstringFormat<CR>", opts)
-bind("v", "<leader>p", ":'<,'>Pydocstring<CR>", opts)
+map("n", "<leader>pl", "<Plug>(pydocstring)", opts)
+map("n", "<leader>pf", ":PydocstringFormat<CR>", opts)
+map("v", "<leader>p", ":'<,'>Pydocstring<CR>", opts)
 
 wk.register({
     p = {
