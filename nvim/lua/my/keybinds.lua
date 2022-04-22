@@ -121,7 +121,7 @@ map("n", "<Leader>gf", ":diffget //2<CR>", opts) -- choose our change
 map("n", "<Leader>gj", ":diffget //3<CR>", opts) -- choose incoming change
 
 -- Toggle folding
-map({ "n", "v" }, "<Space><Space>", "za", opts)
+map({ "n", "v" }, "<Leader><Space>", "za", opts)
 
 -- Insert ISO-date: YYYY-MM-DD
 map("n", "<Leader>id", [["=strftime("%F")<CR>P]], opts)
