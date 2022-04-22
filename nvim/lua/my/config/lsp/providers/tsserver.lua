@@ -42,27 +42,12 @@ return {
         -- required to fix code action ranges
         ts_utils.setup_client(client)
 
-        vim.api.nvim_buf_set_keymap(
-            bufnr,
-            "n",
-            "<Leader>lo",
-            ":TSLspOrganize<CR>",
-            { silent = true }
-        )
-        vim.api.nvim_buf_set_keymap(
-            bufnr,
-            "n",
-            "<Leader>lR",
-            ":TSLspRenameFile<CR>",
-            { silent = true }
-        )
-        vim.api.nvim_buf_set_keymap(
-            bufnr,
-            "n",
-            "<Leader>li",
-            ":TSLspImportAll<CR>",
-            { silent = true }
-        )
+        local map = vim.keymap.set
+        local opts = { buffer = bufnr, silent = true }
+
+        map("n", "<Leader>lo", ":TSLspOrganize<CR>", opts)
+        map("n", "<Leader>lR", ":TSLspRenameFile<CR>", opts)
+        map("n", "<Leader>li", ":TSLspImportAll<CR>", opts)
 
         local keymap_leader = {
             l = {
@@ -74,7 +59,6 @@ return {
             },
         }
 
-        local wk = require("which-key")
-        wk.register("leader", keymap_leader)
+        require("which-key").register(keymap_leader, { prefix = "<leader>" })
     end,
 }
