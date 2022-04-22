@@ -1,5 +1,4 @@
 local g = vim.g
-local bind = vim.api.nvim_buf_set_keymap
 
 g.mkdp_auto_start = 0
 g.mkdp_auto_close = 0
@@ -41,9 +40,12 @@ g.mkdp_filetypes = { "markdown" }
 function MarkdownSettings()
     require("my.utils").set_buffer_soft_line_nagivation()
 
-    bind(0, "n", "<LocalLeader>p", "<Plug>MarkdownPreview", {})
-    bind(0, "n", "<LocalLeader>s", "<Plug>MarkdownPreviewStop", {})
-    bind(0, "n", "<LocalLeader>t", "<Plug>MarkdownPreviewToggle", {})
+    local map = vim.keymap.set
+    local opts = { buffer = true }
+
+    map("n", "<LocalLeader>p", "<Plug>MarkdownPreview", opts)
+    map("n", "<LocalLeader>s", "<Plug>MarkdownPreviewStop", opts)
+    map("n", "<LocalLeader>t", "<Plug>MarkdownPreviewToggle", opts)
 
     local keys = { p = "Preview", s = "Stop preview", t = "Toggle preview" }
 
@@ -53,6 +55,6 @@ end
 require("my.utils").create_augroup({
     {
         event = "FileType",
-        opts = { pattern = "markdown", command = "lua MarkdownSettings()" },
+        opts = { pattern = "markdown", callback = MarkdownSettings },
     },
 }, "_markdown")
