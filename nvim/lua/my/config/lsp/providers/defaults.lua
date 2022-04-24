@@ -1,5 +1,6 @@
 local M = {}
 local wk = require("which-key")
+local create_augroup = require("my.utils").create_augroup
 
 local format_on_save = false
 local auto_format_lock = false
@@ -20,16 +21,20 @@ local function documentHighlight(client, _)
     end
 end
 
-local function codeLens(client, _)
+local function codeLens(client, bufnr)
     if client.supports_method("textDocument/codeLens") then
         vim.notify(client.name .. " supports textDocument/codeLens!")
-        -- TODO: convert this to a require("my.utils").create_augroup(...) call
-        vim.cmd([[
-                augroup lsp-codelens
-                    au!
-                    au! BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()
-                augroup END
-            ]])
+        create_augroup({
+            {
+                event = { "BufEnter", "CursorHold", "InsertLeave" },
+                opts = {
+                    buffer = bufnr,
+                    callback = function()
+                        vim.lsp.codelens.refresh()
+                    end,
+                },
+            },
+        }, "_lsp_codelens")
     end
 end
 
