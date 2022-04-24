@@ -5,19 +5,28 @@ local create_augroup = require("my.utils").create_augroup
 local format_on_save = false
 local auto_format_lock = false
 
-local function documentHighlight(client, _)
+local function documentHighlight(client, bufnr)
     if client.supports_method("textDocument/documentHighlight") then
-        -- TODO: convert this to a require("my.utils").create_augroup(...) call
-        vim.api.nvim_exec(
-            [[
-                augroup lsp_document_highlight
-                    autocmd! * <buffer>
-                    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                augroup END
-            ]],
-            false
-        )
+        create_augroup({
+            {
+                event = "CursorHold",
+                opts = {
+                    buffer = bufnr,
+                    callback = function()
+                        vim.lsp.buf.document_highlight()
+                    end,
+                },
+            },
+            {
+                event = "CursorMoved",
+                opts = {
+                    buffer = bufnr,
+                    callback = function()
+                        vim.lsp.buf.clear_references()
+                    end,
+                },
+            },
+        }, "_lsp_document_highlight")
     end
 end
 
