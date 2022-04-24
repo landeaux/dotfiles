@@ -5,7 +5,8 @@ local format_on_save = false
 local auto_format_lock = false
 
 local function documentHighlight(client, _)
-    if client.resolved_capabilities.document_highlight then
+    if client.supports_method("textDocument/documentHighlight") then
+        -- TODO: convert this to a require("my.utils").create_augroup(...) call
         vim.api.nvim_exec(
             [[
                 augroup lsp_document_highlight
@@ -16,6 +17,19 @@ local function documentHighlight(client, _)
             ]],
             false
         )
+    end
+end
+
+local function codeLens(client, _)
+    if client.supports_method("textDocument/codeLens") then
+        vim.notify(client.name .. " supports textDocument/codeLens!")
+        -- TODO: convert this to a require("my.utils").create_augroup(...) call
+        vim.cmd([[
+                augroup lsp-codelens
+                    au!
+                    au! BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()
+                augroup END
+            ]])
     end
 end
 
@@ -143,6 +157,7 @@ function M.on_attach(client, bufnr)
     wk.register(keymap_g, { prefix = "g" })
 
     documentHighlight(client, bufnr)
+    codeLens(client, bufnr)
 end
 
 M.flags = {
