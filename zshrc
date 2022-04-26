@@ -186,6 +186,9 @@ go_pkg_path="${HOME}/go/bin"
 [ -d "${go_path}" ] && export PATH="${PATH}:${go_path}"
 [ -d "${go_pkg_path}" ] && export PATH="${PATH}:${go_pkg_path}"
 
+# add cargo binaries to PATH
+[ -d "${HOME}/.cargo" ] && source ~/.cargo/env
+
 # direnv hook
 if command -v direnv 1>/dev/null 2>&1; then
   eval "$(direnv hook zsh)"
