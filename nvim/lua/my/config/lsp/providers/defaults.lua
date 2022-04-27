@@ -6,7 +6,7 @@ local format_on_save = false
 local auto_format_lock = false
 
 local function documentHighlight(client, bufnr)
-    if client.supports_method("textDocument/documentHighlight") then
+    if client.resolved_capabilities.document_highlight then
         create_augroup({
             {
                 event = "CursorHold",
@@ -32,7 +32,6 @@ end
 
 local function codeLens(client, bufnr)
     if client.supports_method("textDocument/codeLens") then
-        vim.notify(client.name .. " supports textDocument/codeLens!")
         create_augroup({
             {
                 event = { "BufEnter", "CursorHold", "InsertLeave" },
