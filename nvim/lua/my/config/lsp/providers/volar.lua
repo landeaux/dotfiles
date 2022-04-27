@@ -171,12 +171,15 @@ function M.register_volar_lspconfigs()
                     linkedEditingRange = true,
                     documentSymbol = true,
                     -- not supported - https://github.com/neovim/neovim/pull/13654
-                    documentColor = false,
+                    documentColor = true,
                     -- documentFormatting = {
                     --   defaultPrintWidth = 80,
                     --   getDocumentPrintWidthRequest = 80
                     -- },
                 },
+            },
+            handlers = {
+                ["textDocument/documentColor"] = require("my.config.lsp.color").on_document_color,
             },
         }),
     }

@@ -5,6 +5,23 @@ local create_augroup = require("my.utils").create_augroup
 local format_on_save = false
 local auto_format_lock = false
 
+local function documentColor(client, bufnr)
+    if vim.tbl_contains(vim.tbl_keys(client.handlers), "textDocument/documentColor") then
+        require("my.config.lsp.color").document_color(client)
+        create_augroup({
+            {
+                event = { "BufEnter", "TextChanged", "InsertLeave" },
+                opts = {
+                    buffer = bufnr,
+                    callback = function()
+                        require("my.config.lsp.color").document_color(client)
+                    end,
+                },
+            },
+        }, "_lsp_document_color")
+    end
+end
+
 local function documentHighlight(client, bufnr)
     if client.resolved_capabilities.document_highlight then
         create_augroup({
@@ -169,6 +186,7 @@ function M.on_attach(client, bufnr)
     wk.register(keymap_leader, { prefix = "<leader>" })
     wk.register(keymap_g, { prefix = "g" })
 
+    documentColor(client, bufnr)
     documentHighlight(client, bufnr)
     codeLens(client, bufnr)
 end
@@ -177,9 +195,11 @@ M.flags = {
     debounce_text_changes = 150,
 }
 
-M.capabilities = require("cmp_nvim_lsp").update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
+M.capabilities = vim.tbl_extend("keep", {
+    textDocument = {
+        documentColor = { dynamicRegistration = true },
+    },
+}, require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()))
 
 M.root_dir = function(fname)
     local util = require("lspconfig").util
