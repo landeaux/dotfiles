@@ -7,7 +7,6 @@ local lspconfig = require("lspconfig")
 
 -- initial default servers
 local servers = {
-    "awk_ls",
     "bashls",
     "cssls",
     "dockerls",
