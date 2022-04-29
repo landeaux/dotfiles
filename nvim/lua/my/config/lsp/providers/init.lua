@@ -1,28 +1,13 @@
-require("my.config.lsp.providers.volar")
+local default_config = require("my.config.lsp.providers.defaults")
+local lsp_installer = require("nvim-lsp-installer")
+local lspconfig = require("lspconfig")
 
 -- vim.lsp.set_log_level("trace")
 -- require("vim.lsp.log").set_format_func(vim.inspect)
 
-local default_config = require("my.config.lsp.providers.defaults")
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.settings({
-    ui = {
-        keymaps = {
-            -- Keymap to expand a server in the UI
-            toggle_server_expand = "i",
-            -- Keymap to install a server
-            install_server = "<CR>",
-            -- Keymap to reinstall/update a server
-            update_server = "u",
-            -- Keymap to uninstall a server
-            uninstall_server = "x",
-        },
-    },
-})
-
 -- initial default servers
-local requested_servers = {
+local servers = {
+    "awk_ls",
     "bashls",
     "cssls",
     "dockerls",
@@ -32,51 +17,39 @@ local requested_servers = {
     "sumneko_lua",
     "tsserver",
     "taplo",
-    "intelliphense",
+    "intelephense",
     "pyright",
     "vimls",
-    -- "volar", -- NOTE: This can't exist alongside vuels
-    -- "vuels",
+    "volar",
     "yamlls",
     "prosemd_lsp",
 }
 
--- go through requested_servers and ensure installation
-local lsp_installer_servers = require("nvim-lsp-installer.servers")
-for _, requested_server in pairs(requested_servers) do
-    local ok, server = lsp_installer_servers.get_server(requested_server)
-    if ok then
-        if not server:is_installed() then
-            server:install()
-        end
-    end
-end
+lsp_installer.setup({
+    ensure_installed = servers,
+    log_level = vim.log.levels.INFO,
+    -- log_level = vim.log.levels.DEBUG,
+})
 
-lsp_installer.on_server_ready(function(server)
-    if server.name == "volar" then
-        return
-    end
+require("my.config.lsp.providers.volar").register_volar_lspconfigs()
 
+for _, server in pairs(servers) do
     local opts = default_config
 
     opts.autostart = true
 
-    local custom_config_path = "my.config.lsp.providers." .. server.name
+    local custom_config_path = "my.config.lsp.providers." .. server
     local custom_config_exists, config = pcall(require, custom_config_path)
+
     if custom_config_exists then
         opts = vim.tbl_deep_extend("force", opts, config)
     end
 
-    -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-    server:setup(opts)
-
-    vim.cmd([[ do User LspAttachBuffers ]])
-end)
-
-require("my.config.lsp.providers.volar").register_volar_lspconfigs()
-
-local lspconfig = require("lspconfig")
-
-lspconfig.volar_api.setup(default_config)
-lspconfig.volar_doc.setup(default_config)
-lspconfig.volar_html.setup(default_config)
+    if server == "volar" then
+        lspconfig.volar_api.setup(opts)
+        lspconfig.volar_doc.setup(opts)
+        lspconfig.volar_html.setup(opts)
+    else
+        lspconfig[server].setup(opts)
+    end
+end
