@@ -334,7 +334,6 @@ return packer.startup(function()
             require("my.config.lsp.nvim-cmp")
         end,
         requires = {
-            "f3fora/cmp-spell",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-calc",
             "hrsh7th/cmp-nvim-lsp",

@@ -95,7 +95,6 @@ cmp.setup({
         -- NOTE: The order of these are important as it determines priority.
         { name = "calc" },
         { name = "path" },
-        { name = "spell" },
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
@@ -106,7 +105,6 @@ cmp.setup({
             vim_item.menu = ({
                 calc = "  [calc]",
                 path = "  [path]",
-                spell = "  [spell]",
                 nvim_lua = "  [lua]",
                 nvim_lsp = "  [lsp]",
                 luasnip = "  [luasnip]",
