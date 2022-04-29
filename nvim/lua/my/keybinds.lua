@@ -130,6 +130,25 @@ map("c", "<C-d>", "<C-r>=strftime('%F')<CR>")
 -- Insert ISO-datetime: YYYY-MM-DDTHH:MM:SS
 map("n", "<Leader>iD", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], opts)
 
+-- Extended text-objects
+local chars = { "_", ".", ":", ",", ";", "|", "/", "*", "%", "`", "-", "~" }
+for _, char in ipairs(chars) do
+    for _, mode in ipairs({ "x", "o" }) do
+        vim.keymap.set(
+            mode,
+            "i" .. char,
+            string.format(":<C-u>silent! normal! f%sF%slvt%s<CR>", char, char, char),
+            opts
+        )
+        vim.keymap.set(
+            mode,
+            "a" .. char,
+            string.format(":<C-u>silent! normal! f%sF%svf%s<CR>", char, char, char),
+            opts
+        )
+    end
+end
+
 local keys = {
     a = "Yank file to clipboard",
     b = {
