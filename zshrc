@@ -171,6 +171,7 @@ fi
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1  # make sure venv is always in the project dir
+eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
