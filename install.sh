@@ -17,6 +17,7 @@ tic -x ./terminfo/tmux-256color.terminfo # custom terminfo w/ italics
 
 # zsh
 ln -sfn "${BASEDIR}/zshrc" "${HOME}/.zshrc"
+ln -sfn "${BASEDIR}/zshenv" "${HOME}/.zshenv"
 
 # neovim
 ln -sfn "${BASEDIR}/nvim" "${HOME}/.config/nvim"
