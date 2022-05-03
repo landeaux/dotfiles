@@ -19,7 +19,7 @@ local diagnostic_config = {
         enable = true,
         priority = 20,
     },
-    update_in_insert = false,
+    update_in_insert = true,
 }
 
 vim.diagnostic.config(diagnostic_config)
