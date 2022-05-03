@@ -14,7 +14,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="spaceship"
 
-SPACESHIP_VENV_SHOW=false
+SPACESHIP_VENV_SHOW=true
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -171,6 +171,7 @@ fi
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1  # make sure venv is always in the project dir
+export PIPENV_DONT_LOAD_ENV=1  # don't let pipenv autoload env... we have direnv for this
 eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 
 # fzf
