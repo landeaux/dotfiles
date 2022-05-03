@@ -77,6 +77,7 @@ SPACESHIP_VENV_SHOW=true
 plugins=(
   git
   node
+  pyvenv-activate
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -158,6 +159,9 @@ export MARKER_KEY_NEXT_PLACEHOLDER="\C-/"
 
 # stop python from writing pycs
 export PYTHONDONTWRITEBYTECODE=1
+
+# auto-enable venv activation (see https://github.com/Intersec/pyvenv-activate)
+pyvenv_auto_activate_enable
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
