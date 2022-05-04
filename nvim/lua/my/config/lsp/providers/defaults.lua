@@ -24,26 +24,16 @@ end
 
 local function documentHighlight(client, bufnr)
     if client.resolved_capabilities.document_highlight then
-        create_augroup({
-            {
-                event = "CursorHold",
-                opts = {
-                    buffer = bufnr,
-                    callback = function()
-                        vim.lsp.buf.document_highlight()
-                    end,
-                },
-            },
-            {
-                event = "CursorMoved",
-                opts = {
-                    buffer = bufnr,
-                    callback = function()
-                        vim.lsp.buf.clear_references()
-                    end,
-                },
-            },
-        }, "_lsp_document_highlight")
+        vim.api.nvim_exec(
+            [[
+                augroup _lsp_document_highlight
+                    autocmd! * <buffer>
+                    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+                augroup END
+            ]],
+            false
+        )
     end
 end
 
@@ -199,7 +189,9 @@ M.capabilities = vim.tbl_extend("keep", {
     textDocument = {
         documentColor = { dynamicRegistration = true },
     },
-}, require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()))
+}, require(
+    "cmp_nvim_lsp"
+).update_capabilities(vim.lsp.protocol.make_client_capabilities()))
 
 M.root_dir = function(fname)
     local util = require("lspconfig").util
