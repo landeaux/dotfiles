@@ -185,7 +185,7 @@ M.flags = {
     debounce_text_changes = 150,
 }
 
-M.capabilities = vim.tbl_extend("keep", {
+M.capabilities = vim.tbl_deep_extend("keep", {
     textDocument = {
         documentColor = { dynamicRegistration = true },
     },
