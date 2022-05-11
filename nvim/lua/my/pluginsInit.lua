@@ -34,6 +34,14 @@ return packer.startup(function()
         -- disable = true,
     })
 
+    use({
+        "rcarriga/nvim-notify",
+        config = function()
+            vim.notify = require("notify")
+        end,
+        after = "tokyonight.nvim",
+    })
+
     -- Neovim icons
     use({
         "kyazdani42/nvim-web-devicons",
