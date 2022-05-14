@@ -1,6 +1,7 @@
 local my_modules = {
     "my.disabled",
     "my.settings",
+    "my.scratch",
     "my.pluginsInit",
     "my.autocmd",
     "my.keybinds",
