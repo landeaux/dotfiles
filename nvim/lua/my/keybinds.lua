@@ -75,37 +75,11 @@ map("n", "<Leader>Q", ":quitall!<CR>", opts)
 map("n", "<Leader>bd", ":bdelete<CR>", opts)
 map("n", "<Leader>bD", ":bdelete!<CR>", opts)
 
--- Window
--- Goto window above/below/left/right
-map("n", "<Leader>wh", ":wincmd h<CR>", opts)
-map("n", "<Leader>wj", ":wincmd j<CR>", opts)
-map("n", "<Leader>wk", ":wincmd k<CR>", opts)
-map("n", "<Leader>wl", ":wincmd l<CR>", opts)
-
 -- Resize windows
-map("n", "<Leader>w=", ":wincmd =<CR>", opts)
 map("n", "<C-Up>", ":resize -2<CR>", opts)
 map("n", "<C-Down>", ":resize +2<CR>", opts)
 map("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
--- Rotate windows
-map("n", "<Leader>wr", ":wincmd r<CR>", opts)
-map("n", "<Leader>wR", ":wincmd R<CR>", opts)
-
--- Move windows
-map("n", "<Leader>wmx", ":wincmd x<CR>", opts)
-map("n", "<Leader>wmh", ":wincmd h<CR>", opts)
-map("n", "<Leader>wmj", ":wincmd j<CR>", opts)
-map("n", "<Leader>wmk", ":wincmd k<CR>", opts)
-map("n", "<Leader>wml", ":wincmd l<CR>", opts)
-
--- Delete window
-map("n", "<Leader>wq", ":wincmd q<CR>", opts)
-
--- Split window
-map("n", "<Leader>ws", ":wincmd s<CR>", opts)
-map("n", "<Leader>wv", ":wincmd v<CR>", opts)
 
 -- Keybinds for editing vim config
 map("n", "<Leader>vc", ":edit $MYVIMRC<CR>", opts)
