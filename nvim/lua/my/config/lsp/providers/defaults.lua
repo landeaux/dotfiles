@@ -123,7 +123,11 @@ function M.on_attach(client, bufnr)
     map("n", "<Leader>lwa", vim.lsp.buf.add_workspace_folder, opts)
     map("n", "<Leader>lwr", vim.lsp.buf.remove_workspace_folder, opts)
     map("n", "<Leader>lwl", function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        vim.notify(
+            vim.lsp.buf.list_workspace_folders(),
+            "info",
+            { title = "Workspace Folders", hide_from_history = true }
+        )
     end, opts)
 
     map("n", "<Leader>lI", ":LspInfo<CR>", opts)
@@ -189,9 +193,7 @@ M.capabilities = vim.tbl_deep_extend("keep", {
     textDocument = {
         documentColor = { dynamicRegistration = true },
     },
-}, require(
-    "cmp_nvim_lsp"
-).update_capabilities(vim.lsp.protocol.make_client_capabilities()))
+}, require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()))
 
 M.root_dir = function(fname)
     local util = require("lspconfig").util
