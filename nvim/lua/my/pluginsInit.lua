@@ -295,7 +295,6 @@ return packer.startup(function()
     -- Telescope
     use({
         "nvim-telescope/telescope.nvim",
-        commit = "cc1a3440f9ba6f28a8ca0bfff867f60c2d80c353",
         requires = {
             "nvim-lua/popup.nvim",
             "nvim-lua/plenary.nvim",
