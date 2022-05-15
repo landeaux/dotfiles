@@ -201,7 +201,7 @@ return packer.startup(function()
     use("editorconfig/editorconfig-vim")
 
     -- LSP
-    use({ -- lsp
+    use({
         "neovim/nvim-lspconfig",
         config = function()
             require("my.config.lsp")
