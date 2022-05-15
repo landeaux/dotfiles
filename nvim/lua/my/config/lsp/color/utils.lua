@@ -99,12 +99,14 @@ local CLIENT_NS = api.nvim_create_namespace("my_lsp_document_color")
 
 local function hl_range(bufnr, namespace, hlname, start_pos, end_pos)
     local hl = vim.highlight
-    if vim.fn.has("nvim-0.7") > 1 then
-        hl.range(bufnr, namespace, hlname, start_pos, end_pos, { priority = hl.priorities.user })
-    else -- TODO: delete this clause once nvim 0.7 is stable
-        ---@diagnostic disable-next-line: redundant-parameter
-        hl.range(bufnr, namespace, hlname, start_pos, end_pos, nil, nil, 150)
-    end
+    vim.highlight.range(
+        bufnr,
+        namespace,
+        hlname,
+        start_pos,
+        end_pos,
+        { priority = hl.priorities.user }
+    )
 end
 
 --- Changes the guibg to @rgb for the text in @range. Also changes the guifg to
