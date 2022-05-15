@@ -13,6 +13,7 @@ null_ls.setup({
         null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.diagnostics.shellcheck,
+        null_ls.builtins.diagnostics.luacheck,
         -- Formatting
         -- NOTE: these must be placed in the order we want them to run
         -- python
