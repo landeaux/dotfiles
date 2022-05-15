@@ -137,10 +137,6 @@ function M.on_attach(client, bufnr)
     map("n", "<Leader>lsw", ":Telescope lsp_workspace_symbols<CR>", opts)
     map("n", "<Leader>lad", ":Telescope lsp_code_actions<CR>", opts)
 
-    -- TODO: Move these to telescope config now that diagnostics have been abstracted away from LSP
-    map("n", "<Leader>ldd", ":Telescope diagnostics bufnr=0<CR>", opts)
-    map("n", "<Leader>ldw", ":Telescope diagnostics<CR>", opts)
-
     local keymap_leader = {
         l = {
             name = "+lsp",
@@ -153,8 +149,6 @@ function M.on_attach(client, bufnr)
                 p = "Goto prev",
                 q = "Set loclist",
                 n = "Goto next",
-                d = "Document Diagnostics",
-                w = "Workspace Diagnostics",
             },
             c = "Code Actions",
             w = {
