@@ -18,6 +18,10 @@
         "path": "./python/python.json"
       },
       {
+        "language": "smarty",
+        "path": "./smarty/smarty.json"
+      },
+      {
         "language": "vue",
         "path": "./vue/vue.json"
       }

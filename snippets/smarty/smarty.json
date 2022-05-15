@@ -1,0 +1,102 @@
+{
+  "assign": {
+    "prefix": "assign",
+    "body": "{assign var=\"${1:name}\" value=${2:value}${4: scope=${3:scope}}}$0",
+    "description": ""
+  },
+  "break": {
+    "prefix": "break",
+    "body": "{break}$0",
+    "description": ""
+  },
+  "/capture": {
+    "prefix": "/capture",
+    "body": "{/capture}$0",
+    "description": ""
+  },
+  "capture": {
+    "prefix": "capture",
+    "body": "{capture ${2:name=\"${1:name}\" }${4:assign=\"${3:variable}\" }${6:append=\"${5:array_variable}\"}}\n\t$0\n{/capture}",
+    "description": ""
+  },
+  "case": {
+    "prefix": "case",
+    "body": "{case ${1:case_name}}\n\t$0\n\t${2:{break}}",
+    "description": ""
+  },
+  "comment": {
+    "prefix": "comment",
+    "body": "{* ${1:comment} *}$0",
+    "description": ""
+  },
+  "debug": {
+    "prefix": "debug",
+    "body": "{\\$${1:variable}|@debug_print_var}$0",
+    "description": ""
+  },
+  "else": {
+    "prefix": "else",
+    "body": "{else}\n\t$0",
+    "description": ""
+  },
+  "elseif": {
+    "prefix": "elseif",
+    "body": "{elseif ${1:condition}}\n\t$0",
+    "description": ""
+  },
+  "/foreach": {
+    "prefix": "/foreach",
+    "body": "{/foreach}$0",
+    "description": ""
+  },
+  "foreach": {
+    "prefix": "foreach",
+    "body": "{foreach from=${1:collection} item=${2:item}${4: key=${3:key}}${6: name=${5:name}}}\n\t$0\n{/foreach}",
+    "description": ""
+  },
+  "/if": {
+    "prefix": "/if",
+    "body": "{/if}$0",
+    "description": ""
+  },
+  "if": {
+    "prefix": "if",
+    "body": "{if ${1:condition}}\n\t$0\n{/if}",
+    "description": ""
+  },
+  "ifelse": {
+    "prefix": "ifelse",
+    "body": "{if ${1:condition}}\n\t$2\n{else}\n\t$3\n{/if}",
+    "description": ""
+  },
+  "include": {
+    "prefix": "include",
+    "body": "{include file=\"${1:file}\"${3: assign=${2:name}}${6: ${4:var1}=${5:value}}}$0",
+    "description": ""
+  },
+  "extends": {
+    "prefix": "extends",
+    "body": "{extends file=\"${1:file}\"}$0",
+    "description": ""
+  },
+  "/block": {
+    "prefix": "/block",
+    "body": "{/block}$0",
+    "description": ""
+  },
+  "block": {
+    "prefix": "block",
+    "body": "{block name=${1:name}}\n\t$0\n{/block}",
+    "description": ""
+  },
+  "/literal": {
+    "prefix": "/literal",
+    "body": "{/literal}$0",
+    "description": ""
+  },
+  "literal": {
+    "prefix": "literal",
+    "body": "{literal}\n\t$0\n{/literal}",
+    "description": ""
+  }
+}
