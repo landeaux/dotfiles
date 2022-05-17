@@ -87,8 +87,8 @@ map("n", "<Leader>vv", ":version<CR>", opts)
 
 -- Search and Replace
 -- '<Leader>r' for word, '<Leader>R' for WORD
-map("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
-map("n", "<Leader>R", [[:%s/\<<C-r><C-a>\>//g<Left><Left>]])
+map("n", "<Leader>r", [["zyiw:%s/\<<C-r>z\>/<C-r>z/g<Left><Left>]])
+map("n", "<Leader>R", [["zyiW:%s/\<<C-r>z\>/<C-r>z/g<Left><Left>]])
 
 -- Handling merge conflicts
 map("n", "<Leader>gf", ":diffget //2<CR>", opts) -- choose our change
