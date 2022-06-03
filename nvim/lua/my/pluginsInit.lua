@@ -227,6 +227,7 @@ return packer.startup(function()
             { "hrsh7th/cmp-nvim-lsp" },
             { "jose-elias-alvarez/nvim-lsp-ts-utils" },
             { "williamboman/nvim-lsp-installer" },
+            { "b0o/schemastore.nvim" }, -- for jsonls
         },
     })
 
