@@ -1,5 +1,5 @@
-if vim.fn.has("nvim-0.6") == 0 then
-    vim.notify("Current NVIM version is <0.6! Some features may not work...", vim.log.levels.WARN)
+if vim.fn.has("nvim-0.7") == 0 then
+    vim.notify("Current NVIM version is <0.7! Some features may not work...", vim.log.levels.WARN)
 end
 
 do
