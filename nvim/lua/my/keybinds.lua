@@ -123,7 +123,6 @@ for _, char in ipairs(chars) do
     end
 end
 
-
 local ok, _ = pcall(require, "which-key")
 if ok then
     local keys = {

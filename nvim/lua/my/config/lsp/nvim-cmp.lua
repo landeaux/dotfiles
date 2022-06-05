@@ -8,7 +8,6 @@ local has_words_before = function()
             == nil
 end
 
-
 local select_next_cmp_item = function(fallback)
     if cmp.visible() then
         cmp.select_next_item()

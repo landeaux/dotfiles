@@ -1,13 +1,19 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 local packer_bootstrap = nil
 if fn.empty(fn.glob(install_path)) > 0 then
-   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-   vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
+    packer_bootstrap = fn.system({
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/wbthomason/packer.nvim",
+        install_path,
+    })
+    vim.o.runtimepath = vim.fn.stdpath("data") .. "/site/pack/*/start/*," .. vim.o.runtimepath
 end
 
-
-local packer = require('packer')
+local packer = require("packer")
 local use = packer.use
 
 packer.init({
@@ -80,10 +86,9 @@ packer.startup(function()
             require("my.config.ui.galaxyline")
         end,
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
-        after = {"nvim-web-devicons"},
+        after = { "nvim-web-devicons" },
         -- disable = true,
     })
-
 
     -- Tab bar
     use({
@@ -131,7 +136,7 @@ packer.startup(function()
             "Neotree",
         },
         keys = "<Leader>tn",
-        after = {"nvim-web-devicons", "which-key.nvim"},
+        after = { "nvim-web-devicons", "which-key.nvim" },
     })
 
     -- Git
@@ -285,7 +290,7 @@ packer.startup(function()
         config = function()
             require("my.config.dap")
         end,
-        after = { "tokyonight.nvim", "which-key.nvim"},
+        after = { "tokyonight.nvim", "which-key.nvim" },
         -- disable = true,
     })
     use({
@@ -306,7 +311,7 @@ packer.startup(function()
         config = function()
             require("my.config.dap.ui")
         end,
-        after = { "nvim-dap", "which-key.nvim"},
+        after = { "nvim-dap", "which-key.nvim" },
         -- disable = true,
     })
     use({
@@ -315,7 +320,7 @@ packer.startup(function()
         config = function()
             require("my.config.dap.python")
         end,
-        after = { "nvim-dap", "which-key.nvim"},
+        after = { "nvim-dap", "which-key.nvim" },
         -- disable = true,
     })
 
@@ -337,7 +342,7 @@ packer.startup(function()
         cmd = "Telescope",
         keys = { "<Leader>f", "<S-A-p>" },
         module = "telescope",
-        after = { "nvim-dap", "which-key.nvim"},
+        after = { "nvim-dap", "which-key.nvim" },
     })
 
     -- Search and replace across multiple files
@@ -427,7 +432,7 @@ packer.startup(function()
     })
 
     if packer_bootstrap then
-        require('packer').sync()
+        require("packer").sync()
     end
 end)
 
