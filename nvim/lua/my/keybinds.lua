@@ -123,57 +123,61 @@ for _, char in ipairs(chars) do
     end
 end
 
-local keys = {
-    a = "Yank file to clipboard",
-    b = {
-        name = "+buffer",
-        d = "Delete",
-        D = "Force Delete",
-    },
-    g = {
-        name = "+git",
-        f = "Choose our change",
-        j = "Choose incoming change",
-    },
-    i = {
-        name = "+insert",
-        d = "YYYY-MM-DD",
-        D = "YYYY-MM-DDTHH:MM:SS",
-    },
-    q = "Quit all",
-    Q = "Quit all without save",
-    r = "Replace word under cursor",
-    R = "Replace WORD under cursor",
-    t = {
-        name = "+ui-toggle",
-        h = "Highlighting",
-        r = "Relative Number",
-        s = "Spelling",
-        w = "Whitespace",
-    },
-    v = { name = "+vim", c = "Edit config", v = "Version" },
-    w = {
-        name = "+windows",
-        ["="] = "Balance windows",
-        h = "Go to window left",
-        j = "Go to window below",
-        k = "Go to window above",
-        l = "Go to window right",
-        r = "Rotate down/right",
-        R = "Rotate up/left",
-        m = {
-            name = "+move",
-            x = "Exchange windows",
-            h = "Move window left",
-            j = "Move window below",
-            k = "Move window above",
-            l = "Move window right",
-        },
-        q = "Delete window",
-        s = "Split horizontally",
-        v = "Split vertically",
-    },
-    y = "Yank to clipboard",
-}
 
-require("which-key").register(keys, { prefix = "<leader>" })
+local ok, _ = pcall(require, "which-key")
+if ok then
+    local keys = {
+        a = "Yank file to clipboard",
+        b = {
+            name = "+buffer",
+            d = "Delete",
+            D = "Force Delete",
+        },
+        g = {
+            name = "+git",
+            f = "Choose our change",
+            j = "Choose incoming change",
+        },
+        i = {
+            name = "+insert",
+            d = "YYYY-MM-DD",
+            D = "YYYY-MM-DDTHH:MM:SS",
+        },
+        q = "Quit all",
+        Q = "Quit all without save",
+        r = "Replace word under cursor",
+        R = "Replace WORD under cursor",
+        t = {
+            name = "+ui-toggle",
+            h = "Highlighting",
+            r = "Relative Number",
+            s = "Spelling",
+            w = "Whitespace",
+        },
+        v = { name = "+vim", c = "Edit config", v = "Version" },
+        w = {
+            name = "+windows",
+            ["="] = "Balance windows",
+            h = "Go to window left",
+            j = "Go to window below",
+            k = "Go to window above",
+            l = "Go to window right",
+            r = "Rotate down/right",
+            R = "Rotate up/left",
+            m = {
+                name = "+move",
+                x = "Exchange windows",
+                h = "Move window left",
+                j = "Move window below",
+                k = "Move window above",
+                l = "Move window right",
+            },
+            q = "Delete window",
+            s = "Split horizontally",
+            v = "Split vertically",
+        },
+        y = "Yank to clipboard",
+    }
+
+    require("which-key").register(keys, { prefix = "<leader>" })
+end
