@@ -1,28 +1,49 @@
-local present, my_packer = pcall(require, "my.packer")
-
-if not present then
-    return false
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local packer_bootstrap = nil
+if fn.empty(fn.glob(install_path)) > 0 then
+   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+   vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
 end
 
-local packer = my_packer.packer
+
+local packer = require('packer')
 local use = packer.use
 
-require("my.utils").create_augroup({
-    {
-        event = "BufWritePost",
-        opts = {
-            pattern = "pluginsInit.lua",
-            command = "source <afile> | PackerCompile",
-        },
+packer.init({
+    -- TODO: restore this once there is support for better diff view
+    -- display = {
+    --     open_fn = function()
+    --         return require("packer.util").float({ border = "single" })
+    --     end,
+    --     prompt_border = "single",
+    -- },
+    git = {
+        clone_timeout = 800, -- Timeout, in seconds, for git clones
     },
-}, "_packer")
+    compile_path = vim.fn.stdpath("config") .. "/lua/my/compiled.lua",
+    auto_clean = true,
+    compile_on_sync = true,
+    -- profile = {
+    --     enable = true,
+    --     threshold = 1,
+    -- },
+})
 
-return packer.startup(function()
+packer.startup(function()
     -- Packer
     use({
         "wbthomason/packer.nvim",
         "lewis6991/impatient.nvim",
         "nvim-lua/plenary.nvim",
+    })
+
+    -- Which Key
+    use({
+        "folke/which-key.nvim",
+        config = function()
+            require("my.config.utility.whichkey")
+        end,
     })
 
     -- Colorscheme
@@ -59,17 +80,10 @@ return packer.startup(function()
             require("my.config.ui.galaxyline")
         end,
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
-        after = "nvim-web-devicons",
+        after = {"nvim-web-devicons"},
         -- disable = true,
     })
 
-    -- Which Key
-    use({
-        "folke/which-key.nvim",
-        config = function()
-            require("my.config.utility.whichkey")
-        end,
-    })
 
     -- Tab bar
     use({
@@ -79,6 +93,7 @@ return packer.startup(function()
         config = function()
             require("my.config.ui.nvim-bufferline")
         end,
+        after = "which-key.nvim",
     })
 
     -- Indent guides
@@ -88,6 +103,7 @@ return packer.startup(function()
             require("my.config.ui.indent-blankline")
         end,
         -- disable = true,
+        after = "which-key.nvim",
     })
 
     -- Colorize color codes
@@ -97,6 +113,7 @@ return packer.startup(function()
             require("my.config.utility.nvim-colorizer")
         end,
         -- disable = true,
+        after = "which-key.nvim",
     })
 
     -- File Tree
@@ -114,7 +131,7 @@ return packer.startup(function()
             "Neotree",
         },
         keys = "<Leader>tn",
-        after = "nvim-web-devicons",
+        after = {"nvim-web-devicons", "which-key.nvim"},
     })
 
     -- Git
@@ -125,6 +142,7 @@ return packer.startup(function()
             require("my.config.ui.gitsigns")
         end,
         -- disable = true,
+        after = "which-key.nvim",
     })
     use({
         "tpope/vim-fugitive",
@@ -142,6 +160,7 @@ return packer.startup(function()
         },
         keys = "<Leader>g",
         -- disable = true,
+        after = "which-key.nvim",
     })
     use({
         "junegunn/gv.vim",
@@ -150,6 +169,7 @@ return packer.startup(function()
         end,
         requires = { "tpope/vim-fugitive" },
         -- disable = true,
+        after = "which-key.nvim",
     })
 
     -- Undo Tree
@@ -161,6 +181,7 @@ return packer.startup(function()
         keys = "<Leader>tu",
         cmd = "UndotreeToggle",
         -- disable = true,
+        after = "which-key.nvim",
     })
 
     -- Floating Terminal
@@ -170,6 +191,7 @@ return packer.startup(function()
             require("my.config.utility.fterm")
         end,
         keys = "<A-i>",
+        after = "which-key.nvim",
     })
 
     -- Surround
@@ -182,6 +204,7 @@ return packer.startup(function()
             require("my.config.utility.kommentary")
         end,
         requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
+        after = "which-key.nvim",
     })
 
     -- Remember last location in file
@@ -229,6 +252,7 @@ return packer.startup(function()
             { "williamboman/nvim-lsp-installer" },
             { "b0o/schemastore.nvim" }, -- for jsonls
         },
+        after = "which-key.nvim",
     })
 
     use({
@@ -252,6 +276,7 @@ return packer.startup(function()
             require("my.config.utility.tree-sitter")
         end,
         -- disable = true,
+        after = "which-key.nvim",
     })
 
     -- Debugging
@@ -260,7 +285,7 @@ return packer.startup(function()
         config = function()
             require("my.config.dap")
         end,
-        after = "tokyonight.nvim",
+        after = { "tokyonight.nvim", "which-key.nvim"},
         -- disable = true,
     })
     use({
@@ -281,7 +306,7 @@ return packer.startup(function()
         config = function()
             require("my.config.dap.ui")
         end,
-        after = "nvim-dap",
+        after = { "nvim-dap", "which-key.nvim"},
         -- disable = true,
     })
     use({
@@ -290,7 +315,7 @@ return packer.startup(function()
         config = function()
             require("my.config.dap.python")
         end,
-        after = "nvim-dap",
+        after = { "nvim-dap", "which-key.nvim"},
         -- disable = true,
     })
 
@@ -312,7 +337,7 @@ return packer.startup(function()
         cmd = "Telescope",
         keys = { "<Leader>f", "<S-A-p>" },
         module = "telescope",
-        after = "nvim-dap",
+        after = { "nvim-dap", "which-key.nvim"},
     })
 
     -- Search and replace across multiple files
@@ -371,6 +396,7 @@ return packer.startup(function()
             require("my.config.utility.markdown-preview")
         end,
         ft = "markdown",
+        after = "which-key.nvim",
     })
 
     -- Startuptime
@@ -383,6 +409,7 @@ return packer.startup(function()
         config = function()
             require("my.config.utility.vim-pydocstring")
         end,
+        after = "which-key.nvim",
     })
 
     -- Fix python indentation
@@ -399,7 +426,33 @@ return packer.startup(function()
         end,
     })
 
-    if my_packer.first_install then
-        packer.sync()
+    if packer_bootstrap then
+        require('packer').sync()
     end
 end)
+
+local packer_sync = function()
+    local async = require("plenary.async")
+    async.run(function()
+        vim.notify.async("Syncing packer.", "info", {
+            title = "Packer",
+        })
+    end, nil)
+    local snap_shot_time = os.date("!%Y-%m-%dT%TZ")
+    vim.cmd("PackerSnapshot " .. snap_shot_time)
+    vim.cmd("PackerSync")
+end
+
+vim.keymap.set("n", "<leader>ps", "", {
+    callback = packer_sync,
+})
+
+require("my.utils").create_augroup({
+    {
+        event = "BufWritePost",
+        opts = {
+            pattern = "pluginsInit.lua",
+            command = "source <afile> | PackerCompile",
+        },
+    },
+}, "_packer")
