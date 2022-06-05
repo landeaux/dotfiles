@@ -45,6 +45,6 @@ ls.add_snippets("java", require("my.config.lsp.luasnip.snippets.java"))
 -- will need to extend the table yourself instead of setting a new one.
 ]]
 
-local custom_snippets_path = vim.fn.getenv("DOTFILES") .. "/snippets"
+local custom_snippets_path = vim.fn.expand("~/.dotfiles/snippets")
 require("luasnip.loaders.from_vscode").lazy_load({ paths = { custom_snippets_path } })
 require("luasnip.loaders.from_vscode").lazy_load() -- load plugin snippets
