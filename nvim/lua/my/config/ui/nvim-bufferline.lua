@@ -19,6 +19,7 @@ require("bufferline").setup({
         show_buffer_close_icons = false,
         show_close_icon = false,
         separator_style = "thin", -- "slant" | "thick" | "thin" | { 'any', 'any' },
+        sort_by = "insert_at_end",
     },
 })
 
