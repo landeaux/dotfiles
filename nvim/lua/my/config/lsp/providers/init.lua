@@ -27,6 +27,9 @@ local servers = {
 lsp_installer.setup({
     ensure_installed = servers,
     log_level = vim.log.levels.INFO,
+    ui = {
+        border = "rounded",
+    }
     -- log_level = vim.log.levels.DEBUG,
 })
 
