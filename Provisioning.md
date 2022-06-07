@@ -52,6 +52,7 @@
 - [ ] Install neovim
 - [ ] Install dotfiles
 - [ ] Configure spell functionality for neovim
+- [ ] Install docker
 
 ### Clone dotfiles
 
