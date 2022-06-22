@@ -20,6 +20,8 @@
 - [✓] luarocks (using brew)
 - [✓] luacheck (depends on luarocks)
 - [✓] stylua (depends on cargo)
+- [✓] ripgrep (using brew; required by telescope.nvim)
+- [✓] fzf (using brew; useful for command line searching using Ctrl-r)
 - [✓] neovim (macOS: brew, Linux: from source)
 - [✓] My dotfiles (requires git)
 
