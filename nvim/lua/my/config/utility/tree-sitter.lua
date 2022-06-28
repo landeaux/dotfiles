@@ -27,6 +27,7 @@ require("nvim-treesitter.configs").setup({
         "lua",
         "make",
         "markdown",
+        "markdown_inline",
         "php",
         -- "phpdoc", -- TODO: check this out
         "python",
