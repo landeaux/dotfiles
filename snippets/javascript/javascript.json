@@ -1,9 +1,4 @@
 {
-  "console.log a variable": {
-    "prefix": "cv",
-    "body": ["console.log('${1}:', ${1})${0}"],
-    "description": "console.log a variable"
-  },
   "multiline comment": {
     "prefix": "/**",
     "body": ["/**\n * ${0}\n */"],
