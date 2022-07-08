@@ -1,4 +1,9 @@
 {
+  "multiline comment": {
+    "prefix": "/**",
+    "body": ["/**\n * ${0}\n */"],
+    "description": "multiline comment"
+  },
   "vue": {
     "prefix": "vue",
     "body": [
