@@ -91,7 +91,8 @@ local commands = {
 }
 
 function M.register_volar_lspconfigs()
-    local filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+    -- local filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+    local filetypes = { "vue" }
 
     local volar_root_dir = lspconfig_util.root_pattern("package.json")
 
