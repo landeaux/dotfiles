@@ -18,6 +18,7 @@ local use = packer.use
 
 packer.init({
     -- TODO: restore this once there is support for better diff view
+    -- @see: https://github.com/wbthomason/packer.nvim/issues/459
     -- display = {
     --     open_fn = function()
     --         return require("packer.util").float({ border = "single" })
