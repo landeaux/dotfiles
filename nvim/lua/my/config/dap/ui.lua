@@ -1,68 +1,27 @@
 local dap, dapui = require("dap"), require("dapui")
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
-dapui.setup({
-    icons = { expanded = "", collapsed = "", circular = "↺" },
-    mappings = {
-        -- Use a table to apply multiple mappings
-        expand = { "<CR>", "<2-LeftMouse>" },
-        open = "o",
-        remove = "d",
-        edit = "e",
-        repl = "r",
-    },
-    layouts = {
-        {
-            elements = {
-                -- Provide as ID strings or tables with "id" and "size" keys
-                {
-                    id = "scopes",
-                    size = 0.25, -- Can be float or integer > 1
-                },
-                { id = "breakpoints", size = 0.25 },
-                { id = "stacks", size = 0.25 },
-                { id = "watches", size = 0.25 },
-            },
-            size = 40,
-            position = "left", -- Can be "left", "right", "top", "bottom"
-        },
-        {
-            elements = { "repl" },
-            size = 10,
-            position = "bottom", -- Can be "left", "right", "top", "bottom"
-        },
-    },
-    floating = {
-        max_height = nil, -- These can be integers or a float between 0 and 1.
-        max_width = nil, -- Floats will be treated as percentage of your screen.
-        mappings = {
-            close = { "q", "<Esc>" },
-        },
-    },
-    windows = { indent = 1 },
-})
+dapui.setup()
 
 -- Open on start
 dap.listeners.after.event_initialized["dapui_config"] = function()
-    dapui.open()
+    dapui.open({})
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-    dapui.close()
+    dapui.close({})
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-    dapui.close()
+    dapui.close({})
 end
 
-map("n", "<Leader>du", function()
-    require("dapui").toggle()
-end, opts)
+vim.keymap.set("n", "<Leader>du", function()
+    dapui.toggle({})
+end, { silent = true })
 
-local keys = {
+require("which-key").register({
     d = {
         name = "+dap",
         u = "Toggle DAP UI",
     },
-}
-
-require("which-key").register(keys, { prefix = "<leader>" })
+}, {
+    prefix = "<leader>",
+})
