@@ -236,21 +236,6 @@ packer.startup(function()
             require("my.config.lsp")
         end,
         requires = {
-            {
-                "ray-x/lsp_signature.nvim",
-                config = function()
-                    -- must happen after servers are set up
-                    require("lsp_signature").setup({
-                        floating_window = false,
-                        bind = true, -- This is mandatory, otherwise border config won't get registered.
-                        handler_opts = {
-                            border = "rounded",
-                        },
-                        hint_prefix = " ",
-                    })
-                end,
-                after = "nvim-lspconfig",
-            },
             { "kosayoda/nvim-lightbulb" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "jose-elias-alvarez/nvim-lsp-ts-utils" },
