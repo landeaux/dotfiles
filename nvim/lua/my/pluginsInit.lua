@@ -422,12 +422,7 @@ packer.startup(function()
 end)
 
 local packer_sync = function()
-    local async = require("plenary.async")
-    async.run(function()
-        vim.notify.async("Syncing packer.", "info", {
-            title = "Packer",
-        })
-    end, nil)
+    vim.notify("Syncing packer.", "info", { title = "Packer" })
     local snap_shot_time = os.date("!%Y-%m-%dT%TZ")
     vim.cmd("PackerSnapshot " .. snap_shot_time)
     vim.cmd("PackerSync")
