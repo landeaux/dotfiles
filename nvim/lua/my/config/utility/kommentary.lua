@@ -23,6 +23,10 @@ config.configure_language("php", {
     single_line_comment_string = "//",
     prefer_single_line_comments = true,
 })
+-- config.configure_language("smarty", {
+--     multi_line_comment_strings = {"<!--", "-->"},
+--     prefer_multi_line_comments = true,
+-- })
 
 map("n", "<leader>/", "<Plug>kommentary_line_default")
 map("n", "<leader>cct", "<Plug>kommentary_line_default")
