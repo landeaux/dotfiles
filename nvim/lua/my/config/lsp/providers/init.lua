@@ -29,7 +29,7 @@ lsp_installer.setup({
     log_level = vim.log.levels.INFO,
     ui = {
         border = "rounded",
-    }
+    },
     -- log_level = vim.log.levels.DEBUG,
 })
 
@@ -51,6 +51,12 @@ for _, server in pairs(servers) do
         lspconfig.volar_api.setup(opts)
         lspconfig.volar_doc.setup(opts)
         lspconfig.volar_html.setup(opts)
+    elseif server == "tsserver" then
+        require("typescript").setup({
+            disable_commands = false, -- prevent the plugin from creating Vim commands
+            debug = false, -- enable debug logging for commands
+            server = opts, -- pass options to lspconfig's setup method
+        })
     else
         lspconfig[server].setup(opts)
     end

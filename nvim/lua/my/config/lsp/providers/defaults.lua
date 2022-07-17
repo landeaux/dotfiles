@@ -99,7 +99,7 @@ function M.on_attach(client, bufnr)
         client.resolved_capabilities.document_formatting = false
     end
 
-    -- Mappings.
+    -- Mappings
     map("n", "gd", vim.lsp.buf.definition, opts)
     map("n", "gy", vim.lsp.buf.type_definition, opts)
     map("n", "gD", vim.lsp.buf.declaration, opts)

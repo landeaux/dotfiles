@@ -239,7 +239,7 @@ packer.startup(function()
         requires = {
             { "kosayoda/nvim-lightbulb" },
             { "hrsh7th/cmp-nvim-lsp" },
-            { "jose-elias-alvarez/nvim-lsp-ts-utils" },
+            { "jose-elias-alvarez/typescript.nvim" },
             { "williamboman/nvim-lsp-installer" },
             { "b0o/schemastore.nvim" }, -- for jsonls
         },
