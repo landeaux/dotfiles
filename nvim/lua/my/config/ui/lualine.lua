@@ -1,9 +1,11 @@
 local function lsp_clients()
-    local active_clients = vim.tbl_map(function(client)
+    local bufnr = vim.api.nvim_get_current_buf()
+    local active_clients = vim.tbl_values(vim.lsp.buf_get_clients(bufnr))
+    local client_names = vim.tbl_map(function(client)
         return client.name
-    end, vim.lsp.get_active_clients())
+    end, active_clients)
 
-    return "  " .. table.concat(active_clients, ", ")
+    return "  " .. table.concat(client_names, ", ")
 end
 
 require("lualine").setup({
