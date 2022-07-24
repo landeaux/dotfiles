@@ -80,15 +80,12 @@ packer.startup(function()
         -- disable = true,
     })
 
-    -- Statusline
     use({
-        "NTBBloodbath/galaxyline.nvim",
+        "nvim-lualine/lualine.nvim",
         config = function()
-            require("my.config.ui.galaxyline")
+            require("my.config.ui.lualine")
         end,
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
-        after = { "nvim-web-devicons" },
-        -- disable = true,
     })
 
     -- Tab bar
