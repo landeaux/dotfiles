@@ -1,41 +1,40 @@
-local ok, _ = pcall(require, "tokyonight")
+local ok, _ = pcall(require, "tokyobones")
 
 if not ok then
     return false
 end
 
-local themeColors = require("tokyonight.colors").setup()
-local util = require("tokyonight.util")
+local themeColors = require("tokyobones.palette").dark
 
 local colors = {
     none = "NONE",
-    red = themeColors.red,
-    orange = themeColors.orange,
-    yellow = themeColors.yellow,
-    green = themeColors.green,
-    blue = themeColors.blue,
-    purple = themeColors.purple,
-    magenta = themeColors.magenta,
-    bg = themeColors.bg,
-    bg_dark = themeColors.bg_dark,
+    red = themeColors.rose.hex,
+    orange = themeColors.orange.hex,
+    yellow = themeColors.wood.hex,
+    green = themeColors.leaf.hex,
+    blue = themeColors.sky1.hex,
+    purple = themeColors.blossom.darken(30).hex,
+    magenta = themeColors.blossom.hex,
+    bg = themeColors.bg.hex,
+    bg_dark = themeColors.bg.darken(30).hex,
     gitSigns = {
-        add = themeColors.gitSigns.add,
-        change = themeColors.gitSigns.change,
-        delete = themeColors.gitSigns.delete,
+        add = themeColors.leaf.darken(20).hex,
+        change = themeColors.sky1.darken(20).hex,
+        delete = themeColors.rose.darken(20).hex,
     },
-    error = themeColors.error,
-    warning = themeColors.warning,
-    hint = themeColors.hint,
-    info = themeColors.info,
+    error = themeColors.rose.hex,
+    warning = themeColors.orange.hex,
+    hint = themeColors.sky1.hex,
+    info = themeColors.blossom.hex,
     debugging = {
-        breakpoint_icon = util.darken(themeColors.red, 0.8),
-        breakpoint_line = util.darken(themeColors.red, 0.3),
-        conditional_breakpoint_icon = util.darken(themeColors.orange, 0.8),
-        conditional_breakpoint_line = util.darken(themeColors.orange, 0.3),
-        log_point_icon = util.darken(themeColors.yellow, 0.8),
-        log_point_line = util.darken(themeColors.yellow, 0.3),
-        stopped_icon = util.darken(themeColors.blue, 0.8),
-        stopped_line = util.darken(themeColors.blue, 0.3),
+        breakpoint_icon = themeColors.rose.darken(30).hex,
+        breakpoint_line = themeColors.rose.darken(80).hex,
+        conditional_breakpoint_icon = themeColors.orange.darken(30).hex,
+        conditional_breakpoint_line = themeColors.orange.darken(80).hex,
+        log_point_icon = themeColors.wood.darken(30).hex,
+        log_point_line = themeColors.wood.darken(80).hex,
+        stopped_icon = themeColors.sky1.darken(30).hex,
+        stopped_line = themeColors.sky1.darken(80).hex,
     },
 }
 

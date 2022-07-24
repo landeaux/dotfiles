@@ -54,12 +54,21 @@ packer.startup(function()
     })
 
     -- Colorscheme
+    -- use({
+    --     "folke/tokyonight.nvim",
+    --     config = function()
+    --         require("my.config.ui.tokyonight")
+    --     end,
+    -- })
     use({
-        "folke/tokyonight.nvim",
+        "mcchrish/zenbones.nvim",
         config = function()
-            require("my.config.ui.tokyonight")
+            require("my.config.ui.zenbones")
         end,
-        -- disable = true,
+        -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+        -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+        -- In Vim, compat mode is turned on as Lush only works in Neovim.
+        requires = "rktjmp/lush.nvim",
     })
 
     use({
@@ -67,7 +76,7 @@ packer.startup(function()
         config = function()
             vim.notify = require("notify")
         end,
-        after = "tokyonight.nvim",
+        after = "zenbones.nvim",
     })
 
     -- Neovim icons
@@ -76,7 +85,7 @@ packer.startup(function()
         config = function()
             require("my.config.ui.nvim-web-devicons")
         end,
-        after = "tokyonight.nvim",
+        after = "zenbones.nvim",
         -- disable = true,
     })
 
@@ -273,7 +282,7 @@ packer.startup(function()
         config = function()
             require("my.config.dap")
         end,
-        after = { "tokyonight.nvim", "which-key.nvim" },
+        after = { "zenbones.nvim", "which-key.nvim" },
         -- disable = true,
     })
     use({
