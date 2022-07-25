@@ -1,6 +1,11 @@
 local function lsp_clients()
     local bufnr = vim.api.nvim_get_current_buf()
     local active_clients = vim.tbl_values(vim.lsp.buf_get_clients(bufnr))
+
+    if vim.tbl_count(active_clients) == 0 then
+        return ""
+    end
+
     local client_names = vim.tbl_map(function(client)
         return client.name
     end, active_clients)
