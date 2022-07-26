@@ -1,5 +1,4 @@
 local default_config = require("my.config.lsp.providers.defaults")
-local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
 
 -- vim.lsp.set_log_level("trace")
@@ -23,14 +22,14 @@ local servers = {
     "yamlls",
     "prosemd_lsp",
 }
-
-lsp_installer.setup({
-    ensure_installed = servers,
-    log_level = vim.log.levels.INFO,
+require("mason").setup({
+    -- log_level = vim.log.levels.DEBUG,
     ui = {
         border = "rounded",
-    },
-    -- log_level = vim.log.levels.DEBUG,
+    }
+})
+require("mason-lspconfig").setup({
+    ensure_installed = servers,
 })
 
 require("my.config.lsp.providers.volar").register_volar_lspconfigs()

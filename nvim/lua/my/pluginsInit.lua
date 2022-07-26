@@ -246,7 +246,8 @@ packer.startup(function()
             { "kosayoda/nvim-lightbulb" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "jose-elias-alvarez/typescript.nvim" },
-            { "williamboman/nvim-lsp-installer" },
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
             { "b0o/schemastore.nvim" }, -- for jsonls
         },
         after = "which-key.nvim",

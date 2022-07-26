@@ -96,8 +96,7 @@ function M.register_volar_lspconfigs()
 
     local volar_root_dir = lspconfig_util.root_pattern("package.json")
 
-    local volar_bin_path = vim.fn.stdpath("data")
-        .. "/lsp_servers/volar/node_modules/.bin/vue-language-server"
+    local volar_bin_path = vim.fn.stdpath("data") .. "/mason/bin/vue-language-server"
     local volar_cmd = { volar_bin_path, "--stdio" }
 
     local volar_common = {
@@ -197,7 +196,7 @@ function M.get_typescript_server_path(root_dir)
             "tsserverlibrary.js"
         )
     local global_tsserverlib = vim.fn.stdpath("data")
-        .. "/lsp_servers/volar/node_modules/typescript/lib/tsserverlibrary.js"
+        .. "/mason/packages/vue-language-server/node_modules/typescript/lib/tsserverlibrary.js"
     if local_tsserverlib and lspconfig_util.path.exists(local_tsserverlib) then
         return local_tsserverlib
     else
