@@ -63,6 +63,16 @@ map("n", "<Leader>ts", ":set spell!<CR>", opts)
 -- Toggle whitespace chars
 map("n", "<Leader>tw", ":set list!<CR>", opts)
 
+-- Toggle color column
+map("n", "<Leader>tk", function()
+    local cc = '"'
+        .. tostring(vim.g.soft_column_limit)
+        .. ',".join(range('
+        .. tostring(vim.g.hard_column_limit)
+        .. ',999),",")'
+    vim.cmd(':execute "set cc=" . (&cc == "" ?' .. cc .. ': "")')
+end, opts)
+
 -- Clipboard
 map("", "<Leader>y", '"+y', opts) -- copy any selected text to clipboard
 map("n", "<Leader>a", "<cmd> %+y<CR>", opts) -- copy any selected text to clipboard

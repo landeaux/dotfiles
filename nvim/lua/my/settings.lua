@@ -2,10 +2,6 @@ local cmd = vim.cmd
 local g = vim.g
 local opt = vim.opt
 
-local soft_column_limit = 80
-local hard_column_limit = 120
-local indent = 2
-
 vim.keymap.set({ "n", "v" }, "<Space>", "", { silent = true })
 g.mapleader = " "
 
@@ -15,10 +11,14 @@ g.maplocalleader = "\\"
 cmd("filetype plugin on")
 
 -- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
-vim.g.os = vim.fn.system("uname"):gsub("\n", "")
+g.os = vim.fn.system("uname"):gsub("\n", "")
+
+g.soft_column_limit = 80
+g.hard_column_limit = 120
+opt.colorcolumn = ""
 
 -- Misc
--- (NOTE: don't use opt.synax = "enable" here. It will not work!)
+-- (NOTE: don't use opt.syntax = "enable" here. It will not work!)
 cmd("syntax enable") -- enable syntax highlighting
 opt.hidden = true -- allow for switching buffers without saving
 opt.encoding = "utf-8"
@@ -38,6 +38,7 @@ opt.autoindent = true
 opt.smartindent = true
 
 -- Tabs
+local indent = 2
 opt.tabstop = indent
 opt.softtabstop = indent
 opt.shiftwidth = indent
@@ -95,13 +96,6 @@ opt.guicursor = {
     "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
     "sm:block-blinkwait175-blinkoff150-blinkon175",
 }
-cmd(
-    'let &colorcolumn="'
-        .. tostring(soft_column_limit)
-        .. ',".join(range('
-        .. tostring(hard_column_limit)
-        .. ',999),",")'
-) -- show column limit indicators
 
 -- Performance
 opt.updatetime = 0
