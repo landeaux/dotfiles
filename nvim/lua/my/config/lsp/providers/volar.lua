@@ -8,6 +8,7 @@ local settings = {
         codeLens = {
             scriptSetupTools = true,
             references = true,
+            pugTools = false,
         },
         autoCompleteRefs = true,
         completion = {
