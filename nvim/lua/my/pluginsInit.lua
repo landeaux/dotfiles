@@ -277,6 +277,11 @@ packer.startup(function()
     })
 
     use({
+        "SmiteshP/nvim-navic",
+        requires = "neovim/nvim-lspconfig",
+    })
+
+    use({
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
             require("my.config.lsp.providers.null_ls")
