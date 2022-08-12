@@ -23,7 +23,7 @@ done
 if [[ $NIGHTLY -eq "1" ]]; then
   NVIM_TAG=nightly
 else
-  NVIM_TAG=v0.7.0
+  NVIM_TAG=v0.7.2
 fi
 
 install_on_linux() {
@@ -33,7 +33,6 @@ install_on_linux() {
 
 	HOME_LOCAL_BIN_PATH="${HOME}/.local/bin"
 	mkdir -p "${HOME_LOCAL_BIN_PATH}"
-
 	BASE_URL="https://github.com/neovim/neovim/releases/download/${NVIM_TAG}"
 
 	NVIM_APPIMAGE_NAME="nvim.appimage"
@@ -65,7 +64,7 @@ install_on_mac_from_repo() {
 	HOME_LOCAL_BIN_PATH="${HOME}/.local/bin"
 	mkdir -p "${HOME_LOCAL_BIN_PATH}"
 
-	NVIM_DIR_NAME="nvim-osx64"
+	NVIM_DIR_NAME="nvim-macos
 	NVIM_DIR_PATH="${HOME_LOCAL_BIN_PATH}/${NVIM_DIR_NAME}"
 
 	if [[ -d "${NVIM_DIR_PATH}" ]]; then
