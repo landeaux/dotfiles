@@ -177,9 +177,6 @@ function M.on_attach(client, bufnr)
     documentColor(client, bufnr)
     documentHighlight(client, bufnr)
     codeLens(client, bufnr)
-    if client.name ~= "null-ls" then
-        require("nvim-navic").attach(client, bufnr)
-    end
 end
 
 M.flags = {

@@ -1,5 +1,3 @@
-local navic = require("nvim-navic")
-
 local function lsp_clients()
     local bufnr = vim.api.nvim_get_current_buf()
     local active_clients = vim.tbl_values(vim.lsp.buf_get_clients(bufnr))
@@ -19,7 +17,7 @@ require("lualine").setup({
     sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = { "filename", { navic.get_location, cond = navic.is_available} },
+        lualine_c = { "filename" },
         lualine_x = { lsp_clients, "encoding", "fileformat", "filetype" },
         lualine_y = { "progress" },
         lualine_z = { "location" },
