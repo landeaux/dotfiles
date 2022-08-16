@@ -41,7 +41,7 @@ local function codeLens(client, bufnr)
     if client.supports_method("textDocument/codeLens") then
         create_augroup({
             {
-                event = { "BufEnter", "CursorHold", "InsertLeave" },
+                event = { "BufEnter", "TextChanged", "TextChangedI", "TextChangedP" },
                 opts = {
                     buffer = bufnr,
                     callback = function()
