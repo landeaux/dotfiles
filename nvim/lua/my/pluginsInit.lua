@@ -272,6 +272,15 @@ packer.startup(function()
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
             { "b0o/schemastore.nvim" }, -- for jsonls
+            {
+                "mrshmllow/document-color.nvim",
+                config = function()
+                    require("document-color").setup({
+                        -- Default options
+                        mode = "background", -- "background" | "foreground" | "single"
+                    })
+                end,
+            },
         },
         after = "which-key.nvim",
     })
