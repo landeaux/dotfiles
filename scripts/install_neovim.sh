@@ -64,7 +64,7 @@ install_on_mac_from_repo() {
 	HOME_LOCAL_BIN_PATH="${HOME}/.local/bin"
 	mkdir -p "${HOME_LOCAL_BIN_PATH}"
 
-	NVIM_DIR_NAME="nvim-macos
+	NVIM_DIR_NAME="nvim-macos"
 	NVIM_DIR_PATH="${HOME_LOCAL_BIN_PATH}/${NVIM_DIR_NAME}"
 
 	if [[ -d "${NVIM_DIR_PATH}" ]]; then
