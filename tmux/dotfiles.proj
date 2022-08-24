@@ -1,4 +1,4 @@
 new-window -c $DOTFILES
 rename-window "main"
 send-keys "git fetch && git pull" C-m
-send-keys "nvim -c 'PackerSync'" C-m
+send-keys "nvim -c 'autocmd User PackerComplete Mason' -c 'PackerSync'" C-m
