@@ -1,1 +1,1 @@
-au BufRead,BufNewFile zprofile,.zshrc.local set filetype=zsh
+au BufRead,BufNewFile .zprofile,.zshenv,.zshrc,.zshrc.*,zprofile,zshenv,zshrc set filetype=zsh
