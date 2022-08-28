@@ -12,7 +12,9 @@ vim.g.tokyonight_sidebars = { "qf", "packer", "terminal" }
 ---- Catppuccin
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 require("catppuccin").setup({
-    -- This is a comment
+    styles = {
+        keywords = { "italic" }
+    },
     integrations = {
         dap = {
             enabled = true,
