@@ -55,14 +55,8 @@ packer.startup(function()
 
     -- Colorscheme
     use({ "folke/tokyonight.nvim" })
-    use({ "mcchrish/zenbones.nvim" })
-    use({
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function()
-            require("my.config.ui.catppuccin")
-        end,
-    })
+    use({ "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" })
+    use({ "catppuccin/nvim", as = "catppuccin" })
 
     use({
         "rcarriga/nvim-notify",

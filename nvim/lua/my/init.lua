@@ -5,6 +5,7 @@ local my_modules = {
     "my.pluginsInit",
     "my.autocmd",
     "my.keybinds",
+    "my.theme",
 }
 
 for _, mod in ipairs(my_modules) do
