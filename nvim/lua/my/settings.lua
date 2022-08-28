@@ -10,6 +10,23 @@ g.maplocalleader = "\\"
 
 cmd("filetype plugin on")
 
+-- Colorscheme
+vim.o.termguicolors = true
+vim.o.background = "dark"
+
+---- Catppuccin
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+vim.cmd("color catppuccin")
+
+---- Tokyonight
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_sidebars = { "qf", "packer", "terminal" }
+-- vim.cmd("color tokyonight")
+
+---- Zenbones
+vim.g.zenbones_compat = 1 -- so that we don't need lush
+-- vim.cmd("color zenbones")
+
 -- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
 g.os = vim.fn.system("uname"):gsub("\n", "")
 
