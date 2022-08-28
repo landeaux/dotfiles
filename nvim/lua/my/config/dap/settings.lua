@@ -1,21 +1,31 @@
 local dap = require("dap")
-local colors = require("my.config.ui.colors")
+
+local colors = {
+    breakpoint_icon = "#aa0000",
+    breakpoint_line = "#880000",
+    conditional_breakpoint_icon = "#aa4400",
+    conditional_breakpoint_line = "#884400",
+    log_point_icon = "#aaaa00",
+    log_point_line = "#888800",
+    stopped_icon = "#0000aa",
+    stopped_line = "#000088",
+}
 
 -- Customize symbols and highlights
-vim.cmd("hi DapBreakpointIcon guifg=" .. colors.debugging.breakpoint_icon)
-vim.cmd("hi DapBreakpointLine guibg=" .. colors.debugging.breakpoint_line)
+vim.cmd("hi DapBreakpointIcon guifg=" .. colors.breakpoint_icon)
+vim.cmd("hi DapBreakpointLine guibg=" .. colors.breakpoint_line)
 vim.cmd("hi link DapBreakpointNumber DapBreakpointIcon")
 
-vim.cmd("hi DapBreakpointConditionIcon guifg=" .. colors.debugging.conditional_breakpoint_icon)
-vim.cmd("hi DapBreakpointConditionLine guibg=" .. colors.debugging.conditional_breakpoint_line)
+vim.cmd("hi DapBreakpointConditionIcon guifg=" .. colors.conditional_breakpoint_icon)
+vim.cmd("hi DapBreakpointConditionLine guibg=" .. colors.conditional_breakpoint_line)
 vim.cmd("hi link DapBreakpointConditionNumber DapBreakpointConditionIcon")
 
-vim.cmd("hi DapLogPointIcon guifg=" .. colors.debugging.log_point_icon)
-vim.cmd("hi DapLogPointLine guibg=" .. colors.debugging.log_point_line)
+vim.cmd("hi DapLogPointIcon guifg=" .. colors.log_point_icon)
+vim.cmd("hi DapLogPointLine guibg=" .. colors.log_point_line)
 vim.cmd("hi link DapLogPointNumber DapLogPointIcon")
 
-vim.cmd("hi DapStoppedIcon guifg=" .. colors.debugging.stopped_icon)
-vim.cmd("hi DapStoppedLine guibg=" .. colors.debugging.stopped_line .. " gui=bold")
+vim.cmd("hi DapStoppedIcon guifg=" .. colors.stopped_icon)
+vim.cmd("hi DapStoppedLine guibg=" .. colors.stopped_line .. " gui=bold")
 vim.cmd("hi link DapStoppedNumber DapStoppedIcon")
 
 vim.fn.sign_define("DapBreakpoint", {
