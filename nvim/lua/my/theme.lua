@@ -14,6 +14,10 @@ vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 require("catppuccin").setup({
     -- This is a comment
     integrations = {
+        dap = {
+            enabled = true,
+            enable_ui = true,
+        },
         native_lsp = {
             underlines = {
                 errors = { "undercurl" },
@@ -22,6 +26,11 @@ require("catppuccin").setup({
                 information = { "undercurl" },
             },
         },
+        neotree = {
+            enabled = true,
+            show_root = true,
+        },
+        which_key = true,
     },
 })
 vim.cmd("color catppuccin")
