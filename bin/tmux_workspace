@@ -3,7 +3,7 @@
 session=$1
 
 if [[ -n $1 ]]; then
-	setup_file="$HOME/.tmux/$1.proj"
+	setup_file="$HOME/.tmux/workspaces/$1.conf"
 	if [[ -e $setup_file ]]; then
 		# only set up workspace if session doesn't already exist
 		if ! tmux has-session -t "$session"; then
@@ -16,11 +16,11 @@ if [[ -n $1 ]]; then
 			tmux attach-session -t "$session":1
 		fi
 	else
-		printf "No such file \"%s\".\nListing existing files:\n" "$setup_file"
-		ls -1 "$HOME"/.tmux/*.proj
+		printf "No such workspace \"%s\".\nListing existing workspace files:\n" "$1"
+    find "$HOME"/.tmux/workspaces/* | sed -r 's/.*\/(.+).conf$/\1/'
 		exit 1
 	fi
 else
-	echo "Usage: $1 <project_name>"
+	echo "Usage: $1 <workspace_name>"
 	exit 1
 fi
