@@ -19,6 +19,7 @@
     ~/.local/share/marker/user_commands.txt: marker/user_commands.txt
     ~/.tmux.conf:
     ~/.tmux/dotfiles.proj: tmux/dotfiles.proj
+    ~/.tmux/themes: tmux/themes
     ~/.zshenv:
     ~/.zshrc:
     ~/bin: bin
