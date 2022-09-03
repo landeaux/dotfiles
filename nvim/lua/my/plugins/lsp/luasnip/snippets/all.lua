@@ -4,7 +4,7 @@ local s = ls.snippet
 local f = ls.function_node
 local p = require("luasnip.extras").partial
 
-local my_utils = require("my.config.lsp.luasnip.utils")
+local my_utils = require("my.plugins.lsp.luasnip.utils")
 
 return {
     -- Use a function to execute any shell command and print its text.

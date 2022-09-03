@@ -2,7 +2,7 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local wk = require("which-key")
 local map = vim.keymap.set
-local custom_pickers = require("my.config.tools.telescope-pickers")
+local custom_pickers = require("my.plugins.telescope-pickers")
 
 local set_prompt_to_entry_value = function(prompt_bufnr)
     local entry = action_state.get_selected_entry()
@@ -129,11 +129,11 @@ map("n", "<Leader>fc", ":Telescope commands<CR>")
 map("n", "<Leader>ff", ":Telescope find_files<CR>")
 map("n", "<Leader>fFi", ":Telescope find_files no_ignore=true<CR>")
 -- bind("n", "<Leader>fF", ":Telescope find_files search_dirs=", {})
-map("n", "<Leader>fg", require("my.config.tools.telescope-pickers").live_grep)
+map("n", "<Leader>fg", require("my.plugins.telescope-pickers").live_grep)
 -- bind(
 --     "n",
 --     "<Leader>fGf",
---     ":lua require('my.config.tools.telescope-pickers').live_grep_in_folder()<CR>",
+--     ":lua require('my.plugins.telescope-pickers').live_grep_in_folder()<CR>",
 --     {}
 -- )
 map("n", "<Leader>fGi", function()

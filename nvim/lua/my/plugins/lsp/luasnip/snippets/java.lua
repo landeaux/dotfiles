@@ -7,7 +7,7 @@ local i = ls.insert_node
 local c = ls.choice_node
 local d = ls.dynamic_node
 
-local my_utils = require("my.config.lsp.luasnip.utils")
+local my_utils = require("my.plugins.lsp.luasnip.utils")
 
 return {
     -- Very long example for a java class.

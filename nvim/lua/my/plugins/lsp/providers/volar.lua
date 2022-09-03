@@ -180,7 +180,7 @@ function M.register_volar_lspconfigs()
                 },
             },
             -- handlers = {
-            --     ["textDocument/documentColor"] = require("my.config.lsp.color").on_document_color,
+            --     ["textDocument/documentColor"] = require("my.plugins.lsp.color").on_document_color,
             -- },
         }),
     }

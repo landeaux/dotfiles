@@ -32,5 +32,5 @@ null_ls.setup({
         -- lua
         null_ls.builtins.formatting.stylua,
     },
-    on_attach = require("my.config.lsp.providers.defaults").on_attach,
+    on_attach = require("my.plugins.lsp.providers.defaults").on_attach,
 })

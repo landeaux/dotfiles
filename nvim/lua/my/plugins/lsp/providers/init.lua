@@ -1,4 +1,4 @@
-local default_config = require("my.config.lsp.providers.defaults")
+local default_config = require("my.plugins.lsp.providers.defaults")
 local lspconfig = require("lspconfig")
 
 -- vim.lsp.set_log_level("trace")
@@ -27,14 +27,14 @@ require("mason-lspconfig").setup({
     ensure_installed = servers,
 })
 
-require("my.config.lsp.providers.volar").register_volar_lspconfigs()
+require("my.plugins.lsp.providers.volar").register_volar_lspconfigs()
 
 for _, server in pairs(servers) do
     local opts = default_config
 
     opts.autostart = true
 
-    local custom_config_path = "my.config.lsp.providers." .. server
+    local custom_config_path = "my.plugins.lsp.providers." .. server
     local custom_config_exists, config = pcall(require, custom_config_path)
 
     if custom_config_exists then

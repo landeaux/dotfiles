@@ -8,6 +8,6 @@ function M.document_color(client)
     client.request("textDocument/documentColor", params, nil, 0)
 end
 
-M.on_document_color = require("my.config.lsp.color.utils").on_document_color
+M.on_document_color = require("my.plugins.lsp.color.utils").on_document_color
 
 return M

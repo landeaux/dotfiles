@@ -25,9 +25,9 @@ ls.config.set_config({
     -- enable_autosnippets = true,
 })
 
-ls.add_snippets("all", require("my.config.lsp.luasnip.snippets.all"))
-ls.add_snippets("python", require("my.config.lsp.luasnip.snippets.python"))
-ls.add_snippets("java", require("my.config.lsp.luasnip.snippets.java"))
+ls.add_snippets("all", require("my.plugins.lsp.luasnip.snippets.all"))
+ls.add_snippets("python", require("my.plugins.lsp.luasnip.snippets.python"))
+ls.add_snippets("java", require("my.plugins.lsp.luasnip.snippets.java"))
 
 -- autotriggered snippets have to be defined in a separate table, luasnip.autosnippets.
 -- ls.autosnippets = {

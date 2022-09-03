@@ -1,7 +1,7 @@
 -- npm install -g typescript typescript-language-server
 return {
     on_attach = function(client, bufnr)
-        require("my.config.lsp.providers.defaults").on_attach(client, bufnr)
+        require("my.plugins.lsp.providers.defaults").on_attach(client, bufnr)
 
         local map = vim.keymap.set
         local opts = { buffer = bufnr, silent = true }

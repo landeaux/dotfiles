@@ -49,7 +49,7 @@ packer.startup(function()
     use({
         "folke/which-key.nvim",
         config = function()
-            require("my.config.utility.whichkey")
+            require("my.plugins.whichkey")
         end,
     })
 
@@ -69,7 +69,7 @@ packer.startup(function()
     use({
         "kyazdani42/nvim-web-devicons",
         config = function()
-            require("my.config.ui.nvim-web-devicons")
+            require("my.plugins.nvim-web-devicons")
         end,
         -- disable = true,
     })
@@ -77,7 +77,7 @@ packer.startup(function()
     use({
         "nvim-lualine/lualine.nvim",
         config = function()
-            require("my.config.ui.lualine")
+            require("my.plugins.lualine")
         end,
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
@@ -96,7 +96,7 @@ packer.startup(function()
     use({
         "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require("my.config.ui.indent-blankline")
+            require("my.plugins.indent-blankline")
         end,
         -- disable = true,
         after = "which-key.nvim",
@@ -142,7 +142,7 @@ packer.startup(function()
             },
         },
         config = function()
-            require("my.config.tools.neo-tree")
+            require("my.plugins.neo-tree")
         end,
         cmd = {
             "Neotree",
@@ -156,7 +156,7 @@ packer.startup(function()
         "lewis6991/gitsigns.nvim",
         requires = { "nvim-lua/plenary.nvim" },
         config = function()
-            require("my.config.ui.gitsigns")
+            require("my.plugins.gitsigns")
         end,
         -- disable = true,
         after = "which-key.nvim",
@@ -164,7 +164,7 @@ packer.startup(function()
     use({
         "tpope/vim-fugitive",
         config = function()
-            require("my.config.tools.fugitive")
+            require("my.plugins.fugitive")
         end,
         cmd = {
             "G",
@@ -182,7 +182,7 @@ packer.startup(function()
     use({
         "junegunn/gv.vim",
         config = function()
-            require("my.config.tools.gv")
+            require("my.plugins.gv")
         end,
         requires = { "tpope/vim-fugitive" },
         -- disable = true,
@@ -193,7 +193,7 @@ packer.startup(function()
     use({
         "mbbill/undotree",
         config = function()
-            require("my.config.tools.undotree")
+            require("my.plugins.undotree")
         end,
         keys = "<Leader>tu",
         cmd = "UndotreeToggle",
@@ -205,7 +205,7 @@ packer.startup(function()
     use({
         "numtostr/FTerm.nvim",
         config = function()
-            require("my.config.utility.fterm")
+            require("my.plugins.fterm")
         end,
         keys = "<A-i>",
         after = "which-key.nvim",
@@ -218,7 +218,7 @@ packer.startup(function()
     use({
         "b3nj5m1n/kommentary",
         config = function()
-            require("my.config.utility.kommentary")
+            require("my.plugins.kommentary")
         end,
         requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
         after = "which-key.nvim",
@@ -234,7 +234,7 @@ packer.startup(function()
     use({
         "airblade/vim-rooter",
         config = function()
-            require("my.config.utility.rooter")
+            require("my.plugins.rooter")
         end,
     })
 
@@ -245,7 +245,7 @@ packer.startup(function()
     use({
         "williamboman/mason.nvim",
         config = function()
-            require("my.config.tools.mason")
+            require("my.plugins.mason")
         end,
     })
 
@@ -253,7 +253,7 @@ packer.startup(function()
     use({
         "neovim/nvim-lspconfig",
         config = function()
-            require("my.config.lsp")
+            require("my.plugins.lsp")
         end,
         requires = {
             { "kosayoda/nvim-lightbulb" },
@@ -277,7 +277,7 @@ packer.startup(function()
     use({
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
-            require("my.config.lsp.providers.null_ls")
+            require("my.plugins.lsp.providers.null_ls")
         end,
         requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     })
@@ -292,7 +292,7 @@ packer.startup(function()
         },
         run = ":TSUpdate",
         config = function()
-            require("my.config.utility.tree-sitter")
+            require("my.plugins.tree-sitter")
         end,
         -- disable = true,
         after = "which-key.nvim",
@@ -302,7 +302,7 @@ packer.startup(function()
     use({
         "mfussenegger/nvim-dap",
         config = function()
-            require("my.config.dap")
+            require("my.plugins.dap")
         end,
         after = "which-key.nvim",
         -- disable = true,
@@ -323,7 +323,7 @@ packer.startup(function()
         "rcarriga/nvim-dap-ui",
         requires = { "mfussenegger/nvim-dap" },
         config = function()
-            require("my.config.dap.ui")
+            require("my.plugins.dap.ui")
         end,
         after = { "nvim-dap", "which-key.nvim" },
         -- disable = true,
@@ -332,7 +332,7 @@ packer.startup(function()
         "mfussenegger/nvim-dap-python",
         requires = { "mfussenegger/nvim-dap" },
         config = function()
-            require("my.config.dap.python")
+            require("my.plugins.dap.python")
         end,
         after = { "nvim-dap", "which-key.nvim" },
         -- disable = true,
@@ -351,7 +351,7 @@ packer.startup(function()
             "nvim-telescope/telescope-dap.nvim",
         },
         config = function()
-            require("my.config.tools.telescope-nvim")
+            require("my.plugins.telescope-nvim")
         end,
         cmd = "Telescope",
         keys = { "<Leader>f", "<S-A-p>" },
@@ -384,7 +384,7 @@ packer.startup(function()
     use({
         "hrsh7th/nvim-cmp",
         config = function()
-            require("my.config.lsp.nvim-cmp")
+            require("my.plugins.lsp.nvim-cmp")
         end,
         requires = {
             "hrsh7th/cmp-buffer",
@@ -396,7 +396,7 @@ packer.startup(function()
             {
                 "L3MON4D3/LuaSnip",
                 config = function()
-                    require("my.config.lsp.luasnip")
+                    require("my.plugins.lsp.luasnip")
                 end,
                 requires = "rafamadriz/friendly-snippets",
             },
@@ -412,7 +412,7 @@ packer.startup(function()
             vim.fn["mkdp#util#install"]()
         end,
         config = function()
-            require("my.config.utility.markdown-preview")
+            require("my.plugins.markdown-preview")
         end,
         ft = "markdown",
         after = "which-key.nvim",
@@ -426,7 +426,7 @@ packer.startup(function()
         "heavenshell/vim-pydocstring",
         run = "make install",
         config = function()
-            require("my.config.utility.vim-pydocstring")
+            require("my.plugins.vim-pydocstring")
         end,
         after = "which-key.nvim",
     })

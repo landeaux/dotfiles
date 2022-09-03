@@ -13,14 +13,14 @@ end
 
 -- local function documentColor(client, bufnr)
 --     if vim.tbl_contains(vim.tbl_keys(client.handlers), "textDocument/documentColor") then
---         require("my.config.lsp.color").document_color(client)
+--         require("my.plugins.lsp.color").document_color(client)
 --         create_augroup({
 --             {
 --                 event = { "BufEnter", "TextChanged", "InsertLeave" },
 --                 opts = {
 --                     buffer = bufnr,
 --                     callback = function()
---                         require("my.config.lsp.color").document_color(client)
+--                         require("my.plugins.lsp.color").document_color(client)
 --                     end,
 --                 },
 --             },
