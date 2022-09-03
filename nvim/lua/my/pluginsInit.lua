@@ -88,9 +88,8 @@ packer.startup(function()
         tag = "v2.*",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
-            require("my.config.ui.nvim-bufferline")
+            require("my.plugins.bufferline")
         end,
-        after = "which-key.nvim",
     })
 
     -- Indent guides

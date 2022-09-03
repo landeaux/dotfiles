@@ -2,6 +2,7 @@ local map = vim.keymap.set
 local opts = { silent = true }
 
 require("my.plugins.nvim-colorizer.mappings")
+require("my.plugins.bufferline.mappings")
 
 -- Disable some mappings
 map({ "i", "v" }, "<C-l>", "")
