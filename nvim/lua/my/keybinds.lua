@@ -15,7 +15,6 @@ require("my.plugins.vim-pydocstring.mappings")
 require("my.plugins.neo-tree.mappings")
 require("my.plugins.telescope-nvim.mappings")
 require("my.plugins.nvim-dap.mappings")
-require("my.plugins.nvim-dap-ui.mappings")
 require("my.plugins.nvim-dap-python.mappings")
 
 -- Disable some mappings
