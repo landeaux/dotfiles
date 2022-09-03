@@ -254,7 +254,6 @@ packer.startup(function()
         config = function()
             require("my.plugins.nvim-dap")
         end,
-        after = "which-key.nvim",
     })
     use({
         "theHamsta/nvim-dap-virtual-text",
@@ -273,7 +272,7 @@ packer.startup(function()
         config = function()
             require("my.plugins.nvim-dap-ui")
         end,
-        after = { "nvim-dap", "which-key.nvim" },
+        after = "nvim-dap",
     })
     use({
         "mfussenegger/nvim-dap-python",
@@ -281,7 +280,7 @@ packer.startup(function()
         config = function()
             require("my.plugins.nvim-dap-python")
         end,
-        after = { "nvim-dap", "which-key.nvim" },
+        after = "nvim-dap",
     })
 
     -- Telescope

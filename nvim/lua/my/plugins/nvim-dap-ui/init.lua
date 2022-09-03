@@ -12,16 +12,3 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close({})
 end
-
-vim.keymap.set("n", "<Leader>du", function()
-    dapui.toggle({})
-end, { silent = true })
-
-require("which-key").register({
-    d = {
-        name = "+dap",
-        u = "Toggle DAP UI",
-    },
-}, {
-    prefix = "<leader>",
-})
