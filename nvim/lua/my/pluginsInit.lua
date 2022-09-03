@@ -161,9 +161,6 @@ packer.startup(function()
     })
     use({
         "tpope/vim-fugitive",
-        config = function()
-            require("my.plugins.fugitive")
-        end,
         cmd = {
             "G",
             "GBrowse",
@@ -174,8 +171,6 @@ packer.startup(function()
             "Git",
         },
         keys = "<Leader>g",
-        -- disable = true,
-        after = "which-key.nvim",
     })
     use({
         "junegunn/gv.vim",
