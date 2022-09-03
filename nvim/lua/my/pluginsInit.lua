@@ -145,8 +145,6 @@ packer.startup(function()
         cmd = {
             "Neotree",
         },
-        keys = "<Leader>tn",
-        after = { "which-key.nvim" },
     })
 
     -- Git
@@ -267,8 +265,6 @@ packer.startup(function()
         config = function()
             require("my.plugins.tree-sitter")
         end,
-        -- disable = true,
-        after = "which-key.nvim",
     })
 
     -- Debugging
@@ -327,9 +323,8 @@ packer.startup(function()
             require("my.plugins.telescope-nvim")
         end,
         cmd = "Telescope",
-        keys = { "<Leader>f", "<S-A-p>" },
         module = "telescope",
-        after = { "nvim-dap", "which-key.nvim" },
+        after = { "nvim-dap" },
     })
 
     -- Search and replace across multiple files
@@ -388,7 +383,6 @@ packer.startup(function()
             require("my.plugins.markdown-preview")
         end,
         ft = "markdown",
-        after = "which-key.nvim",
     })
 
     -- Startuptime
@@ -401,14 +395,14 @@ packer.startup(function()
         config = function()
             require("my.plugins.vim-pydocstring")
         end,
-        after = "which-key.nvim",
+        ft = "python",
     })
 
     -- Fix python indentation
     use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
 
     -- Syntax highlighting for .mdx
-    use({ "jxnblk/vim-mdx-js" })
+    use({ "jxnblk/vim-mdx-js", ft = "mdx" })
 
     -- zk
     use({
@@ -416,6 +410,7 @@ packer.startup(function()
         config = function()
             require("zk").setup()
         end,
+        ft = "markdown",
     })
 
     if packer_bootstrap then

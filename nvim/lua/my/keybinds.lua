@@ -9,6 +9,11 @@ require("my.plugins.gv.mappings")
 require("my.plugins.undotree.mappings")
 require("my.plugins.fterm.mappings")
 require("my.plugins.kommentary.mappings")
+require("my.plugins.tree-sitter.mappings")
+require("my.plugins.markdown-preview.mappings")
+require("my.plugins.vim-pydocstring.mappings")
+require("my.plugins.neo-tree.mappings")
+require("my.plugins.telescope-nvim.mappings")
 
 -- Disable some mappings
 map({ "i", "v" }, "<C-l>", "")
