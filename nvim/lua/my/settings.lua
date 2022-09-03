@@ -27,6 +27,8 @@ opt.backspace = { "eol", "start", "indent" }
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.autoread = true -- auto read file changes
 opt.undofile = true -- persistent undo
+opt.spelllang = "en"
+opt.spellsuggest = { "best", "9" }
 opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 
 -- Project specific vimrc with secure
