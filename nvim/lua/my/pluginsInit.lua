@@ -244,6 +244,14 @@ packer.startup(function()
     -- Editorconfig
     use("editorconfig/editorconfig-vim")
 
+    -- Tooling Installer (LSP servers, formatters, linters, debuggers)
+    use({
+        "williamboman/mason.nvim",
+        config = function()
+            require("my.config.tools.mason")
+        end,
+    })
+
     -- LSP
     use({
         "neovim/nvim-lspconfig",
@@ -254,7 +262,6 @@ packer.startup(function()
             { "kosayoda/nvim-lightbulb" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "jose-elias-alvarez/typescript.nvim" },
-            { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
             { "b0o/schemastore.nvim" }, -- for jsonls
             {
