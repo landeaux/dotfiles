@@ -107,10 +107,8 @@ packer.startup(function()
     use({
         "norcalli/nvim-colorizer.lua",
         config = function()
-            require("my.config.utility.nvim-colorizer")
+            require("my.plugins.nvim-colorizer")
         end,
-        -- disable = true,
-        after = "which-key.nvim",
     })
 
     -- File Tree

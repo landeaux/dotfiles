@@ -1,6 +1,8 @@
 local map = vim.keymap.set
 local opts = { silent = true }
 
+require("my.plugins.nvim-colorizer.mappings")
+
 -- Disable some mappings
 map({ "i", "v" }, "<C-l>", "")
 map({ "i", "v" }, "<C-h>", "")
