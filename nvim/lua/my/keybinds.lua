@@ -7,6 +7,8 @@ require("my.plugins.indent-blankline.mappings")
 require("my.plugins.fugitive.mappings")
 require("my.plugins.gv.mappings")
 require("my.plugins.undotree.mappings")
+require("my.plugins.fterm.mappings")
+require("my.plugins.kommentary.mappings")
 
 -- Disable some mappings
 map({ "i", "v" }, "<C-l>", "")

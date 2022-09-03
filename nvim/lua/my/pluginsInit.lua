@@ -183,8 +183,6 @@ packer.startup(function()
         config = function()
             require("my.plugins.fterm")
         end,
-        keys = "<A-i>",
-        after = "which-key.nvim",
     })
 
     -- Surround
@@ -197,7 +195,6 @@ packer.startup(function()
             require("my.plugins.kommentary")
         end,
         requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
-        after = "which-key.nvim",
     })
 
     -- Remember last location in file
