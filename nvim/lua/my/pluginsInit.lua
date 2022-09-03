@@ -157,7 +157,7 @@ packer.startup(function()
     use({ "junegunn/gv.vim", requires = { "tpope/vim-fugitive" } })
 
     -- Undo Tree
-    use({ "mbbill/undotree", keys = "<Leader>tu", cmd = "UndotreeToggle" })
+    use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 
     -- Floating Terminal
     use({
