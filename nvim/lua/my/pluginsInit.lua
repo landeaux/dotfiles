@@ -61,7 +61,7 @@ packer.startup(function()
     use({
         "rcarriga/nvim-notify",
         config = function()
-            vim.notify = require("notify")
+            require("my.plugins.nvim-notify")
         end,
     })
 
@@ -71,7 +71,6 @@ packer.startup(function()
         config = function()
             require("my.plugins.nvim-web-devicons")
         end,
-        -- disable = true,
     })
 
     use({
@@ -121,21 +120,7 @@ packer.startup(function()
                 "s1n7ax/nvim-window-picker",
                 tag = "v1.*",
                 config = function()
-                    require("window-picker").setup({
-                        autoselect_one = true,
-                        include_current = false,
-                        filter_rules = {
-                            -- filter using buffer options
-                            bo = {
-                                -- if the file type is one of following, the window will be ignored
-                                filetype = { "neo-tree", "neo-tree-popup", "notify", "quickfix" },
-
-                                -- if the buffer type is one of following, the window will be ignored
-                                buftype = { "terminal" },
-                            },
-                        },
-                        other_win_hl_color = "#e35e4f",
-                    })
+                    require("my.plugins.window-picker")
                 end,
             },
         },
@@ -154,7 +139,6 @@ packer.startup(function()
         config = function()
             require("my.plugins.gitsigns")
         end,
-        -- disable = true,
         after = "which-key.nvim",
     })
     use({
@@ -235,10 +219,7 @@ packer.startup(function()
             {
                 "mrshmllow/document-color.nvim",
                 config = function()
-                    require("document-color").setup({
-                        -- Default options
-                        mode = "background", -- "background" | "foreground" | "single"
-                    })
+                    require("my.plugins.document-color")
                 end,
             },
         },
@@ -274,19 +255,17 @@ packer.startup(function()
             require("my.plugins.dap")
         end,
         after = "which-key.nvim",
-        -- disable = true,
     })
     use({
         "theHamsta/nvim-dap-virtual-text",
         config = function()
-            vim.g.dap_virtual_text = true
+            require("my.plugins.nvim-dap-virtual-text")
         end,
         requires = {
             "mfussenegger/nvim-dap",
             "nvim-treesitter/nvim-treesitter",
         },
         after = "nvim-dap",
-        -- disable = true,
     })
     use({
         "rcarriga/nvim-dap-ui",
@@ -295,7 +274,6 @@ packer.startup(function()
             require("my.plugins.dap.ui")
         end,
         after = { "nvim-dap", "which-key.nvim" },
-        -- disable = true,
     })
     use({
         "mfussenegger/nvim-dap-python",
@@ -304,7 +282,6 @@ packer.startup(function()
             require("my.plugins.dap.python")
         end,
         after = { "nvim-dap", "which-key.nvim" },
-        -- disable = true,
     })
 
     -- Telescope
@@ -344,7 +321,7 @@ packer.startup(function()
     use({
         "windwp/nvim-autopairs",
         config = function()
-            require("nvim-autopairs").setup({})
+            require("my.plugins.nvim-autopairs")
         end,
     })
 
@@ -408,7 +385,7 @@ packer.startup(function()
     use({
         "mickael-menu/zk-nvim",
         config = function()
-            require("zk").setup()
+            require("my.plugins.zk-nvim")
         end,
         ft = "markdown",
     })
