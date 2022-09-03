@@ -172,27 +172,10 @@ packer.startup(function()
         },
         keys = "<Leader>g",
     })
-    use({
-        "junegunn/gv.vim",
-        config = function()
-            require("my.plugins.gv")
-        end,
-        requires = { "tpope/vim-fugitive" },
-        -- disable = true,
-        after = "which-key.nvim",
-    })
+    use({ "junegunn/gv.vim", requires = { "tpope/vim-fugitive" } })
 
     -- Undo Tree
-    use({
-        "mbbill/undotree",
-        config = function()
-            require("my.plugins.undotree")
-        end,
-        keys = "<Leader>tu",
-        cmd = "UndotreeToggle",
-        -- disable = true,
-        after = "which-key.nvim",
-    })
+    use({ "mbbill/undotree", keys = "<Leader>tu", cmd = "UndotreeToggle" })
 
     -- Floating Terminal
     use({

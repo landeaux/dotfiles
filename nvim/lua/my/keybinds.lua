@@ -5,6 +5,8 @@ require("my.plugins.nvim-colorizer.mappings")
 require("my.plugins.bufferline.mappings")
 require("my.plugins.indent-blankline.mappings")
 require("my.plugins.fugitive.mappings")
+require("my.plugins.gv.mappings")
+require("my.plugins.undotree.mappings")
 
 -- Disable some mappings
 map({ "i", "v" }, "<C-l>", "")
