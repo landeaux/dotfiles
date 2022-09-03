@@ -98,8 +98,6 @@ packer.startup(function()
         config = function()
             require("my.plugins.indent-blankline")
         end,
-        -- disable = true,
-        after = "which-key.nvim",
     })
 
     -- Colorize color codes

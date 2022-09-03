@@ -3,6 +3,7 @@ local opts = { silent = true }
 
 require("my.plugins.nvim-colorizer.mappings")
 require("my.plugins.bufferline.mappings")
+require("my.plugins.indent-blankline.mappings")
 
 -- Disable some mappings
 map({ "i", "v" }, "<C-l>", "")
