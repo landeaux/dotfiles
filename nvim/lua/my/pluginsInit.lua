@@ -252,7 +252,7 @@ packer.startup(function()
     use({
         "mfussenegger/nvim-dap",
         config = function()
-            require("my.plugins.dap")
+            require("my.plugins.nvim-dap")
         end,
         after = "which-key.nvim",
     })
@@ -271,7 +271,7 @@ packer.startup(function()
         "rcarriga/nvim-dap-ui",
         requires = { "mfussenegger/nvim-dap" },
         config = function()
-            require("my.plugins.dap.ui")
+            require("my.plugins.nvim-dap.ui")
         end,
         after = { "nvim-dap", "which-key.nvim" },
     })
@@ -279,7 +279,7 @@ packer.startup(function()
         "mfussenegger/nvim-dap-python",
         requires = { "mfussenegger/nvim-dap" },
         config = function()
-            require("my.plugins.dap.python")
+            require("my.plugins.nvim-dap.python")
         end,
         after = { "nvim-dap", "which-key.nvim" },
     })
