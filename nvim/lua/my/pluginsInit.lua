@@ -278,19 +278,6 @@ packer.startup(function()
         after = { "nvim-dap" },
     })
 
-    -- Search and replace across multiple files
-    use({
-        "brooth/far.vim",
-        cmd = {
-            "Far",
-            "Fardo",
-            "Farf",
-            "Farp",
-            "Farr",
-            "Farundo",
-        },
-    })
-
     -- Automatic pair insertion
     use({
         "windwp/nvim-autopairs",
