@@ -1,5 +1,7 @@
 local create_augroup = require("my.utils").create_augroup
 
+require("my.plugins.packer.commands")
+
 -- Highlight text on yank
 create_augroup({
     {

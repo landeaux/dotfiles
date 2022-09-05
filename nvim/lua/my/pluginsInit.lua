@@ -1,41 +1,6 @@
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-local packer_bootstrap = nil
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
-    })
-    vim.o.runtimepath = vim.fn.stdpath("data") .. "/site/pack/*/start/*," .. vim.o.runtimepath
-end
-
-local packer = require("packer")
+local my_packer = require("my.packer")
+local packer = my_packer.packer
 local use = packer.use
-
-packer.init({
-    -- TODO: restore this once there is support for better diff view
-    -- @see: https://github.com/wbthomason/packer.nvim/issues/459
-    -- display = {
-    --     open_fn = function()
-    --         return require("packer.util").float({ border = "single" })
-    --     end,
-    --     prompt_border = "single",
-    -- },
-    git = {
-        clone_timeout = 800, -- Timeout, in seconds, for git clones
-    },
-    compile_path = vim.fn.stdpath("config") .. "/lua/my/compiled.lua",
-    auto_clean = true,
-    compile_on_sync = true,
-    -- profile = {
-    --     enable = true,
-    --     threshold = 1,
-    -- },
-})
 
 packer.startup(function()
     -- Packer
@@ -381,28 +346,7 @@ packer.startup(function()
         ft = "markdown",
     })
 
-    if packer_bootstrap then
-        require("packer").sync()
+    if my_packer.first_install then
+        packer.sync()
     end
 end)
-
-local packer_sync = function()
-    vim.notify("Syncing packer.", "info", { title = "Packer" })
-    local snap_shot_time = os.date("!%Y-%m-%dT%TZ")
-    vim.cmd("PackerSnapshot " .. snap_shot_time)
-    vim.cmd("PackerSync")
-end
-
-vim.keymap.set("n", "<leader>ps", "", {
-    callback = packer_sync,
-})
-
-require("my.utils").create_augroup({
-    {
-        event = "BufWritePost",
-        opts = {
-            pattern = "pluginsInit.lua",
-            command = "source <afile> | PackerCompile",
-        },
-    },
-}, "_packer")
