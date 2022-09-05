@@ -222,16 +222,14 @@ packer.startup(function()
     -- Treesitter
     use({
         "nvim-treesitter/nvim-treesitter",
-        requires = {
-            "windwp/nvim-ts-autotag",
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            "nvim-treesitter/nvim-treesitter-textobjects",
-        },
         run = ":TSUpdate",
         config = function()
             require("my.plugins.tree-sitter")
         end,
     })
+    use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
+    use({ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" })
+    use({ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" })
 
     -- Debugging
     use({
@@ -303,6 +301,13 @@ packer.startup(function()
 
     -- Completion
     use({
+        "L3MON4D3/LuaSnip",
+        config = function()
+            require("my.plugins.lsp.luasnip")
+        end,
+        requires = "rafamadriz/friendly-snippets",
+    })
+    use({
         "hrsh7th/nvim-cmp",
         config = function()
             require("my.plugins.lsp.nvim-cmp")
@@ -314,16 +319,11 @@ packer.startup(function()
             "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-path",
             "saadparwaiz1/cmp_luasnip",
-            {
-                "L3MON4D3/LuaSnip",
-                config = function()
-                    require("my.plugins.lsp.luasnip")
-                end,
-                requires = "rafamadriz/friendly-snippets",
-            },
+            "L3MON4D3/LuaSnip",
             "windwp/nvim-autopairs",
         },
         -- event = "InsertEnter *",
+        after = "LuaSnip",
     })
 
     -- Markdown preview
