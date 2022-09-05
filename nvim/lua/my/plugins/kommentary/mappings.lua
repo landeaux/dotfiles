@@ -1,18 +1,19 @@
 local map = vim.keymap.set
+local opts = { remap = true }
 
-map("n", "<leader>/", "<Plug>kommentary_line_default")
-map("n", "<leader>cct", "<Plug>kommentary_line_default")
-map("n", "<leader>cci", "<Plug>kommentary_line_increase")
-map("n", "<leader>ccd", "<Plug>kommentary_line_decrease")
+map("n", "<leader>/", "<Plug>kommentary_line_default", opts)
+map("n", "<leader>cct", "<Plug>kommentary_line_default", opts)
+map("n", "<leader>cci", "<Plug>kommentary_line_increase", opts)
+map("n", "<leader>ccd", "<Plug>kommentary_line_decrease", opts)
 
-map("n", "<leader>ct", "<Plug>kommentary_motion_default")
-map("n", "<leader>ci", "<Plug>kommentary_motion_increase")
-map("n", "<leader>cd", "<Plug>kommentary_motion_decrease")
+map("n", "<leader>ct", "<Plug>kommentary_motion_default", opts)
+map("n", "<leader>ci", "<Plug>kommentary_motion_increase", opts)
+map("n", "<leader>cd", "<Plug>kommentary_motion_decrease", opts)
 
-map("v", "<leader>/", "<Plug>kommentary_visual_default")
-map("v", "<leader>ct", "<Plug>kommentary_visual_default")
-map("v", "<leader>ci", "<Plug>kommentary_visual_increase")
-map("v", "<leader>cd", "<Plug>kommentary_visual_decrease")
+map("v", "<leader>/", "<Plug>kommentary_visual_default", opts)
+map("v", "<leader>ct", "<Plug>kommentary_visual_default", opts)
+map("v", "<leader>ci", "<Plug>kommentary_visual_increase", opts)
+map("v", "<leader>cd", "<Plug>kommentary_visual_decrease", opts)
 
 local ok, wk = pcall(require, "which-key")
 if ok then
