@@ -7,7 +7,9 @@ map("n", "<Leader>fc", ":Telescope commands<CR>")
 map("n", "<Leader>ff", ":Telescope find_files<CR>")
 map("n", "<Leader>fFi", ":Telescope find_files no_ignore=true<CR>")
 -- map("n", "<Leader>fF", ":Telescope find_files search_dirs=")
-map("n", "<Leader>fg", require("my.plugins.telescope-pickers").live_grep)
+map("n", "<Leader>fg", function()
+    require("my.plugins.telescope-pickers").live_grep()
+end)
 -- map(
 --     "n",
 --     "<Leader>fGf",
