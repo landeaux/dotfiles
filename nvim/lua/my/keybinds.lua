@@ -175,6 +175,7 @@ if ok then
         t = {
             name = "+ui-toggle",
             h = "Highlighting",
+            k = "Column Guides",
             r = "Relative Number",
             s = "Spelling",
             w = "Whitespace",
