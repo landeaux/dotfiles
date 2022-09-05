@@ -181,27 +181,6 @@ if ok then
             w = "Whitespace",
         },
         v = { name = "+vim", c = "Edit config", v = "Version" },
-        w = {
-            name = "+windows",
-            ["="] = "Balance windows",
-            h = "Go to window left",
-            j = "Go to window below",
-            k = "Go to window above",
-            l = "Go to window right",
-            r = "Rotate down/right",
-            R = "Rotate up/left",
-            m = {
-                name = "+move",
-                x = "Exchange windows",
-                h = "Move window left",
-                j = "Move window below",
-                k = "Move window above",
-                l = "Move window right",
-            },
-            q = "Delete window",
-            s = "Split horizontally",
-            v = "Split vertically",
-        },
         y = "Yank to clipboard",
     }, { prefix = "<leader>" })
 end
