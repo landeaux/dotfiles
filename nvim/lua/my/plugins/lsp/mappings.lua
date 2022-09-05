@@ -12,87 +12,87 @@ local allowed_to_format = {
 }
 
 M.register = function(client, bufnr)
-    local map = vim.keymap.set
-    local opts = { buffer = bufnr, silent = true }
+    local default_opts = { buffer = bufnr, silent = true }
+
+    local function map(mode, l, r, opts)
+        opts = opts or {}
+        local merged_opts = vim.tbl_deep_extend("force", opts, default_opts)
+        vim.keymap.set(mode, l, r, merged_opts)
+    end
 
     if
         client.resolved_capabilities.document_formatting
         and vim.tbl_contains(allowed_to_format, client.name)
     then
-        map("n", "<Leader>lf", vim.lsp.buf.formatting, opts)
+        map("n", "<Leader>lf", vim.lsp.buf.formatting, { desc = "Format" })
+
         if which_key_ok then
-            wk.register({ l = { name = "+lsp", f = "Format" } }, { prefix = "<leader>" })
+            wk.register({ l = { name = "+lsp" } }, { prefix = "<leader>" })
         end
     end
 
     -- Mappings
-    map("n", "gd", vim.lsp.buf.definition, opts)
-    map("n", "gy", vim.lsp.buf.type_definition, opts)
-    map("n", "gD", vim.lsp.buf.declaration, opts)
-    map("n", "gI", vim.lsp.buf.implementation, opts)
-    map("n", "gr", vim.lsp.buf.references, opts)
-    map("n", "K", vim.lsp.buf.hover, opts)
-    map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-    map("n", "<Leader>lr", vim.lsp.buf.rename, opts)
-    map("n", "<Leader>lc", vim.lsp.buf.code_action, opts)
-    map("x", "<Leader>lc", vim.lsp.buf.range_code_action, opts)
+    map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+    map("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+    map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+    map("n", "gI", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+    map("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
+    map("n", "K", vim.lsp.buf.hover, { desc = "Show hover documentation" })
+    map("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
+    map("n", "<Leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol under cursor" })
+    map("n", "<Leader>lc", vim.lsp.buf.code_action, { desc = "Show code actions" })
+    map("x", "<Leader>lc", vim.lsp.buf.range_code_action, { desc = "Show code actions" })
     map("n", "<Leader>ldk", function()
         vim.diagnostic.open_float(0, { scope = "cursor" })
-    end, opts)
-    map("n", "<Leader>lds", vim.diagnostic.open_float, opts)
-    map("n", "<Leader>ldq", vim.diagnostic.setloclist, opts)
-    map("n", "[d", vim.diagnostic.goto_prev, opts)
-    map("n", "]d", vim.diagnostic.goto_next, opts)
-    map("n", "<Leader>lwa", vim.lsp.buf.add_workspace_folder, opts)
-    map("n", "<Leader>lwr", vim.lsp.buf.remove_workspace_folder, opts)
+    end, { desc = "Show cursor diagnostics" })
+    map("n", "<Leader>lds", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+    map(
+        "n",
+        "<Leader>ldq",
+        vim.diagnostic.setloclist,
+        { desc = "Add diagnostics to location list" }
+    )
+    map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+    map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+    map("n", "<Leader>lwa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
+    map(
+        "n",
+        "<Leader>lwr",
+        vim.lsp.buf.remove_workspace_folder,
+        { desc = "Remove workspace folder" }
+    )
     map("n", "<Leader>lwl", function()
         vim.notify(
             vim.lsp.buf.list_workspace_folders(),
             "info",
             { title = "Workspace Folders", hide_from_history = true }
         )
-    end, opts)
-    map("n", "<Leader>lI", ":LspInfo<CR>", opts)
+    end, { desc = "List workspace folders" })
+    map("n", "<Leader>lI", ":LspInfo<CR>", { desc = "Show LSP info" })
 
     -- Telescope LSP
-    map("n", "<Leader>lsd", ":Telescope lsp_document_symbols<CR>", opts)
-    map("n", "<Leader>lsw", ":Telescope lsp_workspace_symbols<CR>", opts)
-    map("n", "<Leader>lad", ":Telescope lsp_code_actions<CR>", opts)
+    map(
+        "n",
+        "<Leader>lsd",
+        ":Telescope lsp_document_symbols<CR>",
+        { desc = "Find document symbols" }
+    )
+    map(
+        "n",
+        "<Leader>lsw",
+        ":Telescope lsp_workspace_symbols<CR>",
+        { desc = "Find workspace symbols" }
+    )
 
     if which_key_ok then
         wk.register({
             l = {
                 name = "+lsp",
-                a = { name = "+code-actions", d = "Document Actions" },
-                s = { name = "+symbols", d = "Document Symbols", w = "Workspace Symbols" },
-                d = {
-                    name = "+diagnostics",
-                    k = "Show cursor diagnostics",
-                    s = "Show line diagnostics",
-                    p = "Goto prev",
-                    q = "Set loclist",
-                    n = "Goto next",
-                },
-                c = "Code Actions",
-                w = {
-                    name = "+workspace",
-                    a = "Add workspace folder",
-                    r = "Remove workspace folder",
-                    l = "List workspace folders",
-                },
-                r = "Rename",
-                I = "LSP Info",
+                s = { name = "+symbols" },
+                d = { name = "+diagnostics" },
+                w = { name = "+workspace" },
             },
         }, { prefix = "<leader>" })
-
-        wk.register({
-            name = "+goto",
-            D = "Go to declaration",
-            I = "Go to implementation",
-            d = "Go to definition",
-            r = "Go to references",
-            y = "Go to type definition",
-        }, { prefix = "g" })
     end
 end
 

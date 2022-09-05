@@ -1,80 +1,62 @@
 local map = vim.keymap.set
-local opts = { silent = true }
 
 map("n", "<Leader>dc", function()
     require("dap").continue()
-end, opts)
+end, { silent = true, desc = "Continue" })
 map("n", "<Leader>dC", function()
     require("my.plugins.nvim-dap.utils").reload_continue()
-end, opts)
+end, { silent = true, desc = "Reload continue" })
 map("n", "<Leader>dj", function()
     require("dap").step_over()
-end, opts)
+end, { silent = true, desc = "Step over" })
 map("n", "<Leader>dl", function()
     require("dap").step_into()
-end, opts)
+end, { silent = true, desc = "Step into" })
 map("n", "<Leader>dk", function()
     require("dap").step_out()
-end, opts)
+end, { silent = true, desc = "Step out" })
 map("n", "<Leader>dt", function()
     require("dap").toggle_breakpoint()
-end, opts)
+end, { silent = true, desc = "Toggle breakpoint" })
 map("n", "<Leader>dbc", function()
     require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-end, opts)
+end, { silent = true, desc = "Set conditional breakpoint" })
 map("n", "<Leader>dbl", function()
     require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-end, opts)
+end, { silent = true, desc = "Set breakpoint with log" })
 map("n", "<Leader>dbe", function()
     require("dap").set_exception_breakpoints({ "all" })
-end, opts)
-map("n", "<Leader>dr", ':lua require("dap").repl.open({}, "vsplit")<CR><C-w>l', opts)
+end, { silent = true, desc = "Set exception breakpoint" })
+map(
+    "n",
+    "<Leader>dr",
+    ':lua require("dap").repl.open({}, "vsplit")<CR><C-w>l',
+    { silent = true, desc = "Open DAP REPL" }
+)
 map("n", "<Leader>dR", function()
     require("dap").run_last()
-end, opts)
+end, { silent = true, desc = "Run last" })
 map("n", "<Leader>d?", function()
     require("dap.ui.variables").scopes()
-end, opts)
+end, { silent = true, desc = "Variable scopes" })
 map("n", "<Leader>di", function()
     require("dap.ui.variables").hover(function()
         return vim.fn.expand("<cexpr>")
     end)
-end, opts)
+end, { silent = true, desc = "Variable info" })
 map("v", "<Leader>di", function()
     require("dap.ui.variables").visual_hover()
-end, opts)
+end, { silent = true, desc = "Variable info" })
 map("n", "<Leader>dh", function()
     require("dap.ui.widgets").hover()
-end, opts)
+end, { silent = true, desc = "Widget hover" })
 map("n", "<Leader>df", function()
     local widgets = require("dap.ui.widgets")
     widgets.centered_float(widgets.scopes)
-end, opts)
+end, { silent = true, desc = "Widget float" })
 
 local ok, wk = pcall(require, "which-key")
 if ok then
-    wk.register({
-        d = {
-            name = "+dap",
-            c = "Continue",
-            C = "Reload continue",
-            j = "Step over",
-            l = "Step into",
-            k = "Step out",
-            t = "Toggle breakpoint",
-            b = {
-                name = "+breakpoint",
-                c = "Conditional breakpoint",
-                e = "Exception breakpoints",
-                l = "Log point",
-            },
-            r = "Open REPL",
-            R = "Run last",
-            ["?"] = "Variable scopes",
-            i = "Variable info",
-            h = "Widget hover",
-            f = "Widget float",
-        },
-    }, { prefix = "<leader>" })
-    wk.register({ d = { name = "+dap", i = "Variable info" } }, { mode = "v", prefix = "<leader>" })
+    wk.register({ d = { name = "+dap", b = { name = "+breakpoint" } } }, { prefix = "<leader>" })
+    wk.register({ d = { name = "+dap" } }, { mode = "v", prefix = "<leader>" })
 end
