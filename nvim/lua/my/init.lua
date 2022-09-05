@@ -4,7 +4,7 @@ local my_modules = {
     "my.scratch",
     "my.pluginsInit",
     "my.autocmd",
-    "my.keybinds",
+    "my.mappings",
 }
 
 for _, mod in ipairs(my_modules) do
