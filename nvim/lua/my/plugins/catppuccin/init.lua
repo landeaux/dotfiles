@@ -1,19 +1,6 @@
-vim.o.termguicolors = true
-vim.o.background = "dark"
-
----- Tokyonight
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_sidebars = { "qf", "packer", "terminal" }
--- vim.cmd("color tokyonight")
-
----- Zenbones
--- vim.cmd("color zenbones")
-
----- Catppuccin
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 require("catppuccin").setup({
     styles = {
-        keywords = { "italic" }
+        keywords = { "italic" },
     },
     integrations = {
         dap = {
@@ -35,4 +22,6 @@ require("catppuccin").setup({
         which_key = true,
     },
 })
+
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 vim.cmd("color catppuccin")

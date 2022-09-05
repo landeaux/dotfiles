@@ -19,9 +19,29 @@ packer.startup(function()
     })
 
     -- Colorscheme
-    use({ "folke/tokyonight.nvim" })
-    use({ "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" })
-    use({ "catppuccin/nvim", as = "catppuccin" })
+    use({
+        "folke/tokyonight.nvim",
+        config = function()
+            require("my.plugins.tokyonight")
+        end,
+        disable = vim.g.theme ~= "tokyonight",
+    })
+    use({
+        "mcchrish/zenbones.nvim",
+        requires = "rktjmp/lush.nvim",
+        config = function()
+            require("my.plugins.zenbones")
+        end,
+        disable = vim.g.theme ~= "zenbones",
+    })
+    use({
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = function()
+            require("my.plugins.catppuccin")
+        end,
+        disable = vim.g.theme ~= "catppuccin",
+    })
 
     use({
         "rcarriga/nvim-notify",
