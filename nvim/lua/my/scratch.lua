@@ -16,9 +16,26 @@ vim.api.nvim_create_user_command("VScratch", function()
     M.scratch(true)
 end, { desc = "Open a scratch buffer in a vertical split" })
 
-vim.keymap.set({ "n", "v" }, "<Leader>sj", ":Scratch<CR>")
-vim.keymap.set({ "n", "v" }, "<Leader>sl", ":VScratch<CR>")
+vim.keymap.set(
+    { "n", "v" },
+    "<Leader>sj",
+    ":Scratch<CR>",
+    { desc = "Open horizontal scratch buffer" }
+)
+vim.keymap.set(
+    { "n", "v" },
+    "<Leader>sl",
+    ":VScratch<CR>",
+    { desc = "Open vertical scratch buffer" }
+)
 
--- TODO: register whichkey mappings
+local ok, wk = pcall(require, "which-key")
+if ok then
+    wk.register({
+        s = {
+            name = "scratch",
+        },
+    }, { prefix = "<leader>" })
+end
 
 return M
