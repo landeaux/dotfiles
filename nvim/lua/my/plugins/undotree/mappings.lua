@@ -1,7 +1,10 @@
 vim.keymap.set("n", "<Leader>tu", ":UndotreeToggle<CR>")
 
-require("which-key").register({
-    t = { name = "+ui-toggle", u = "UndoTree" },
-}, {
-    prefix = "<leader>",
-})
+local ok, wk = pcall(require, "which-key")
+if ok then
+    wk.register({
+        t = { name = "+ui-toggle", u = "UndoTree" },
+    }, {
+        prefix = "<leader>",
+    })
+end

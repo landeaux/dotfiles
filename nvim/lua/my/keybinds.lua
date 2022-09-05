@@ -149,9 +149,9 @@ for _, char in ipairs(chars) do
     end
 end
 
-local ok, _ = pcall(require, "which-key")
+local ok, wk = pcall(require, "which-key")
 if ok then
-    local keys = {
+    wk.register({
         a = "Yank file to clipboard",
         b = {
             name = "+buffer",
@@ -202,7 +202,5 @@ if ok then
             v = "Split vertically",
         },
         y = "Yank to clipboard",
-    }
-
-    require("which-key").register(keys, { prefix = "<leader>" })
+    }, { prefix = "<leader>" })
 end

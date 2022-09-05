@@ -42,48 +42,49 @@ map("n", "<Leader>fdl", ":Telescope dap list_breakpoints<CR>")
 map("n", "<Leader>fds", ":Telescope dap configurations<CR>")
 map("n", "<Leader>fdv", ":Telescope dap variables<CR>")
 
-local wk = require("which-key")
+local ok, wk = pcall(require, "which-key")
+if ok then
+    wk.register({
+        f = {
+            name = "+telescope",
+            ["/"] = "Current buffer fuzzy find",
+            a = "Builtins",
+            b = "Buffers",
+            e = {
+                name = "+diagnostics",
+                d = "Document Diagnostics",
+                w = "Workspace Diagnostics",
+            },
+            f = "Find files",
+            F = {
+                name = "+find_files",
+                i = "No ignore",
+            },
+            g = "Live grep",
+            G = {
+                name = "+live_grep",
+                -- f = "In folder(s)",
+                i = "No ignore",
+            },
+            h = "Help tags",
+            o = "Old files",
+            t = "Treesitter",
+            w = "Find word under cursor",
+            -- Extensions
+            d = {
+                name = "+dap",
+                c = "Commands",
+                s = "Configurations",
+                l = "List breakpoints",
+                v = "Variables",
+                f = "Frames",
+            },
+        },
+    }, {
+        prefix = "<leader>",
+    })
 
-wk.register({
-    f = {
-        name = "+telescope",
-        ["/"] = "Current buffer fuzzy find",
-        a = "Builtins",
-        b = "Buffers",
-        e = {
-            name = "+diagnostics",
-            d = "Document Diagnostics",
-            w = "Workspace Diagnostics",
-        },
-        f = "Find files",
-        F = {
-            name = "+find_files",
-            i = "No ignore",
-        },
-        g = "Live grep",
-        G = {
-            name = "+live_grep",
-            -- f = "In folder(s)",
-            i = "No ignore",
-        },
-        h = "Help tags",
-        o = "Old files",
-        t = "Treesitter",
-        w = "Find word under cursor",
-        -- Extensions
-        d = {
-            name = "+dap",
-            c = "Commands",
-            s = "Configurations",
-            l = "List breakpoints",
-            v = "Variables",
-            f = "Frames",
-        },
-    },
-}, {
-    prefix = "<leader>",
-})
-
-wk.register({
-    f = "Live grep visual selection",
-}, { mode = "v", prefix = "<leader>" })
+    wk.register({
+        f = "Live grep visual selection",
+    }, { mode = "v", prefix = "<leader>" })
+end

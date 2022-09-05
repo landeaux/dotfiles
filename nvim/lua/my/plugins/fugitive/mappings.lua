@@ -9,18 +9,19 @@ map("n", "<Leader>gp", ":Git push<CR>")
 map("n", "<Leader>gs", ":G<CR>")
 map("n", "<Leader>gw", ":Gwrite<CR>")
 
-local keys = {
-    g = {
-        name = "+git",
-        a = "Add",
-        b = "Blame",
-        c = "Commit",
-        d = "Diff",
-        m = "Amend",
-        p = "Push",
-        s = "Status",
-        w = "Write",
-    },
-}
-
-require("which-key").register(keys, { prefix = "<leader>" })
+local ok, wk = pcall(require, "which-key")
+if ok then
+    wk.register({
+        g = {
+            name = "+git",
+            a = "Add",
+            b = "Blame",
+            c = "Commit",
+            d = "Diff",
+            m = "Amend",
+            p = "Push",
+            s = "Status",
+            w = "Write",
+        },
+    }, { prefix = "<leader>" })
+end

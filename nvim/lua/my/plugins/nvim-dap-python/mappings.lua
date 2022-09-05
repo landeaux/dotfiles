@@ -7,12 +7,17 @@ local register_mappings = function()
     map("n", "<LocalLeader>dc", dap_python.test_class, opts)
     map("v", "<LocalLeader>ds", '<ESC>:lua require("dap-python").debug_selection()<CR>', opts)
 
-    local keys = { d = { name = "+dap", m = "Test method", c = "Test class" } }
-    local visual_keys = { d = { name = "+dap", s = "Debug selection" } }
-    local wk = require("which-key")
-
-    wk.register(keys, { prefix = "<localleader>" })
-    wk.register(visual_keys, { mode = "v", prefix = "<localleader>" })
+    local ok, wk = pcall(require, "which-key")
+    if ok then
+        wk.register(
+            { d = { name = "+dap", m = "Test method", c = "Test class" } },
+            { prefix = "<localleader>" }
+        )
+        wk.register(
+            { d = { name = "+dap", s = "Debug selection" } },
+            { mode = "v", prefix = "<localleader>" }
+        )
+    end
 end
 
 require("my.utils").create_augroup({

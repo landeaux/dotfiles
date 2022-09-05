@@ -13,17 +13,18 @@ return {
         map("n", "<Leader>lu", ":TypescriptRemoveUnused<CR>", opts)
         map("n", "<Leader>lx", ":TypescriptFixAll<CR>", opts)
 
-        local keymap_leader = {
-            l = {
-                name = "+lsp",
-                i = "Add all missing imports",
-                o = "Organize imports",
-                R = "Rename file and update imports",
-                u = "Remove unused variables",
-                x = "Fix all",
-            },
-        }
-
-        require("which-key").register(keymap_leader, { prefix = "<leader>" })
+        local ok, wk = pcall(require, "which-key")
+        if ok then
+            wk.register({
+                l = {
+                    name = "+lsp",
+                    i = "Add all missing imports",
+                    o = "Organize imports",
+                    R = "Rename file and update imports",
+                    u = "Remove unused variables",
+                    x = "Fix all",
+                },
+            }, { prefix = "<leader>" })
+        end
     end,
 }

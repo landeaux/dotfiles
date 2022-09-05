@@ -51,31 +51,30 @@ map("n", "<Leader>df", function()
     widgets.centered_float(widgets.scopes)
 end, opts)
 
-local keys = {
-    d = {
-        name = "+dap",
-        c = "Continue",
-        C = "Reload continue",
-        j = "Step over",
-        l = "Step into",
-        k = "Step out",
-        t = "Toggle breakpoint",
-        b = {
-            name = "+breakpoint",
-            c = "Conditional breakpoint",
-            e = "Exception breakpoints",
-            l = "Log point",
+local ok, wk = pcall(require, "which-key")
+if ok then
+    wk.register({
+        d = {
+            name = "+dap",
+            c = "Continue",
+            C = "Reload continue",
+            j = "Step over",
+            l = "Step into",
+            k = "Step out",
+            t = "Toggle breakpoint",
+            b = {
+                name = "+breakpoint",
+                c = "Conditional breakpoint",
+                e = "Exception breakpoints",
+                l = "Log point",
+            },
+            r = "Open REPL",
+            R = "Run last",
+            ["?"] = "Variable scopes",
+            i = "Variable info",
+            h = "Widget hover",
+            f = "Widget float",
         },
-        r = "Open REPL",
-        R = "Run last",
-        ["?"] = "Variable scopes",
-        i = "Variable info",
-        h = "Widget hover",
-        f = "Widget float",
-    },
-}
-
-local visual_keys = { d = { name = "+dap", i = "Variable info" } }
-
-require("which-key").register(keys, { prefix = "<leader>" })
-require("which-key").register(visual_keys, { mode = "v", prefix = "<leader>" })
+    }, { prefix = "<leader>" })
+    wk.register({ d = { name = "+dap", i = "Variable info" } }, { mode = "v", prefix = "<leader>" })
+end

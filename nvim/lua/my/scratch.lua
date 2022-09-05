@@ -19,4 +19,6 @@ end, { desc = "Open a scratch buffer in a vertical split" })
 vim.keymap.set({ "n", "v" }, "<Leader>sj", ":Scratch<CR>")
 vim.keymap.set({ "n", "v" }, "<Leader>sl", ":VScratch<CR>")
 
+-- TODO: register whichkey mappings
+
 return M

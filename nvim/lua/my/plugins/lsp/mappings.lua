@@ -1,4 +1,4 @@
-local wk = require("which-key")
+local which_key_ok, wk = pcall(require, "which-key")
 
 local M = {}
 
@@ -20,7 +20,9 @@ M.register = function(client, bufnr)
         and vim.tbl_contains(allowed_to_format, client.name)
     then
         map("n", "<Leader>lf", vim.lsp.buf.formatting, opts)
-        wk.register({ l = { name = "+lsp", f = "Format" } }, { prefix = "<leader>" })
+        if which_key_ok then
+            wk.register({ l = { name = "+lsp", f = "Format" } }, { prefix = "<leader>" })
+        end
     end
 
     -- Mappings
@@ -57,42 +59,41 @@ M.register = function(client, bufnr)
     map("n", "<Leader>lsw", ":Telescope lsp_workspace_symbols<CR>", opts)
     map("n", "<Leader>lad", ":Telescope lsp_code_actions<CR>", opts)
 
-    local keymap_leader = {
-        l = {
-            name = "+lsp",
-            a = { name = "+code-actions", d = "Document Actions" },
-            s = { name = "+symbols", d = "Document Symbols", w = "Workspace Symbols" },
-            d = {
-                name = "+diagnostics",
-                k = "Show cursor diagnostics",
-                s = "Show line diagnostics",
-                p = "Goto prev",
-                q = "Set loclist",
-                n = "Goto next",
+    if which_key_ok then
+        wk.register({
+            l = {
+                name = "+lsp",
+                a = { name = "+code-actions", d = "Document Actions" },
+                s = { name = "+symbols", d = "Document Symbols", w = "Workspace Symbols" },
+                d = {
+                    name = "+diagnostics",
+                    k = "Show cursor diagnostics",
+                    s = "Show line diagnostics",
+                    p = "Goto prev",
+                    q = "Set loclist",
+                    n = "Goto next",
+                },
+                c = "Code Actions",
+                w = {
+                    name = "+workspace",
+                    a = "Add workspace folder",
+                    r = "Remove workspace folder",
+                    l = "List workspace folders",
+                },
+                r = "Rename",
+                I = "LSP Info",
             },
-            c = "Code Actions",
-            w = {
-                name = "+workspace",
-                a = "Add workspace folder",
-                r = "Remove workspace folder",
-                l = "List workspace folders",
-            },
-            r = "Rename",
-            I = "LSP Info",
-        },
-    }
+        }, { prefix = "<leader>" })
 
-    local keymap_g = {
-        name = "+goto",
-        D = "Go to declaration",
-        I = "Go to implementation",
-        d = "Go to definition",
-        r = "Go to references",
-        y = "Go to type definition",
-    }
-
-    wk.register(keymap_leader, { prefix = "<leader>" })
-    wk.register(keymap_g, { prefix = "g" })
+        wk.register({
+            name = "+goto",
+            D = "Go to declaration",
+            I = "Go to implementation",
+            d = "Go to definition",
+            r = "Go to references",
+            y = "Go to type definition",
+        }, { prefix = "g" })
+    end
 end
 
 return M

@@ -29,37 +29,38 @@ M.register = function(bufnr)
     -- Text object
     map({ "o", "x" }, "ih", ":Gitsigns select_hunk<CR>")
 
-    local wk = require("which-key")
+    local ok, wk = pcall(require, "which-key")
+    if ok then
+        wk.register({
+            h = {
+                name = "+hunk",
+                b = "Blame line",
+                p = "Preview hunk",
+                r = "Reset hunk",
+                R = "Reset buffer",
+                s = "Stage hunk",
+                S = "Stage buffer",
+                u = "Undo stage hunk",
+            },
+            t = {
+                b = "Current line blame",
+                d = "Deleted lines",
+            },
+        }, {
+            prefix = "<leader>",
+        })
 
-    wk.register({
-        h = {
-            name = "+hunk",
-            b = "Blame line",
-            p = "Preview hunk",
-            r = "Reset hunk",
-            R = "Reset buffer",
-            s = "Stage hunk",
-            S = "Stage buffer",
-            u = "Undo stage hunk",
-        },
-        t = {
-            b = "Current line blame",
-            d = "Deleted lines",
-        },
-    }, {
-        prefix = "<leader>",
-    })
-
-    wk.register({
-        h = {
-            name = "+hunk",
-            r = "Reset hunk",
-            s = "Stage hunk",
-        },
-    }, {
-        prefix = "<leader>",
-        mode = "v",
-    })
+        wk.register({
+            h = {
+                name = "+hunk",
+                r = "Reset hunk",
+                s = "Stage hunk",
+            },
+        }, {
+            prefix = "<leader>",
+            mode = "v",
+        })
+    end
 end
 
 return M

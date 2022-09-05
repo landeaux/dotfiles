@@ -33,24 +33,25 @@ map("n", "<Leader>b9", ":BufferLineGoToBuffer 9<CR>", opts)
 -- Pick buffer
 map("n", "<Leader>bc", ":BufferLinePick<CR>", opts)
 
-local keys = {
-    b = {
-        name = "+buffer",
-        ["1"] = "Goto 1",
-        ["2"] = "Goto 2",
-        ["3"] = "Goto 3",
-        ["4"] = "Goto 4",
-        ["5"] = "Goto 5",
-        ["6"] = "Goto 6",
-        ["7"] = "Goto 7",
-        ["8"] = "Goto 8",
-        ["9"] = "Goto Last",
-        c = "Choose",
-        n = "Next",
-        p = "Previous",
-        m = { name = "+move", n = "Next", p = "Previous" },
-        o = { name = "+sort", d = "By Directory", e = "By Extension", i = "By ID" },
-    },
-}
-
-require("which-key").register(keys, { prefix = "<leader>" })
+local ok, wk = pcall(require, "which-key")
+if ok then
+    wk.register({
+        b = {
+            name = "+buffer",
+            ["1"] = "Goto 1",
+            ["2"] = "Goto 2",
+            ["3"] = "Goto 3",
+            ["4"] = "Goto 4",
+            ["5"] = "Goto 5",
+            ["6"] = "Goto 6",
+            ["7"] = "Goto 7",
+            ["8"] = "Goto 8",
+            ["9"] = "Goto Last",
+            c = "Choose",
+            n = "Next",
+            p = "Previous",
+            m = { name = "+move", n = "Next", p = "Previous" },
+            o = { name = "+sort", d = "By Directory", e = "By Extension", i = "By ID" },
+        },
+    }, { prefix = "<leader>" })
+end
