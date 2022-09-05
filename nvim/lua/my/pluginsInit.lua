@@ -366,7 +366,7 @@ packer.startup(function()
         ft = "markdown",
     })
 
-    if my_packer.first_install then
+    if my_packer.packer_bootstrap then
         packer.sync()
     end
 end)

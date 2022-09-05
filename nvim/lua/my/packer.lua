@@ -1,35 +1,25 @@
-local cmd = vim.cmd
-
-local present, packer = pcall(require, "packer")
-
-local first_install = false
-
-if not present then
-    local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-    print("Cloning packer..")
-    -- remove the dir before cloning
-    vim.fn.delete(packer_path, "rf")
-    vim.fn.system({
-        "git",
-        "clone",
-        "https://github.com/wbthomason/packer.nvim",
-        "--depth",
-        "20",
-        packer_path,
-    })
-
-    cmd("packadd packer.nvim")
-    -- vim.o.runtimepath = vim.fn.stdpath("data") .. "/site/pack/*/start/*," .. vim.o.runtimepath
-    present, packer = pcall(require, "packer")
-
-    if present then
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        print("Cloning packer..")
+        fn.system({
+            "git",
+            "clone",
+            "--depth",
+            "1",
+            "https://github.com/wbthomason/packer.nvim",
+            install_path,
+        })
         print("Packer cloned successfully.")
-        first_install = true
-    else
-        error("Couldn't clone packer !\nPacker path: " .. packer_path .. "\n" .. packer)
+        vim.cmd([[packadd packer.nvim]])
+        return true
     end
+    return false
 end
+
+local packer_bootstrap = ensure_packer()
+local packer = require("packer")
 
 -- @TODO: check if snapshot exists, if not create it
 packer.init({
@@ -55,5 +45,5 @@ packer.init({
 
 return {
     packer = packer,
-    first_install = first_install,
+    packer_bootstrap = packer_bootstrap,
 }
