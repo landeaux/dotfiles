@@ -37,18 +37,6 @@ M.register = function(client, bufnr)
     map("n", "<Leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol under cursor" })
     map("n", "<Leader>lc", vim.lsp.buf.code_action, { desc = "Show code actions" })
     map("x", "<Leader>lc", vim.lsp.buf.range_code_action, { desc = "Show code actions" })
-    map("n", "<Leader>ldk", function()
-        vim.diagnostic.open_float(0, { scope = "cursor" })
-    end, { desc = "Show cursor diagnostics" })
-    map("n", "<Leader>lds", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-    map(
-        "n",
-        "<Leader>ldq",
-        vim.diagnostic.setloclist,
-        { desc = "Add diagnostics to location list" }
-    )
-    map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-    map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
     map("n", "<Leader>lwa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
     map(
         "n",
@@ -84,7 +72,6 @@ M.register = function(client, bufnr)
             l = {
                 name = "+lsp",
                 s = { name = "+symbols" },
-                d = { name = "+diagnostics" },
                 w = { name = "+workspace" },
             },
         }, { prefix = "<leader>" })
