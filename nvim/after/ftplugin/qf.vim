@@ -1,1 +1,2 @@
 let &colorcolumn=""
+setlocal nobuflisted
