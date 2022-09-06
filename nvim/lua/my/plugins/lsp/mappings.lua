@@ -1,4 +1,5 @@
 local which_key_ok, wk = pcall(require, "which-key")
+local map_factory = require("my.utils").map_factory
 
 local M = {}
 
@@ -12,13 +13,7 @@ local allowed_to_format = {
 }
 
 M.register = function(client, bufnr)
-    local default_opts = { buffer = bufnr, silent = true }
-
-    local function map(mode, l, r, opts)
-        opts = opts or {}
-        local merged_opts = vim.tbl_deep_extend("force", opts, default_opts)
-        vim.keymap.set(mode, l, r, merged_opts)
-    end
+    local map = map_factory({ buffer = bufnr, silent = true })
 
     if
         client.resolved_capabilities.document_formatting
