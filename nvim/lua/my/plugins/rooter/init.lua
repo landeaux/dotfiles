@@ -12,7 +12,7 @@ g.rooter_targets = "/,*"
 --  prefix it with >
 -- To exclude a pattern, prefix it with !
 -- NOTE: Always list exclusions before patterns
-g.rooter_patterns = { ".git", "Makefile", ">Workspace" }
+g.rooter_patterns = { ".git" }
 
 -- Change to opened file's directory for non-project files
 g.rooter_change_directory_for_non_project_files = "current"
