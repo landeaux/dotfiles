@@ -9,9 +9,9 @@
             "complex_modifications": {
                 "parameters": {
                     "basic.simultaneous_threshold_milliseconds": 50,
-                    "basic.to_delayed_action_delay_milliseconds": 150,
-                    "basic.to_if_alone_timeout_milliseconds": 149,
-                    "basic.to_if_held_down_threshold_milliseconds": 150,
+                    "basic.to_delayed_action_delay_milliseconds": 500,
+                    "basic.to_if_alone_timeout_milliseconds": 1000,
+                    "basic.to_if_held_down_threshold_milliseconds": 500,
                     "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
@@ -55,6 +55,11 @@
                                         ]
                                     }
                                 },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 125,
+                                    "basic.to_if_alone_timeout_milliseconds": 124,
+                                    "basic.to_if_held_down_threshold_milliseconds": 125
+                                },
                                 "to_delayed_action": {
                                     "to_if_canceled": [
                                         {
@@ -88,6 +93,11 @@
                                             "any"
                                         ]
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 125,
+                                    "basic.to_if_alone_timeout_milliseconds": 124,
+                                    "basic.to_if_held_down_threshold_milliseconds": 125
                                 },
                                 "to_delayed_action": {
                                     "to_if_canceled": [
@@ -123,6 +133,11 @@
                                         ]
                                     }
                                 },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 125,
+                                    "basic.to_if_alone_timeout_milliseconds": 124,
+                                    "basic.to_if_held_down_threshold_milliseconds": 125
+                                },
                                 "to_delayed_action": {
                                     "to_if_canceled": [
                                         {
@@ -156,6 +171,11 @@
                                             "any"
                                         ]
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 125,
+                                    "basic.to_if_alone_timeout_milliseconds": 124,
+                                    "basic.to_if_held_down_threshold_milliseconds": 125
                                 },
                                 "to_delayed_action": {
                                     "to_if_canceled": [
@@ -191,6 +211,11 @@
                                         ]
                                     }
                                 },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 125,
+                                    "basic.to_if_alone_timeout_milliseconds": 124,
+                                    "basic.to_if_held_down_threshold_milliseconds": 125
+                                },
                                 "to_delayed_action": {
                                     "to_if_canceled": [
                                         {
@@ -224,6 +249,11 @@
                                             "any"
                                         ]
                                     }
+                                },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 125,
+                                    "basic.to_if_alone_timeout_milliseconds": 124,
+                                    "basic.to_if_held_down_threshold_milliseconds": 125
                                 },
                                 "to_delayed_action": {
                                     "to_if_canceled": [
@@ -330,7 +360,7 @@
                         "vendor_id": 18003
                     },
                     "ignore": true,
-                    "manipulate_caps_lock_led": true,
+                    "manipulate_caps_lock_led": false,
                     "simple_modifications": [],
                     "treat_as_built_in_keyboard": false
                 },
@@ -343,8 +373,8 @@
                         "product_id": 1,
                         "vendor_id": 18003
                     },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
                     "simple_modifications": [],
                     "treat_as_built_in_keyboard": false
                 }
