@@ -1,13 +1,7 @@
 local M = {}
 
 M.register = function(bufnr)
-    local default_opts = { buffer = bufnr, silent = true }
-
-    local function map(mode, l, r, opts)
-        opts = opts or {}
-        local merged_opts = vim.tbl_deep_extend("force", opts, default_opts)
-        vim.keymap.set(mode, l, r, merged_opts)
-    end
+    local map = require("my.utils").map_factory({ buffer = bufnr, silent = true })
 
     -- Navigation
     map("n", "]h", "&diff ? ']c' : ':Gitsigns next_hunk<CR>'", { expr = true, desc = "Next hunk" })

@@ -1,4 +1,4 @@
-local map = vim.keymap.set
+local map = require("my.utils").map_factory({ silent = true })
 
 -- Disable some mappings
 map({ "i", "v" }, "<C-l>", "")
@@ -6,83 +6,58 @@ map({ "i", "v" }, "<C-h>", "")
 map({ "i", "v" }, "<C-j>", "")
 
 -- Indentation in visual mode
-map("v", ">", ">gv^", { silent = true, desc = "Indent right without leaving visual mode" })
-map("v", "<", "<gv^", { silent = true, desc = "Indent left without leaving visual mode" })
-map("v", "<Tab>", ">gv^", { silent = true, desc = "Indent right without leaving visual mode" })
-map("v", "<S-Tab>", "<gv^", { silent = true, desc = "Indent left without leaving visual mode" })
+map("v", ">", ">gv^", { desc = "Indent right without leaving visual mode" })
+map("v", "<", "<gv^", { desc = "Indent left without leaving visual mode" })
+map("v", "<Tab>", ">gv^", { desc = "Indent right without leaving visual mode" })
+map("v", "<S-Tab>", "<gv^", { desc = "Indent left without leaving visual mode" })
 
 -- Easy escape from insert mode
-map("i", "kk", "<ESC>", { silent = true, desc = "Escape from insert mode" })
-map("i", "kj", "<ESC>", { silent = true, desc = "Escape from insert mode" })
-map("i", "jk", "<ESC>", { silent = true, desc = "Escape from insert mode" })
-map("i", "jj", "<ESC>", { silent = true, desc = "Escape from insert mode" })
+map("i", "kk", "<ESC>", { desc = "Escape from insert mode" })
+map("i", "kj", "<ESC>", { desc = "Escape from insert mode" })
+map("i", "jk", "<ESC>", { desc = "Escape from insert mode" })
+map("i", "jj", "<ESC>", { desc = "Escape from insert mode" })
 
-map(
-    "x",
-    "J",
-    ":move '>+1<CR>gv-gv",
-    { silent = true, desc = "Move selected line/block of text up one line" }
-)
-map(
-    "x",
-    "K",
-    ":move '<-2<CR>gv-gv",
-    { silent = true, desc = "Move selected line/block of text down one line" }
-)
+map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move selected line/block of text up one line" })
+map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move selected line/block of text down one line" })
 
 -- Remap for dealing with word wrap
 map(
     "n",
     "k",
     "v:count == 0 ? 'gk' : 'k'",
-    { expr = true, silent = true, desc = "Move up one line through wrapped text" }
+    { expr = true, desc = "Move up one line through wrapped text" }
 )
 map(
     "n",
     "j",
     "v:count == 0 ? 'gj' : 'j'",
-    { expr = true, silent = true, desc = "Move down one line through wrapped text" }
+    { expr = true, desc = "Move down one line through wrapped text" }
 )
 
 -- Make command mode behave like terminal
-map("c", "<C-a>", "<Home>", { desc = "Go to beginning of command line" })
-map("c", "<C-e>", "<End>", { desc = "Go to end of command line" })
-map("c", "<C-b>", "<Left>", { desc = "Go back one character" })
-map("c", "<C-f>", "<Right>", { desc = "Go forward one character" })
+map("c", "<C-a>", "<Home>", { silent = false, desc = "Go to beginning of command line" })
+map("c", "<C-e>", "<End>", { silent = false, desc = "Go to end of command line" })
+map("c", "<C-b>", "<Left>", { silent = false, desc = "Go back one character" })
+map("c", "<C-f>", "<Right>", { silent = false, desc = "Go forward one character" })
 
 -- Quickfix navigation
-map("n", "[q", ":cprev<CR>zz", { silent = true, desc = "Go to previous quickfix item" })
-map("n", "]q", ":cnext<CR>zz", { silent = true, desc = "Go to next quickfix item" })
+map("n", "[q", ":cprev<CR>zz", { desc = "Go to previous quickfix item" })
+map("n", "]q", ":cnext<CR>zz", { desc = "Go to next quickfix item" })
 
 -- Loclist navigation
-map("n", "[l", ":lprev<CR>zz", { silent = true, desc = "Go to previous location list item" })
-map("n", "]l", ":lnext<CR>zz", { silent = true, desc = "Go to next location list item" })
+map("n", "[l", ":lprev<CR>zz", { desc = "Go to previous location list item" })
+map("n", "]l", ":lnext<CR>zz", { desc = "Go to next location list item" })
 
 -- Buffer navigation
-map("n", "[b", ":bprev<CR>", { silent = true, desc = "Go to previous buffer" })
-map("n", "]b", ":bnext<CR>", { silent = true, desc = "Go to next buffer" })
+map("n", "[b", ":bprev<CR>", { desc = "Go to previous buffer" })
+map("n", "]b", ":bnext<CR>", { desc = "Go to next buffer" })
 
 ------------------------------- LEADER MAPPINGS -------------------------------
 
-map(
-    { "n", "v" },
-    "<Leader>th",
-    ":set hlsearch!<CR>",
-    { silent = true, desc = "Toggle highlighting" }
-)
-map(
-    { "n", "v" },
-    "<Leader>tr",
-    ":set invrelativenumber<CR>",
-    { silent = true, desc = "Toggle relative number" }
-)
-map({ "n", "v" }, "<Leader>ts", ":set spell!<CR>", { silent = true, desc = "Toggle spelling" })
-map(
-    { "n", "v" },
-    "<Leader>tw",
-    ":set list!<CR>",
-    { silent = true, desc = "Toggle whitespace chars" }
-)
+map({ "n", "v" }, "<Leader>th", ":set hlsearch!<CR>", { desc = "Toggle highlighting" })
+map({ "n", "v" }, "<Leader>tr", ":set invrelativenumber<CR>", { desc = "Toggle relative number" })
+map({ "n", "v" }, "<Leader>ts", ":set spell!<CR>", { desc = "Toggle spelling" })
+map({ "n", "v" }, "<Leader>tw", ":set list!<CR>", { desc = "Toggle whitespace chars" })
 map({ "n", "v" }, "<Leader>tk", function()
     local cc = '"'
         .. tostring(vim.g.soft_column_limit)
@@ -90,57 +65,57 @@ map({ "n", "v" }, "<Leader>tk", function()
         .. tostring(vim.g.hard_column_limit)
         .. ',999),",")'
     vim.cmd(':execute "set cc=" . (&cc == "" ?' .. cc .. ': "")')
-end, { silent = true, desc = "Toggle color column" })
-map({ "n", "v" }, "<Leader>tf", "za", { silent = true, desc = "Toggle folding" })
+end, { desc = "Toggle color column" })
+map({ "n", "v" }, "<Leader>tf", "za", { desc = "Toggle folding" })
 
 -- Clipboard
-map("n", "<Leader>a", "<cmd> %+y<CR>", { silent = true, desc = "Copy file contents to clipboard" })
+map("n", "<Leader>a", "<cmd> %+y<CR>", { desc = "Copy file contents to clipboard" })
 
 -- Quit
-map("n", "<Leader>q", ":quitall<CR>", { silent = true, desc = "Quit neovim" })
-map("n", "<Leader>Q", ":quitall!<CR>", { silent = true, desc = "Force-quit neovim" })
+map("n", "<Leader>q", ":quitall<CR>", { desc = "Quit neovim" })
+map("n", "<Leader>Q", ":quitall!<CR>", { desc = "Force-quit neovim" })
 
 -- Buffer
-map("n", "<Leader>bd", ":bdelete<CR>", { silent = true, desc = "Delete buffer" })
-map("n", "<Leader>bD", ":bdelete!<CR>", { silent = true, desc = "Force-delete buffer" })
+map("n", "<Leader>bd", ":bdelete<CR>", { desc = "Delete buffer" })
+map("n", "<Leader>bD", ":bdelete!<CR>", { desc = "Force-delete buffer" })
 
 -- Resize windows
-map("n", "<A-Up>", ":resize -2<CR>", { silent = true, desc = "Resize window upward" })
-map("n", "<A-Down>", ":resize +2<CR>", { silent = true, desc = "Resize window downward" })
-map("n", "<A-Left>", ":vertical resize -2<CR>", { silent = true, desc = "Resize window left" })
-map("n", "<A-Right>", ":vertical resize +2<CR>", { silent = true, desc = "Resize window right" })
+map("n", "<A-Up>", ":resize -2<CR>", { desc = "Resize window upward" })
+map("n", "<A-Down>", ":resize +2<CR>", { desc = "Resize window downward" })
+map("n", "<A-Left>", ":vertical resize -2<CR>", { desc = "Resize window left" })
+map("n", "<A-Right>", ":vertical resize +2<CR>", { desc = "Resize window right" })
 
 -- Search and Replace
 map(
     "n",
     "<Leader>r",
     [["zyiw:%s/\<<C-r>z\>/<C-r>z/g<Left><Left>]],
-    { silent = true, desc = "Replace word under cursor" }
+    { silent = false, desc = "Replace word under cursor" }
 )
 map(
     "n",
     "<Leader>R",
     [["zyiW:%s/\<<C-r>z\>/<C-r>z/g<Left><Left>]],
-    { silent = true, desc = "Replace WORD under cursor" }
+    { silent = false, desc = "Replace WORD under cursor" }
 )
 
 -- Handling merge conflicts
-map("n", "<Leader>gf", ":diffget //2<CR>", { silent = true, desc = "Choose our change" })
-map("n", "<Leader>gj", ":diffget //3<CR>", { silent = true, desc = "Choose incoming change" })
+map("n", "<Leader>gf", ":diffget //2<CR>", { desc = "Choose our change" })
+map("n", "<Leader>gj", ":diffget //3<CR>", { desc = "Choose incoming change" })
 
 -- Insert ISO-date
+map("n", "<Leader>id", [["=strftime("%F")<CR>P]], { desc = "Insert ISO-date: YYYY-MM-DD" })
 map(
-    "n",
-    "<Leader>id",
-    [["=strftime("%F")<CR>P]],
-    { silent = true, desc = "Insert ISO-date: YYYY-MM-DD" }
+    "c",
+    "<C-d>",
+    "<C-r>=strftime('%F')<CR>",
+    { silent = false, desc = "Insert ISO-date: YYYY-MM-DD" }
 )
-map("c", "<C-d>", "<C-r>=strftime('%F')<CR>", { desc = "Insert ISO-date: YYYY-MM-DD" })
 map(
     "n",
     "<Leader>iD",
     [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]],
-    { silent = true, desc = "Insert ISO-date: YYYY-MM-DDTHH:MM:SS" }
+    { desc = "Insert ISO-date: YYYY-MM-DDTHH:MM:SS" }
 )
 
 -- Extended text-objects
@@ -151,13 +126,13 @@ for _, char in ipairs(chars) do
             mode,
             "i" .. char,
             string.format(":<C-u>silent! normal! f%sF%slvt%s<CR>", char, char, char),
-            { silent = true, desc = "inner " .. char .. "text" .. char }
+            { desc = "inner " .. char .. "text" .. char }
         )
         vim.keymap.set(
             mode,
             "a" .. char,
             string.format(":<C-u>silent! normal! f%sF%svf%s<CR>", char, char, char),
-            { silent = true, desc = "surrounding " .. char .. "text" .. char }
+            { desc = "surrounding " .. char .. "text" .. char }
         )
     end
 end

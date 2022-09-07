@@ -1,14 +1,9 @@
-local map = vim.keymap.set
+local map = require("my.utils").map_factory({ remap = true, silent = true })
 
-map(
-    "n",
-    "<leader>/",
-    "<Plug>kommentary_line_default",
-    { silent = true, remap = true, desc = "Comment/uncomment line" }
-)
+map("n", "<leader>/", "<Plug>kommentary_line_default", { desc = "Comment/uncomment line" })
 map(
     "v",
     "<leader>/",
     "<Plug>kommentary_visual_default",
-    { silent = true, remap = true, desc = "Comment/uncomment visual selection" }
+    { desc = "Comment/uncomment visual selection" }
 )

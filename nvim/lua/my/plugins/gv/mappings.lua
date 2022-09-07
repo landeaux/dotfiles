@@ -1,18 +1,8 @@
-local map = vim.keymap.set
+local map = require("my.utils").map_factory({ silent = true })
 
-map(
-    "n",
-    "<Leader>gvc",
-    ":GV!<CR>",
-    { silent = true, desc = "List commits that affected current file" }
-)
-map(
-    "n",
-    "<Leader>gvl",
-    ":GV?<CR>",
-    { silent = true, desc = "Fill location list with revisions of current file" }
-)
-map("n", "<Leader>gvo", ":GV<CR>", { silent = true, desc = "Open commit browser" })
+map("n", "<Leader>gvc", ":GV!<CR>", { desc = "List commits that affected current file" })
+map("n", "<Leader>gvl", ":GV?<CR>", { desc = "Fill location list with revisions of current file" })
+map("n", "<Leader>gvo", ":GV<CR>", { desc = "Open commit browser" })
 
 local ok, wk = pcall(require, "which-key")
 if ok then

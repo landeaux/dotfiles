@@ -14,7 +14,7 @@ function M.map_factory(default_opts)
     default_opts = default_opts or {}
     local _map = function(mode, l, r, opts)
         opts = opts or {}
-        local merged_opts = vim.tbl_deep_extend("force", opts, default_opts)
+        local merged_opts = vim.tbl_deep_extend("force", default_opts, opts)
         vim.keymap.set(mode, l, r, merged_opts)
     end
     return _map

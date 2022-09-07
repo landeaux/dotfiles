@@ -1,19 +1,18 @@
+local map = require("my.utils").map_factory({ silent = true })
+
 local register_mappings = function()
-    local map = vim.keymap.set
     map("n", "<leader>pl", "<Plug>(pydocstring)", {
         remap = true,
-        silent = true,
-        desc = "Add docstring to function or class under the cursor",
+        desc = "Add docstring to function/class under cursor",
     })
     map(
         "n",
         "<leader>pf",
         ":PydocstringFormat<CR>",
-        { silent = true, desc = "Add docstrings to all functions and classes in the file" }
+        { desc = "Add docstrings to all functions/classes in file" }
     )
     map("v", "<leader>p", ":'<,'>Pydocstring<CR>", {
-        silent = true,
-        desc = "Add python docstring to the function or class inside visual selection",
+        desc = "Add docstring to selected function/class",
     })
 
     local ok, wk = pcall(require, "which-key")

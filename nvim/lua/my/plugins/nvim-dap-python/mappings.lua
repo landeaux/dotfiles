@@ -1,17 +1,17 @@
-local register_mappings = function()
-    local map = vim.keymap.set
+local map = require("my.utils").map_factory({ buffer = true, silent = true })
 
+local register_mappings = function()
     map("n", "<LocalLeader>dm", function()
         require("dap-python").test_method({})
-    end, { buffer = true, silent = true, desc = "Test method" })
+    end, { desc = "Test method" })
     map("n", "<LocalLeader>dc", function()
         require("dap-python").test_class({})
-    end, { buffer = true, silent = true, desc = "Test class" })
+    end, { desc = "Test class" })
     map(
         "v",
         "<LocalLeader>ds",
         '<ESC>:lua require("dap-python").debug_selection({})<CR>',
-        { buffer = true, silent = true, desc = "Debug selection" }
+        { desc = "Debug selection" }
     )
 
     local ok, wk = pcall(require, "which-key")
