@@ -8,9 +8,9 @@ map("n", "<Leader>bmn", ":BufferLineMoveNext<CR>", { desc = "Move buffer next" }
 map("n", "<Leader>bmp", ":BufferLineMovePrev<CR>", { desc = "Move buffer previous" })
 
 -- These commands will sort buffers by directory, language, or a custom criteria
-map("n", "<Leader>boe", ":BufferLineSortByExtension<CR>", { desc = "Order buffers by extension" })
-map("n", "<Leader>bod", ":BufferLineSortByDirectory<CR>", { desc = "Order buffers by directory" })
-map("n", "<Leader>boi", function()
+map("n", "<Leader>bse", ":BufferLineSortByExtension<CR>", { desc = "Order buffers by extension" })
+map("n", "<Leader>bsd", ":BufferLineSortByDirectory<CR>", { desc = "Order buffers by directory" })
+map("n", "<Leader>bsi", function()
     require("bufferline").sort_buffers_by(function(buf_a, buf_b)
         return buf_a.id < buf_b.id
     end)
@@ -35,7 +35,7 @@ if ok then
         b = {
             name = "+buffer",
             m = { name = "+move" },
-            o = { name = "+order" },
+            s = { name = "+sort" },
         },
     }, { prefix = "<leader>" })
 end

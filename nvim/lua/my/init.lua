@@ -2,6 +2,7 @@ local my_modules = {
     "my.disabled",
     "my.settings",
     "my.scratch",
+    "my.buf_only",
     "my.pluginsInit",
     "my.autocmd",
     "my.mappings",
