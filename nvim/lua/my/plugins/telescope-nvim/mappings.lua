@@ -39,13 +39,8 @@ map("n", "<Leader>fGi", function()
         },
     })
 end, { desc = "Live grep (include ignored)" })
-map(
-    "n",
-    "<Leader>fed",
-    ":Telescope diagnostics bufnr=0<CR>",
-    { desc = "Find diagnostics (buffer)" }
-)
-map("n", "<Leader>few", ":Telescope diagnostics<CR>", { desc = "Find diagnostics (workspace)" })
+map("n", "<Leader>fe", ":Telescope diagnostics bufnr=0<CR>", { desc = "Find diagnostics (buffer)" })
+map("n", "<Leader>fE", ":Telescope diagnostics<CR>", { desc = "Find diagnostics (workspace)" })
 map("n", "<Leader>fh", ":Telescope help_tags<CR>", { desc = "Find help tags" })
 map("n", "<Leader>fo", ":Telescope oldfiles<CR>", { desc = "Find previous files" })
 map("n", "<Leader>ft", ":Telescope treesitter<CR>", { desc = "Find treesitter nodes" })
@@ -69,9 +64,6 @@ if ok then
     wk.register({
         f = {
             name = "+telescope",
-            e = {
-                name = "+diagnostics",
-            },
             F = {
                 name = "+find_files",
             },
