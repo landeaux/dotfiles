@@ -12,20 +12,14 @@ map("n", "<Leader>fc", ":Telescope commands<CR>", { desc = "Find commands" })
 map("n", "<Leader>ff", ":Telescope find_files<CR>", { desc = "Find files" })
 map(
     "n",
-    "<Leader>fFi",
+    "<Leader>fF",
     ":Telescope find_files no_ignore=true<CR>",
     { desc = "Find files (include ignored)" }
 )
--- map("n", "<Leader>fF", ":Telescope find_files search_dirs=", { desc = "Find files in directory" })
 map("n", "<Leader>fg", function()
     require("my.plugins.telescope-pickers").live_grep()
 end, { desc = "Live grep" })
--- map(
---     "n",
---     "<Leader>fGf",
---     ":lua require('my.plugins.telescope-pickers').live_grep_in_folder()<CR>",
--- { desc = "Live grep in folder(s)" })
-map("n", "<Leader>fGi", function()
+map("n", "<Leader>fG", function()
     require("telescope.builtin").live_grep({
         vimgrep_arguments = {
             "rg",
@@ -48,7 +42,7 @@ map("n", "<Leader>fw", ":Telescope grep_string<CR>", { desc = "Find word under c
 map(
     "v",
     "<Leader>f",
-    '"zy:Telescope live_grep default_text=<C-r>z<CR>',
+    '"zy:lua require("telescope.builtin").live_grep({ default_text=vim.fn.getreg("z") })<CR>',
     { desc = "Live grep selected text" }
 )
 
@@ -64,12 +58,6 @@ if ok then
     wk.register({
         f = {
             name = "+telescope",
-            F = {
-                name = "+find_files",
-            },
-            G = {
-                name = "+live_grep",
-            },
             -- Extensions
             d = {
                 name = "+dap",
