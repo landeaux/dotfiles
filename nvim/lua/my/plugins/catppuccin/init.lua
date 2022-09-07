@@ -24,6 +24,14 @@ require("catppuccin").setup({
         },
         which_key = true,
     },
+    highlight_overrides = {
+        all = {
+            SpellBad = { style = { "underdot" } },
+            SpellCap = { style = { "underdot" } },
+            SpellRare = { style = { "underdot" } },
+            SpellLocal = { style = { "underdot" } },
+        },
+    },
 })
 
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
