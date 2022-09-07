@@ -317,8 +317,6 @@ packer.startup(function()
         config = function()
             require("my.plugins.telescope-nvim")
         end,
-        cmd = "Telescope",
-        module = "telescope",
     })
 
     -- Automatic pair insertion
