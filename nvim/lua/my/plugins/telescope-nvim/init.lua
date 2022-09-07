@@ -112,6 +112,13 @@ require("telescope").setup({
             sort_lastused = true,
             cwd_only = true,
         },
+        buffers = {
+            mappings = {
+                i = {
+                    ["<c-x>"] = actions.delete_buffer,
+                },
+            },
+        },
     },
 })
 
