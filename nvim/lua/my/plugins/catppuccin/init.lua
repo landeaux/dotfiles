@@ -2,6 +2,9 @@ require("catppuccin").setup({
     styles = {
         keywords = { "italic" },
     },
+    dim_inactive = {
+        enabled = true,
+    },
     integrations = {
         dap = {
             enabled = true,
