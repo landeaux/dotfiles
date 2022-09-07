@@ -7,7 +7,7 @@ config.configure_language({ "javascript", "typescript" }, {
 })
 config.configure_language({ "javascriptreact", "typescriptreact", "vue" }, {
     hook_function = function()
-        require("ts_context_commentstring.internal").update_commentstring()
+        require("ts_context_commentstring.internal").update_commentstring({})
     end,
     prefer_single_line_comments = true,
     single_line_comment_string = "auto",
