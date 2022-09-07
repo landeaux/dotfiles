@@ -43,6 +43,8 @@ packer.init({
     -- },
 })
 
+require("my.plugins.packer.mappings")
+
 return {
     packer = packer,
     packer_bootstrap = packer_bootstrap,

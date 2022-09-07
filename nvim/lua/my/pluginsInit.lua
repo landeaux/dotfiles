@@ -71,6 +71,9 @@ packer.startup(function()
         "akinsho/bufferline.nvim",
         tag = "v2.*",
         requires = "kyazdani42/nvim-web-devicons",
+        setup = function()
+            require("my.plugins.bufferline.mappings")
+        end,
         config = function()
             require("my.plugins.bufferline")
         end,
@@ -79,6 +82,9 @@ packer.startup(function()
     -- Indent guides
     use({
         "lukas-reineke/indent-blankline.nvim",
+        setup = function()
+            require("my.plugins.indent-blankline.mappings")
+        end,
         config = function()
             require("my.plugins.indent-blankline")
         end,
@@ -87,6 +93,9 @@ packer.startup(function()
     -- Colorize color codes
     use({
         "norcalli/nvim-colorizer.lua",
+        setup = function()
+            require("my.plugins.nvim-colorizer.mappings")
+        end,
         config = function()
             require("my.plugins.nvim-colorizer")
         end,
@@ -109,6 +118,9 @@ packer.startup(function()
                 end,
             },
         },
+        setup = function()
+            require("my.plugins.neo-tree.mappings")
+        end,
         config = function()
             require("my.plugins.neo-tree")
         end,
@@ -128,6 +140,9 @@ packer.startup(function()
     })
     use({
         "tpope/vim-fugitive",
+        setup = function()
+            require("my.plugins.fugitive.mappings")
+        end,
         cmd = {
             "G",
             "GBrowse",
@@ -139,14 +154,29 @@ packer.startup(function()
         },
         keys = "<Leader>g",
     })
-    use({ "junegunn/gv.vim", requires = { "tpope/vim-fugitive" } })
+    use({
+        "junegunn/gv.vim",
+        requires = { "tpope/vim-fugitive" },
+        setup = function()
+            require("my.plugins.gv.mappings")
+        end,
+    })
 
     -- Undo Tree
-    use({ "mbbill/undotree", cmd = "UndotreeToggle" })
+    use({
+        "mbbill/undotree",
+        setup = function()
+            require("my.plugins.undotree.mappings")
+        end,
+        cmd = "UndotreeToggle",
+    })
 
     -- Floating Terminal
     use({
         "numtostr/FTerm.nvim",
+        setup = function()
+            require("my.plugins.fterm.mappings")
+        end,
         config = function()
             require("my.plugins.fterm")
         end,
@@ -158,6 +188,9 @@ packer.startup(function()
     -- Comments
     use({
         "b3nj5m1n/kommentary",
+        setup = function()
+            require("my.plugins.kommentary.mappings")
+        end,
         config = function()
             require("my.plugins.kommentary")
         end,
@@ -223,6 +256,9 @@ packer.startup(function()
     use({
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
+        setup = function()
+            require("my.plugins.tree-sitter.mappings")
+        end,
         config = function()
             require("my.plugins.tree-sitter")
         end,
@@ -234,6 +270,9 @@ packer.startup(function()
     -- Debugging
     use({
         "mfussenegger/nvim-dap",
+        setup = function()
+            require("my.plugins.nvim-dap.mappings")
+        end,
         config = function()
             require("my.plugins.nvim-dap")
         end,
@@ -252,6 +291,9 @@ packer.startup(function()
     use({
         "mfussenegger/nvim-dap-python",
         requires = { "mfussenegger/nvim-dap" },
+        setup = function()
+            require("my.plugins.nvim-dap-python.mappings")
+        end,
         config = function()
             require("my.plugins.nvim-dap-python")
         end,
@@ -270,12 +312,14 @@ packer.startup(function()
             },
             "nvim-telescope/telescope-dap.nvim",
         },
+        setup = function()
+            require("my.plugins.telescope-nvim.mappings")
+        end,
         config = function()
             require("my.plugins.telescope-nvim")
         end,
         cmd = "Telescope",
         module = "telescope",
-        after = { "nvim-dap" },
     })
 
     -- Automatic pair insertion
@@ -319,6 +363,9 @@ packer.startup(function()
         run = function()
             vim.fn["mkdp#util#install"]()
         end,
+        setup = function()
+            require("my.plugins.markdown-preview.mappings")
+        end,
         config = function()
             require("my.plugins.markdown-preview")
         end,
@@ -332,6 +379,9 @@ packer.startup(function()
     use({
         "heavenshell/vim-pydocstring",
         run = "make install",
+        setup = function()
+            require("my.plugins.vim-pydocstring.mappings")
+        end,
         config = function()
             require("my.plugins.vim-pydocstring")
         end,
