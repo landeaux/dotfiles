@@ -99,6 +99,12 @@ packer.startup(function()
         config = function()
             require("my.plugins.nvim-colorizer")
         end,
+        cmd = {
+            "ColorizerAttachToBuffer",
+            "ColorizerDetachFromBuffer",
+            "ColorizerReloadAllBuffers",
+            "ColorizerToggle",
+        },
     })
 
     -- File Tree
@@ -160,6 +166,7 @@ packer.startup(function()
         setup = function()
             require("my.plugins.gv.mappings")
         end,
+        cmd = { "GV" },
     })
 
     -- Undo Tree
@@ -195,13 +202,33 @@ packer.startup(function()
             require("my.plugins.kommentary")
         end,
         requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
+        keys = { "gc", "<Plug>kommentary_line_default" },
     })
 
     -- Remember last location in file
     use("farmergreg/vim-lastplace")
 
     -- UNIX helper
-    use("tpope/vim-eunuch")
+    use({
+        "tpope/vim-eunuch",
+        cmd = {
+            "Cfind",
+            "Chmod",
+            "Clocate",
+            "Copy",
+            "Delete",
+            "Duplicate",
+            "Lfind",
+            "Llocate",
+            "Mkdir",
+            "Move",
+            "Remove",
+            "Rename",
+            "SudoEdit",
+            "SudoWrite",
+            "Wall",
+        },
+    })
 
     -- Automatically change current directory
     use({
