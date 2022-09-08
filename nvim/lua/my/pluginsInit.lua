@@ -194,15 +194,11 @@ packer.startup(function()
 
     -- Comments
     use({
-        "b3nj5m1n/kommentary",
-        setup = function()
-            require("my.plugins.kommentary.mappings")
-        end,
+        "numToStr/Comment.nvim",
         config = function()
-            require("my.plugins.kommentary")
+            require("my.plugins.comment-nvim")
         end,
-        requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
-        keys = { "gc", "<Plug>kommentary_line_default" },
+        keys = { "gc", "gb" },
     })
 
     -- Remember last location in file
