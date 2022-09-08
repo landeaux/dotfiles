@@ -269,6 +269,7 @@ packer.startup(function()
 
     use({
         "jose-elias-alvarez/null-ls.nvim",
+        commit = "bb19d790e139713eaddbcd8fd8ee58a23d290bda",
         config = function()
             require("my.plugins.lsp.providers.null_ls")
         end,
