@@ -168,6 +168,7 @@ packer.startup(function()
         end,
         cmd = { "GV" },
     })
+    use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
     -- Undo Tree
     use({
