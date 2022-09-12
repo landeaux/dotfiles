@@ -85,7 +85,7 @@ opt.listchars = {
     trail = "•",
 }
 opt.fillchars = {
-    diff = " ",
+    diff = "╱",
     eob = " ",
 }
 opt.showmode = false

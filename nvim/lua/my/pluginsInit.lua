@@ -171,6 +171,12 @@ packer.startup(function()
     use({
         "sindrets/diffview.nvim",
         requires = "nvim-lua/plenary.nvim",
+        setup = function()
+            require("my.plugins.diffview-nvim.mappings")
+        end,
+        config = function()
+            require("my.plugins.diffview-nvim")
+        end,
         cmd = {
             "DiffviewClose",
             "DiffviewFileHistory",
