@@ -77,7 +77,6 @@ SPACESHIP_VENV_SHOW=true
 plugins=(
   git
   node
-  pipenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -173,7 +172,7 @@ fi
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1  # make sure venv is always in the project dir
 export PIPENV_DONT_LOAD_ENV=1  # don't let pipenv autoload env... we have direnv for this
-eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
+eval "$(_PIPENV_COMPLETE=zsh_source pipenv)" # set up magic shell completion
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
