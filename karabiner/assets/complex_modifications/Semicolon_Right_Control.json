@@ -1,13 +1,13 @@
 {
-  "title": "Caps Lock to Escape, enable Caps Lock when held",
+  "title": "Semicolon duals as Right Control when held.",
   "rules": [
     {
-      "description": "Caps Lock to Escape on single press, Caps Lock on press and hold.",
+      "description": "Change semicolon to right_control if pressed with other keys, semicolon if pressed alone.",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "caps_lock",
+            "key_code": "semicolon",
             "modifiers": {
               "optional": [
                 "any"
@@ -16,12 +16,12 @@
           },
           "to": [
             {
-              "key_code": "escape"
+              "key_code": "right_control"
             }
           ],
-          "to_if_held_down": [
+          "to_if_alone": [
             {
-              "key_code": "caps_lock"
+              "key_code": "semicolon"
             }
           ]
         }
@@ -29,3 +29,4 @@
     }
   ]
 }
+

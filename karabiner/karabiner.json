@@ -2,7 +2,8 @@
     "global": {
         "check_for_updates_on_startup": true,
         "show_in_menu_bar": true,
-        "show_profile_name_in_menu_bar": false
+        "show_profile_name_in_menu_bar": false,
+        "unsafe_ui": false
     },
     "profiles": [
         {
@@ -44,77 +45,25 @@
                         ]
                     },
                     {
-                        "description": "A when pressed, Left Control when held",
+                        "description": "Change caps_lock to left_control if pressed with other keys, change caps_lock to escape if pressed alone.",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "a",
+                                    "key_code": "caps_lock",
                                     "modifiers": {
                                         "optional": [
                                             "any"
                                         ]
                                     }
                                 },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_alone_timeout_milliseconds": 199,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "key_code": "a"
-                                        }
-                                    ]
-                                },
-                                "to_if_alone": [
-                                    {
-                                        "halt": true,
-                                        "key_code": "a"
-                                    }
-                                ],
-                                "to_if_held_down": [
+                                "to": [
                                     {
                                         "key_code": "left_control"
                                     }
                                 ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "S when pressed, Left Option when held",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_alone_timeout_milliseconds": 199,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "key_code": "s"
-                                        }
-                                    ]
-                                },
                                 "to_if_alone": [
                                     {
-                                        "halt": true,
-                                        "key_code": "s"
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "left_option"
+                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
@@ -122,46 +71,7 @@
                         ]
                     },
                     {
-                        "description": "D when pressed, Left Command when held",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_alone_timeout_milliseconds": 199,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "key_code": "d"
-                                        }
-                                    ]
-                                },
-                                "to_if_alone": [
-                                    {
-                                        "halt": true,
-                                        "key_code": "d"
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "left_command"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Semicolon when pressed, Right Control when held",
+                        "description": "Change semicolon to right_control if pressed with other keys, semicolon if pressed alone.",
                         "manipulators": [
                             {
                                 "from": {
@@ -172,105 +82,14 @@
                                         ]
                                     }
                                 },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_alone_timeout_milliseconds": 199,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "key_code": "semicolon"
-                                        }
-                                    ]
-                                },
-                                "to_if_alone": [
-                                    {
-                                        "halt": true,
-                                        "key_code": "semicolon"
-                                    }
-                                ],
-                                "to_if_held_down": [
+                                "to": [
                                     {
                                         "key_code": "right_control"
                                     }
                                 ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "L when pressed, Right Option when held",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_alone_timeout_milliseconds": 199,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "key_code": "l"
-                                        }
-                                    ]
-                                },
                                 "to_if_alone": [
                                     {
-                                        "halt": true,
-                                        "key_code": "l"
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "right_option"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "K when pressed, Right Command when held",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 200,
-                                    "basic.to_if_alone_timeout_milliseconds": 199,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        {
-                                            "key_code": "k"
-                                        }
-                                    ]
-                                },
-                                "to_if_alone": [
-                                    {
-                                        "halt": true,
-                                        "key_code": "k"
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "right_command"
+                                        "key_code": "semicolon"
                                     }
                                 ],
                                 "type": "basic"
@@ -506,18 +325,7 @@
                 "delay_milliseconds_before_open_device": 1000
             },
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": [
-                        {
-                            "key_code": "escape"
-                        }
-                    ]
-                }
-            ],
+            "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "indicate_sticky_modifier_keys_state": true,
