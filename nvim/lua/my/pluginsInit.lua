@@ -188,15 +188,6 @@ packer.startup(function()
         },
     })
 
-    -- Undo Tree
-    use({
-        "mbbill/undotree",
-        setup = function()
-            require("my.plugins.undotree.mappings")
-        end,
-        cmd = "UndotreeToggle",
-    })
-
     -- Floating Terminal
     use({
         "numtostr/FTerm.nvim",
@@ -432,16 +423,7 @@ packer.startup(function()
     use({ "Vimjas/vim-python-pep8-indent", ft = "python" })
 
     -- Syntax highlighting for .mdx
-    use({ "jxnblk/vim-mdx-js", ft = "mdx" })
-
-    -- zk
-    use({
-        "mickael-menu/zk-nvim",
-        config = function()
-            require("my.plugins.zk-nvim")
-        end,
-        ft = "markdown",
-    })
+    -- use({ "jxnblk/vim-mdx-js", ft = "mdx" })
 
     if my_packer.packer_bootstrap then
         packer.sync()
