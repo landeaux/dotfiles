@@ -66,7 +66,6 @@ map({ "n", "v" }, "<Leader>tk", function()
         .. ',999),",")'
     vim.cmd(':execute "set cc=" . (&cc == "" ?' .. cc .. ': "")')
 end, { desc = "Toggle color column" })
-map({ "n", "v" }, "<Leader>tf", "za", { desc = "Toggle folding" })
 
 -- Clipboard
 map("n", "<Leader>a", "<cmd> %+y<CR>", { desc = "Copy file contents to clipboard" })
