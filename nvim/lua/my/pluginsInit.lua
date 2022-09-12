@@ -168,7 +168,19 @@ packer.startup(function()
         end,
         cmd = { "GV" },
     })
-    use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+    use({
+        "sindrets/diffview.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        cmd = {
+            "DiffviewClose",
+            "DiffviewFileHistory",
+            "DiffviewFocusFiles",
+            "DiffviewLog",
+            "DiffviewOpen",
+            "DiffviewRefresh",
+            "DiffviewToggleFiles",
+        },
+    })
 
     -- Undo Tree
     use({
