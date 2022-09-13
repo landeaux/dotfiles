@@ -13,6 +13,8 @@ packer.startup(function()
     -- Which Key
     use({
         "folke/which-key.nvim",
+        -- Commit SHA 33b4e72a07546bc4798b4bafb99ae06df47bd790 breaks macros
+        commit = "d1872f13ae7d13e41cb2879739bf0915c9491ea6",
         config = function()
             require("my.plugins.whichkey")
         end,
@@ -142,7 +144,6 @@ packer.startup(function()
         config = function()
             require("my.plugins.gitsigns")
         end,
-        after = "which-key.nvim",
     })
     use({
         "tpope/vim-fugitive",
@@ -274,11 +275,12 @@ packer.startup(function()
                 end,
             },
         },
-        after = "which-key.nvim",
     })
 
     use({
         "jose-elias-alvarez/null-ls.nvim",
+        -- Commits after this point write temp files to local directory, which
+        -- causes issues with file watchers (e.g. pytest-watch)
         commit = "bb19d790e139713eaddbcd8fd8ee58a23d290bda",
         config = function()
             require("my.plugins.lsp.providers.null_ls")
