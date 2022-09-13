@@ -152,7 +152,7 @@ require("neo-tree").setup({
             hide_gitignored = true,
             hide_hidden = true, -- only works on Windows for hidden files/directories
             hide_by_name = {
-                ".git"
+                ".git",
                 --"node_modules"
             },
             hide_by_pattern = { -- uses glob style patterns
@@ -182,8 +182,8 @@ require("neo-tree").setup({
                 ["/"] = "fuzzy_finder",
                 ["D"] = "fuzzy_finder_directory",
                 ["F"] = "filter_on_submit",
-                ["ff"] = find_files,
-                ["fg"] = live_grep,
+                ["<c-f>"] = find_files,
+                ["<c-g>"] = live_grep,
                 ["<c-x>"] = "clear_filter",
                 ["[g"] = "prev_git_modified",
                 ["]g"] = "next_git_modified",
