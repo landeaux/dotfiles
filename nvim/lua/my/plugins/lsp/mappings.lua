@@ -51,7 +51,7 @@ M.register = function(client, bufnr)
             { title = "Workspace Folders", hide_from_history = true }
         )
     end, { desc = "List workspace folders" })
-    map("n", "<Leader>lI", ":LspInfo<CR>", { desc = "Show LSP info" })
+    map("n", "<Leader>li", ":LspInfo<CR>", { desc = "Show LSP info" })
 
     -- Telescope LSP
     map(
