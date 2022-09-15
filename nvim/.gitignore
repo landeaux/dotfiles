@@ -1,5 +1,4 @@
 .netrwhist
 lua/my/compiled.lua
 pack/**
-plugin/
 sessions/**
