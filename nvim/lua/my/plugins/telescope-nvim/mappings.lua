@@ -52,18 +52,3 @@ map("n", "<Leader>fdf", ":Telescope dap frames<CR>", { desc = "Find dap frames" 
 map("n", "<Leader>fdl", ":Telescope dap list_breakpoints<CR>", { desc = "Find dap breakpoints" })
 map("n", "<Leader>fds", ":Telescope dap configurations<CR>", { desc = "Find dap configurations" })
 map("n", "<Leader>fdv", ":Telescope dap variables<CR>", { desc = "Find dap variables" })
-
-local ok, wk = pcall(require, "which-key")
-if ok then
-    wk.register({
-        f = {
-            name = "+telescope",
-            -- Extensions
-            d = {
-                name = "+dap",
-            },
-        },
-    }, {
-        prefix = "<leader>",
-    })
-end

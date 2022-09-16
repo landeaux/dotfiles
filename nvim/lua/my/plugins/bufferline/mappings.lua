@@ -28,14 +28,3 @@ map("n", "<Leader>b6", ":BufferLineGoToBuffer 6<CR>", { desc = "Goto buffer 6" }
 map("n", "<Leader>b7", ":BufferLineGoToBuffer 7<CR>", { desc = "Goto buffer 7" })
 map("n", "<Leader>b8", ":BufferLineGoToBuffer 8<CR>", { desc = "Goto buffer 8" })
 map("n", "<Leader>b9", ":BufferLineGoToBuffer 9<CR>", { desc = "Goto buffer 9" })
-
-local ok, wk = pcall(require, "which-key")
-if ok then
-    wk.register({
-        b = {
-            name = "+buffer",
-            m = { name = "+move" },
-            s = { name = "+sort" },
-        },
-    }, { prefix = "<leader>" })
-end

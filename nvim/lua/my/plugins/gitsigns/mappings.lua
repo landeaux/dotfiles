@@ -32,12 +32,6 @@ M.register = function(bufnr)
 
     -- Text object
     map({ "o", "x" }, "ih", ":Gitsigns select_hunk<CR>", { desc = "Inner hunk" })
-
-    local ok, wk = pcall(require, "which-key")
-    if ok then
-        wk.register({ h = { name = "+hunk" } }, { prefix = "<leader>" })
-        wk.register({ h = { name = "+hunk" } }, { prefix = "<leader>", mode = "v" })
-    end
 end
 
 return M

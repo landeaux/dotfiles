@@ -54,9 +54,3 @@ map("n", "<Leader>df", function()
     local widgets = require("dap.ui.widgets")
     widgets.centered_float(widgets.scopes)
 end, { desc = "Widget float" })
-
-local ok, wk = pcall(require, "which-key")
-if ok then
-    wk.register({ d = { name = "+dap", b = { name = "+breakpoint" } } }, { prefix = "<leader>" })
-    wk.register({ d = { name = "+dap" } }, { mode = "v", prefix = "<leader>" })
-end

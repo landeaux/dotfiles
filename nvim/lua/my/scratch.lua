@@ -29,13 +29,4 @@ vim.keymap.set(
     { desc = "Open vertical scratch buffer" }
 )
 
-local ok, wk = pcall(require, "which-key")
-if ok then
-    wk.register({
-        s = {
-            name = "scratch",
-        },
-    }, { prefix = "<leader>" })
-end
-
 return M

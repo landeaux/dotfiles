@@ -8,8 +8,3 @@ end
 vim.keymap.set("n", "<leader>ps", "", {
     callback = packer_sync,
 }, { desc = "Sync Packer" })
-
-local ok, wk = pcall(require, "which-key")
-if ok then
-    wk.register({ p = { name = "+packer" } }, { prefix = "<leader>" })
-end

@@ -7,14 +7,6 @@ local function register_buffer_mappings()
     map("n", "<LocalLeader>p", "<Plug>MarkdownPreview")
     map("n", "<LocalLeader>s", "<Plug>MarkdownPreviewStop")
     map("n", "<LocalLeader>t", "<Plug>MarkdownPreviewToggle")
-
-    local ok, wk = pcall(require, "which-key")
-    if ok then
-        wk.register(
-            { p = "Start Preview", s = "Stop preview", t = "Toggle preview" },
-            { prefix = "<localleader>" }
-        )
-    end
 end
 
 require("my.utils").create_augroup({

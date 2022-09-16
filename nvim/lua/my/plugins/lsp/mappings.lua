@@ -1,4 +1,3 @@
-local which_key_ok, wk = pcall(require, "which-key")
 local map_factory = require("my.utils").map_factory
 
 local M = {}
@@ -20,10 +19,6 @@ M.register = function(client, bufnr)
         and vim.tbl_contains(allowed_to_format, client.name)
     then
         map("n", "<Leader>lf", vim.lsp.buf.formatting, { desc = "Format" })
-
-        if which_key_ok then
-            wk.register({ l = { name = "+lsp" } }, { prefix = "<leader>" })
-        end
     end
 
     -- Mappings
@@ -50,7 +45,9 @@ M.register = function(client, bufnr)
             "info",
             { title = "Workspace Folders", hide_from_history = true }
         )
-    end, { desc = "List workspace folders" })
+    end, {
+        desc = "List workspace folders",
+    })
     map("n", "<Leader>li", ":LspInfo<CR>", { desc = "Show LSP info" })
 
     -- Telescope LSP
@@ -66,16 +63,6 @@ M.register = function(client, bufnr)
         ":Telescope lsp_workspace_symbols<CR>",
         { desc = "Find workspace symbols" }
     )
-
-    if which_key_ok then
-        wk.register({
-            l = {
-                name = "+lsp",
-                s = { name = "+symbols" },
-                w = { name = "+workspace" },
-            },
-        }, { prefix = "<leader>" })
-    end
 end
 
 return M

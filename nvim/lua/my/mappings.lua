@@ -143,14 +143,3 @@ map("n", "<Leader>el", vim.diagnostic.open_float, { desc = "Show line diagnostic
 map("n", "<Leader>eq", vim.diagnostic.setloclist, { desc = "Add diagnostics to location list" })
 map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 map("n", "]e", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
-
-local ok, wk = pcall(require, "which-key")
-if ok then
-    wk.register({
-        b = { name = "+buffer" },
-        e = { name = "+diagnostics" },
-        g = { name = "+git" },
-        i = { name = "+insert" },
-        t = { name = "+ui-toggle" },
-    }, { prefix = "<leader>" })
-end

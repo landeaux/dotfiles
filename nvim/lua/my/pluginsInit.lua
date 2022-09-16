@@ -10,16 +10,6 @@ packer.startup(function()
         "nvim-lua/plenary.nvim",
     })
 
-    -- Which Key
-    use({
-        "folke/which-key.nvim",
-        -- Commit SHA 33b4e72a07546bc4798b4bafb99ae06df47bd790 breaks macros
-        commit = "d1872f13ae7d13e41cb2879739bf0915c9491ea6",
-        config = function()
-            require("my.plugins.whichkey")
-        end,
-    })
-
     -- Colorscheme
     use({
         "folke/tokyonight.nvim",
@@ -292,9 +282,6 @@ packer.startup(function()
     use({
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
-        setup = function()
-            require("my.plugins.tree-sitter.mappings")
-        end,
         config = function()
             require("my.plugins.tree-sitter")
         end,

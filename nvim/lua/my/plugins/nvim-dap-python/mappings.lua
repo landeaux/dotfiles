@@ -13,12 +13,6 @@ local register_mappings = function()
         '<ESC>:lua require("dap-python").debug_selection({})<CR>',
         { desc = "Debug selection" }
     )
-
-    local ok, wk = pcall(require, "which-key")
-    if ok then
-        wk.register({ d = { name = "+dap" } }, { prefix = "<localleader>" })
-        wk.register({ d = { name = "+dap" } }, { mode = "v", prefix = "<localleader>" })
-    end
 end
 
 require("my.utils").create_augroup({

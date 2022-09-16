@@ -14,11 +14,6 @@ local register_mappings = function()
     map("v", "<leader>p", ":'<,'>Pydocstring<CR>", {
         desc = "Add docstring to selected function/class",
     })
-
-    local ok, wk = pcall(require, "which-key")
-    if ok then
-        wk.register({ p = { name = "+pydocstring" } }, { prefix = "<leader>" })
-    end
 end
 
 require("my.utils").create_augroup({
