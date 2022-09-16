@@ -106,6 +106,7 @@ opt.updatetime = 0
 opt.lazyredraw = true -- faster macros
 opt.redrawtime = 1500
 opt.ttimeoutlen = 10
+opt.timeoutlen = 500 -- By default timeoutlen is 1000 ms
 
 -- Completion
 opt.completeopt = { "menu", "menuone", "noselect" }
