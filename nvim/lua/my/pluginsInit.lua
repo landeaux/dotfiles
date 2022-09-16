@@ -149,7 +149,6 @@ packer.startup(function()
             "Gdiffsplit",
             "Git",
         },
-        keys = "<Leader>g",
     })
     use({
         "junegunn/gv.vim",
