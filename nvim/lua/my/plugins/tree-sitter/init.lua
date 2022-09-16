@@ -13,13 +13,10 @@ require("nvim-treesitter.configs").setup({
     auto_install = true,
     ensure_installed = {
         "bash",
-        "c",
         "comment",
-        "cpp",
         "css",
         "dockerfile",
         "gitignore",
-        "graphql",
         "help",
         "html",
         "javascript",
@@ -32,7 +29,6 @@ require("nvim-treesitter.configs").setup({
         "php",
         -- "phpdoc", -- TODO: check this out
         "python",
-        "r",
         "regex",
         "rst",
         "scss",
