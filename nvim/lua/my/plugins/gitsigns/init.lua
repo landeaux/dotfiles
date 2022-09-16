@@ -10,6 +10,9 @@ require("gitsigns").setup({
             text = "▎",
         },
     },
+    preview_config = {
+        border = "rounded",
+    },
     on_attach = function(bufnr)
         require("my.plugins.gitsigns.mappings").register(bufnr)
     end,
