@@ -32,6 +32,7 @@ M.register = function(bufnr)
 
     -- Text object
     map({ "o", "x" }, "ih", ":Gitsigns select_hunk<CR>", { desc = "Inner hunk" })
+    map({ "o", "x" }, "ah", ":Gitsigns select_hunk<CR>", { desc = "A hunk" })
 end
 
 return M
