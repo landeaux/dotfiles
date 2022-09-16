@@ -427,6 +427,8 @@ packer.startup(function()
     -- Syntax highlighting for .mdx
     -- use({ "jxnblk/vim-mdx-js", ft = "mdx" })
 
+    use({ "christoomey/vim-sort-motion" })
+
     if my_packer.packer_bootstrap then
         packer.sync()
     end
