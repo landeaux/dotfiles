@@ -1,4 +1,4 @@
-require("bufferline").setup({
+local config = {
     options = {
         numbers = function(opts)
             return string.format("%s", opts.raise(opts.ordinal))
@@ -21,4 +21,20 @@ require("bufferline").setup({
         separator_style = "thin", -- "slant" | "thick" | "thin" | { 'any', 'any' },
         sort_by = "insert_at_end",
     },
-})
+}
+
+local ok, catppuccin_highlights = pcall(require, "catppuccin.groups.integrations.bufferline")
+
+if ok then
+    config.highlights = catppuccin_highlights.get()
+else
+    vim.notify(
+        "Unable to access catppuccin bufferline integration for highlights.",
+        vim.log.levels.WARN,
+        {
+            title = "Bufferline",
+        }
+    )
+end
+
+require("bufferline").setup(config)
