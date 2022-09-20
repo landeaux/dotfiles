@@ -22,7 +22,6 @@ require("catppuccin").setup({
             enabled = true,
             show_root = true,
         },
-        which_key = true,
     },
     highlight_overrides = {
         all = {
