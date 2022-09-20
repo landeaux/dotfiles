@@ -8,7 +8,6 @@ require("catppuccin").setup({
     integrations = {
         dap = {
             enabled = true,
-            enable_ui = true,
         },
         native_lsp = {
             underlines = {
