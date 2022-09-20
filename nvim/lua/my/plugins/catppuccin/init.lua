@@ -6,9 +6,6 @@ require("catppuccin").setup({
         enabled = true,
     },
     integrations = {
-        dap = {
-            enabled = true,
-        },
         native_lsp = {
             underlines = {
                 errors = { "undercurl" },
