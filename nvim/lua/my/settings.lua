@@ -68,6 +68,7 @@ opt.relativenumber = true
 opt.cursorline = true -- highlight current line
 opt.signcolumn = "yes"
 opt.laststatus = 2 + vim.fn.has("nvim-0.7") -- if 0.7, use single status line (3), else use (2)
+opt.cmdheight = 0 -- hide the command line
 opt.wrap = true
 opt.linebreak = true
 opt.breakindent = true -- indent wrapped lines
