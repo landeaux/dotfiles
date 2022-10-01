@@ -11,17 +11,19 @@ local allowed_to_format = {
     -- "vuels",
 }
 
-M.register = function(client, bufnr)
+M.register = function(_, bufnr)
     local map = map_factory({ buffer = bufnr, silent = true })
 
-    if
-        client.resolved_capabilities.document_formatting
-        and vim.tbl_contains(allowed_to_format, client.name)
-    then
-        map("n", "<Leader>lf", vim.lsp.buf.formatting, { desc = "Format" })
-    end
-
     -- Mappings
+    map("n", "<Leader>lf", function()
+        vim.lsp.buf.format({
+            async = true,
+            filter = function(client)
+                return client.server_capabilities.documentFormattingProvider
+                    and vim.tbl_contains(allowed_to_format, client.name)
+            end,
+        })
+    end, { desc = "Format" })
     map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
     map("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
     map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })

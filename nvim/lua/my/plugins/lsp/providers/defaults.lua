@@ -2,9 +2,6 @@ local M = {}
 
 local create_augroup = require("my.utils").create_augroup
 
-local format_on_save = false
-local auto_format_lock = false
-
 local function documentColor(client, bufnr)
     if client.server_capabilities.colorProvider then
         require("document-color").buf_attach(bufnr)
@@ -59,15 +56,6 @@ local function codeLens(client, bufnr)
     end
 end
 
-local allowed_to_format = {
-    "dockerls",
-    "null-ls",
-    "taplo",
-    -- "jsonls",
-    -- "tsserver",
-    -- "vuels",
-}
-
 function M.on_attach(client, bufnr)
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
@@ -75,29 +63,6 @@ function M.on_attach(client, bufnr)
 
     -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-    if
-        client.resolved_capabilities.document_formatting
-        and vim.tbl_contains(allowed_to_format, client.name)
-    then
-        if format_on_save and not auto_format_lock then
-            auto_format_lock = true -- just run autocommand once
-            -- Format on save
-            create_augroup({
-                {
-                    event = "BufWritePre",
-                    opts = {
-                        pattern = "*",
-                        callback = function()
-                            vim.lsp.buf.formatting_sync(nil, 1000)
-                        end,
-                    },
-                },
-            }, "_lsp_auto_format")
-        end
-    else
-        client.resolved_capabilities.document_formatting = false
-    end
 
     require("my.plugins.lsp.mappings").register(client, bufnr)
     documentColor(client, bufnr)

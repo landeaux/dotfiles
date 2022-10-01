@@ -21,10 +21,10 @@ require("catppuccin").setup({
     },
     highlight_overrides = {
         all = {
-            SpellBad = { style = { "underdot" } },
-            SpellCap = { style = { "underdot" } },
-            SpellRare = { style = { "underdot" } },
-            SpellLocal = { style = { "underdot" } },
+            SpellBad = { style = { "underdotted" } },
+            SpellCap = { style = { "underdotted" } },
+            SpellRare = { style = { "underdotted" } },
+            SpellLocal = { style = { "underdotted" } },
         },
     },
 })
