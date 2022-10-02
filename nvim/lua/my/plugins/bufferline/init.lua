@@ -1,8 +1,6 @@
 local config = {
     options = {
-        numbers = function(opts)
-            return string.format("%s", opts.raise(opts.ordinal))
-        end, -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string
+        numbers = "none", -- "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(count, level, diagnostics_dict)
             local icon = level:match("error") and " " or " "
