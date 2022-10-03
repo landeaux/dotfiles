@@ -11,12 +11,6 @@ map("v", "<", "<gv^", { desc = "Indent left without leaving visual mode" })
 map("v", "<Tab>", ">gv^", { desc = "Indent right without leaving visual mode" })
 map("v", "<S-Tab>", "<gv^", { desc = "Indent left without leaving visual mode" })
 
--- Easy escape from insert mode
-map("i", "kk", "<ESC>", { desc = "Escape from insert mode" })
-map("i", "kj", "<ESC>", { desc = "Escape from insert mode" })
-map("i", "jk", "<ESC>", { desc = "Escape from insert mode" })
-map("i", "jj", "<ESC>", { desc = "Escape from insert mode" })
-
 map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move selected line/block of text up one line" })
 map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move selected line/block of text down one line" })
 
