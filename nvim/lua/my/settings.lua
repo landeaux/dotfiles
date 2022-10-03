@@ -68,7 +68,6 @@ opt.relativenumber = true
 opt.cursorline = true -- highlight current line
 opt.signcolumn = "yes"
 opt.laststatus = 3 -- use single status line
-opt.cmdheight = 0 -- hide the command line
 opt.wrap = true
 opt.linebreak = true
 opt.breakindent = true -- indent wrapped lines
