@@ -8,10 +8,9 @@ local config = {
         end,
         -- NOTE: this will be called a lot so don't do any heavy processing here
         custom_filter = function(buf_number)
-            -- Filter out terminal buffers
-            if vim.bo[buf_number].buftype ~= "terminal" then
-                return true
-            end
+            local exclude_ft = { "fugitive", "git", "terminal" }
+            local cur_ft = vim.bo[buf_number].filetype
+            return not vim.tbl_contains(exclude_ft, cur_ft)
         end,
         offsets = { { filetype = "neo-tree", text = "File Explorer", text_align = "left" } },
         show_buffer_close_icons = false,
