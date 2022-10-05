@@ -5,6 +5,4 @@ local packer_sync = function()
     vim.cmd("PackerSync")
 end
 
-vim.keymap.set("n", "<leader>ps", "", {
-    callback = packer_sync,
-}, { desc = "Sync Packer" })
+vim.keymap.set("n", "<leader>ps", packer_sync, { desc = "Sync Packer" })
