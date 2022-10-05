@@ -17,7 +17,6 @@ require("nvim-treesitter.configs").setup({
         "css",
         "dockerfile",
         "gitignore",
-        "help",
         "html",
         "javascript",
         "jsdoc",
