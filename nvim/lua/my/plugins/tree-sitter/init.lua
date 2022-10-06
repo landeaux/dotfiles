@@ -39,6 +39,7 @@ require("nvim-treesitter.configs").setup({
         "vue",
         "yaml",
     },
+    ignore_install = { "help" },
     highlight = {
         enable = true,
         disable = { "help" },
