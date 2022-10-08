@@ -27,7 +27,7 @@ require("mason-lspconfig").setup({
     ensure_installed = servers,
 })
 
--- require("my.plugins.lsp.providers.volar").register_volar_lspconfigs()
+-- require("my.plugins.lsp.providers.volar_multi").register_volar_lspconfigs()
 
 for _, server in pairs(servers) do
     local opts = default_config

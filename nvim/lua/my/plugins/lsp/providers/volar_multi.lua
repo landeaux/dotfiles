@@ -114,7 +114,7 @@ function M.register_volar_lspconfigs()
             commands = commands,
             init_options = {
                 typescript = {
-                    serverPath = "",
+                    tsdk = "",
                 },
                 languageFeatures = {
                     implementation = true,
@@ -144,7 +144,7 @@ function M.register_volar_lspconfigs()
             filetypes = filetypes,
             init_options = {
                 typescript = {
-                    serverPath = "",
+                    tsdk = "",
                 },
                 languageFeatures = {
                     implementation = true,
@@ -164,7 +164,7 @@ function M.register_volar_lspconfigs()
             filetypes = filetypes,
             init_options = {
                 typescript = {
-                    serverPath = "",
+                    tsdk = "",
                 },
                 documentFeatures = {
                     selectionRange = true,
@@ -186,18 +186,12 @@ function M.register_volar_lspconfigs()
     }
 end
 
-function M.get_typescript_server_path(root_dir)
+function M.get_typescript_lib_path(root_dir)
     local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
     local local_tsserverlib = project_root ~= nil
-        and lspconfig_util.path.join(
-            project_root,
-            "node_modules",
-            "typescript",
-            "lib",
-            "tsserverlibrary.js"
-        )
+        and lspconfig_util.path.join(project_root, "node_modules", "typescript", "lib")
     local global_tsserverlib = vim.fn.stdpath("data")
-        .. "/mason/packages/vue-language-server/node_modules/typescript/lib/tsserverlibrary.js"
+        .. "/mason/packages/vue-language-server/node_modules/typescript/lib"
     if local_tsserverlib and lspconfig_util.path.exists(local_tsserverlib) then
         return local_tsserverlib
     else
@@ -206,7 +200,7 @@ function M.get_typescript_server_path(root_dir)
 end
 
 function M.on_new_config(new_config, new_root_dir)
-    new_config.init_options.typescript.serverPath = M.get_typescript_server_path(new_root_dir)
+    new_config.init_options.typescript.tsdk = M.get_typescript_lib_path(new_root_dir)
 end
 
 return M
