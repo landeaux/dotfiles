@@ -86,15 +86,15 @@ M.capabilities.textDocument.colorProvider = {
 --     },
 -- }, require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()))
 
-M.root_dir = function(fname)
-    local util = require("lspconfig").util
-    return util.root_pattern(".git")(fname)
-        or util.root_pattern("tsconfig.base.json")(fname)
-        or util.root_pattern("package.json")(fname)
-        or util.root_pattern(".eslintrc.js")(fname)
-        or util.root_pattern("tsconfig.json")(fname)
-        or vim.loop.cwd()
-end
+-- M.root_dir = function(fname)
+--     local util = require("lspconfig").util
+--     return util.root_pattern(".git")(fname)
+--         or util.root_pattern("tsconfig.base.json")(fname)
+--         or util.root_pattern("package.json")(fname)
+--         or util.root_pattern(".eslintrc.js")(fname)
+--         or util.root_pattern("tsconfig.json")(fname)
+--         or vim.loop.cwd()
+-- end
 
 M.autostart = true
 

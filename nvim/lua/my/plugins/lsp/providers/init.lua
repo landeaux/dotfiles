@@ -27,7 +27,7 @@ require("mason-lspconfig").setup({
     ensure_installed = servers,
 })
 
-require("my.plugins.lsp.providers.volar").register_volar_lspconfigs()
+-- require("my.plugins.lsp.providers.volar").register_volar_lspconfigs()
 
 for _, server in pairs(servers) do
     local opts = default_config
@@ -41,11 +41,11 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend("force", opts, config)
     end
 
-    if server == "volar" then
-        lspconfig.volar_api.setup(opts)
-        lspconfig.volar_doc.setup(opts)
-        lspconfig.volar_html.setup(opts)
-    elseif server == "tsserver" then
+    -- if server == "volar" then
+    --     lspconfig.volar_doc.setup(opts)
+    --     lspconfig.volar_api.setup(opts)
+    --     lspconfig.volar_html.setup(opts)
+    if server == "tsserver" then
         require("typescript").setup({
             disable_commands = false, -- prevent the plugin from creating Vim commands
             debug = false, -- enable debug logging for commands
