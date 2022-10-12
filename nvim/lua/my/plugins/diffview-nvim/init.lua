@@ -17,4 +17,7 @@ require("diffview").setup({
             ["<leader>tf"] = actions.toggle_files,
         },
     },
+    file_panel = {
+        listing_style = "list",
+    },
 })
