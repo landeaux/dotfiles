@@ -18,6 +18,7 @@ require("catppuccin").setup({
             enabled = true,
             show_root = true,
         },
+        mason = true,
     },
     highlight_overrides = {
         all = {
