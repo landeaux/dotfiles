@@ -28,6 +28,7 @@ return {
             autoCompleteRefs = true,
             completion = {
                 autoImportComponent = true,
+                trimVueFromImportName = true,
             },
         },
     },
