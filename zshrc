@@ -103,6 +103,7 @@ unsetopt AUTO_CD  # don't automatically change into directories
 # General
 alias rm="rm -i"
 alias prettifyjson="python -m json.tool"
+alias dust="du -sh * | sort -hr"
 
 if ! command -v sha256sum 1>/dev/null 2>&1; then
   alias sha256sum="shasum -a 256"
