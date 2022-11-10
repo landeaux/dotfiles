@@ -23,6 +23,7 @@ return {
                 --     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                 --     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
                 -- },
+                checkThirdParty = false,
                 maxPreload = 10000,
             },
             -- Do not send telemetry data containing a randomized but unique identifier
