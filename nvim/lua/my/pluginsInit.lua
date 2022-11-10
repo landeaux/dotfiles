@@ -271,7 +271,11 @@ packer.startup(function()
         config = function()
             require("my.plugins.lsp.providers.null_ls")
         end,
-        requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "neovim/nvim-lspconfig",
+            "jose-elias-alvarez/typescript.nvim",
+        },
     })
 
     -- Treesitter
