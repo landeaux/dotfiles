@@ -10,7 +10,7 @@ null_ls.setup({
         null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.diagnostics.flake8,
         null_ls.builtins.diagnostics.markdownlint,
-        null_ls.builtins.diagnostics.mypy,
+        null_ls.builtins.diagnostics.mypy.with({ temp_dir = "/tmp" }),
         null_ls.builtins.diagnostics.pydocstyle.with({
             diagnostics_format = "#{m} (#{c})",
             extra_args = { "--config=$ROOT/pyproject.toml" },
