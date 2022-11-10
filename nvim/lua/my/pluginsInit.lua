@@ -268,8 +268,6 @@ packer.startup(function()
 
     use({
         "jose-elias-alvarez/null-ls.nvim",
-        -- Commits after this point write temp files to local directory, which
-        -- causes issues with file watchers (e.g. pytest-watch)
         config = function()
             require("my.plugins.lsp.providers.null_ls")
         end,
