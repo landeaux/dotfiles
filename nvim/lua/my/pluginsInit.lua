@@ -61,7 +61,7 @@ packer.startup(function()
     -- Tab bar
     use({
         "akinsho/bufferline.nvim",
-        tag = "v2.*",
+        tag = "v3.*",
         requires = "kyazdani42/nvim-web-devicons",
         setup = function()
             require("my.plugins.bufferline.mappings")
