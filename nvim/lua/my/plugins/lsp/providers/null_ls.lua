@@ -9,10 +9,11 @@ null_ls.setup({
         null_ls.builtins.code_actions.shellcheck,
         -- Diagnostics
         null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.diagnostics.flake8,
+        null_ls.builtins.diagnostics.flake8.with({ temp_dir = "tmp" }),
         null_ls.builtins.diagnostics.markdownlint,
         null_ls.builtins.diagnostics.mypy.with({ temp_dir = "/tmp" }),
         null_ls.builtins.diagnostics.pydocstyle.with({
+            temp_dir = "/tmp",
             diagnostics_format = "#{m} (#{c})",
             extra_args = { "--config=$ROOT/pyproject.toml" },
             -- Don't lint test files
@@ -28,8 +29,8 @@ null_ls.setup({
         null_ls.builtins.diagnostics.luacheck,
         -- Formatting
         -- NOTE: these must be placed in the order we want them to run
-        null_ls.builtins.formatting.isort,
-        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.isort.with({ temp_dir = "tmp" }),
+        null_ls.builtins.formatting.black.with({ temp_dir = "tmp" }),
         null_ls.builtins.formatting.phpcsfixer,
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.eslint_d,
