@@ -46,6 +46,9 @@ map("n", "]l", ":lnext<CR>zz", { desc = "Go to next location list item" })
 map("n", "[b", ":bprev<CR>", { desc = "Go to previous buffer" })
 map("n", "]b", ":bnext<CR>", { desc = "Go to next buffer" })
 
+-- Better pasting in insert mode
+map("i", "<C-r>", "<C-r><C-o>", { desc = "Paste from register and preserve indentation" })
+
 ------------------------------- LEADER MAPPINGS -------------------------------
 
 map({ "n", "v" }, "<Leader>th", ":set hlsearch!<CR>", { desc = "Toggle highlighting" })
@@ -59,7 +62,9 @@ map({ "n", "v" }, "<Leader>tk", function()
         .. tostring(vim.g.hard_column_limit)
         .. ',999),",")'
     vim.cmd(':execute "set cc=" . (&cc == "" ?' .. cc .. ': "")')
-end, { desc = "Toggle color column" })
+end, {
+    desc = "Toggle color column",
+})
 
 -- Clipboard
 map("n", "<Leader>a", "<cmd> %+y<CR>", { desc = "Copy file contents to clipboard" })
@@ -132,7 +137,9 @@ end
 
 map("n", "<Leader>ek", function()
     vim.diagnostic.open_float(0, { scope = "cursor" })
-end, { desc = "Show cursor diagnostics" })
+end, {
+    desc = "Show cursor diagnostics",
+})
 map("n", "<Leader>el", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 map("n", "<Leader>eq", vim.diagnostic.setloclist, { desc = "Add diagnostics to location list" })
 map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
