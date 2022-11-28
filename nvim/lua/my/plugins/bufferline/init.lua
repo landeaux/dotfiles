@@ -15,10 +15,11 @@ local config = {
         offsets = { { filetype = "neo-tree", text = "File Explorer", text_align = "left" } },
         show_buffer_close_icons = false,
         show_close_icon = false,
-        separator_style = {"", ""}, -- "slant" | "thick" | "thin" | { 'any', 'any' },
+        separator_style = { "", "" }, -- "slant" | "thick" | "thin" | { 'any', 'any' },
         sort_by = "insert_at_end",
         indicator = {
-            style = "none",
+            icon = "▎",
+            style = "icon",
         },
     },
 }
