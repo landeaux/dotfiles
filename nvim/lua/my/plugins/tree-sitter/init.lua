@@ -17,6 +17,7 @@ require("nvim-treesitter.configs").setup({
         "css",
         "dockerfile",
         "gitignore",
+        "help",
         "html",
         "javascript",
         "jsdoc",
@@ -39,10 +40,8 @@ require("nvim-treesitter.configs").setup({
         "vue",
         "yaml",
     },
-    ignore_install = { "help" },
     highlight = {
         enable = true,
-        disable = { "help" },
         -- additional_vim_regex_highlighting = {
         --     "javascript",
         -- },
