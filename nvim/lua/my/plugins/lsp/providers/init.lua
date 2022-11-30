@@ -1,31 +1,45 @@
 local default_config = require("my.plugins.lsp.providers.defaults")
 local lspconfig = require("lspconfig")
 
--- vim.lsp.set_log_level("trace")
+-- vim.lsp.set_log_level("debug")
 -- require("vim.lsp.log").set_format_func(vim.inspect)
 
--- initial default servers
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "bashls",
+        "cssls",
+        "dockerls",
+        "html",
+        "intelephense",
+        "jsonls",
+        "prosemd_lsp",
+        "pyright",
+        "sumneko_lua",
+        "taplo",
+        "tsserver",
+        "vimls",
+        "volar",
+        "yamlls",
+    },
+})
+
 local servers = {
     "bashls",
     "cssls",
     "dockerls",
-    -- "eslint",
     "html",
-    "jsonls",
-    "sumneko_lua",
-    "tsserver",
-    "taplo",
     "intelephense",
+    "jsonls",
+    "prosemd_lsp",
     "pyright",
+    "smarty_ls",
+    "sumneko_lua",
+    "taplo",
+    "tsserver",
     "vimls",
     "volar",
     "yamlls",
-    "prosemd_lsp",
 }
-
-require("mason-lspconfig").setup({
-    ensure_installed = servers,
-})
 
 -- require("my.plugins.lsp.providers.volar_multi").register_volar_lspconfigs()
 
