@@ -79,8 +79,8 @@ cmp.setup({
         -- General mappings
         ["<C-n>"] = cmp.mapping(select_next_cmp_item, { "i", "s" }),
         ["<C-p>"] = cmp.mapping(select_prev_cmp_item, { "i", "s" }),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-5),
         ["<C-f>"] = cmp.mapping.scroll_docs(5),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-5),
         ["<C-y>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
         ["<C-e>"] = cmp.mapping.close(),
         ["<C-c>"] = cmp.mapping.abort(),
