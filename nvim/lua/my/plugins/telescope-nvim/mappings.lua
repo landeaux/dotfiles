@@ -17,7 +17,7 @@ map(
     { desc = "Find files (include ignored)" }
 )
 map("n", "<Leader>fg", function()
-    require("my.plugins.telescope-pickers").live_grep()
+    require("my.plugins.telescope-nvim.pickers").live_grep()
 end, { desc = "Live grep" })
 map("n", "<Leader>fG", function()
     require("telescope.builtin").live_grep({

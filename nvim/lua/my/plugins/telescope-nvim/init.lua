@@ -1,6 +1,6 @@
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local custom_pickers = require("my.plugins.telescope-pickers")
+local custom_pickers = require("my.plugins.telescope-nvim.pickers")
 
 local set_prompt_to_entry_value = function(prompt_bufnr)
     local entry = action_state.get_selected_entry()
