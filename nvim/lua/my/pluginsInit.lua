@@ -239,7 +239,8 @@ packer.startup(function()
 
     -- Tooling Installer (LSP servers, formatters, linters, debuggers)
     use({
-        "williamboman/mason.nvim",
+        "landeaux/mason.nvim",
+        branch = "smarty",
         config = function()
             require("my.plugins.mason")
         end,
