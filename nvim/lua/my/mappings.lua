@@ -116,6 +116,9 @@ map(
     { desc = "Insert ISO-date: YYYY-MM-DDTHH:MM:SS" }
 )
 
+-- Insert current filename without extension
+map("n", "<Leader>if", [["=expand('%:t:r')<CR>P]], { desc = "Insert filename without extension" })
+
 -- Extended text-objects
 local chars = { "_", ".", ":", ",", ";", "|", "/", "*", "%", "`", "-", "~" }
 for _, char in ipairs(chars) do
