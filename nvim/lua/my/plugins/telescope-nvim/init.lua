@@ -34,8 +34,9 @@ require("telescope").setup({
         file_ignore_patterns = { ".git/", "dotbot/", "mariadb/data/", "dist/" },
         path_display = { "smart" },
         -- buffer_previewer_maker = new_maker,
-        previewer = {
+        preview = {
             filesize_limit = 5,
+            timeout = 500,
         },
         prompt_prefix = " ",
         selection_caret = " ",
