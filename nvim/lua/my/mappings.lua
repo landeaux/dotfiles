@@ -11,8 +11,8 @@ map("v", "<", "<gv^", { desc = "Indent left without leaving visual mode" })
 map("v", "<Tab>", ">gv^", { desc = "Indent right without leaving visual mode" })
 map("v", "<S-Tab>", "<gv^", { desc = "Indent left without leaving visual mode" })
 
-map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move selected line/block of text up one line" })
-map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move selected line/block of text down one line" })
+map("x", "J", ":move '>+1<CR>gv=gv", { desc = "Move selected line/block of text up one line" })
+map("x", "K", ":move '<-2<CR>gv=gv", { desc = "Move selected line/block of text down one line" })
 
 -- Remap for dealing with word wrap
 map(
