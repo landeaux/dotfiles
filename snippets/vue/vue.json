@@ -7,20 +7,19 @@
   "vue": {
     "prefix": "vue",
     "body": [
-      "<script>",
+      "<script setup lang=\"ts\">",
       "/**",
       " * $TM_FILENAME_BASE",
       " *",
       " * ${1:Description of component...}",
       " */",
+      "",
+      "${0}",
+      "</script>",
+      "",
+      "<script lang=\"ts\">",
       "export default {",
       "\tname: '$TM_FILENAME_BASE',",
-      "\tprops: {${2}},",
-      "\tdata () {",
-      "\t\treturn {}",
-      "\t},",
-      "\tcomputed: {},",
-      "\tmethods: {},",
       "}",
       "</script>",
       "",
@@ -31,6 +30,6 @@
       "<style lang=\"sass\">",
       "</style>"
     ],
-    "description": "Vue SFC Scaffold"
+    "description": "Vue SFC Scaffold (Composition API, Typescript)"
   }
 }
