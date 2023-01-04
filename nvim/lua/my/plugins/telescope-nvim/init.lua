@@ -31,7 +31,7 @@ end
 -- Telescope setup
 require("telescope").setup({
     defaults = {
-        file_ignore_patterns = { ".git/", "dotbot/", "mariadb/data/", "dist/" },
+        file_ignore_patterns = { ".git/", "dotbot/", "mariadb/data/", "^dist.*/" },
         path_display = { "smart" },
         -- buffer_previewer_maker = new_maker,
         preview = {
