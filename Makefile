@@ -2,11 +2,11 @@
 install-nvim:
 	./scripts/install_neovim.sh
 
-.PHONY: install-nvim
+.PHONY: install-nvim-nightly
 install-nvim-nightly:
 	./scripts/install_neovim.sh --nightly
 
-.PHONY: install-nvim
+.PHONY: update
 update:
 	git fetch && git pull
 	./install
