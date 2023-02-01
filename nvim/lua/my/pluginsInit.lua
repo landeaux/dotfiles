@@ -44,7 +44,7 @@ packer.startup(function()
 
     -- Neovim icons
     use({
-        "kyazdani42/nvim-web-devicons",
+        "nvim-tree/nvim-web-devicons",
         config = function()
             require("my.plugins.nvim-web-devicons")
         end,
@@ -55,14 +55,14 @@ packer.startup(function()
         config = function()
             require("my.plugins.lualine")
         end,
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        requires = { "nvim-tree/nvim-web-devicons", opt = true },
     })
 
     -- Tab bar
     use({
         "akinsho/bufferline.nvim",
         tag = "v3.*",
-        requires = "kyazdani42/nvim-web-devicons",
+        requires = "nvim-tree/nvim-web-devicons",
         setup = function()
             require("my.plugins.bufferline.mappings")
         end,
@@ -105,7 +105,7 @@ packer.startup(function()
         branch = "v2.x",
         requires = {
             "nvim-lua/plenary.nvim",
-            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
             {
                 -- only needed if you want to use the commands with "_with_window_picker" suffix
