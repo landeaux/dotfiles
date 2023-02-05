@@ -14,3 +14,4 @@ python3 -m http.server##Start an HTTP server with python3
 sed -n {{start}},{{end}}p {{file_path}}##Print specific range of line numbers in a given file
 pmset -g thermlog##Check CPU thermal throttling (MacOS only)
 free -h --si##Check RAM Usage
+nvim --startuptime startup.log -c exit && tail -5 startup.log##Check nvim startup time
