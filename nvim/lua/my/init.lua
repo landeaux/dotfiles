@@ -14,8 +14,3 @@ for _, mod in ipairs(my_modules) do
         error(("Error loading %s...\n\n%s"):format(mod, err))
     end
 end
-
-local packer_compiled, _ = pcall(require, "my.compiled")
-if not packer_compiled then
-    vim.notify("Packer not compiled. Run :PackerCompile and restart nvim.", vim.log.levels.WARN)
-end
