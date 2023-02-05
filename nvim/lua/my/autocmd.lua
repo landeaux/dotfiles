@@ -1,7 +1,5 @@
 local create_augroup = require("my.utils").create_augroup
 
-require("my.plugins.packer.commands")
-
 -- Highlight text on yank
 create_augroup({
     {
@@ -15,6 +13,7 @@ create_augroup({
     },
 }, "_highlight_on_yank")
 
+-- TODO: move this to null-ls
 create_augroup({
     {
         event = "BufWritePre",
