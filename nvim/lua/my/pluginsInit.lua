@@ -151,14 +151,6 @@ packer.startup(function()
         },
     })
     use({
-        "junegunn/gv.vim",
-        requires = { "tpope/vim-fugitive" },
-        setup = function()
-            require("my.plugins.gv.mappings")
-        end,
-        cmd = { "GV" },
-    })
-    use({
         "sindrets/diffview.nvim",
         requires = "nvim-lua/plenary.nvim",
         setup = function()
