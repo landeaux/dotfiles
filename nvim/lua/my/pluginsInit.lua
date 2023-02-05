@@ -368,9 +368,6 @@ packer.startup(function()
         ft = "markdown",
     })
 
-    -- Startuptime
-    use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
-
     -- Autogenerate python docstrings
     use({
         "heavenshell/vim-pydocstring",
