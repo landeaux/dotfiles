@@ -10,4 +10,4 @@ install-nvim-nightly:
 update:
 	git fetch && git pull
 	./install
-	nvim -c 'autocmd User PackerComplete Mason' -c 'PackerSync'
+	nvim --headless '+Lazy! sync' +qa
