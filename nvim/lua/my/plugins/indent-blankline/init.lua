@@ -10,7 +10,6 @@ require("indent_blankline").setup({
         "man",
         "markdown",
         "neo-tree",
-        "packer",
         "",
     },
     char = char,

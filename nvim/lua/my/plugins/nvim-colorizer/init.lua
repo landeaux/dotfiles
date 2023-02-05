@@ -1,3 +1,1 @@
-require("colorizer").setup({
-    "!packer",
-})
+require("colorizer").setup()
