@@ -23,7 +23,7 @@ done
 if [[ $NIGHTLY -eq "1" ]]; then
   NVIM_TAG=nightly
 else
-  NVIM_TAG=v0.8.2
+  NVIM_TAG=v0.8.3
 fi
 
 install_on_linux() {
