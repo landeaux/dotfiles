@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+local plugins = {
     -- Colorscheme
     {
         "catppuccin/nvim",
@@ -399,4 +399,10 @@ require("lazy").setup({
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
 
     "christoomey/vim-sort-motion",
+}
+
+require("lazy").setup(plugins, {
+    ui = {
+        border = "rounded",
+    },
 })
