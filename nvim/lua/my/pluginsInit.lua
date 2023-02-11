@@ -123,18 +123,9 @@ local plugins = {
     },
     {
         "tpope/vim-fugitive",
-        -- init = function()
-        --     require("my.plugins.fugitive.mappings")
-        -- end,
-        keys = {
-            { "<Leader>ga", ":Git add -p<CR>", { desc = "Git add (patch)" } },
-            { "<Leader>gb", ":Git blame<CR>", { desc = "Git blame" } },
-            { "<Leader>gc", ":Git commit -v<CR>", { desc = "Git commit" } },
-            { "<Leader>gd", ":Gdiffsplit<CR>", { desc = "Git diff" } },
-            { "<Leader>gm", ":Git commit --amend<CR>", { desc = "Git commit (amend)" } },
-            { "<Leader>gp", ":Git push<CR>", { desc = "Git push" } },
-            { "<Leader>gs", ":G<CR>", { desc = "Git status" } },
-        },
+        init = function()
+            require("my.plugins.fugitive.mappings")
+        end,
         cmd = {
             "G",
             "GBrowse",
@@ -395,35 +386,13 @@ local plugins = {
     {
         "heavenshell/vim-pydocstring",
         build = "make install",
-        -- init = function()
-        --     require("my.plugins.vim-pydocstring.mappings")
-        -- end,
+        init = function()
+            require("my.plugins.vim-pydocstring.mappings")
+        end,
         config = function()
             require("my.plugins.vim-pydocstring")
         end,
         ft = "python",
-        keys = {
-            {
-                "<leader>pl",
-                "<Plug>(pydocstring)",
-                {
-                    remap = true,
-                    desc = "Add docstring to function/class under cursor",
-                },
-            },
-            {
-                "<leader>pf",
-                ":PydocstringFormat<CR>",
-                { desc = "Add docstrings to all functions/classes in file" },
-            },
-            {
-                "<leader>p",
-                ":'<,'>Pydocstring<CR>",
-                {
-                    desc = "Add docstring to selected function/class",
-                },
-            },
-        },
     },
 
     -- Fix python indentation
