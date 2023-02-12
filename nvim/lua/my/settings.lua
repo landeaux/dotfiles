@@ -30,7 +30,7 @@ opt.undofile = true -- persistent undo
 opt.spelllang = "en"
 opt.spellsuggest = { "best", "9" }
 opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
-
+opt.fileignorecase = false
 -- Project specific vimrc with secure
 opt.exrc = true
 opt.secure = true
