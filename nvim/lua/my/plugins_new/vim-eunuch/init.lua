@@ -1,0 +1,20 @@
+return {
+    "tpope/vim-eunuch",
+    cmd = {
+        "Cfind",
+        "Chmod",
+        "Clocate",
+        "Copy",
+        "Delete",
+        "Duplicate",
+        "Lfind",
+        "Llocate",
+        "Mkdir",
+        "Move",
+        "Remove",
+        "Rename",
+        "SudoEdit",
+        "SudoWrite",
+        "Wall",
+    },
+}
