@@ -17,6 +17,8 @@ g.soft_column_limit = 80
 g.hard_column_limit = 120
 opt.colorcolumn = ""
 
+g.netrw_keepdir = 0
+
 -- Misc
 -- (NOTE: don't use opt.syntax = "enable" here. It will not work!)
 cmd("syntax enable") -- enable syntax highlighting
