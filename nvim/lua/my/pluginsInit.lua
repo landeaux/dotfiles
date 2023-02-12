@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("my.plugins_new", {
+require("lazy").setup("my.plugins", {
     ui = {
         border = "rounded",
     },
