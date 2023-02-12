@@ -1,7 +1,7 @@
-local create_augroup = require("my.utils").create_augroup
+local utils = require("my.utils")
 
 -- Highlight text on yank
-create_augroup({
+utils.create_augroup({
     {
         event = "TextYankPost",
         opts = {
@@ -14,9 +14,21 @@ create_augroup({
 }, "_highlight_on_yank")
 
 -- TODO: move this to null-ls
-create_augroup({
+utils.create_augroup({
     {
         event = "BufWritePre",
         opts = { pattern = "*", command = ":%s/\\s\\+$//e" },
     },
 }, "_trim_trailing_whitespace")
+
+utils.create_augroup({
+    {
+        event = "FileType",
+        opts = {
+            pattern = "markdown",
+            callback = function()
+                utils.set_buffer_soft_line_nagivation()
+            end,
+        },
+    },
+}, "_markdown_nav")

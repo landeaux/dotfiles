@@ -2,8 +2,6 @@ local map = require("my.utils").map_factory({ remap = true, buffer = true, silen
 
 -- Markdown filetype settings
 local function register_buffer_mappings()
-    require("my.utils").set_buffer_soft_line_nagivation()
-
     map("n", "<LocalLeader>p", "<Plug>MarkdownPreview")
     map("n", "<LocalLeader>s", "<Plug>MarkdownPreviewStop")
     map("n", "<LocalLeader>t", "<Plug>MarkdownPreviewToggle")
