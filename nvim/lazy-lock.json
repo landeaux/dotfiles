@@ -13,7 +13,7 @@
   "document-color.nvim": { "branch": "main", "commit": "74c487f0e5accfaae033755451b9e367220693fd" },
   "editorconfig-vim": { "branch": "master", "commit": "1d54632f7fcad38df8e428f349bc58b15af4b206" },
   "friendly-snippets": { "branch": "main", "commit": "1645e7cd98ed99e766c84ab3cf13a1612c77dcee" },
-  "fzf-lua": { "branch": "main", "commit": "6cb6d4a760c33da35b892b5c22e380d99edbf0ee" },
+  "fzf-lua": { "branch": "main", "commit": "d3c6440a217fafa72fb3d1ecb1054be3a70a4fdb" },
   "gitsigns.nvim": { "branch": "main", "commit": "f29f0b22fd66c910b892aae3bc18a4872c002738" },
   "indent-blankline.nvim": { "branch": "master", "commit": "8299fe7703dfff4b1752aeed271c3b95281a952d" },
   "lazy.nvim": { "branch": "main", "commit": "06f835d0b4b62d9d26fe0ec4190b981f2f5632d2" },
