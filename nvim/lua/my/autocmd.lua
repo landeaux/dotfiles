@@ -13,14 +13,6 @@ utils.create_augroup({
     },
 }, "_highlight_on_yank")
 
--- TODO: move this to null-ls
-utils.create_augroup({
-    {
-        event = "BufWritePre",
-        opts = { pattern = "*", command = ":%s/\\s\\+$//e" },
-    },
-}, "_trim_trailing_whitespace")
-
 utils.create_augroup({
     {
         event = "FileType",
