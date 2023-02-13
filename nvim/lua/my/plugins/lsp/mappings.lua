@@ -42,11 +42,7 @@ M.register = function(_, bufnr)
         { desc = "Remove workspace folder" }
     )
     map("n", "<Leader>lwl", function()
-        vim.notify(
-            vim.lsp.buf.list_workspace_folders(),
-            "info",
-            { title = "Workspace Folders", hide_from_history = true }
-        )
+        vim.pretty_print(vim.lsp.buf.list_workspace_folders())
     end, {
         desc = "List workspace folders",
     })
