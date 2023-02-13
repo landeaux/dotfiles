@@ -56,4 +56,7 @@ fzf_lua.setup({
     grep = {
         rg_glob = true,
     },
+    oldfiles = {
+        cwd_only = true,
+    },
 })
