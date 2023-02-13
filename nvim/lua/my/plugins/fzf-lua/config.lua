@@ -1,5 +1,6 @@
 local fzf_lua = require("fzf-lua")
 local utils = require("fzf-lua.utils")
+local actions = require("fzf-lua.actions")
 
 local function lastIndexOf(haystack, needle)
     local i = haystack:match(".*" .. needle .. "()")
@@ -38,13 +39,6 @@ end
 
 fzf_lua.setup({
     file_ignore_patterns = { ".git/", "dotbot/", "mariadb/data/", "^dist.*/" },
-    grep = {
-        rg_glob = true,
-    },
-})
-
-local actions = require("fzf-lua.actions")
-require("fzf-lua").setup({
     actions = {
         files = {
             -- it's important to define all other actions here as this
@@ -58,5 +52,8 @@ require("fzf-lua").setup({
             -- custom
             ["ctrl-g"] = grep_dir,
         },
+    },
+    grep = {
+        rg_glob = true,
     },
 })
