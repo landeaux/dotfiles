@@ -39,6 +39,11 @@ end
 
 fzf_lua.setup({
     file_ignore_patterns = { ".git/", "dotbot/", "mariadb/data/", "^dist.*/" },
+    winopts = {
+        preview = {
+            flip_columns = 250,
+        },
+    },
     actions = {
         files = {
             -- it's important to define all other actions here as this
