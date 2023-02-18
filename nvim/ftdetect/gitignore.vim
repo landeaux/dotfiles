@@ -1,1 +1,1 @@
-au BufRead,BufNewFile .gitignore,gitignore set filetype=gitignore
+au BufRead,BufNewFile gitignore set filetype=gitignore
