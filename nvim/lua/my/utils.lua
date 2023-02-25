@@ -1,6 +1,8 @@
 local M = {}
 
--- Create an augroup
+---Create an augroup
+---@param autocmds table
+---@param group_name string
 function M.create_augroup(autocmds, group_name)
     local group = vim.api.nvim_create_augroup(group_name, { clear = true })
 
@@ -10,6 +12,9 @@ function M.create_augroup(autocmds, group_name)
     end
 end
 
+---Factory function for building a wrapper around vim.keymap.set with default options
+---@param default_opts table
+---@return function
 function M.map_factory(default_opts)
     default_opts = default_opts or {}
     local _map = function(mode, l, r, opts)
@@ -20,7 +25,7 @@ function M.map_factory(default_opts)
     return _map
 end
 
--- Make navigation keys navigate through display lines instead of physical lines
+---Make navigation keys navigate through display lines instead of physical lines
 function M.set_buffer_soft_line_nagivation()
     local map = M.map_factory({ buffer = true, silent = true })
 
