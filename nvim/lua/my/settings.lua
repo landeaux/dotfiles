@@ -33,6 +33,8 @@ opt.spelllang = "en"
 opt.spellsuggest = { "best", "9" }
 opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 opt.fileignorecase = false
+opt.cedit = "<C-X>" -- use CTRL-X to switch to command window (useful if CTRL-F has been mapped)
+
 -- Project specific vimrc with secure
 opt.exrc = true
 opt.secure = true
