@@ -104,6 +104,7 @@ unsetopt AUTO_CD  # don't automatically change into directories
 alias rm="rm -i"
 alias prettifyjson="python -m json.tool"
 alias dust="du -sh * | sort -hr"
+alias path='echo -e ${PATH//:/\\n}' # Print each PATH entry on a separate line
 
 if ! command -v sha256sum 1>/dev/null 2>&1; then
   alias sha256sum="shasum -a 256"
