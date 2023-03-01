@@ -32,9 +32,6 @@ if ! grep "${BREW_PREFIX}/bin/zsh" /etc/shells &>/dev/null; then
   chsh -s "${BREW_PREFIX}/bin/zsh";
 fi;
 
-# Install `wget`
-brew install wget
-
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 
@@ -47,15 +44,41 @@ brew install php
 
 # Install other useful binaries.
 brew install ack
+brew install bat
+brew install direnv
+brew install gdal
 brew install git
+brew install git-extras
 brew install git-lfs
+brew install glab
+brew install hadolint
+brew install hyperfine
 brew install imagemagick --with-webp
+brew install jq
+brew install lua
+brew install luarocks
 brew install lynx
+brew install neovim
+brew install netcdf
 brew install pigz
 brew install rename
+brew install ripgrep
+brew install shellcheck
+brew install shfmt
 brew install ssh-copy-id
+brew install task
+brew install tmux
 brew install tree
+brew install tree-sitter
 # brew install vbindiff  # NOTE: if using, need to update .gitconfig for diffing binaries
+brew install wget
+
+# Install Nerd fonts
+brew tap homebrew/cask-fonts
+brew install font-jetbrains-mono-nerd-font
+
+# Install kitty terminal
+brew install --cask kitty
 
 # Remove outdated versions from the cellar.
 brew cleanup
