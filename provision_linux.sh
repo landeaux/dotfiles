@@ -38,7 +38,7 @@ nvm install --lts
 # see scripts/install_docker.sh
 
 ########## install fonts
-# TODO: add way to install fonts from ./fonts/{Linux,MacOS} to ~/.fonts
+# TODO
 
 ########## install kitty
 # see scripts/install_kitty.sh
