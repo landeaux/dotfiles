@@ -1,5 +1,6 @@
 [alias]
   stash-untracked = "!f() { git stash; git stash -u; git stash pop stash@{1}; }; f"
+  yesterday = !sh -c 'git log --abbrev-commit --pretty=oneline --author="\"$(git config user.name)\"" --since=24.hours.ago --reverse'
 [core]
   autocrlf = input
   editor = nvim
