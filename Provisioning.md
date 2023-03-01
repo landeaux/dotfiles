@@ -2,7 +2,7 @@
 
 ## Install
 
-- [✓] Nerd fonts (SourceCodePro)
+- [✓] Nerd fonts (SourceCodePro, JetBrainsMono)
 - [✓] Install zsh (already installed on macOS)
 - [✓] oh-my-zsh (using curl)
 - [✓] oh-my-zsh spaceship theme (using curl, depends on Nerd fonts)
@@ -68,7 +68,7 @@
 
 ### Install fonts
 
-1. Install the fonts in the ~/Development/dotfiles directory
+1. TBD
 
 ### Install zsh
 
