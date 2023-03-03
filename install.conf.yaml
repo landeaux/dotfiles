@@ -21,6 +21,7 @@
     ~/.tmux/themes: tmux/themes
     ~/.zshenv:
     ~/.zshrc:
+    ~/.functions: .functions
     ~/bin: bin
 
 - shell:
