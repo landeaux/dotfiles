@@ -24,3 +24,15 @@ utils.create_augroup({
         },
     },
 }, "_markdown_nav")
+
+utils.create_augroup({
+    -- clear any mappings on <CR> (e.g. Treesitter incremental selection)
+    {
+        event = "CmdWinEnter",
+        opts = {
+            callback = function()
+                vim.keymap.del("n", "<CR>", { buffer = true })
+            end,
+        },
+    },
+}, "_cmd_win")
