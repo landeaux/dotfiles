@@ -22,6 +22,7 @@
     ~/.zshenv:
     ~/.zshrc:
     ~/.functions: .functions
+    ~/.markdownlintrc: .markdownlintrc
     ~/bin: bin
 
 - shell:
