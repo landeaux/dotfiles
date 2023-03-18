@@ -138,6 +138,7 @@ for _, char in ipairs(chars) do
     end
 end
 
+-- Diagnostics
 map("n", "<Leader>ek", function()
     vim.diagnostic.open_float(0, { scope = "cursor" })
 end, {
