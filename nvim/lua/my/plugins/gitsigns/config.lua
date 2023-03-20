@@ -20,4 +20,3 @@ require("gitsigns").setup({
         require("my.plugins.gitsigns.mappings").register(bufnr)
     end,
 })
-

@@ -27,15 +27,9 @@ local function node_with_virtual_text(pos, node, text)
                     -- node_pos: {line, column}
                     local node_pos = nd.mark:pos_begin()
                     -- reuse luasnips namespace, column doesn't matter, just 0 it.
-                    nd.virt_text_id = vim.api.nvim_buf_set_extmark(
-                        0,
-                        ls.session.ns_id,
-                        node_pos[1],
-                        0,
-                        {
-                            virt_text = { { text, "LuaSnipChoiceNodeVirtText" } },
-                        }
-                    )
+                    nd.virt_text_id = vim.api.nvim_buf_set_extmark(0, ls.session.ns_id, node_pos[1], 0, {
+                        virt_text = { { text, "LuaSnipChoiceNodeVirtText" } },
+                    })
                 end,
                 [events.leave] = function(nd)
                     vim.api.nvim_buf_del_extmark(0, ls.session.ns_id, nd.virt_text_id)

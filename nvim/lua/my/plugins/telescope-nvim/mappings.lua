@@ -1,21 +1,11 @@
 local map = require("my.utils").map_factory({ silent = true })
 
-map(
-    "n",
-    "<Leader>f/",
-    ":Telescope current_buffer_fuzzy_find<CR>",
-    { desc = "Current buffer fuzzy find" }
-)
+map("n", "<Leader>f/", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Current buffer fuzzy find" })
 map("n", "<Leader>fa", ":Telescope builtin<CR>", { desc = "Find builtins" })
 map("n", "<Leader>fb", ":Telescope buffers<CR>", { desc = "Find buffers" })
 map("n", "<Leader>fc", ":Telescope commands<CR>", { desc = "Find commands" })
 map("n", "<Leader>ff", ":Telescope find_files<CR>", { desc = "Find files" })
-map(
-    "n",
-    "<Leader>fF",
-    ":Telescope find_files no_ignore=true<CR>",
-    { desc = "Find files (include ignored)" }
-)
+map("n", "<Leader>fF", ":Telescope find_files no_ignore=true<CR>", { desc = "Find files (include ignored)" })
 map("n", "<Leader>fg", function()
     require("my.plugins.telescope-nvim.pickers").live_grep()
 end, { desc = "Live grep" })
@@ -32,7 +22,9 @@ map("n", "<Leader>fG", function()
             "-u",
         },
     })
-end, { desc = "Live grep (include ignored)" })
+end, {
+    desc = "Live grep (include ignored)",
+})
 map("n", "<Leader>fe", ":Telescope diagnostics bufnr=0<CR>", { desc = "Find diagnostics (buffer)" })
 map("n", "<Leader>fE", ":Telescope diagnostics<CR>", { desc = "Find diagnostics (workspace)" })
 map("n", "<Leader>fh", ":Telescope help_tags<CR>", { desc = "Find help tags" })

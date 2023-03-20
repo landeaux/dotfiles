@@ -7,12 +7,7 @@ local register_mappings = function()
     map("n", "<LocalLeader>dc", function()
         require("dap-python").test_class({})
     end, { desc = "Test class" })
-    map(
-        "v",
-        "<LocalLeader>ds",
-        '<ESC>:lua require("dap-python").debug_selection({})<CR>',
-        { desc = "Debug selection" }
-    )
+    map("v", "<LocalLeader>ds", '<ESC>:lua require("dap-python").debug_selection({})<CR>', { desc = "Debug selection" })
 end
 
 require("my.utils").create_augroup({

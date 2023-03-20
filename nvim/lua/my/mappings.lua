@@ -15,18 +15,8 @@ map("x", "J", ":move '>+1<CR>gv=gv", { desc = "Move selected line/block of text 
 map("x", "K", ":move '<-2<CR>gv=gv", { desc = "Move selected line/block of text down one line" })
 
 -- Remap for dealing with word wrap
-map(
-    "n",
-    "k",
-    "v:count == 0 ? 'gk' : 'k'",
-    { expr = true, desc = "Move up one line through wrapped text" }
-)
-map(
-    "n",
-    "j",
-    "v:count == 0 ? 'gj' : 'j'",
-    { expr = true, desc = "Move down one line through wrapped text" }
-)
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Move up one line through wrapped text" })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = "Move down one line through wrapped text" })
 
 -- Make command mode behave like terminal
 map("c", "<C-a>", "<Home>", { silent = false, desc = "Go to beginning of command line" })
@@ -103,18 +93,8 @@ map("n", "<Leader>gj", ":diffget //3<CR>", { desc = "Choose incoming change" })
 
 -- Insert ISO-date
 map("n", "<Leader>id", [["=strftime("%F")<CR>P]], { desc = "Insert ISO-date: YYYY-MM-DD" })
-map(
-    "c",
-    "<C-d>",
-    "<C-r>=strftime('%F')<CR>",
-    { silent = false, desc = "Insert ISO-date: YYYY-MM-DD" }
-)
-map(
-    "n",
-    "<Leader>iD",
-    [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]],
-    { desc = "Insert ISO-date: YYYY-MM-DDTHH:MM:SS" }
-)
+map("c", "<C-d>", "<C-r>=strftime('%F')<CR>", { silent = false, desc = "Insert ISO-date: YYYY-MM-DD" })
+map("n", "<Leader>iD", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], { desc = "Insert ISO-date: YYYY-MM-DDTHH:MM:SS" })
 
 -- Insert current filename without extension
 map("n", "<Leader>if", [["=expand('%:t:r')<CR>P]], { desc = "Insert filename without extension" })

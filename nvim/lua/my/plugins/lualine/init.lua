@@ -1,6 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
-    config = function ()
+    config = function()
         require("my.plugins.lualine.config")
-    end
+    end,
 }

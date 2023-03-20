@@ -5,12 +5,7 @@ local register_mappings = function()
         remap = true,
         desc = "Add docstring to function/class under cursor",
     })
-    map(
-        "n",
-        "<leader>pf",
-        ":PydocstringFormat<CR>",
-        { desc = "Add docstrings to all functions/classes in file" }
-    )
+    map("n", "<leader>pf", ":PydocstringFormat<CR>", { desc = "Add docstrings to all functions/classes in file" })
     map("v", "<leader>p", ":'<,'>Pydocstring<CR>", {
         desc = "Add docstring to selected function/class",
     })

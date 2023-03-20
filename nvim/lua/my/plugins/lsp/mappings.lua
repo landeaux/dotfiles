@@ -15,8 +15,10 @@ local function format()
     vim.lsp.buf.format({
         async = true,
         filter = function(client)
-            return client.server_capabilities.documentFormattingProvider
-                and vim.tbl_contains(allowed_to_format, client.name)
+            return client.server_capabilities.documentFormattingProvider and vim.tbl_contains(
+                allowed_to_format,
+                client.name
+            )
         end,
     })
 end

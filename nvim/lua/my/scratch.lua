@@ -10,23 +10,17 @@ end
 
 vim.api.nvim_create_user_command("Scratch", function()
     M.scratch(false)
-end, { desc = "Open a scratch buffer in a horizontal split" })
+end, {
+    desc = "Open a scratch buffer in a horizontal split",
+})
 
 vim.api.nvim_create_user_command("VScratch", function()
     M.scratch(true)
-end, { desc = "Open a scratch buffer in a vertical split" })
+end, {
+    desc = "Open a scratch buffer in a vertical split",
+})
 
-vim.keymap.set(
-    { "n", "v" },
-    "<Leader>sj",
-    ":Scratch<CR>",
-    { desc = "Open horizontal scratch buffer" }
-)
-vim.keymap.set(
-    { "n", "v" },
-    "<Leader>sl",
-    ":VScratch<CR>",
-    { desc = "Open vertical scratch buffer" }
-)
+vim.keymap.set({ "n", "v" }, "<Leader>sj", ":Scratch<CR>", { desc = "Open horizontal scratch buffer" })
+vim.keymap.set({ "n", "v" }, "<Leader>sl", ":VScratch<CR>", { desc = "Open vertical scratch buffer" })
 
 return M

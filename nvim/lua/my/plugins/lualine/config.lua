@@ -48,7 +48,7 @@ require("lualine").setup({
             "diagnostics",
         },
         lualine_c = {
-            { "filename", path = 0 }
+            { "filename", path = 0 },
         },
         lualine_x = {
             lsp_clients,
@@ -64,5 +64,5 @@ require("lualine").setup({
             { "location", cond = win_is_wide },
         },
     },
-    extensions = {"fugitive", "quickfix", "man", "neo-tree"},
+    extensions = { "fugitive", "quickfix", "man", "neo-tree" },
 })

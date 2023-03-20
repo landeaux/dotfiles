@@ -35,4 +35,3 @@ g.mkdp_page_title = "「${name}」"
 -- recognized filetypes
 -- these filetypes will have MarkdownPreview... commands
 g.mkdp_filetypes = { "markdown" }
-

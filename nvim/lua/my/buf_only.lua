@@ -28,11 +28,6 @@ end, {
     desc = "Close all buffers except the current one",
 })
 
-vim.keymap.set(
-    "n",
-    "<Leader>bo",
-    ":BufOnly<CR>",
-    { desc = "Close all buffers except the current one", silent = true }
-)
+vim.keymap.set("n", "<Leader>bo", ":BufOnly<CR>", { desc = "Close all buffers except the current one", silent = true })
 
 return M
