@@ -29,9 +29,7 @@ local grep_dir = function(selected, opts)
     local o = vim.tbl_extend("keep", {
         -- debug = true,
         rg_glob = false,
-        rg_opts = "--column --line-number --no-heading --color=always --smart-case "
-            .. "--max-columns=512 "
-            .. globs,
+        rg_opts = "--column --line-number --no-heading --color=always --smart-case " .. "--max-columns=512 " .. globs,
     }, {})
 
     fzf_lua.live_grep(o)

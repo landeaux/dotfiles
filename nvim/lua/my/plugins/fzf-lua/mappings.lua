@@ -6,10 +6,14 @@ map("n", "<Leader>fo", ":FzfLua oldfiles<CR>", { desc = "Find previous files" })
 map("n", "<Leader>fb", ":FzfLua buffers<CR>", { desc = "Find buffers" })
 map("n", "<Leader>fF", function()
     require("fzf-lua").files({ fd_opts = "-c never -t f -L -H -I" })
-end, { desc = "Find files (include ignored)" })
+end, {
+    desc = "Find files (include ignored)",
+})
 map("n", "<Leader>fD", function()
     require("fzf-lua").files({ fd_opts = "-c never -t d -L" })
-end, { desc = "Find directories" })
+end, {
+    desc = "Find directories",
+})
 
 -- grep
 map("n", "<Leader>fg", ":FzfLua live_grep<CR>", { desc = "Live grep" })
@@ -18,10 +22,10 @@ map("n", "<Leader>fW", ":FzfLua grep_cWORD<CR>", { desc = "Find WORD under curso
 map("v", "<Leader>f", ":<C-U>FzfLua grep_visual<CR>", { desc = "Find visual selection" })
 map("n", "<Leader>f/", ":FzfLua lgrep_curbuf<CR>", { desc = "Current buffer fuzzy find" })
 map("n", "<Leader>fG", function()
-    require("fzf-lua").live_grep({
-        rg_opts = "--column -n --no-heading --color=always -S -M 512 -. --no-ignore",
-    })
-end, { desc = "Find files (include ignored)" })
+    require("fzf-lua").live_grep({ rg_opts = "--column -n --no-heading --color=always -S -M 512 -. --no-ignore" })
+end, {
+    desc = "Find files (include ignored)",
+})
 -- map("n", "<Leader>fg", ":FzfLua live_grep_native<CR>", { desc = "Live grep" })
 
 -- diagnostics
@@ -43,3 +47,17 @@ map("n", "<Leader>fdf", ":FzfLua dap_frames<CR>", { desc = "Find dap frames" })
 map("n", "<Leader>fdl", ":FzfLua dap_breakpoints<CR>", { desc = "Find dap breakpoints" })
 map("n", "<Leader>fds", ":FzfLua dap_configurations<CR>", { desc = "Find dap configurations" })
 map("n", "<Leader>fdv", ":FzfLua dap_variables<CR>", { desc = "Find dap variables" })
+
+-- completion
+map("i", "<C-x><C-f>", function()
+    require("fzf-lua").complete_path()
+end, {
+    silent = true,
+    desc = "Fuzzy complete path",
+})
+map("i", "<C-x><C-l>", function()
+    require("fzf-lua").complete_line()
+end, {
+    silent = true,
+    desc = "Fuzzy complete lines",
+})
