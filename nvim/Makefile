@@ -7,3 +7,7 @@ build:
 .PHONY: attach
 attach:
 	docker run -it --rm my_neovim
+
+.PHONY: format
+format:
+	stylua .
