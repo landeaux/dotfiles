@@ -1,39 +1,42 @@
-FROM alpine:latest
+FROM ubuntu:22.10
 
-RUN apk --no-cache add \
-  autoconf \
-  automake \
-  build-base \
-  cmake \
-  ninja \
-  coreutils \
-  curl \
-  gettext-tiny-dev \
+WORKDIR /neovim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
   git \
-  libtool \
-  pkgconf \
-  unzip
+  apt-transport-https \
+  ca-certificates \
+  && update-ca-certificates
 
-RUN git clone https://github.com/neovim/neovim.git
+RUN apt-get install -y \
+  ninja-build \
+  gettext \
+  libtool-bin \
+  cmake \
+  g++ \
+  pkg-config \
+  unzip \
+  curl
 
-ARG VERSION=v0.7.2
-RUN cd neovim && git checkout ${VERSION} && make CMAKE_BUILD_TYPE=RelWithDebInfo install
+RUN git clone https://github.com/neovim/neovim .
 
-RUN apk update && apk upgrade && apk --no-cache add \
-  bash \
-  bash-completion \
-  ctags \
-  fd  \
+ARG VERSION=v0.9.0
+RUN git checkout ${VERSION} && make CMAKE_BUILD_TYPE=RelWithDebInfo && make install
+
+RUN apt-get install -y --no-install-recommends \
+  fd-find \
   gzip \
   nodejs \
   npm \
   ripgrep \
-  tree-sitter-cli \
   wget \
-  xclip
+  xclip \
+  python3.10-venv
+
+RUN npm install --global tree-sitter-cli
 
 WORKDIR /root/.config/nvim
 
-COPY . .
+# COPY . .
 
 CMD [ "/bin/bash" ]
