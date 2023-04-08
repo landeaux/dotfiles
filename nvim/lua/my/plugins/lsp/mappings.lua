@@ -15,10 +15,8 @@ local function format()
     vim.lsp.buf.format({
         async = true,
         filter = function(client)
-            return client.server_capabilities.documentFormattingProvider and vim.tbl_contains(
-                allowed_to_format,
-                client.name
-            )
+            return client.server_capabilities.documentFormattingProvider
+                and vim.tbl_contains(allowed_to_format, client.name)
         end,
     })
 end
@@ -33,8 +31,7 @@ M.register = function(_, bufnr)
     map("n", "K", vim.lsp.buf.hover, { desc = "Show hover documentation" })
     map("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
     map("n", "<Leader>lr", vim.lsp.buf.rename, { desc = "Rename symbol under cursor" })
-    map("n", "<Leader>lc", vim.lsp.buf.code_action, { desc = "Show code actions" })
-    map("x", "<Leader>lc", vim.lsp.buf.range_code_action, { desc = "Show code actions" })
+    map({ "n", "x" }, "<Leader>lc", vim.lsp.buf.code_action, { desc = "Show code actions" })
     map("n", "<Leader>lf", format, { desc = "Format" })
     map("n", "<Leader>li", ":LspInfo<CR>", { desc = "Show LSP info" })
 end
