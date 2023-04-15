@@ -20,7 +20,7 @@ map("n", "<Leader>fg", ":FzfLua live_grep<CR>", { desc = "Live grep" })
 map("n", "<Leader>fw", ":FzfLua grep_cword<CR>", { desc = "Find word under cursor" })
 map("n", "<Leader>fW", ":FzfLua grep_cWORD<CR>", { desc = "Find WORD under cursor" })
 map("v", "<Leader>f", ":<C-U>FzfLua grep_visual<CR>", { desc = "Find visual selection" })
-map("n", "<Leader>f/", ":FzfLua lgrep_curbuf<CR>", { desc = "Current buffer fuzzy find" })
+map("n", "<Leader>f/", ":FzfLua grep_curbuf<CR>", { desc = "Current buffer fuzzy find" })
 map("n", "<Leader>fG", function()
     require("fzf-lua").live_grep({ rg_opts = "--column -n --no-heading --color=always -S -M 512 -. --no-ignore" })
 end, {
