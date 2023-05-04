@@ -158,10 +158,8 @@ export PYTHONDONTWRITEBYTECODE=1
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-if command -v pyenv >/dev/null; then
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1  # make sure venv is always in the project dir
