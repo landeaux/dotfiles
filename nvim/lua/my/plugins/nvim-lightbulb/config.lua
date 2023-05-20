@@ -1,24 +1,19 @@
-require("nvim-lightbulb").update_lightbulb({
+local icon = "󰌵"
+
+require("nvim-lightbulb").setup({
     sign = {
-        enabled = true,
-        priority = 20,
-    },
-    float = {
-        enabled = true,
-        text = "",
-        win_opts = {},
+        enabled = false,
     },
     virtual_text = {
-        enabled = false,
-        text = "",
+        enabled = true,
+        text = icon,
+        hl_mode = "combine",
+    },
+    autocmd = {
+        enabled = true,
     },
 })
 
-vim.fn.sign_define("LightBulbSign", { text = "" })
-
-require("my.utils").create_augroup({
-    {
-        event = "CursorHold,CursorHoldI",
-        opts = { pattern = "*", command = 'lua require("nvim-lightbulb").update_lightbulb()' },
-    },
-}, "_nvim_lightbulb")
+vim.fn.sign_define("LightBulbSign", { text = icon })
+vim.api.nvim_command("highlight LightBulbFloatWin guifg=#f9e2af")
+vim.api.nvim_command("highlight LightBulbVirtualText guifg=#f9e2af")
