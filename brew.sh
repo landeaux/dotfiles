@@ -36,6 +36,7 @@ brew install ack
 brew install bat
 brew install direnv
 brew install entr
+brew install fzf
 brew install git
 brew install git-extras
 brew install git-lfs
