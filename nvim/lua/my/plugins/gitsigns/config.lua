@@ -1,16 +1,24 @@
+local text = "▏" -- "|", "▏", "▌", "│"
+
 require("gitsigns").setup({
     signs = {
         add = {
-            text = "▎",
+            text = text,
         },
         change = {
-            text = "▎",
+            text = text,
+        },
+        delete = {
+            text = text,
+        },
+        topdelete = {
+            text = text,
         },
         changedelete = {
-            text = "▎",
+            text = text,
         },
         untracked = {
-            text = "▎",
+            text = text,
         },
     },
     preview_config = {
