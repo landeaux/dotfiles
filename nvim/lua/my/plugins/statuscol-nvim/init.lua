@@ -8,7 +8,7 @@ return {
                 { text = { " " } },
                 { sign = { name = { ".*" }, maxwidth = 1, colwidth = 2 } },
                 { text = { builtin.lnumfunc, " " } },
-                { sign = { name = { "GitSigns" }, maxwidth = 1, colwidth = 1 } },
+                { sign = { name = { "GitSigns" }, maxwidth = 1, colwidth = 1, fillchar = "▏" } },
             },
         })
     end,
