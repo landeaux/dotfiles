@@ -5,10 +5,9 @@ return {
         require("statuscol").setup({
             relculright = true,
             segments = {
-                { text = { " " } },
+                { sign = { name = { "GitSigns" }, maxwidth = 1, colwidth = 1 } },
                 { sign = { name = { ".*" }, maxwidth = 1, colwidth = 2 } },
                 { text = { builtin.lnumfunc, " " } },
-                { sign = { name = { "GitSigns" }, maxwidth = 1, colwidth = 1, fillchar = "▏" } },
             },
         })
     end,
