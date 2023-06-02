@@ -41,6 +41,7 @@ brew install git
 brew install git-extras
 brew install git-lfs
 brew install glab
+brew install goku  # for writing karabiner.json
 brew install hadolint
 brew install hyperfine
 brew install jq
