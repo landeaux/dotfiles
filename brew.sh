@@ -53,6 +53,7 @@ brew install ripgrep
 brew install shellcheck
 brew install shfmt
 brew install ssh-copy-id
+brew install starship  # for shell prompt
 brew install task
 brew install tmux
 brew install tree
