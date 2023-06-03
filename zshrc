@@ -7,9 +7,8 @@ export ZSH="${HOME}/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
-
-SPACESHIP_VENV_SHOW=true
+# ZSH_THEME="spaceship"
+# SPACESHIP_VENV_SHOW=true
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -202,6 +201,9 @@ if command -v brew 1>/dev/null 2>&1; then
   export PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
   export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 fi
+
+# initialize starship prompt
+eval "$(starship init zsh)"
 
 ###############################################################################
 
