@@ -5,16 +5,16 @@
 # The output gets piped into `less` with options to preserve color, unless the
 # output is small enough for one screen.
 function tre() {
-	tree -aC --gitignore -I '.git' --dirsfirst "$@" | less -FRX
+  tree -aC --gitignore -I '.git' --dirsfirst "$@" | less -FRX
 }
 
 # kill a process by name (requires bin/flip)
 function yeet() {
-	if [ ! "$1" ]; then
-		echo "Usage: yeet process_name"
-	elif killall "$1"; then
-		echo
-		echo " (╯°□°）╯︵$(echo "$1" | flip)"
-		echo
-	fi
+  if [ ! "$1" ]; then
+    echo "Usage: yeet process_name"
+  elif killall "$1"; then
+    echo
+    echo " (╯°□°）╯︵$(echo "$1" | flip)"
+    echo
+  fi
 }

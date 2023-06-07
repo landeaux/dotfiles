@@ -41,7 +41,7 @@ brew install git
 brew install git-extras
 brew install git-lfs
 brew install glab
-brew install goku  # for writing karabiner.json
+brew install goku # for writing karabiner.json
 brew install hadolint
 brew install hyperfine
 brew install jq
@@ -53,7 +53,7 @@ brew install ripgrep
 brew install shellcheck
 brew install shfmt
 brew install ssh-copy-id
-brew install starship  # for shell prompt
+brew install starship # for shell prompt
 brew install task
 brew install tmux
 brew install tree
@@ -74,9 +74,9 @@ brew install zsh
 
 # Switch to using brew-installed zsh as default shell
 if ! grep "${BREW_PREFIX}/bin/zsh" /etc/shells &>/dev/null; then
-  echo "${BREW_PREFIX}/bin/zsh" | sudo tee -a /etc/shells;
-  chsh -s "${BREW_PREFIX}/bin/zsh";
-fi;
+  echo "${BREW_PREFIX}/bin/zsh" | sudo tee -a /etc/shells
+  chsh -s "${BREW_PREFIX}/bin/zsh"
+fi
 
 # Install kitty terminal
 brew install --cask kitty

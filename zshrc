@@ -77,7 +77,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-unsetopt AUTO_CD  # don't automatically change into directories
+unsetopt AUTO_CD # don't automatically change into directories
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -161,8 +161,8 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # pipenv
-export PIPENV_VENV_IN_PROJECT=1  # make sure venv is always in the project dir
-export PIPENV_DONT_LOAD_ENV=1  # don't let pipenv autoload env... we have direnv for this
+export PIPENV_VENV_IN_PROJECT=1              # make sure venv is always in the project dir
+export PIPENV_DONT_LOAD_ENV=1                # don't let pipenv autoload env... we have direnv for this
 eval "$(_PIPENV_COMPLETE=zsh_source pipenv)" # set up magic shell completion
 
 # fzf
@@ -175,8 +175,8 @@ fi
 
 # nvm config
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # add Go and Go package binaries to PATH
 go_path="/usr/local/go/bin"
