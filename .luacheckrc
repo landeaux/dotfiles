@@ -1,4 +1,4 @@
--- vim: ft=lua tw=80
+-- vim: ft=lua tw=120 sw=4 sts=4 ts=4
 
 -- Rerun tests only if their modification time changed.
 cache = true
