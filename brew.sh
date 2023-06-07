@@ -37,7 +37,6 @@ brew install bat
 brew install direnv
 brew install entr
 brew install fd
-brew install fzf
 brew install git
 brew install git-extras
 brew install git-lfs
@@ -60,6 +59,10 @@ brew install tmux
 brew install tree
 brew install tree-sitter
 brew install wget
+
+# Install fzf
+brew install fzf
+"$BREW_PREFIX"/opt/fzf/install # To install useful key bindings and fuzzy completion
 
 # Install Nerd fonts
 brew tap homebrew/cask-fonts
