@@ -118,6 +118,11 @@ fi
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if command -v fd 1>/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND='fd --type d'
+fi
 
 # Marker
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
