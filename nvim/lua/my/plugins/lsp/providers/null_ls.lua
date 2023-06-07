@@ -35,7 +35,7 @@ null_ls.setup({
         null_ls.builtins.formatting.phpcsfixer,
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.eslint_d,
-        null_ls.builtins.formatting.shfmt,
+        null_ls.builtins.formatting.shfmt.with({ extra_args = { "--indent", "2" } }),
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.trim_whitespace,
         -- Hover
