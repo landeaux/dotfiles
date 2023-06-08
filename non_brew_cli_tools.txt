@@ -1,0 +1,5 @@
+go
+marker
+nvm
+pyenv
+rustup/rustc/cargo
