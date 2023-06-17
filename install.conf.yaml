@@ -7,6 +7,7 @@
 
 - link:
     ~/.bashrc:
+    ~/.config/bat: bat
     ~/.config/karabiner.edn: karabiner.edn
     ~/.config/karabiner: karabiner
     ~/.config/kitty/kitty.conf: kitty/kitty.conf
