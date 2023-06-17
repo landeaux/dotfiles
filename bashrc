@@ -134,3 +134,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # load cargo into PATH
 . "$HOME/.cargo/env"
+
+# bat
+if command -v bat 1>/dev/null 2>&1; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi

@@ -196,6 +196,11 @@ fi
 # zk
 export ZK_NOTEBOOK_DIR="$HOME/Notes"
 
+# bat
+if command -v bat 1>/dev/null 2>&1; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
 # source our functions
 if [ -f ~/.functions ]; then
   source ~/.functions
