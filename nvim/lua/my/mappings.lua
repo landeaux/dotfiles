@@ -120,7 +120,7 @@ end
 
 -- Diagnostics
 map("n", "<Leader>ek", function()
-    vim.diagnostic.open_float(0, { scope = "cursor" })
+    vim.diagnostic.open_float({ scope = "cursor" })
 end, {
     desc = "Show cursor diagnostics",
 })
