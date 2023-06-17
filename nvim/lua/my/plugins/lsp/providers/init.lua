@@ -1,8 +1,10 @@
-local default_config = require("my.plugins.lsp.providers.defaults")
-local lspconfig = require("lspconfig")
-
 -- vim.lsp.set_log_level("debug")
 -- require("vim.lsp.log").set_format_func(vim.inspect)
+
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+require("neodev").setup({
+    -- add any options here, or leave empty to use the default settings
+})
 
 require("mason-lspconfig").setup({
     ensure_installed = {
@@ -44,6 +46,9 @@ local servers = {
 }
 
 -- require("my.plugins.lsp.providers.volar_multi").register_volar_lspconfigs()
+
+local lspconfig = require("lspconfig")
+local default_config = require("my.plugins.lsp.providers.defaults")
 
 for _, server in pairs(servers) do
     local opts = default_config
