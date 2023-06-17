@@ -53,8 +53,6 @@ local default_config = require("my.plugins.lsp.providers.defaults")
 for _, server in pairs(servers) do
     local opts = default_config
 
-    opts.autostart = true
-
     local custom_config_path = "my.plugins.lsp.providers." .. server
     local custom_config_exists, config = pcall(require, custom_config_path)
 
