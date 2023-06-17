@@ -6,7 +6,7 @@ end
 
 local function documentHighlight(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_exec(
+        vim.api.nvim_exec2(
             [[
                 augroup _lsp_document_highlight
                     autocmd! * <buffer>
@@ -14,7 +14,7 @@ local function documentHighlight(client, bufnr)
                     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
                 augroup END
             ]],
-            false
+            {}
         )
     end
 end
