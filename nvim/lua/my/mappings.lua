@@ -93,7 +93,6 @@ map("n", "<Leader>gj", ":diffget //3<CR>", { desc = "Choose incoming change" })
 
 -- Insert ISO-date
 map("n", "<Leader>id", [["=strftime("%F")<CR>P]], { desc = "Insert ISO-date: YYYY-MM-DD" })
-map("c", "<C-d>", "<C-r>=strftime('%F')<CR>", { silent = false, desc = "Insert ISO-date: YYYY-MM-DD" })
 map("n", "<Leader>iD", [["=strftime("%Y-%m-%dT%H:%M:%S")<CR>P]], { desc = "Insert ISO-date: YYYY-MM-DDTHH:MM:SS" })
 
 -- Insert current filename without extension
