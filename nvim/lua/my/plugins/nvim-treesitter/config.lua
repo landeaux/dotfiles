@@ -60,7 +60,7 @@ require("nvim-treesitter.configs").setup({
     },
     indent = {
         enable = true,
-        disable = { "python" },
+        disable = { "python", "typescript" },
     },
     incremental_selection = {
         enable = true,
