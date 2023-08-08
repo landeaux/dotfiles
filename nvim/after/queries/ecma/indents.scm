@@ -1,3 +1,3 @@
-; extends
-
-(comment) @auto
+; ; extends
+;
+; (comment) @auto
