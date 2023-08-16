@@ -215,6 +215,7 @@ if command -v brew 1>/dev/null 2>&1; then
   export PATH="$(brew --prefix moreutils)/libexec/gnubin:$PATH"
   export PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
   export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
+  export PATH="$(brew --prefix ssh-copy-id)/bin:$PATH"
 fi
 
 # initialize starship prompt
