@@ -90,6 +90,7 @@ cmp.setup({
     }),
     sources = {
         -- NOTE: The order of these are important as it determines priority.
+        { name = "neorg" },
         { name = "calc" },
         { name = "path" },
         { name = "nvim_lua" },
@@ -151,3 +152,4 @@ cmp.setup({
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
