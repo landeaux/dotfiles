@@ -13,6 +13,7 @@ require("indent_blankline").setup({
         "markdown",
         "mason",
         "neo-tree",
+        "norg",
     },
     char = char,
     char_blankline = char,
