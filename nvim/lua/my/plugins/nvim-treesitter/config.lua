@@ -6,6 +6,7 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
 
 -- Tree-sitter
+---@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
     autotag = {
         enable = true,
