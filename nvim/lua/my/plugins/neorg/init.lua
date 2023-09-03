@@ -20,6 +20,13 @@ return {
                         engine = "nvim-cmp",
                     },
                 },
+                ["core.keybinds"] = {
+                    config = {
+                        hook = function(keybinds)
+                            keybinds.remap_key("norg", "n", "<C-Space>", "<LocalLeader><Space>")
+                        end,
+                    },
+                },
             },
         })
     end,
