@@ -1,1 +1,1 @@
-au BufRead,BufNewFile Dockerfile-*,Dockerfile.* set filetype=dockerfile
+au BufRead,BufNewFile docker-*.yml,docker-*.yaml set filetype=yaml.docker-compose
