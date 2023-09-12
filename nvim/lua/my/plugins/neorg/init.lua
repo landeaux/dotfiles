@@ -30,4 +30,5 @@ return {
             },
         })
     end,
+    cmd = { "Neorg" },
 }
