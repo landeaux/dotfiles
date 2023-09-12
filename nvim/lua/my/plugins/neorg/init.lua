@@ -6,4 +6,5 @@ return {
         require("my.plugins.neorg.config")
     end,
     cmd = { "Neorg" },
+    ft = "norg",
 }
