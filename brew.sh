@@ -60,6 +60,8 @@ brew install tree
 brew install tree-sitter
 brew install wget
 
+# Install pyenv dependencies
+brew install libb2 # Fixes blake2b hash issue. See https://github.com/pyenv/pyenv/issues/2573#issuecomment-1415335052
 # Install pyenv python build dependencies
 brew install openssl readline sqlite3 xz zlib tcl-tk
 
