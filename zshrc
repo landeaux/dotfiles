@@ -101,6 +101,7 @@ unsetopt AUTO_CD # don't automatically change into directories
 # For a full list of active aliases, run `alias`.
 
 # General
+alias ls="ls -F --color=auto"
 alias rm="rm -i"
 alias prettifyjson="python -m json.tool"
 alias dust="du -sh * | sort -hr"
