@@ -23,13 +23,11 @@ require("catppuccin").setup({
             colored_indent_levels = false,
         },
     },
-    highlight_overrides = {
-        all = {
-            SpellBad = { style = { "underdotted" } },
-            SpellCap = { style = { "underdotted" } },
-            SpellRare = { style = { "underdotted" } },
-            SpellLocal = { style = { "underdotted" } },
-        },
+    custom_highlights = {
+        SpellBad = { style = { "underdotted" } },
+        SpellCap = { style = { "underdotted" } },
+        SpellRare = { style = { "underdotted" } },
+        SpellLocal = { style = { "underdotted" } },
     },
 })
 
