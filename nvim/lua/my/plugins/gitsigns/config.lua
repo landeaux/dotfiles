@@ -1,4 +1,4 @@
-local text = "▏" -- "|", "▏", "▌", "│", "┃"
+local text = "▌" -- "|", "▏", "▌", "│", "┃"
 
 require("gitsigns").setup({
     signs = {
