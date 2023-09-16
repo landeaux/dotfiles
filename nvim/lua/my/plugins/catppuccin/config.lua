@@ -16,12 +16,6 @@ require("catppuccin").setup({
             },
         },
         mason = true,
-        markdown = true,
-        treesitter = true,
-        indent_blankline = {
-            enabled = true,
-            colored_indent_levels = false,
-        },
     },
     custom_highlights = {
         SpellBad = { style = { "underdotted" } },
