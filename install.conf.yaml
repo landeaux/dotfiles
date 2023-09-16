@@ -10,8 +10,7 @@
     ~/.config/bat: bat
     ~/.config/karabiner.edn: karabiner.edn
     ~/.config/karabiner: karabiner
-    ~/.config/kitty/kitty.conf: kitty/kitty.conf
-    ~/.config/kitty/catppuccin_mocha.conf: kitty/catppuccin_mocha.conf
+    ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/starship.toml: starship.toml
     ~/.dotfiles: ''
