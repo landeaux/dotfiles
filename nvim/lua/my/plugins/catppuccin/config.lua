@@ -15,9 +15,7 @@ require("catppuccin").setup({
                 information = { "undercurl" },
             },
         },
-        neotree = true,
         mason = true,
-        notify = true,
         markdown = true,
         treesitter = true,
         indent_blankline = {
