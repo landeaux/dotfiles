@@ -2,7 +2,7 @@ local dap_python = require("dap-python")
 
 local pyenv_root = vim.fn.getenv("PYENV_ROOT")
 if pyenv_root == vim.NIL then
-    error("PYENV_ROOT not set! Unable to initialize DAP for python.")
+    vim.notify_once("PYENV_ROOT not set! Unable to initialize DAP for python.", vim.log.levels.WARN)
     return
 end
 
