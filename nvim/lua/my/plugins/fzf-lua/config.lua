@@ -62,4 +62,14 @@ fzf_lua.setup({
     oldfiles = {
         cwd_only = true,
     },
+    previewers = {
+        builtin = {
+            extensions = {
+                ["jpg"] = { "chafa" },
+                ["jpeg"] = { "chafa" },
+                ["png"] = { "chafa" },
+                ["svg"] = { "chafa" },
+            },
+        },
+    },
 })
