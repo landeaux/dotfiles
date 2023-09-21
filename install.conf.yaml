@@ -31,6 +31,6 @@
 
 - shell:
     - git submodule update --init --recursive
-    - '[ -n "$TMUX" ] && tmux source-file "${HOME}/.tmux.conf"'
+    - '[ -n "$TMUX" ] && tmux source-file "${HOME}/.tmux.conf"; true'
     - tic -x ./terminfo/tmux-256color.terminfo # custom terminfo w/ italics
     - bat cache --build # update the binary cache for bat
