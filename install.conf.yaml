@@ -12,7 +12,9 @@
     ~/.config/karabiner: karabiner
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
+    ~/.config/skhd: skhd
     ~/.config/starship.toml: starship.toml
+    ~/.config/yabai: yabai
     ~/.dotfiles: ''
     ~/.gitconfig:
     ~/.gitignore:

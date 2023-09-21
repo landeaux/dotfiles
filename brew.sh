@@ -60,6 +60,10 @@ brew install tree
 brew install tree-sitter
 brew install wget
 
+# Install yabai (tiling window manager) and skhd (hotkey daemon)
+brew install koekeishiya/formulae/yabai
+brew install koekeishiya/formulae/skhd
+
 # Install pyenv dependencies
 brew install libb2 # Fixes blake2b hash issue. See https://github.com/pyenv/pyenv/issues/2573#issuecomment-1415335052
 # Install pyenv python build dependencies
