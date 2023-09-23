@@ -22,12 +22,12 @@ g.netrw_keepdir = 0
 -- Misc
 -- (NOTE: don't use opt.syntax = "enable" here. It will not work!)
 cmd("syntax enable") -- enable syntax highlighting
-opt.hidden = true -- allow for switching buffers without saving
-opt.encoding = "utf-8"
+-- opt.hidden = true -- allow for switching buffers without saving
+-- opt.encoding = "utf-8"
 opt.clipboard = { "unnamed", "unnamedplus" }
-opt.backspace = { "eol", "start", "indent" }
+-- opt.backspace = { "eol", "start", "indent" }
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
-opt.autoread = true -- auto read file changes
+-- opt.autoread = true -- auto read file changes
 opt.undofile = true -- persistent undo
 opt.spelllang = "en"
 opt.spellsuggest = { "best", "9" }
@@ -40,7 +40,7 @@ opt.exrc = true
 opt.secure = true
 
 -- Indent
-opt.autoindent = true
+-- opt.autoindent = true
 opt.smartindent = true
 
 -- Tabs
@@ -53,13 +53,13 @@ opt.expandtab = true
 -- Wildmenu
 opt.wildmode = { "longest", "list", "full" }
 opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*" }
-opt.wildmenu = true
+-- opt.wildmenu = true
 
 -- Search
 opt.ignorecase = true
 opt.smartcase = true
-opt.incsearch = true
-opt.hlsearch = true
+-- opt.incsearch = true
+-- opt.hlsearch = true
 
 -- Incremental command
 opt.inccommand = "split"
@@ -91,7 +91,7 @@ opt.fillchars = {
     eob = " ",
 }
 opt.showmode = false
--- opt.mouse = "a"
+opt.mouse = "a"
 opt.splitbelow = true
 opt.splitright = true
 opt.guicursor = {
