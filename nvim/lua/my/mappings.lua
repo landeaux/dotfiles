@@ -127,3 +127,8 @@ map("n", "<Leader>el", vim.diagnostic.open_float, { desc = "Show line diagnostic
 map("n", "<Leader>eq", vim.diagnostic.setloclist, { desc = "Add diagnostics to location list" })
 map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 map("n", "]e", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+
+-- Add undo break-points
+map("i", ",", ",<c-g>u")
+map("i", ".", ".<c-g>u")
+map("i", ";", ";<c-g>u")
