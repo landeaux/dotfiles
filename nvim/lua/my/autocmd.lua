@@ -36,3 +36,16 @@ utils.create_augroup({
         },
     },
 }, "_cmd_win")
+
+utils.create_augroup({
+    {
+        event = "VimResized",
+        opts = {
+            callback = function()
+                local current_tab = vim.fn.tabpagenr()
+                vim.cmd("tabdo wincmd =")
+                vim.cmd("tabnext " .. current_tab)
+            end,
+        }
+    },
+}, "_resize_splits")
