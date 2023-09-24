@@ -1,0 +1,86 @@
+{
+  "title": "Fn + H => Left Arrow",
+  "rules": [
+    {
+      "description": "Fn + H => Left Arrow",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "fn"
+          },
+          "to": [
+            {
+              "key_code": "fn",
+              "lazy": true
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": ["fn"],
+              "optional": ["any"]
+            },
+            "key_code": "h"
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "left_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": ["fn"],
+              "optional": ["any"]
+            },
+            "key_code": "j"
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "down_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": ["fn"],
+              "optional": ["any"]
+            },
+            "key_code": "k"
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "up_arrow"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": ["fn"],
+              "optional": ["any"]
+            },
+            "key_code": "l"
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "right_arrow"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
