@@ -64,6 +64,9 @@ brew install wget
 brew install koekeishiya/formulae/yabai
 brew install koekeishiya/formulae/skhd
 
+# Install qmk
+brew install qmk/qmk/qmk
+
 # Install pyenv dependencies
 brew install libb2 # Fixes blake2b hash issue. See https://github.com/pyenv/pyenv/issues/2573#issuecomment-1415335052
 # Install pyenv python build dependencies
