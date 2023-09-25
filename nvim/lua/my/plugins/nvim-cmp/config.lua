@@ -62,6 +62,7 @@ local select_prev_snippet_choice = function(fallback)
     end
 end
 
+---@diagnostic disable-next-line: missing-fields
 cmp.setup({
     -- completion = { autocomplete = false },
     window = {
@@ -98,6 +99,7 @@ cmp.setup({
         { name = "luasnip" },
         { name = "buffer" },
     },
+---@diagnostic disable-next-line: missing-fields
     formatting = {
         format = function(entry, vim_item)
             vim_item.menu = ({
