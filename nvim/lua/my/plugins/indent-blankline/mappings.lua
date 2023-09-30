@@ -1,6 +1,1 @@
-vim.keymap.set(
-    "n",
-    "<Leader>ti",
-    "<cmd>IndentBlanklineToggle<CR>",
-    { silent = true, desc = "Toggle indentation guides" }
-)
+vim.keymap.set("n", "<Leader>ti", "<cmd>IBLToggle<CR>", { silent = true, desc = "Toggle indentation guides" })
