@@ -43,7 +43,7 @@ map("i", "<C-r>", "<C-r><C-o>", { desc = "Paste from register and preserve inden
 
 map({ "n", "v" }, "<Leader>th", ":set hlsearch!<CR>", { desc = "Toggle highlighting" })
 map({ "n", "v" }, "<Leader>tr", ":set invrelativenumber<CR>", { desc = "Toggle relative number" })
-map({ "n", "v" }, "<Leader>ts", ":set spell!<CR>", { desc = "Toggle spelling" })
+map({ "n", "v" }, "<Leader>ts", ":set spell! spell?<CR>", { desc = "Toggle spelling" })
 map({ "n", "v" }, "<Leader>tw", ":set list!<CR>", { desc = "Toggle whitespace chars" })
 map({ "n", "v" }, "<Leader>tk", function()
     local cc = '"'
