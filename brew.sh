@@ -76,9 +76,10 @@ brew install openssl readline sqlite3 xz zlib tcl-tk
 brew install fzf
 "$BREW_PREFIX"/opt/fzf/install # To install useful key bindings and fuzzy completion
 
-# Install Nerd fonts
+# Install Fonts
 brew tap homebrew/cask-fonts
-brew install font-jetbrains-mono-nerd-font
+brew install font-jetbrains-mono
+brew install font-symbols-only-nerd-font
 
 # Install a modern version of Zsh.
 brew install zsh
