@@ -28,17 +28,6 @@ null_ls.setup({
         null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.diagnostics.luacheck,
         null_ls.builtins.diagnostics.hadolint,
-        -- Formatting
-        -- NOTE: these must be placed in the order we want them to run
-        null_ls.builtins.formatting.isort.with({ temp_dir = "/tmp" }),
-        null_ls.builtins.formatting.black.with({ temp_dir = "/tmp" }),
-        null_ls.builtins.formatting.phpcsfixer,
-        null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.formatting.eslint_d,
-        null_ls.builtins.formatting.shfmt.with({ extra_args = { "--indent", "2" } }),
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.rustfmt,
-        null_ls.builtins.formatting.trim_whitespace,
         -- Hover
         null_ls.builtins.hover.printenv,
     },
