@@ -30,6 +30,8 @@ return {
         },
     },
     config = function(_, opts)
+        local util = require("conform.util")
+        util.add_formatter_args(require("conform.formatters.shfmt"), { "-i", "2" })
         require("conform").setup(opts)
     end,
 }
