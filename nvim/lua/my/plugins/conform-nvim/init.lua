@@ -2,6 +2,7 @@ return {
     "stevearc/conform.nvim",
     init = function()
         require("my.plugins.conform-nvim.mappings")
+        vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
     config = function()
         require("conform").setup({
@@ -29,6 +30,5 @@ return {
                 yaml = { "prettierd" },
             },
         })
-        vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
 }
