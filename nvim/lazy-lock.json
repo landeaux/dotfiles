@@ -13,7 +13,7 @@
   "document-color.nvim": { "branch": "main", "commit": "74c487f0e5accfaae033755451b9e367220693fd" },
   "friendly-snippets": { "branch": "main", "commit": "43727c2ff84240e55d4069ec3e6158d74cb534b6" },
   "fzf-lua": { "branch": "main", "commit": "c1de84f9c9cb227d2bef65643625f1fb8207bf8f" },
-  "gitsigns.nvim": { "branch": "main", "commit": "ff01d34daaed72f271a8ffa088a7e839a60c640f" },
+  "gitsigns.nvim": { "branch": "main", "commit": "d05a21795c11e9185ce832257435b19809dab8c6" },
   "indent-blankline.nvim": { "branch": "master", "commit": "1bee85e1789f61e5ee54e5a18f8fa193099dca99" },
   "lazy.nvim": { "branch": "main", "commit": "906ff8e569872d9081cfc9246d917011c22b5e61" },
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },
