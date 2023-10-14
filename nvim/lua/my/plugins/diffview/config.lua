@@ -17,3 +17,11 @@ require("diffview").setup({
         },
     },
 })
+
+vim.api.nvim_create_autocmd({ "User" }, {
+    pattern = "DiffviewDiffBufRead",
+    callback = function(_)
+        vim.opt_local.relativenumber = false
+    end,
+    group = vim.api.nvim_create_augroup("_diffview", { clear = true }),
+})
