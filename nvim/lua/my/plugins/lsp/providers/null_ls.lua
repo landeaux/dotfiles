@@ -8,26 +8,26 @@ null_ls.setup({
         null_ls.builtins.code_actions.eslint_d,
         null_ls.builtins.code_actions.shellcheck,
         -- Diagnostics
-        null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.diagnostics.flake8.with({ temp_dir = "/tmp" }),
-        null_ls.builtins.diagnostics.markdownlint,
-        null_ls.builtins.diagnostics.mypy.with({ temp_dir = "/tmp" }),
-        null_ls.builtins.diagnostics.pydocstyle.with({
-            temp_dir = "/tmp",
-            diagnostics_format = "#{m} (#{c})",
-            extra_args = { "--config=$ROOT/pyproject.toml" },
-            -- Don't lint test files
-            runtime_condition = function(params)
-                -- NOTE: For some reason pydocstyle refuses to respect the
-                -- match argument when run through null-ls. So I guess we'll
-                -- just do it manually...
-                local fname = vim.fn.fnamemodify(params.bufname, ":t:r")
-                return not vim.startswith(fname, "test_")
-            end,
-        }),
-        null_ls.builtins.diagnostics.shellcheck,
-        null_ls.builtins.diagnostics.luacheck,
-        null_ls.builtins.diagnostics.hadolint,
+        -- null_ls.builtins.diagnostics.eslint_d,
+        -- null_ls.builtins.diagnostics.flake8.with({ temp_dir = "/tmp" }),
+        -- null_ls.builtins.diagnostics.markdownlint,
+        -- null_ls.builtins.diagnostics.mypy.with({ temp_dir = "/tmp" }),
+        -- null_ls.builtins.diagnostics.pydocstyle.with({
+        --     temp_dir = "/tmp",
+        --     diagnostics_format = "#{m} (#{c})",
+        --     extra_args = { "--config=$ROOT/pyproject.toml" },
+        --     -- Don't lint test files
+        --     runtime_condition = function(params)
+        --         -- NOTE: For some reason pydocstyle refuses to respect the
+        --         -- match argument when run through null-ls. So I guess we'll
+        --         -- just do it manually...
+        --         local fname = vim.fn.fnamemodify(params.bufname, ":t:r")
+        --         return not vim.startswith(fname, "test_")
+        --     end,
+        -- }),
+        -- null_ls.builtins.diagnostics.shellcheck,
+        -- null_ls.builtins.diagnostics.luacheck,
+        -- null_ls.builtins.diagnostics.hadolint,
         -- Hover
         null_ls.builtins.hover.printenv,
     },
