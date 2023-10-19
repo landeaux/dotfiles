@@ -1,6 +1,5 @@
 return {
     "mfussenegger/nvim-lint",
-    commit = "0f54481d7537a6872f7bb021575366657e123474",
     config = function()
         require("lint").linters_by_ft = {
             dockerfile = { "hadolint" },
