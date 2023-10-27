@@ -56,6 +56,9 @@ fzf_lua.setup({
             ["ctrl-g"] = grep_dir,
         },
     },
+    diagnostics = {
+        diag_source = true,
+    },
     grep = {
         rg_glob = true,
     },
