@@ -13,7 +13,7 @@ end
 
 local function stripBeforeLastOccurrenceOf(str, sep)
     local idx = lastIndexOf(str, sep) or 0
-    return str:sub(idx + 1), idx
+    return str:sub(idx + 1)
 end
 
 local grep_dir = function(selected, opts)
@@ -22,7 +22,7 @@ local grep_dir = function(selected, opts)
         opts = opts or {}
         -- Remove ansi coloring and prefixed icons
         local stripped = utils.strip_ansi_coloring(selected[i])
-        stripped, _ = stripBeforeLastOccurrenceOf(stripped, utils.nbsp)
+        stripped = stripBeforeLastOccurrenceOf(stripped, utils.nbsp)
         globs = globs .. "--glob '" .. stripped .. "**' "
     end
 
