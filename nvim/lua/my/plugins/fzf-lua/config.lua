@@ -56,6 +56,11 @@ fzf_lua.setup({
             ["ctrl-g"] = grep_dir,
         },
     },
+    files = {
+        actions = {
+            ["ctrl-v"] = { actions.toggle_ignore },
+        },
+    },
     diagnostics = {
         diag_source = true,
     },
