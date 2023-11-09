@@ -18,6 +18,7 @@ local function on_new_config(new_config, new_root_dir)
 end
 
 return {
+    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
     settings = {
         volar = {
             codeLens = {

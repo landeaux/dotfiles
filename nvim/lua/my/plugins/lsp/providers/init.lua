@@ -45,7 +45,7 @@ local servers = {
     "lua_ls",
     "tailwindcss",
     "taplo",
-    "tsserver",
+    -- "tsserver",
     "vimls",
     "volar",
     "yamlls",
