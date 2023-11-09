@@ -121,5 +121,4 @@ parser_configs.smarty = {
         files = { "src/parser.c" },
         branch = "main",
     },
-    filetype = "smarty",
 }
