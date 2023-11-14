@@ -58,7 +58,7 @@ fzf_lua.setup({
     },
     files = {
         actions = {
-            ["ctrl-v"] = { actions.toggle_ignore },
+            ["ctrl-i"] = { actions.toggle_ignore },
         },
     },
     diagnostics = {
