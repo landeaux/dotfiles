@@ -8,6 +8,7 @@ require("neodev").setup({
 
 require("mason-lspconfig").setup({
     ensure_installed = {
+        "ansiblels",
         "bashls",
         "cssls",
         "dockerls",
@@ -29,6 +30,7 @@ require("mason-lspconfig").setup({
 })
 
 local servers = {
+    "ansiblels",
     "bashls",
     "cssls",
     "dockerls",
