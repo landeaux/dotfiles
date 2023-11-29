@@ -111,6 +111,9 @@ if ! command -v sha256sum 1>/dev/null 2>&1; then
   alias sha256sum="shasum -a 256"
 fi
 
+# Ripgrep
+alias rg="rg --hyperlink-format=kitty"
+
 # Zsh
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
