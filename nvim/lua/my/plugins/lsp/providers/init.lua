@@ -45,16 +45,15 @@ local servers = {
     "lua_ls",
     "tailwindcss",
     "taplo",
-    -- "tsserver",
+    "tsserver",
     "vimls",
     "volar",
     "yamlls",
 }
 
--- require("my.plugins.lsp.providers.volar_multi").register_volar_lspconfigs()
-
 local lspconfig = require("lspconfig")
 local default_config = require("my.plugins.lsp.providers.defaults")
+local enable_volar_takeover_mode = vim.g.volar_takeover_mode and require("my.utils").is_vue_project()
 
 for _, server in pairs(servers) do
     local opts = default_config
@@ -66,10 +65,14 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend("force", opts, config)
     end
 
-    -- if server == "volar" then
-    --     lspconfig.volar_doc.setup(opts)
-    --     lspconfig.volar_api.setup(opts)
-    --     lspconfig.volar_html.setup(opts)
+    if enable_volar_takeover_mode then
+        if server == "tsserver" then
+            goto continue
+        elseif server == "volar" then
+            opts.filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
+        end
+    end
+
     if server == "tsserver" then
         require("typescript").setup({
             disable_commands = false, -- prevent the plugin from creating Vim commands
@@ -79,4 +82,6 @@ for _, server in pairs(servers) do
     else
         lspconfig[server].setup(opts)
     end
+
+    ::continue::
 end

@@ -13,6 +13,8 @@ cmd("filetype plugin on")
 -- Determine the OS so we can use it in logic elsewhere by accessing vim.g.os
 g.os = vim.fn.system("uname"):gsub("\n", "")
 
+g.volar_takeover_mode = true
+
 g.soft_column_limit = 80
 g.hard_column_limit = 120
 opt.colorcolumn = ""
