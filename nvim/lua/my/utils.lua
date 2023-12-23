@@ -46,4 +46,24 @@ function M.set_buffer_soft_line_nagivation()
     map("i", "<Up>", "<C-o>gk")
 end
 
+---Check if the project in the current working directory is a Vue project
+---@return boolean
+function M.is_vue_project()
+    local package_json_path = vim.fn.getcwd() .. "/package.json"
+    if vim.fn.filereadable(package_json_path) == 0 then
+        return false
+    end
+
+    local file = io.open(package_json_path, "r")
+    if file then
+        local content = file:read("*a")
+        file:close()
+        if content:match('"vue":') then
+            return true
+        end
+    end
+
+    return false
+end
+
 return M
