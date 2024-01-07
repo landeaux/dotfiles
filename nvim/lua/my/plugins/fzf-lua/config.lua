@@ -1,6 +1,5 @@
 local fzf_lua = require("fzf-lua")
 local utils = require("fzf-lua.utils")
-local actions = require("fzf-lua.actions")
 
 local function lastIndexOf(haystack, needle)
     local i = haystack:match(".*" .. needle .. "()")
@@ -42,23 +41,9 @@ fzf_lua.setup({
             layout = "vertical",
         },
     },
-    actions = {
-        files = {
-            -- it's important to define all other actions here as this
-            -- table does not get merged with the global defaults
-            ["default"] = actions.file_edit_or_qf,
-            ["ctrl-s"] = actions.file_split,
-            ["ctrl-v"] = actions.file_vsplit,
-            ["ctrl-t"] = actions.file_tabedit,
-            ["alt-q"] = actions.file_sel_to_qf,
-            ["alt-l"] = actions.file_sel_to_ll,
-            -- custom
-            ["ctrl-g"] = grep_dir,
-        },
-    },
     files = {
         actions = {
-            ["alt-v"] = { actions.toggle_ignore },
+            ["ctrl-d"] = grep_dir,
         },
     },
     diagnostics = {
