@@ -18,7 +18,6 @@ end
 local grep_dir = function(selected, opts)
     local globs = ""
     for i = 1, #selected do
-        opts = opts or {}
         -- Remove ansi coloring and prefixed icons
         local stripped = utils.strip_ansi_coloring(selected[i])
         stripped = stripBeforeLastOccurrenceOf(stripped, utils.nbsp)
