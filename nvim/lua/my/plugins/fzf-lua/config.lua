@@ -24,8 +24,7 @@ local grep_dir = function(selected, opts)
         globs = globs .. "--glob '" .. stripped .. "**' "
     end
 
-    local o = vim.tbl_extend("keep", {
-        -- debug = true,
+    fzf_lua.live_grep({
         rg_glob = false,
         rg_opts = "--column --line-number --no-heading --color=always --smart-case " .. "--max-columns=512 " .. globs,
         prompt = "Rg>",
@@ -33,9 +32,7 @@ local grep_dir = function(selected, opts)
             title = globs,
             title_pos = "center",
         },
-    }, {})
-
-    fzf_lua.live_grep(o)
+    })
 end
 
 fzf_lua.setup({
