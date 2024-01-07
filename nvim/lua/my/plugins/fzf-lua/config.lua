@@ -27,7 +27,7 @@ local grep_dir = function(selected, opts)
     fzf_lua.live_grep({
         rg_glob = false,
         rg_opts = "--column --line-number --no-heading --color=always --smart-case " .. "--max-columns=512 " .. globs,
-        prompt = "Rg>",
+        prompt = "*Rg>",
         winopts = {
             title = globs,
             title_pos = "center",
