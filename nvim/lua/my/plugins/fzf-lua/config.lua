@@ -18,9 +18,15 @@ end
 local grep_dir = function(selected, opts)
     local globs = ""
     for i = 1, #selected do
-        -- Remove ansi coloring and prefixed icons
+        -- remove ansi coloring
         local stripped = utils.strip_ansi_coloring(selected[i])
+
+        -- remove prefixed icons and leading spaces
         stripped = stripBeforeLastOccurrenceOf(stripped, utils.nbsp)
+
+        -- remove filename, if not a directory
+        stripped = stripped:match("(.*/)") or ""
+
         globs = globs .. "--glob '" .. stripped .. "**' "
     end
 
