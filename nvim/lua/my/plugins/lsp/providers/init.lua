@@ -22,13 +22,15 @@ local ensure_installed = {
     "yamlls",
 }
 
+vim.print(ensure_installed)
+
 require("mason-lspconfig").setup({
     ensure_installed = ensure_installed,
 })
 
-local servers = vim.list_extend(ensure_installed, {
+local servers = vim.list_extend({
     "smarty_ls",
-})
+}, ensure_installed)
 
 local lspconfig = require("lspconfig")
 local default_config = require("my.plugins.lsp.providers.defaults")
