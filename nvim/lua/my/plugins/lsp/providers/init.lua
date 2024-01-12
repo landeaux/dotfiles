@@ -22,8 +22,6 @@ local ensure_installed = {
     "yamlls",
 }
 
-vim.print(ensure_installed)
-
 require("mason-lspconfig").setup({
     ensure_installed = ensure_installed,
 })
