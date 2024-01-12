@@ -6,30 +6,7 @@ require("neodev").setup({
     -- add any options here, or leave empty to use the default settings
 })
 
-require("mason-lspconfig").setup({
-    ensure_installed = {
-        "ansiblels",
-        "bashls",
-        "cssls",
-        "dockerls",
-        "html",
-        "intelephense",
-        "jsonls",
-        "prismals",
-        "prosemd_lsp",
-        "pyright",
-        "rust_analyzer",
-        "lua_ls",
-        "tailwindcss",
-        "taplo",
-        "tsserver",
-        "vimls",
-        "volar",
-        "yamlls",
-    },
-})
-
-local servers = {
+local ensure_installed = {
     "ansiblels",
     "bashls",
     "cssls",
@@ -41,7 +18,6 @@ local servers = {
     "prosemd_lsp",
     "pyright",
     "rust_analyzer",
-    "smarty_ls",
     "lua_ls",
     "tailwindcss",
     "taplo",
@@ -50,6 +26,14 @@ local servers = {
     "volar",
     "yamlls",
 }
+
+require("mason-lspconfig").setup({
+    ensure_installed = ensure_installed,
+})
+
+local servers = vim.list_extend(ensure_installed, {
+    "smarty_ls",
+})
 
 local lspconfig = require("lspconfig")
 local default_config = require("my.plugins.lsp.providers.defaults")
