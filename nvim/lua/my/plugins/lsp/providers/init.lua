@@ -7,19 +7,14 @@ require("neodev").setup({
 })
 
 local ensure_installed = {
-    "ansiblels",
     "bashls",
     "cssls",
     "dockerls",
     "html",
-    "intelephense",
     "jsonls",
-    "prismals",
     "prosemd_lsp",
     "pyright",
-    "rust_analyzer",
     "lua_ls",
-    "tailwindcss",
     "taplo",
     "tsserver",
     "vimls",
