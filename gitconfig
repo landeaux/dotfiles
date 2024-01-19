@@ -3,14 +3,14 @@
   yesterday = !sh -c 'git log --abbrev-commit --pretty=oneline --author="\"$(git config user.name)\"" --since=24.hours.ago --reverse'
 	show-gone = !git branch -vv | grep '\\[.*: gone\\]' | awk \"{print \\$1}\"
 	delete-gone = !sh -c 'git show-gone | xargs --no-run-if-empty git branch -d'
-[core]
-  autocrlf = input
-  editor = nvim
-  excludesfile = ~/.gitignore
 [color]
   ui = auto
 [commit]
   template = ~/.gitmessage
+[core]
+  autocrlf = input
+  editor = nvim
+  excludesfile = ~/.gitignore
 [diff]
   colorMoved = zebra
   tool = nvimdiff
@@ -21,6 +21,11 @@
 [fetch]
   prune = true
   pruneTags = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [include]
   path = ~/.gitconfig.local
 [init]
@@ -36,8 +41,3 @@
 	ff = only
 [push]
   default = current
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
