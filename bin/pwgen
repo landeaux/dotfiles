@@ -1,7 +1,35 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -euo pipefail
 
-for ((n = 0; n < 12; n++)); do
-  dd if=/dev/urandom count=1 2>/dev/null | uuencode -m - | sed -ne 2p | cut -c-12
+number=1
+length=16
+
+usage() {
+  echo "Usage: $0 [-n number] [--length length]"
+  exit 1
+}
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  -n)
+    number=$2
+    shift # remove argument name
+    shift # remove argument value
+    ;;
+  --length)
+    length=$2
+    shift # remove argument name
+    shift # remove argument value
+    ;;
+  *)
+    echo "Invalid option: $1" >&2
+    usage
+    ;;
+  esac
+done
+
+for ((n = 0; n < number; n++)); do
+  dd if=/dev/urandom count=1 2>/dev/null | uuencode -m - | sed -ne 2p | cut -c-"${length}"
 done
