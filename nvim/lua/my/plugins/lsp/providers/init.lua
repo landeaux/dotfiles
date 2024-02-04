@@ -28,6 +28,7 @@ require("mason-lspconfig").setup({
 
 local servers = vim.list_extend({
     "ansiblels",
+    "intelephense",
     "smarty_ls",
 }, ensure_installed)
 
