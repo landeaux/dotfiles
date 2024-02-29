@@ -9,6 +9,7 @@ return {
                     "**/docker-stack.*.yaml",
                 },
             },
+            customTags = {"!reference sequence"}
         },
     },
 }
