@@ -34,7 +34,6 @@ local servers = vim.list_extend({
 
 local lspconfig = require("lspconfig")
 local default_config = require("my.plugins.lsp.providers.defaults")
-local enable_volar_takeover_mode = vim.g.volar_takeover_mode and require("my.utils").is_vue_project()
 
 for _, server in pairs(servers) do
     local opts = default_config
@@ -46,23 +45,5 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend("force", opts, config)
     end
 
-    if enable_volar_takeover_mode then
-        if server == "tsserver" then
-            goto continue
-        elseif server == "volar" then
-            opts.filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" }
-        end
-    end
-
-    if server == "tsserver" then
-        require("typescript").setup({
-            disable_commands = false, -- prevent the plugin from creating Vim commands
-            debug = false, -- enable debug logging for commands
-            server = opts, -- pass options to lspconfig's setup method
-        })
-    else
-        lspconfig[server].setup(opts)
-    end
-
-    ::continue::
+    lspconfig[server].setup(opts)
 end
