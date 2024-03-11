@@ -4,11 +4,12 @@ local function get_typescript_lib_path(root_dir)
     local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
     local local_tsserverlib = project_root ~= nil
         and lspconfig_util.path.join(project_root, "node_modules", "typescript", "lib")
-    local global_tsserverlib = vim.fn.stdpath("data")
-        .. "/mason/packages/vue-language-server/node_modules/typescript/lib"
     if local_tsserverlib and lspconfig_util.path.exists(local_tsserverlib) then
         return local_tsserverlib
     else
+        local volar = require("mason-registry").get_package("vue-language-server")
+        local volar_install_path = volar:get_install_path()
+        local global_tsserverlib = volar_install_path .. "/node_modules/typescript/lib"
         return global_tsserverlib
     end
 end
