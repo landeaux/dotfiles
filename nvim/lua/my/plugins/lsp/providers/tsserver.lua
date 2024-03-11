@@ -1,18 +1,17 @@
-local nvm_dir = vim.env.NVM_DIR
-local node_version = vim.fn.system("node --version"):gsub("%s+$", "")
+local volar = require("mason-registry").get_package("vue-language-server")
 
-local vue_typescript_plugin_location = nvm_dir
-    .. "/versions/node/"
-    .. node_version
-    .. "/lib/node_modules/@vue/typescript-plugin"
+local vue_ts_plugin_path = volar:get_install_path()
+    .. "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+-- after volar 2.0.7
+-- local vue_ts_plugin_path = volar:get_install_path() .. "/typescript-plugin"
 
 return {
     init_options = {
         plugins = {
             {
                 name = "@vue/typescript-plugin",
-                location = vue_typescript_plugin_location,
-                languages = { "javascript", "typescript", "vue" },
+                location = vue_ts_plugin_path,
+                languages = { "vue" },
             },
         },
     },
