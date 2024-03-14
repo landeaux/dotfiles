@@ -71,7 +71,6 @@ brew install openssl readline sqlite3 xz zlib tcl-tk
 
 # Install fzf
 brew install fzf
-"$BREW_PREFIX"/opt/fzf/install # To install useful key bindings and fuzzy completion
 
 # Install Fonts
 brew tap homebrew/cask-fonts
