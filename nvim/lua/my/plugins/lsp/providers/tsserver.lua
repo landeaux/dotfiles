@@ -1,9 +1,5 @@
 local volar = require("mason-registry").get_package("vue-language-server")
-
-local vue_ts_plugin_path = volar:get_install_path()
-    .. "/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
--- after volar 2.0.7
--- local vue_ts_plugin_path = volar:get_install_path() .. "/typescript-plugin"
+local vue_ts_plugin_path = volar:get_install_path() .. "/node_modules/@vue/language-server"
 
 return {
     init_options = {
@@ -17,7 +13,9 @@ return {
     },
     filetypes = {
         "javascript",
+        "javascriptreact",
         "typescript",
+        "typescriptreact",
         "vue",
     },
 }
