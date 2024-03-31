@@ -8,6 +8,7 @@ require("neodev").setup({
 
 local ensure_installed = {
     "ansiblels",
+    "basedpyright",
     "bashls",
     "cssls",
     "dockerls",
@@ -15,7 +16,7 @@ local ensure_installed = {
     "html",
     "jsonls",
     "prosemd_lsp",
-    "pyright",
+    -- "pyright",
     "ruff_lsp",
     "lua_ls",
     "taplo",
