@@ -11,6 +11,7 @@ local ensure_installed = {
     "bashls",
     "cssls",
     "dockerls",
+    "gopls",
     "html",
     "jsonls",
     "prosemd_lsp",
