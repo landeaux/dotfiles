@@ -31,7 +31,8 @@ map("n", "<Leader>fG", function()
             .. " --max-columns=512"
             .. " --hidden"
             .. " --no-ignore"
-            .. " --glob '!.git'",
+            .. " --glob '!.git'"
+            .. " -e",
     })
 end, {
     desc = "Live grep (include ignored, except .git/)",
