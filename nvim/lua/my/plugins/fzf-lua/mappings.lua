@@ -22,7 +22,16 @@ map("n", "<Leader>fW", ":FzfLua grep_cWORD<CR>", { desc = "Find WORD under curso
 map("v", "<Leader>f", ":<C-U>FzfLua grep_visual<CR>", { desc = "Find visual selection" })
 map("n", "<Leader>f/", ":FzfLua grep_curbuf<CR>", { desc = "Current buffer fuzzy find" })
 map("n", "<Leader>fG", function()
-    require("fzf-lua").live_grep({ rg_opts = "--column -n --no-heading --color=always -S -M 512 -. --no-ignore" })
+    require("fzf-lua").live_grep({
+        rg_opts = "--column"
+            .. " --line-number"
+            .. " --no-heading"
+            .. " --color=always"
+            .. " --smart-case"
+            .. " --max-columns=512"
+            .. " --hidden"
+            .. " --no-ignore"
+    })
 end, {
     desc = "Find files (include ignored)",
 })

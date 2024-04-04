@@ -27,12 +27,21 @@ local grep_dir = function(selected, opts)
         -- remove filename, if not a directory
         stripped = stripped:match("(.*/)") or ""
 
-        globs = globs .. "--glob '" .. stripped .. "**' "
+        globs = globs .. " --glob '" .. stripped .. "**'"
     end
 
     fzf_lua.live_grep({
         rg_glob = false,
-        rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=512 --hidden --glob '!.git' " .. globs,
+        rg_opts = "--column"
+            .. " --line-number"
+            .. " --no-heading"
+            .. " --color=always"
+            .. " --smart-case"
+            .. " --max-columns=512"
+            .. " --hidden"
+            .. " --glob '!.git'"
+            .. globs
+            .. " -e",
         prompt = "*Rg>",
         winopts = {
             title = globs,
@@ -58,7 +67,15 @@ fzf_lua.setup({
     },
     grep = {
         rg_glob = true,
-        rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=512 --hidden --glob '!.git' -e",
+        rg_opts = "--column"
+            .. " --line-number"
+            .. " --no-heading"
+            .. " --color=always"
+            .. " --smart-case"
+            .. " --max-columns=512"
+            .. " --hidden"
+            .. " --glob '!.git'"
+            .. " -e",
     },
     oldfiles = {
         cwd_only = true,
