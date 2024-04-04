@@ -4,11 +4,6 @@ local map = require("my.utils").map_factory({ silent = true })
 map("n", "<Leader>ff", ":FzfLua files<CR>", { desc = "Find files" })
 map("n", "<Leader>fo", ":FzfLua oldfiles<CR>", { desc = "Find previous files" })
 map("n", "<Leader>fb", ":FzfLua buffers<CR>", { desc = "Find buffers" })
-map("n", "<Leader>fF", function()
-    require("fzf-lua").files({ fd_opts = "-c never -t f -L -H -I" })
-end, {
-    desc = "Find files (include ignored)",
-})
 map("n", "<Leader>fD", function()
     require("fzf-lua").files({ fd_opts = "-c never -t d -L" })
 end, {
