@@ -31,6 +31,7 @@ map("n", "<Leader>fG", function()
             .. " --max-columns=512"
             .. " --hidden"
             .. " --no-ignore"
+            .. " --glob '!.git'",
     })
 end, {
     desc = "Find files (include ignored)",
