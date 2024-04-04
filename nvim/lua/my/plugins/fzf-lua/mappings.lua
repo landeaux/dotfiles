@@ -17,10 +17,7 @@ end, {
 
 -- grep
 map("n", "<Leader>fg", ":FzfLua live_grep<CR>", { desc = "Live grep" })
-map("n", "<Leader>fw", ":FzfLua grep_cword<CR>", { desc = "Find word under cursor" })
-map("n", "<Leader>fW", ":FzfLua grep_cWORD<CR>", { desc = "Find WORD under cursor" })
-map("v", "<Leader>f", ":<C-U>FzfLua grep_visual<CR>", { desc = "Find visual selection" })
-map("n", "<Leader>f/", ":FzfLua grep_curbuf<CR>", { desc = "Current buffer fuzzy find" })
+-- map("n", "<Leader>fg", ":FzfLua live_grep_native<CR>", { desc = "Live grep" })
 map("n", "<Leader>fG", function()
     require("fzf-lua").live_grep({
         rg_opts = "--column"
@@ -37,7 +34,10 @@ map("n", "<Leader>fG", function()
 end, {
     desc = "Live grep (include ignored, except .git/)",
 })
--- map("n", "<Leader>fg", ":FzfLua live_grep_native<CR>", { desc = "Live grep" })
+map("n", "<Leader>fw", ":FzfLua grep_cword<CR>", { desc = "Find word under cursor" })
+map("n", "<Leader>fW", ":FzfLua grep_cWORD<CR>", { desc = "Find WORD under cursor" })
+map("v", "<Leader>f", ":<C-U>FzfLua grep_visual<CR>", { desc = "Find visual selection" })
+map("n", "<Leader>f/", ":FzfLua grep_curbuf<CR>", { desc = "Current buffer fuzzy find" })
 
 -- diagnostics
 map("n", "<Leader>fe", ":FzfLua diagnostics_document<CR>", { desc = "Find buffer diagnostics" })
