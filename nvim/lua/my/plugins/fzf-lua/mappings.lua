@@ -5,7 +5,7 @@ map("n", "<Leader>ff", ":FzfLua files<CR>", { desc = "Find files" })
 map("n", "<Leader>fo", ":FzfLua oldfiles<CR>", { desc = "Find previous files" })
 map("n", "<Leader>fb", ":FzfLua buffers<CR>", { desc = "Find buffers" })
 map("n", "<Leader>fD", function()
-    require("fzf-lua").files({ fd_opts = "-c never -t d -L" })
+    require("fzf-lua").files({ fd_opts = "--color=never --type directory --hidden --follow --exclude .git" })
 end, {
     desc = "Find directories",
 })
