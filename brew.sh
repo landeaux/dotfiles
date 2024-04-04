@@ -47,6 +47,7 @@ brew install jq
 brew install lua
 brew install luarocks
 brew install neovim
+brew install pipx
 brew install rename
 brew install ripgrep
 brew install ssh-copy-id
