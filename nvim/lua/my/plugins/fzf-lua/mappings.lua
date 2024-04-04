@@ -13,6 +13,7 @@ end, {
 -- grep
 map("n", "<Leader>fg", ":FzfLua live_grep<CR>", { desc = "Live grep" })
 -- map("n", "<Leader>fg", ":FzfLua live_grep_native<CR>", { desc = "Live grep" })
+-- TODO: implement this as an action (see actions.toggle_ignore)
 map("n", "<Leader>fG", function()
     require("fzf-lua").live_grep({
         rg_opts = "--column"
