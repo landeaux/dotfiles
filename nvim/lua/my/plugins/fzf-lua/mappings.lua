@@ -34,7 +34,7 @@ map("n", "<Leader>fG", function()
             .. " --glob '!.git'",
     })
 end, {
-    desc = "Find files (include ignored)",
+    desc = "Live grep (include ignored, except .git/)",
 })
 -- map("n", "<Leader>fg", ":FzfLua live_grep_native<CR>", { desc = "Live grep" })
 
