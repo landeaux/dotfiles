@@ -70,6 +70,7 @@ ZSH_THEME=""
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  poetry
   git
   node
 )
@@ -169,6 +170,9 @@ eval "$(pyenv init -)"
 export PIPENV_VENV_IN_PROJECT=1              # make sure venv is always in the project dir
 export PIPENV_DONT_LOAD_ENV=1                # don't let pipenv autoload env... we have direnv for this
 eval "$(_PIPENV_COMPLETE=zsh_source pipenv)" # set up magic shell completion
+
+# poetry
+export POETRY_VIRTUALENVS_IN_PROJECT=true
 
 # fzf
 eval "$(fzf --zsh)"

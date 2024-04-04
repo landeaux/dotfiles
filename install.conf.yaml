@@ -8,6 +8,7 @@
 - link:
     ~/.bashrc:
     ~/.config/bat: bat
+    ~/.config/direnv: direnv
     ~/.config/karabiner.edn: karabiner.edn
     ~/.config/karabiner: karabiner
     ~/.config/kitty: kitty
