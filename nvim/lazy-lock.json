@@ -50,6 +50,7 @@
   "vim-dispatch": { "branch": "master", "commit": "4c695bc052cad2ae6b980aebbe48d046466e27ae" },
   "vim-eunuch": { "branch": "master", "commit": "8fb3904be27b6b60d086f87c2570085902414069" },
   "vim-fugitive": { "branch": "master", "commit": "c0b03f1cac242d96837326d300f42a660306fc1a" },
+  "vim-kitty": { "branch": "main", "commit": "4f3f2901717320f80a1e16a868f706762be8535b" },
   "vim-lastplace": { "branch": "master", "commit": "a715d602745cdb1c35cfe73c50d3dd266eb5a349" },
   "vim-pydocstring": { "branch": "master", "commit": "9da38e1bb70f5fc9f35ba5abf8ddada81fe2717a" },
   "vim-python-pep8-indent": { "branch": "master", "commit": "60ba5e11a61618c0344e2db190210145083c91f8" },
