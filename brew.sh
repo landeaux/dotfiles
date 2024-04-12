@@ -52,6 +52,7 @@ brew install rename
 brew install ripgrep
 brew install ssh-copy-id
 brew install starship # for shell prompt
+brew install stylua
 brew install task
 brew install tmux
 brew install tree
