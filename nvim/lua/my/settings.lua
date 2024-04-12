@@ -60,6 +60,8 @@ opt.ignorecase = true
 opt.smartcase = true
 -- opt.incsearch = true
 -- opt.hlsearch = true
+opt.grepprg = "rg --vimgrep"
+opt.grepformat = "%f:%l:%c:%m"
 
 -- Incremental command
 opt.inccommand = "split"
