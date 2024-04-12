@@ -46,6 +46,6 @@ utils.create_augroup({
                 vim.cmd("tabdo wincmd =")
                 vim.cmd("tabnext " .. current_tab)
             end,
-        }
+        },
     },
 }, "_resize_splits")

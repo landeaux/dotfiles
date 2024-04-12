@@ -15,7 +15,7 @@ require("ibl").setup({
             "mason",
             "neo-tree",
             "norg",
-        }
+        },
     },
     indent = {
         char = char,

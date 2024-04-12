@@ -99,7 +99,7 @@ cmp.setup({
         { name = "luasnip" },
         { name = "buffer" },
     },
----@diagnostic disable-next-line: missing-fields
+    ---@diagnostic disable-next-line: missing-fields
     formatting = {
         format = function(entry, vim_item)
             vim_item.menu = ({
@@ -154,4 +154,3 @@ cmp.setup({
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
