@@ -16,6 +16,7 @@ require("catppuccin").setup({
             },
         },
         mason = true,
+        diffview = true,
     },
     custom_highlights = {
         SpellBad = { style = { "underdotted" } },
