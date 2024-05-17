@@ -4,8 +4,7 @@ return {
     lazy = true,
     cmd = { "KittyScrollbackGenerateKittens", "KittyScrollbackCheckHealth" },
     event = { "User KittyScrollbackLaunch" },
-    -- version = '*', -- latest stable version, may have breaking changes if major version changed
-    version = "4.2.3", -- pin major version, include fixes and features that do not have breaking changes
+    version = '^4.3.4', -- latest stable version, may have breaking changes if major version changed
     config = function()
         require("kitty-scrollback").setup()
     end,
