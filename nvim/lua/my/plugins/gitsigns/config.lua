@@ -21,6 +21,7 @@ require("gitsigns").setup({
             text = text,
         },
     },
+    attach_to_untracked = true,
     preview_config = {
         border = "rounded",
     },
