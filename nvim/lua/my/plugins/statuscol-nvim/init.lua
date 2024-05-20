@@ -6,7 +6,7 @@ return {
             relculright = true,
             segments = {
                 { sign = { namespace = { "gitsigns" }, maxwidth = 1, colwidth = 1 } },
-                { sign = { name = { ".*" }, maxwidth = 1, colwidth = 2 } },
+                { sign = { namespace = { ".*" }, maxwidth = 1, colwidth = 2 } },
                 { text = { builtin.lnumfunc, " " } },
             },
         })
