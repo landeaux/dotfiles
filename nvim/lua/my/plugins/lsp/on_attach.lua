@@ -41,9 +41,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local bufnr = ev.buf
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-        -- Enable completion triggered by <c-x><c-o>
-        vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-
         require("my.plugins.lsp.mappings").register(client, bufnr)
         documentColor(client, bufnr)
         documentHighlight(client, bufnr)

@@ -10,7 +10,6 @@ null_ls.setup({
         null_ls.builtins.hover.printenv,
     },
     on_attach = function(client, bufnr)
-        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc") -- Enable completion triggered by <c-x><c-o>
         require("my.plugins.lsp.mappings").register(client, bufnr)
     end,
 })
