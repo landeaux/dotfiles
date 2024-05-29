@@ -31,17 +31,10 @@ end
 
 local function codeLens(client, bufnr)
     if client and client.supports_method("textDocument/codeLens") then
-        require("my.utils").create_augroup({
-            {
-                event = { "BufEnter", "TextChanged", "TextChangedI", "TextChangedP" },
-                opts = {
-                    buffer = bufnr,
-                    callback = function()
-                        vim.lsp.codelens.refresh()
-                    end,
-                },
-            },
-        }, "_lsp_codelens")
+        vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI", "TextChangedP" }, {
+            group = vim.api.nvim_create_augroup("_lsp_codelens", { clear = true }),
+            callback = vim.lsp.codelens.refresh,
+        })
     end
 end
 
