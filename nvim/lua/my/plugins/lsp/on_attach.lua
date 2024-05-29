@@ -1,11 +1,11 @@
 local function documentColor(client, bufnr)
-    if client and client.server_capabilities.colorProvider then
+    if client and client.supports_method("textDocument/documentColor") then
         require("document-color").buf_attach(bufnr)
     end
 end
 
 local function documentHighlight(client, bufnr)
-    if client and client.server_capabilities.documentHighlightProvider then
+    if client and client.supports_method("textDocument/documentHighlight") then
         local highlight_augroup_name = "_lsp_document_highlight"
         local highlight_augroup = vim.api.nvim_create_augroup(highlight_augroup_name, { clear = false })
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
