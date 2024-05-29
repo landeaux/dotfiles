@@ -20,7 +20,13 @@ return {
             lua = { "stylua" },
             markdown = { "prettierd" },
             php = { "php_cs_fixer" },
-            python = { "isort", "black" },
+            python = function(bufnr)
+                if require("conform").get_formatter_info("ruff_format", bufnr).available then
+                    return { "ruff_organize_imports", "ruff_format" }
+                else
+                    return { "isort", "black" }
+                end
+            end,
             scss = { "prettierd" },
             sh = { "shfmt" },
             typescript = { "prettierd", "eslint_d" },
