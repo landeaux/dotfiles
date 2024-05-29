@@ -5,17 +5,27 @@ local function documentColor(client, bufnr)
 end
 
 local function documentHighlight(client, bufnr)
-    if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_exec2(
-            [[
-                augroup _lsp_document_highlight
-                    autocmd! * <buffer>
-                    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                augroup END
-            ]],
-            {}
-        )
+    if client and client.server_capabilities.documentHighlightProvider then
+        local highlight_augroup_name = "_lsp_document_highlight"
+        local highlight_augroup = vim.api.nvim_create_augroup(highlight_augroup_name, { clear = false })
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+            buffer = bufnr,
+            group = highlight_augroup,
+            callback = vim.lsp.buf.document_highlight,
+        })
+        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+            buffer = bufnr,
+            group = highlight_augroup,
+            callback = vim.lsp.buf.clear_references,
+        })
+
+        vim.api.nvim_create_autocmd("LspDetach", {
+            group = vim.api.nvim_create_augroup("_lsp_detach", { clear = true }),
+            callback = function(event)
+                vim.lsp.buf.clear_references()
+                vim.api.nvim_clear_autocmds({ group = highlight_augroup_name, buffer = event.buf })
+            end,
+        })
     end
 end
 
