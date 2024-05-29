@@ -1,5 +1,5 @@
 local function documentColor(client, bufnr)
-    if client.server_capabilities.colorProvider then
+    if client and client.server_capabilities.colorProvider then
         require("document-color").buf_attach(bufnr)
     end
 end
@@ -30,7 +30,7 @@ local function documentHighlight(client, bufnr)
 end
 
 local function codeLens(client, bufnr)
-    if client.supports_method("textDocument/codeLens") then
+    if client and client.supports_method("textDocument/codeLens") then
         require("my.utils").create_augroup({
             {
                 event = { "BufEnter", "TextChanged", "TextChangedI", "TextChangedP" },
