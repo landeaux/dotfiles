@@ -22,7 +22,7 @@ local M = {}
 --     })
 -- end
 
-M.register = function(_, bufnr)
+M.register = function(client, bufnr)
     local map = map_factory({ buffer = bufnr, silent = true })
     map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
     map("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
@@ -35,6 +35,13 @@ M.register = function(_, bufnr)
     map({ "n", "x" }, "<Leader>lc", vim.lsp.buf.code_action, { desc = "Show code actions" })
     -- map("n", "<Leader>lf", format, { desc = "Format" })
     map("n", "<Leader>li", ":LspInfo<CR>", { desc = "Show LSP info" })
+
+    if client and client.supports_method("textDocument/inlayHint") and vim.lsp.inlay_hint then
+        map("n", "<leader>tI", function()
+            ---@diagnostic disable-next-line: missing-parameter
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end, { desc = "Toggle Inlay Hints" })
+    end
 end
 
 return M
