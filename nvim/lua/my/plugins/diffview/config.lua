@@ -16,12 +16,9 @@ require("diffview").setup({
             ["<leader>tf"] = actions.toggle_files,
         },
     },
-})
-
-vim.api.nvim_create_autocmd({ "User" }, {
-    pattern = "DiffviewDiffBufRead",
-    callback = function(_)
-        vim.opt_local.relativenumber = false
-    end,
-    group = vim.api.nvim_create_augroup("_diffview", { clear = true }),
+    hooks = {
+        diff_buf_read = function(bufnr)
+            vim.opt_local.relativenumber = false
+        end,
+    },
 })
