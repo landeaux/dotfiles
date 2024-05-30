@@ -19,6 +19,7 @@ require("diffview").setup({
     hooks = {
         diff_buf_read = function(bufnr)
             vim.opt_local.relativenumber = false
+            vim.opt_local.wrap = false
         end,
     },
 })
