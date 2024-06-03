@@ -1,11 +1,6 @@
 -- vim.lsp.set_log_level("debug")
 -- require("vim.lsp.log").set_format_func(vim.inspect)
 
--- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require("neodev").setup({
-    -- add any options here, or leave empty to use the default settings
-})
-
 local ensure_installed = {
     "ansiblels",
     "basedpyright",
