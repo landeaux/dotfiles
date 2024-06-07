@@ -106,7 +106,7 @@ opt.guicursor = {
 }
 
 -- Performance
-opt.updatetime = 0
+opt.updatetime = 100
 opt.lazyredraw = true -- faster macros
 opt.redrawtime = 1500
 opt.ttimeoutlen = 10
