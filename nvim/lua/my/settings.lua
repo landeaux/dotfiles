@@ -91,6 +91,10 @@ opt.listchars = {
 opt.fillchars = {
     diff = "╱",
     eob = " ",
+    fold = " ",
+    foldopen = "",
+    foldsep = " ",
+    foldclose = "",
 }
 opt.showmode = false
 opt.mouse = "a"

@@ -5,9 +5,10 @@ return {
         require("statuscol").setup({
             relculright = true,
             segments = {
-                { sign = { namespace = { "gitsigns" }, maxwidth = 1, colwidth = 1 } },
-                { sign = { namespace = { ".*" }, name = { ".*" }, maxwidth = 1, colwidth = 2 } },
-                { text = { builtin.lnumfunc, " " } },
+                { sign = { namespace = { "gitsigns" }, maxwidth = 1, colwidth = 1 }, click = "v:lua.ScSa" },
+                { sign = { namespace = { ".*" }, name = { ".*" }, maxwidth = 1, colwidth = 2 }, click = "v:lua.ScSa" },
+                { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+                { text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
             },
         })
     end,

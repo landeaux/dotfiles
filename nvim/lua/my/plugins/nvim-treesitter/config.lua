@@ -1,9 +1,10 @@
 local opt = vim.opt
 
 -- Enable folding
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldcolumn = "1"
 opt.foldlevel = 99
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- Tree-sitter
 ---@diagnostic disable-next-line: missing-fields
