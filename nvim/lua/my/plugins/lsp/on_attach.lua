@@ -29,15 +29,15 @@ local function documentHighlight(client, bufnr)
     end
 end
 
-local function codeLens(client, bufnr)
-    if client and client.supports_method("textDocument/codeLens") then
-        vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI", "TextChangedP" }, {
-            buffer = bufnr,
-            group = vim.api.nvim_create_augroup("_lsp_codelens", { clear = true }),
-            callback = vim.lsp.codelens.refresh,
-        })
-    end
-end
+-- local function codeLens(client, bufnr)
+--     if client and client.supports_method("textDocument/codeLens") then
+--         vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI", "TextChangedP" }, {
+--             buffer = bufnr,
+--             group = vim.api.nvim_create_augroup("_lsp_codelens", { clear = true }),
+--             callback = vim.lsp.codelens.refresh,
+--         })
+--     end
+-- end
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -48,6 +48,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         require("my.plugins.lsp.mappings").register(client, bufnr)
         documentColor(client, bufnr)
         documentHighlight(client, bufnr)
-        codeLens(client, bufnr)
+        -- codeLens(client, bufnr)
     end,
 })
