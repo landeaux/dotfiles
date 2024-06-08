@@ -15,6 +15,7 @@ local ensure_installed = {
     "ruff_lsp",
     "lua_ls",
     "taplo",
+    "tailwindcss",
     "tsserver",
     "vimls",
     "volar",
