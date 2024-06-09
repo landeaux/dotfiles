@@ -98,6 +98,13 @@ opt.guicursor = {
     "sm:block-blinkwait175-blinkoff150-blinkon175",
 }
 
+-- Folds
+opt.foldcolumn = "1"
+opt.foldlevel = 99
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = ""
+
 -- Performance
 opt.updatetime = 100
 opt.lazyredraw = true -- faster macros
@@ -109,5 +116,5 @@ opt.timeoutlen = 750 -- By default timeoutlen is 1000 ms
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.shortmess:append("cI")
 
--- theme
+-- Theme
 opt.termguicolors = true
