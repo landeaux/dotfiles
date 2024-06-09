@@ -37,7 +37,15 @@ require("lualine").setup({
                 fmt = function(str) return truncate(str, MAX_BRANCH_LEN) end,
             },
             "diff",
-            "diagnostics",
+            {
+                "diagnostics",
+                symbols = {
+                    error = " ",
+                    warn = " ",
+                    hint = " ",
+                    info = " ",
+                },
+            },
         },
         lualine_c = {
             { "filename", path = 0 },
