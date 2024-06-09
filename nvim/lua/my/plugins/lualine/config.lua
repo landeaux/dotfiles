@@ -7,7 +7,7 @@ local function win_is_narrow() return not win_is_wide() end
 
 local function lsp_clients()
     local bufnr = vim.api.nvim_get_current_buf()
-    local active_clients = vim.tbl_values(vim.lsp.buf_get_clients(bufnr))
+    local active_clients = vim.tbl_values(vim.lsp.get_clients({ bufnr = bufnr }))
 
     if vim.tbl_count(active_clients) == 0 then
         return ""
