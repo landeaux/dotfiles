@@ -1,8 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
-    config = function()
-        require("my.plugins.nvim-cmp.config")
-    end,
+    config = function() require("my.plugins.nvim-cmp.config") end,
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-calc",

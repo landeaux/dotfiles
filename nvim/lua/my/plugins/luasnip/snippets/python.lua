@@ -31,9 +31,7 @@ local function node_with_virtual_text(pos, node, text)
                         virt_text = { { text, "LuaSnipChoiceNodeVirtText" } },
                     })
                 end,
-                [events.leave] = function(nd)
-                    vim.api.nvim_buf_del_extmark(0, ls.session.ns_id, nd.virt_text_id)
-                end,
+                [events.leave] = function(nd) vim.api.nvim_buf_del_extmark(0, ls.session.ns_id, nd.virt_text_id) end,
             },
         },
     })

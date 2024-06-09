@@ -118,9 +118,7 @@ for _, char in ipairs(chars) do
 end
 
 -- Diagnostics
-map("n", "<Leader>ek", function()
-    vim.diagnostic.open_float({ scope = "cursor" })
-end, {
+map("n", "<Leader>ek", function() vim.diagnostic.open_float({ scope = "cursor" }) end, {
     desc = "Show cursor diagnostics",
 })
 map("n", "<Leader>el", vim.diagnostic.open_float, { desc = "Show line diagnostics" })

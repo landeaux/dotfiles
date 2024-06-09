@@ -4,32 +4,40 @@ local map = require("my.utils").map_factory({ silent = true })
 map("n", "<Leader>ff", ":FzfLua files<CR>", { desc = "Find files" })
 map("n", "<Leader>fo", ":FzfLua oldfiles<CR>", { desc = "Find previous files" })
 map("n", "<Leader>fb", ":FzfLua buffers<CR>", { desc = "Find buffers" })
-map("n", "<Leader>fD", function()
-    require("fzf-lua").files({ fd_opts = "--color=never --type directory --hidden --follow --exclude .git" })
-end, {
-    desc = "Find directories",
-})
+map(
+    "n",
+    "<Leader>fD",
+    function() require("fzf-lua").files({ fd_opts = "--color=never --type directory --hidden --follow --exclude .git" }) end,
+    {
+        desc = "Find directories",
+    }
+)
 
 -- grep
 map("n", "<Leader>fg", ":FzfLua live_grep<CR>", { desc = "Live grep" })
 -- map("n", "<Leader>fg", ":FzfLua live_grep_native<CR>", { desc = "Live grep" })
 -- TODO: implement this as an action (see actions.toggle_ignore)
-map("n", "<Leader>fG", function()
-    require("fzf-lua").live_grep({
-        rg_opts = "--column"
-            .. " --line-number"
-            .. " --no-heading"
-            .. " --color=always"
-            .. " --smart-case"
-            .. " --max-columns=512"
-            .. " --hidden"
-            .. " --no-ignore"
-            .. " --glob '!.git'"
-            .. " -e",
-    })
-end, {
-    desc = "Live grep (include ignored, except .git/)",
-})
+map(
+    "n",
+    "<Leader>fG",
+    function()
+        require("fzf-lua").live_grep({
+            rg_opts = "--column"
+                .. " --line-number"
+                .. " --no-heading"
+                .. " --color=always"
+                .. " --smart-case"
+                .. " --max-columns=512"
+                .. " --hidden"
+                .. " --no-ignore"
+                .. " --glob '!.git'"
+                .. " -e",
+        })
+    end,
+    {
+        desc = "Live grep (include ignored, except .git/)",
+    }
+)
 map("n", "<Leader>fw", ":FzfLua grep_cword<CR>", { desc = "Find word under cursor" })
 map("n", "<Leader>fW", ":FzfLua grep_cWORD<CR>", { desc = "Find WORD under cursor" })
 map("v", "<Leader>f", ":<C-U>FzfLua grep_visual<CR>", { desc = "Find visual selection" })
@@ -56,15 +64,11 @@ map("n", "<Leader>fds", ":FzfLua dap_configurations<CR>", { desc = "Find dap con
 map("n", "<Leader>fdv", ":FzfLua dap_variables<CR>", { desc = "Find dap variables" })
 
 -- completion
-map("i", "<C-x><C-f>", function()
-    require("fzf-lua").complete_path()
-end, {
+map("i", "<C-x><C-f>", function() require("fzf-lua").complete_path() end, {
     silent = true,
     desc = "Fuzzy complete path",
 })
-map("i", "<C-x><C-l>", function()
-    require("fzf-lua").complete_line()
-end, {
+map("i", "<C-x><C-l>", function() require("fzf-lua").complete_line() end, {
     silent = true,
     desc = "Fuzzy complete lines",
 })

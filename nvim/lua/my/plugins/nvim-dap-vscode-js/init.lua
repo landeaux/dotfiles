@@ -3,9 +3,7 @@ return {
         "mxsdev/nvim-dap-vscode-js",
         version = "v1.74.1",
         dependencies = { "mfussenegger/nvim-dap" },
-        config = function()
-            require("my.plugins.nvim-dap-vscode-js.config")
-        end,
+        config = function() require("my.plugins.nvim-dap-vscode-js.config") end,
     },
     {
         "microsoft/vscode-js-debug",

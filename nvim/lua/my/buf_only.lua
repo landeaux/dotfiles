@@ -1,8 +1,6 @@
 local M = {}
 
-M.buf_only = function()
-    vim.fn.execute("%bd|e#|bd#")
-end
+M.buf_only = function() vim.fn.execute("%bd|e#|bd#") end
 
 -- local buf_opt = vim.api.nvim_buf_get_option
 
@@ -22,9 +20,7 @@ end
 --     end
 -- end
 
-vim.api.nvim_create_user_command("BufOnly", function()
-    M.buf_only()
-end, {
+vim.api.nvim_create_user_command("BufOnly", function() M.buf_only() end, {
     desc = "Close all buffers except the current one",
 })
 

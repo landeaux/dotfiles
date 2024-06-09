@@ -78,9 +78,7 @@ dap.configurations.python = {
             end
             return "127.0.0.1"
         end,
-        port = function()
-            return tonumber(vim.fn.input("Port [5678]: ")) or 5678
-        end,
+        port = function() return tonumber(vim.fn.input("Port [5678]: ")) or 5678 end,
         pathMappings = function()
             local remoteRoot = vim.fn.input("Remote Root [/]: ")
             if remoteRoot == "" then

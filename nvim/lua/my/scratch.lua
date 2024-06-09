@@ -8,15 +8,11 @@ M.scratch = function(vertical)
     vim.api.nvim_win_set_buf(win, buf)
 end
 
-vim.api.nvim_create_user_command("Scratch", function()
-    M.scratch(false)
-end, {
+vim.api.nvim_create_user_command("Scratch", function() M.scratch(false) end, {
     desc = "Open a scratch buffer in a horizontal split",
 })
 
-vim.api.nvim_create_user_command("VScratch", function()
-    M.scratch(true)
-end, {
+vim.api.nvim_create_user_command("VScratch", function() M.scratch(true) end, {
     desc = "Open a scratch buffer in a vertical split",
 })
 

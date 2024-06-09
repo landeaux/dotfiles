@@ -11,9 +11,7 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end,
+        expand = function(args) luasnip.lsp_expand(args.body) end,
     },
     mapping = cmp.mapping.preset.insert({
         -- General mappings

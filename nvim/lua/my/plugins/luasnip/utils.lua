@@ -10,9 +10,7 @@ local M = {}
 
 -- args is a table, where 1 is the text in Placeholder 1, 2 the text in
 -- placeholder 2,...
-function M.copy(args)
-    return args[1]
-end
+function M.copy(args) return args[1] end
 
 -- 'recursive' dynamic snippet. Expands to some text followed by itself.
 M.rec_ls = function()

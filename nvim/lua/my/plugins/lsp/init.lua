@@ -1,9 +1,7 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        config = function()
-            require("my.plugins.lsp.config")
-        end,
+        config = function() require("my.plugins.lsp.config") end,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "jose-elias-alvarez/typescript.nvim",
@@ -21,9 +19,7 @@ return {
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("my.plugins.lsp.providers.null_ls")
-        end,
+        config = function() require("my.plugins.lsp.providers.null_ls") end,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "neovim/nvim-lspconfig",

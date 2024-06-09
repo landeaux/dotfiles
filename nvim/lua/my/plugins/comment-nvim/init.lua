@@ -1,8 +1,6 @@
 return {
     "numToStr/Comment.nvim",
-    config = function()
-        require("my.plugins.comment-nvim.config")
-    end,
+    config = function() require("my.plugins.comment-nvim.config") end,
     dependencies = {
         {
             "JoosepAlviste/nvim-ts-context-commentstring",

@@ -9,7 +9,5 @@ null_ls.setup({
         -- Hover
         null_ls.builtins.hover.printenv,
     },
-    on_attach = function(client, bufnr)
-        require("my.plugins.lsp.mappings").register(client, bufnr)
-    end,
+    on_attach = function(client, bufnr) require("my.plugins.lsp.mappings").register(client, bufnr) end,
 })

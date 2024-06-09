@@ -1,13 +1,9 @@
 local WIN_BREAKPOINT = 115
 local MAX_BRANCH_LEN = 20
 
-local function win_is_wide()
-    return vim.api.nvim_win_get_width(0) >= WIN_BREAKPOINT
-end
+local function win_is_wide() return vim.api.nvim_win_get_width(0) >= WIN_BREAKPOINT end
 
-local function win_is_narrow()
-    return not win_is_wide()
-end
+local function win_is_narrow() return not win_is_wide() end
 
 local function lsp_clients()
     local bufnr = vim.api.nvim_get_current_buf()
@@ -17,9 +13,7 @@ local function lsp_clients()
         return ""
     end
 
-    local client_names = vim.tbl_map(function(client)
-        return client.name
-    end, active_clients)
+    local client_names = vim.tbl_map(function(client) return client.name end, active_clients)
 
     return "  " .. table.concat(client_names, ", ")
 end
@@ -40,9 +34,7 @@ require("lualine").setup({
         lualine_b = {
             {
                 "branch",
-                fmt = function(str)
-                    return truncate(str, MAX_BRANCH_LEN)
-                end,
+                fmt = function(str) return truncate(str, MAX_BRANCH_LEN) end,
             },
             "diff",
             "diagnostics",

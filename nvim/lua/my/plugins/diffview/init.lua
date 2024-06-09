@@ -4,12 +4,8 @@ return {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons", -- optional
     },
-    init = function()
-        require("my.plugins.diffview.mappings")
-    end,
-    config = function()
-        require("my.plugins.diffview.config")
-    end,
+    init = function() require("my.plugins.diffview.mappings") end,
+    config = function() require("my.plugins.diffview.config") end,
     cmd = {
         "DiffviewClose",
         "DiffviewFileHistory",
