@@ -57,7 +57,6 @@ cmp.setup({
         { name = "neorg" },
         { name = "calc" },
         { name = "path" },
-        { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer" },
@@ -68,7 +67,6 @@ cmp.setup({
             vim_item.menu = ({
                 calc = "  [calc]",
                 path = "  [path]",
-                nvim_lua = "  [lua]",
                 nvim_lsp = "  [lsp]",
                 luasnip = "  [luasnip]",
                 buffer = "  [buffer]",
