@@ -1,6 +1,8 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
+vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup({
     -- completion = { autocomplete = false },
@@ -114,6 +116,11 @@ cmp.setup({
             })[vim_item.kind]
             return vim_item
         end,
+    },
+    experimental = {
+        ghost_text = {
+            hl_group = "CmpGhostText",
+        },
     },
 })
 
