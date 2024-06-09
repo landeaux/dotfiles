@@ -1,7 +1,7 @@
 local M = {}
 
 M.register = function(bufnr)
-    local gs = package.loaded.gitsigns
+    local gs = require("gitsigns")
 
     local function map(mode, l, r, opts)
         opts = opts or {}
@@ -15,7 +15,7 @@ M.register = function(bufnr)
             return "]c"
         end
         vim.schedule(function()
-            gs.next_hunk()
+            gs.nav_hunk("next")
         end)
         return "<Ignore>"
     end, { expr = true, desc = "Next hunk" })
@@ -25,7 +25,7 @@ M.register = function(bufnr)
             return "[c"
         end
         vim.schedule(function()
-            gs.prev_hunk()
+            gs.nav_hunk("prev")
         end)
         return "<Ignore>"
     end, { expr = true, desc = "Next hunk" })
