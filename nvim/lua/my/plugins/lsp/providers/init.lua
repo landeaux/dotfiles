@@ -31,8 +31,8 @@ local servers = vim.list_extend({
     "smarty_ls",
 }, ensure_installed)
 
-local lspconfig = require("lspconfig")
 local default_config = require("my.plugins.lsp.providers.defaults")
+local lspconfig = require("lspconfig")
 
 for _, server in pairs(servers) do
     local opts = default_config

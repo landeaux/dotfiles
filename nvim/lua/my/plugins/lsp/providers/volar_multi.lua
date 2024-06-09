@@ -1,5 +1,5 @@
-local lspconfig_util = require("lspconfig.util")
 local lspconfig_configs = require("lspconfig.configs")
+local lspconfig_util = require("lspconfig.util")
 
 local M = {}
 

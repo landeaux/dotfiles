@@ -1,5 +1,5 @@
-local fterm = require("FTerm")
 local custom = require("my.plugins.fterm.custom_terminals")
+local fterm = require("FTerm")
 
 -- base commands
 vim.api.nvim_create_user_command("FTermOpen", fterm.open, { bang = true })

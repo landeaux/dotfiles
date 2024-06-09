@@ -7,8 +7,8 @@ local c = ls.choice_node
 local sn = ls.snippet_node
 local isn = ls.indent_snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
-local types = require("luasnip.util.types")
 local events = require("luasnip.util.events")
+local types = require("luasnip.util.types")
 
 local function node_with_virtual_text(pos, node, text)
     local nodes
