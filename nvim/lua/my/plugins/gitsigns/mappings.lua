@@ -1,5 +1,7 @@
 local M = {}
 
+-- stylua: ignore start
+
 M.register = function(bufnr)
     local gs = require("gitsigns")
 
@@ -29,6 +31,8 @@ M.register = function(bufnr)
         end)
         return "<Ignore>"
     end, { expr = true, desc = "Next hunk" })
+    map("n", "]H", function() gs.nav_hunk("last") end, { desc = "Last Hunk" })
+    map("n", "[H", function() gs.nav_hunk("first") end, { desc = "First Hunk"})
 
     -- Actions
     map("n", "<leader>hs", gs.stage_hunk, { desc = "Stage hunk" })
@@ -43,14 +47,10 @@ M.register = function(bufnr)
     map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "Undo stage hunk" })
     map("n", "<leader>hR", gs.reset_buffer, { desc = "Reset buffer" })
     map("n", "<leader>hp", gs.preview_hunk, { desc = "Preview hunk" })
-    map("n", "<leader>hb", function()
-        gs.blame_line({ full = true })
-    end, { desc = "Show git blame per line" })
+    map("n", "<leader>hb", function() gs.blame_line({ full = true }) end, { desc = "Show git blame per line" })
     map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "Toggle current line blame" })
     map("n", "<leader>hd", gs.diffthis, { desc = "Diff this" })
-    map("n", "<leader>hD", function()
-        gs.diffthis("~")
-    end, { desc = "Diff this (~)" })
+    map("n", "<leader>hD", function() gs.diffthis("~") end, { desc = "Diff this (~)" })
     map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle deleted lines" })
 
     -- Text object
