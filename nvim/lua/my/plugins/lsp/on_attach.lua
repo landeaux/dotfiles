@@ -1,9 +1,13 @@
+---@param client vim.lsp.Client|nil
+---@param bufnr integer
 local function documentColor(client, bufnr)
     if client and client.supports_method("textDocument/documentColor") then
         require("document-color").buf_attach(bufnr)
     end
 end
 
+---@param client vim.lsp.Client|nil
+---@param bufnr integer
 local function documentHighlight(client, bufnr)
     if client and client.supports_method("textDocument/documentHighlight") then
         local highlight_augroup_name = "_lsp_document_highlight"

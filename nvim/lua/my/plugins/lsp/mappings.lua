@@ -22,6 +22,8 @@ local M = {}
 --     })
 -- end
 
+---@param client vim.lsp.Client|nil
+---@param bufnr integer
 M.register = function(client, bufnr)
     local map = map_factory({ buffer = bufnr, silent = true })
     map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
