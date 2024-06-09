@@ -14,23 +14,18 @@ M.register = function(bufnr)
     -- Navigation
     map("n", "]h", function()
         if vim.wo.diff then
-            return "]c"
-        end
-        vim.schedule(function()
+            vim.cmd.normal({ "]c", bang = true })
+        else
             gs.nav_hunk("next")
-        end)
-        return "<Ignore>"
-    end, { expr = true, desc = "Next hunk" })
-
+        end
+    end, { desc = "Next hunk" })
     map("n", "[h", function()
         if vim.wo.diff then
-            return "[c"
-        end
-        vim.schedule(function()
+            vim.cmd.normal({ "[c", bang = true })
+        else
             gs.nav_hunk("prev")
-        end)
-        return "<Ignore>"
-    end, { expr = true, desc = "Next hunk" })
+        end
+    end, { desc = "Next hunk" })
     map("n", "]H", function() gs.nav_hunk("last") end, { desc = "Last Hunk" })
     map("n", "[H", function() gs.nav_hunk("first") end, { desc = "First Hunk"})
 
