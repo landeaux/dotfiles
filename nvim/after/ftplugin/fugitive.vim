@@ -1,3 +1,3 @@
 let &colorcolumn=""
 
-set nonumber norelativenumber
+setlocal nonumber norelativenumber
