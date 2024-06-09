@@ -24,7 +24,7 @@ local function documentHighlight(client, bufnr)
         })
 
         vim.api.nvim_create_autocmd("LspDetach", {
-            group = vim.api.nvim_create_augroup("_lsp_detach", { clear = true }),
+            group = vim.api.nvim_create_augroup("_lsp_detach_document_highlight", { clear = true }),
             callback = function(event)
                 vim.lsp.buf.clear_references()
                 vim.api.nvim_clear_autocmds({ group = highlight_augroup_name, buffer = event.buf })
