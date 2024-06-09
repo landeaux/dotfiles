@@ -20,7 +20,7 @@ end
 
 local function truncate(str, max_length)
     if str:len() > max_length then
-        return str:sub(1, max_length - 3) .. "..."
+        return str:sub(1, max_length - 1) .. "…"
     end
     return str
 end
