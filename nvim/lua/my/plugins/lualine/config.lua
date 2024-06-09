@@ -52,8 +52,6 @@ require("lualine").setup({
         },
         lualine_x = {
             lsp_clients,
-            { "encoding", cond = win_is_wide },
-            { "fileformat", cond = win_is_wide },
             { "filetype", cond = win_is_wide },
         },
         lualine_y = {
