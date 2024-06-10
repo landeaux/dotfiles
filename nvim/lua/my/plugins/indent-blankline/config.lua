@@ -5,6 +5,7 @@ require("ibl").setup({
         filetypes = {
             "",
             "checkhealth",
+            "fugitive",
             "git",
             "gitcommit",
             "help",
