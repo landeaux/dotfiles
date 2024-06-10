@@ -47,7 +47,7 @@ vim.fn.sign_define("DapLogPoint", {
     numhl = "DapLogPointNumber",
 })
 vim.fn.sign_define("DapStopped", {
-    text = "",
+    text = "󰁕",
     texthl = "DapStoppedIcon",
     linehl = "DapStoppedLine",
     numhl = "DapStoppedNumber",
