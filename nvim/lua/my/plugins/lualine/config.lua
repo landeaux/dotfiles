@@ -48,17 +48,19 @@ require("lualine").setup({
             },
         },
         lualine_c = {
-            { "filename", path = 1 },
+            { "filename", path = 1, cond = win_is_wide },
+            { "filename", path = 4, cond = win_is_narrow },
         },
         lualine_x = {
-            lsp_clients,
+            { lsp_clients, cond = win_is_wide },
             { "filetype", cond = win_is_wide },
         },
         lualine_y = {
+            { lsp_clients, cond = win_is_narrow },
             { "progress", cond = win_is_wide },
-            { "filetype", cond = win_is_narrow },
         },
         lualine_z = {
+            { "filetype", cond = win_is_narrow },
             { "location", cond = win_is_wide },
         },
     },
