@@ -138,6 +138,75 @@ return {
         end,
     },
     {
+        "mxsdev/nvim-dap-vscode-js",
+        tag = "v1.1.0",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            {
+                "microsoft/vscode-js-debug",
+                tag = "v1.76.1",
+                lazy = true,
+                build = "npm install --legacy-peer-deps && npm run compile",
+            },
+        },
+        config = function()
+            ---@diagnostic disable-next-line: missing-fields
+            require("dap-vscode-js").setup({
+                debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+                adapters = { "pwa-node", "pwa-chrome" },
+            })
+
+            for _, language in ipairs({ "typescript", "javascript" }) do
+                local configurations = require("dap").configurations[language]
+                local configurations_to_add = {
+                    {
+                        type = "pwa-node",
+                        request = "launch",
+                        name = "PWA-node: Launch file",
+                        program = "${file}",
+                        cwd = "${workspaceFolder}",
+                    },
+                    {
+                        type = "pwa-node",
+                        request = "attach",
+                        name = "PWA-node: Attach",
+                        processId = require("dap.utils").pick_process,
+                        cwd = "${workspaceFolder}",
+                    },
+                    {
+                        type = "pwa-node",
+                        request = "launch",
+                        name = "PWA-node: Debug Vitest Tests",
+                        -- trace = true, -- include debugger info
+                        runtimeExecutable = "node",
+                        runtimeArgs = {
+                            "./node_modules/vitest/vitest.mjs",
+                            "--no-file-parallelism",
+                        },
+                        rootPath = "${workspaceFolder}",
+                        cwd = "${workspaceFolder}",
+                        console = "integratedTerminal",
+                        internalConsoleOptions = "neverOpen",
+                    },
+                    {
+                        type = "pwa-chrome",
+                        request = "launch",
+                        -- skipFiles = { "${workspaceFolder}/node_modules/**/*.js" },
+                        skipFiles = { "<node_internals>/**", "**/node_modules/**" },
+                        smartStep = true,
+                        name = "PWA-chrome: Debug app",
+                        url = "http://localhost:8080",
+                        webRoot = "${workspaceFolder}",
+                    },
+                }
+
+                for _, value in ipairs(configurations_to_add) do
+                    table.insert(configurations, value)
+                end
+            end
+        end,
+    },
+    {
         "theHamsta/nvim-dap-virtual-text",
         dependencies = { "mfussenegger/nvim-dap" },
         opts = {},
