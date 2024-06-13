@@ -1,4 +1,5 @@
 local text = "▌" -- "|", "▏", "▌", "│", "┃"
+local text_staged = "▏" -- "|", "▏", "▌", "│", "┃"
 
 require("gitsigns").setup({
     signs = {
@@ -8,6 +9,14 @@ require("gitsigns").setup({
         topdelete = { text = text },
         changedelete = { text = text },
         untracked = { text = text },
+    },
+    signs_staged = {
+        add = { text = text_staged },
+        change = { text = text_staged },
+        delete = { text = text_staged },
+        topdelete = { text = text_staged },
+        changedelete = { text = text_staged },
+        untracked = { text = text_staged },
     },
     attach_to_untracked = true,
     preview_config = {
