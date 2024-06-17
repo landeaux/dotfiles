@@ -18,7 +18,7 @@ return {
             jsonc = { "prettierd" },
             less = { "prettierd" },
             lua = { "stylua" },
-            markdown = { "prettierd" },
+            markdown = { "prettierd", "injected" },
             php = { "php_cs_fixer" },
             python = function(bufnr)
                 if require("conform").get_formatter_info("ruff_format", bufnr).available then
