@@ -1,73 +1,46 @@
 local dap = require("dap")
 
-local node2_launch = {
-    name = "Node2: Launch",
-    type = "node2",
-    request = "launch",
-    program = "${file}",
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = "inspector",
-    console = "integratedTerminal",
-}
-
-local node2_attach = {
-    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
-    name = "Node2: Attach to process",
-    type = "node2",
-    request = "attach",
-    processId = require("dap.utils").pick_process,
-}
-
-local chrome = {
-    name = "Chrome: Debug",
-    type = "chrome",
-    request = "attach",
-    program = "${file}",
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = "inspector",
-    port = 9222,
-    webRoot = "${workspaceFolder}",
-}
-
-local firefox = {
-    name = "Firefox: Debug",
-    type = "firefox",
-    request = "launch",
-    reAttach = true,
-    url = "http://localhost:3000",
-    webRoot = "${workspaceFolder}",
-    firefoxExecutable = vim.fn.exepath("firefox"),
-}
-
-dap.configurations.javascript = {
-    node2_launch,
-    node2_attach,
-    chrome,
-    firefox,
-}
-
-dap.configurations.typescript = {
-    node2_launch,
-    node2_attach,
-    chrome,
-    firefox,
-}
-
-dap.configurations.javascriptreact = {
-    node2_launch,
-    node2_attach,
-    chrome,
-    firefox,
-}
-
-dap.configurations.typescriptreact = {
-    node2_launch,
-    node2_attach,
-    chrome,
-    firefox,
-}
+for _, language in ipairs({ "javascript", "javascriptreact", "typescript", "typescriptreact" }) do
+    dap.configurations[language] = {
+        {
+            name = "Node2: Launch",
+            type = "node2",
+            request = "launch",
+            program = "${file}",
+            cwd = vim.fn.getcwd(),
+            sourceMaps = true,
+            protocol = "inspector",
+            console = "integratedTerminal",
+        },
+        {
+            -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+            name = "Node2: Attach to process",
+            type = "node2",
+            request = "attach",
+            processId = require("dap.utils").pick_process,
+        },
+        {
+            name = "Chrome: Debug",
+            type = "chrome",
+            request = "attach",
+            program = "${file}",
+            cwd = vim.fn.getcwd(),
+            sourceMaps = true,
+            protocol = "inspector",
+            port = 9222,
+            webRoot = "${workspaceFolder}",
+        },
+        {
+            name = "Firefox: Debug",
+            type = "firefox",
+            request = "launch",
+            reAttach = true,
+            url = "http://localhost:3000",
+            webRoot = "${workspaceFolder}",
+            firefoxExecutable = vim.fn.exepath("firefox"),
+        },
+    }
+end
 
 dap.configurations.vue = {
     {
