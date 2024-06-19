@@ -52,64 +52,22 @@ return {
             { "<leader>dK", function() require("dap.ui.widgets").hover() end, desc = "[DAP] Widgets" },
         },
         config = function()
-            local colors = {
-                breakpoint_icon = "#aa0000",
-                breakpoint_line = "#880000",
-                conditional_breakpoint_icon = "#aa4400",
-                conditional_breakpoint_line = "#884400",
-                log_point_icon = "#aaaa00",
-                log_point_line = "#888800",
-                stopped_icon = "#0000aa",
-                stopped_line = "#000088",
+            vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual", bold = true })
+            vim.api.nvim_set_hl(0, "DapStoppedNumber", { default = true, link = "CursorLineNr" })
+
+            local dap_icons = {
+                Stopped = { "󰁕", "DiagnosticSignWarn", "DapStoppedLine", "DapStoppedNumber" },
+                Breakpoint = { "", "DiagnosticSignError" },
+                BreakpointCondition = { "", "DiagnosticSignError" },
+                BreakpointRejected = { "", "DiagnosticSignError" },
+                LogPoint = { "", "DiagnosticSignError" },
             }
-
-            -- Customize symbols and highlights
-            vim.cmd("hi DapBreakpointIcon guifg=" .. colors.breakpoint_icon)
-            vim.cmd("hi DapBreakpointLine guibg=" .. colors.breakpoint_line)
-            vim.cmd("hi link DapBreakpointNumber DapBreakpointIcon")
-
-            vim.cmd("hi DapBreakpointConditionIcon guifg=" .. colors.conditional_breakpoint_icon)
-            vim.cmd("hi DapBreakpointConditionLine guibg=" .. colors.conditional_breakpoint_line)
-            vim.cmd("hi link DapBreakpointConditionNumber DapBreakpointConditionIcon")
-
-            vim.cmd("hi DapLogPointIcon guifg=" .. colors.log_point_icon)
-            vim.cmd("hi DapLogPointLine guibg=" .. colors.log_point_line)
-            vim.cmd("hi link DapLogPointNumber DapLogPointIcon")
-
-            vim.cmd("hi DapStoppedIcon guifg=" .. colors.stopped_icon)
-            vim.cmd("hi DapStoppedLine guibg=" .. colors.stopped_line .. " gui=bold")
-            vim.cmd("hi link DapStoppedNumber DapStoppedIcon")
-
-            vim.fn.sign_define("DapBreakpoint", {
-                text = "",
-                texthl = "DapBreakpointIcon",
-                linehl = "DapBreakpointLine",
-                numhl = "DapBreakpointNumber",
-            })
-            vim.fn.sign_define("DapBreakpointCondition", {
-                text = "",
-                texthl = "DapBreakpointConditionIcon",
-                linehl = "DapBreakpointConditionLine",
-                numhl = "DapBreakpointConditionNumber",
-            })
-            vim.fn.sign_define("DapLogPoint", {
-                text = "",
-                texthl = "DapLogPointIcon",
-                linehl = "DapLogPointLine",
-                numhl = "DapLogPointNumber",
-            })
-            vim.fn.sign_define("DapStopped", {
-                text = "󰁕",
-                texthl = "DapStoppedIcon",
-                linehl = "DapStoppedLine",
-                numhl = "DapStoppedNumber",
-            })
-            vim.fn.sign_define("DapBreakpointRejected", {
-                text = "",
-                texthl = "DiagnosticError",
-                linehl = "DiagnosticError",
-                numhl = "DiagnosticError",
-            })
+            for name, sign in pairs(dap_icons) do
+                vim.fn.sign_define(
+                    "Dap" .. name,
+                    { text = sign[1], texthl = sign[2], linehl = sign[3], numhl = sign[4] }
+                )
+            end
 
             -- setup dap config by VsCode launch.json file
             local vscode = require("dap.ext.vscode")
