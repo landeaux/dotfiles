@@ -113,7 +113,7 @@ return {
                 adapters = { "pwa-node", "pwa-chrome" },
             })
 
-            for _, language in ipairs({ "typescript", "javascript" }) do
+            for _, language in ipairs({ "javascript", "javascriptreact", "typescript", "typescriptreact" }) do
                 local configurations = require("dap").configurations[language]
                 local configurations_to_add = {
                     {
