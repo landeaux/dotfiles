@@ -5,8 +5,8 @@ return {
             "rcarriga/nvim-dap-ui",
             dependencies = { "nvim-neotest/nvim-nio" },
             keys = {
-                { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
-                { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = { "n", "v" } },
+                { "<leader>du", function() require("dapui").toggle({}) end, desc = "[DAP] Dap UI" },
+                { "<leader>de", function() require("dapui").eval() end, desc = "[DAP] Eval", mode = { "n", "v" } },
             },
             opts = {},
             config = function(_, opts)
@@ -19,37 +19,37 @@ return {
             end,
         },
         keys = {
-            { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+            { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "[DAP] Toggle Breakpoint" },
             {
                 "<leader>dBc",
                 function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
-                desc = "Set conditional breakpoint",
+                desc = "[DAP] Set conditional breakpoint",
             },
             {
                 "<leader>dBl",
                 function() require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end,
-                desc = "Set log point",
+                desc = "[DAP] Set log point",
             },
             {
                 "<leader>dBe",
                 function() require("dap").set_exception_breakpoints() end,
-                desc = "Set exception breakpoints",
+                desc = "[DAP] Set exception breakpoints",
             },
-            { "<leader>dc", function() require("dap").continue() end, desc = "Continue" },
-            { "<leader>dl", function() require("dap").run_last() end, desc = "Run Last" },
-            { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
-            { "<leader>dg", function() require("dap").goto_() end, desc = "Go to Line (No Execute)" },
-            { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
-            { "<leader>di", function() require("dap").step_into() end, desc = "Step Into" },
-            { "<leader>do", function() require("dap").step_out() end, desc = "Step Out" },
-            { "<leader>dO", function() require("dap").step_over() end, desc = "Step Over" },
-            { "<leader>dh", function() require("dap").step_back() end, desc = "Step Back" },
-            { "<leader>dj", function() require("dap").down() end, desc = "Down" },
-            { "<leader>dk", function() require("dap").up() end, desc = "Up" },
-            { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
-            { "<leader>ds", function() require("dap").session() end, desc = "Session" },
-            { "<leader>dq", function() require("dap").terminate() end, desc = "Terminate" },
-            { "<leader>dK", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
+            { "<leader>dc", function() require("dap").continue() end, desc = "[DAP] Continue" },
+            { "<leader>dl", function() require("dap").run_last() end, desc = "[DAP] Run Last" },
+            { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "[DAP] Run to Cursor" },
+            { "<leader>dg", function() require("dap").goto_() end, desc = "[DAP] Go to Line (No Execute)" },
+            { "<leader>dp", function() require("dap").pause() end, desc = "[DAP] Pause" },
+            { "<leader>di", function() require("dap").step_into() end, desc = "[DAP] Step Into" },
+            { "<leader>do", function() require("dap").step_out() end, desc = "[DAP] Step Out" },
+            { "<leader>dO", function() require("dap").step_over() end, desc = "[DAP] Step Over" },
+            { "<leader>dh", function() require("dap").step_back() end, desc = "[DAP] Step Back" },
+            { "<leader>dj", function() require("dap").down() end, desc = "[DAP] Down" },
+            { "<leader>dk", function() require("dap").up() end, desc = "[DAP] Up" },
+            { "<leader>dr", function() require("dap").repl.toggle() end, desc = "[DAP] Toggle REPL" },
+            { "<leader>ds", function() require("dap").session() end, desc = "[DAP] Session" },
+            { "<leader>dq", function() require("dap").terminate() end, desc = "[DAP] Terminate" },
+            { "<leader>dK", function() require("dap.ui.widgets").hover() end, desc = "[DAP] Widgets" },
         },
         config = function()
             local colors = {
@@ -117,12 +117,12 @@ return {
             vscode.json_decode = function(str) return vim.json.decode(json.json_strip_comments(str)) end
 
             -- DAP REPL autocomplete
-            -- require("my.utils").create_augroup({
-            --     {
-            --         event = "FileType",
-            --         opts = { pattern = "dap-repl", command = 'lua require("dap.ext.autocompl").attach()' },
-            --     },
-            -- }, "_dap_repl")
+            require("my.utils").create_augroup({
+                {
+                    event = "FileType",
+                    opts = { pattern = "dap-repl", command = 'lua require("dap.ext.autocompl").attach()' },
+                },
+            }, "_dap_repl")
 
             -- DAP Terminal settings
             -- @see :h dap-terminal
