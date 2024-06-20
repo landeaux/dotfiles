@@ -82,7 +82,7 @@ opt.fillchars = {
     eob = " ",
     fold = " ",
     foldopen = "▽",
-    foldsep = "│",
+    foldsep = " ",
     foldclose = "▶",
 }
 opt.showmode = false
