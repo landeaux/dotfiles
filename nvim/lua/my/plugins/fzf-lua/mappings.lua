@@ -48,10 +48,12 @@ map("n", "<Leader>fe", ":FzfLua diagnostics_document<CR>", { desc = "Find buffer
 map("n", "<Leader>fE", ":FzfLua diagnostics_workspace<CR>", { desc = "Find workspace diagnostics" })
 
 -- misc.
+map("n", "<Leader>f:", ":FzfLua command_history<CR>", { desc = "Find commands" })
 map("n", "<Leader>fa", ":FzfLua builtin<CR>", { desc = "Find builtins" })
 map("n", "<Leader>fc", ":FzfLua commands<CR>", { desc = "Find commands" })
 map("n", "<Leader>fh", ":FzfLua help_tags<CR>", { desc = "Find help tags" })
 map("n", "<Leader>fk", ":FzfLua keymaps<CR>", { desc = "Find keymaps" })
+map("n", "<Leader>fr", ":FzfLua resume<CR>", { desc = "Resume last search" })
 
 -- tmux
 map("n", "<Leader>fx", ":FzfLua tmux_buffers<CR>", { desc = "Find tmux paste buffers" })
