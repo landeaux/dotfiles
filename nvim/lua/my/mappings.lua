@@ -39,8 +39,12 @@ map("n", "]b", ":bnext<CR>", { desc = "Go to next buffer" })
 -- Better pasting in insert mode
 map("i", "<C-r>", "<C-r><C-o>", { desc = "Paste from register and preserve indentation" })
 
-------------------------------- LEADER MAPPINGS -------------------------------
+-- Add undo break-points
+map("i", ",", ",<c-g>u")
+map("i", ".", ".<c-g>u")
+map("i", ";", ";<c-g>u")
 
+-- Toggle UI
 map({ "n", "v" }, "<Leader>th", ":set hlsearch!<CR>", { desc = "Toggle highlighting" })
 map({ "n", "v" }, "<Leader>tr", ":set invrelativenumber<CR>", { desc = "Toggle relative number" })
 map({ "n", "v" }, "<Leader>ts", ":set spell! spell?<CR>", { desc = "Toggle spelling" })
@@ -126,7 +130,5 @@ map("n", "<Leader>eq", vim.diagnostic.setloclist, { desc = "Add diagnostics to l
 map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 map("n", "]e", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
--- Add undo break-points
-map("i", ",", ",<c-g>u")
-map("i", ".", ".<c-g>u")
-map("i", ";", ";<c-g>u")
+-- Netrw
+map("n", "<Leader>x", ":Ex<CR>", { desc = "Open Netrw" })
