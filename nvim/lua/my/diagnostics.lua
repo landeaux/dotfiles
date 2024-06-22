@@ -11,6 +11,7 @@ local diagnostic_config = {
         priority = 20,
     },
     update_in_insert = true,
+    severity_sort = true,
 }
 
 vim.diagnostic.config(diagnostic_config)
