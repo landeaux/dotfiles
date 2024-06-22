@@ -5,8 +5,15 @@ return {
         build = ":TSUpdate",
         config = function() require("my.plugins.nvim-treesitter.config") end,
         dependencies = {
-            "windwp/nvim-ts-autotag",
             "nvim-treesitter/nvim-treesitter-textobjects",
+        },
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        opts = {
+            aliases = {
+                smarty = "html",
+            }
         },
     },
 }

@@ -1,23 +1,6 @@
 -- Tree-sitter
 ---@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
-    autotag = {
-        enable = true,
-        filetypes = {
-            "html",
-            "javascript",
-            "javascriptreact",
-            "jsx",
-            "markdown",
-            "php",
-            "smarty",
-            "svelte",
-            "tsx",
-            "typescript",
-            "typescriptreact",
-            "vue",
-        },
-    },
     auto_install = true,
     ensure_installed = {
         "bash",
