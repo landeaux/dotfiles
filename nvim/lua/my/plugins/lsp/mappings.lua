@@ -5,7 +5,6 @@ local M = {}
 -- local allowed_to_format = {
 --     "dockerls",
 --     "prismals",
---     "null-ls",
 --     "taplo",
 --     -- "jsonls",
 --     -- "tsserver",

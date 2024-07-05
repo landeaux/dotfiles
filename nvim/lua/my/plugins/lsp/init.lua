@@ -17,13 +17,4 @@ return {
             },
         },
     },
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function() require("my.plugins.lsp.providers.null_ls") end,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "neovim/nvim-lspconfig",
-            "jose-elias-alvarez/typescript.nvim",
-        },
-    },
 }
