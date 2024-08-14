@@ -56,11 +56,11 @@ return {
             vim.api.nvim_set_hl(0, "DapStoppedNumber", { default = true, link = "CursorLineNr" })
 
             local dap_icons = {
-                Stopped = { "󰁕", "DiagnosticSignWarn", "DapStoppedLine", "DapStoppedNumber" },
-                Breakpoint = { "", "DiagnosticSignError" },
-                BreakpointCondition = { "", "DiagnosticSignError" },
-                BreakpointRejected = { "", "DiagnosticSignError" },
-                LogPoint = { "", "DiagnosticSignError" },
+                Stopped = { "󰁕", "DapStopped", "DapStoppedLine", "DapStoppedNumber" },
+                Breakpoint = { "", "DapBreakpoint" },
+                BreakpointCondition = { "", "DapBreakpointCondition" },
+                BreakpointRejected = { "", "DapBreakpointRejected" },
+                LogPoint = { "", "DapLogPoint" },
             }
             for name, sign in pairs(dap_icons) do
                 vim.fn.sign_define(
