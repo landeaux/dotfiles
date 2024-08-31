@@ -1,9 +1,11 @@
 return {
     "stevearc/conform.nvim",
     init = function()
-        require("my.plugins.conform-nvim.mappings")
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
+    keys = {
+        { "<Leader>lf", ":Format<CR>", mode = "", desc = "Format" },
+    },
     opts = {
         formatters_by_ft = {
             ["_"] = { "trim_whitespace" },
