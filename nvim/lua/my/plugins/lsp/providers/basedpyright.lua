@@ -5,6 +5,7 @@ return {
             analysis = {
                 diagnosticMode = "workspace",
                 typeCheckingMode = "off",
+                -- Ignore all files for analysis to exclusively use Ruff for linting
                 ignore = { "*" },
             },
         },

@@ -12,7 +12,7 @@ local ensure_installed = {
     "jsonls",
     "prosemd_lsp",
     -- "pyright",
-    "ruff_lsp",
+    -- "ruff_lsp",
     "lua_ls",
     "taplo",
     "tailwindcss",
@@ -28,6 +28,7 @@ require("mason-lspconfig").setup({
 
 local servers = vim.list_extend({
     "intelephense",
+    "ruff",
     "smarty_ls",
 }, ensure_installed)
 
