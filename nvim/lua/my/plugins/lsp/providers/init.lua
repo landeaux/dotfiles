@@ -16,7 +16,7 @@ local ensure_installed = {
     "lua_ls",
     "taplo",
     "tailwindcss",
-    "tsserver",
+    "ts_ls",
     "vimls",
     "volar",
     "yamlls",

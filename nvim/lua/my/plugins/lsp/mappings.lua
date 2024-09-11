@@ -7,7 +7,7 @@ local M = {}
 --     "prismals",
 --     "taplo",
 --     -- "jsonls",
---     -- "tsserver",
+--     -- "ts_ls",
 --     -- "vuels",
 -- }
 
