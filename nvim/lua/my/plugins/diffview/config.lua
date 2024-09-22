@@ -2,11 +2,11 @@ local actions = require("diffview.actions")
 
 require("diffview").setup({
     enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'
-    file_panel = {
-        win_config = {
-            width = 75,
-        },
-    },
+    -- file_panel = {
+    --     win_config = {
+    --         width = 75,
+    --     },
+    -- },
     hooks = {
         diff_buf_read = function(bufnr)
             vim.opt_local.relativenumber = false
