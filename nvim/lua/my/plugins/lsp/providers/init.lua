@@ -11,7 +11,6 @@ local ensure_installed = {
     "html",
     "jsonls",
     "prosemd_lsp",
-    -- "pyright",
     -- "ruff_lsp",
     "lua_ls",
     "taplo",
