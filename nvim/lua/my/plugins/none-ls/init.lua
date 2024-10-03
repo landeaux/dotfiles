@@ -10,7 +10,7 @@ return {
                 null_ls.builtins.diagnostics.hadolint,
                 require("none-ls.diagnostics.eslint_d"),
                 null_ls.builtins.diagnostics.selene,
-                null_ls.builtins.diagnostics.mypy,
+                null_ls.builtins.diagnostics.mypy.with({ temp_dir = "/tmp" }),
                 null_ls.builtins.diagnostics.markdownlint,
             },
         })
