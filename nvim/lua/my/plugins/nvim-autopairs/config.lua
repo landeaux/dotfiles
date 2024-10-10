@@ -1,3 +1,1 @@
-require("nvim-autopairs").setup({
-    disable_filetype = { "norg" },
-})
+require("nvim-autopairs").setup({})

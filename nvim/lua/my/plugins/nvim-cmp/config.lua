@@ -52,7 +52,6 @@ cmp.setup({
     }),
     sources = {
         -- NOTE: The order of these are important as it determines priority.
-        { name = "neorg" },
         { name = "calc" },
         { name = "path" },
         { name = "nvim_lsp" },

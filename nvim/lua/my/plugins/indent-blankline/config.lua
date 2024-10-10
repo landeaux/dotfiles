@@ -15,7 +15,6 @@ require("ibl").setup({
             "markdown",
             "mason",
             "neo-tree",
-            "norg",
         },
     },
     indent = {
