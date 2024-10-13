@@ -3,7 +3,21 @@ require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 return {
     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     settings = {
-        vtsls = { tsserver = { globalPlugins = {} } },
+        vtsls = {
+            tsserver = {
+                globalPlugins = {},
+            },
+        },
+        typescript = {
+            format = {
+                semicolons = "remove",
+            },
+        },
+        javascript = {
+            format = {
+                semicolons = "remove",
+            },
+        },
     },
     before_init = function(params, config)
         local result = vim.system({ "npm", "query", "#vue" }, { cwd = params.workspaceFolders[1].name, text = true })
