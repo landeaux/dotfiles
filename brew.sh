@@ -58,6 +58,7 @@ brew install tmux
 brew install tree
 brew install tree-sitter
 brew install wget
+brew install pngpaste # for https://github.com/epwalsh/obsidian.nvim?tab=readme-ov-file#setup
 
 # Install yabai (tiling window manager) and skhd (hotkey daemon)
 brew install koekeishiya/formulae/yabai
