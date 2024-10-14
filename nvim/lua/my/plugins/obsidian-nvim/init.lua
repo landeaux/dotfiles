@@ -78,7 +78,7 @@ return {
         end,
 
         -- Either 'wiki' or 'markdown'.
-        preferred_link_style = "wiki",
+        preferred_link_style = "markdown",
 
         -- Optional, alternatively you can customize the frontmatter data.
         ---@return table
