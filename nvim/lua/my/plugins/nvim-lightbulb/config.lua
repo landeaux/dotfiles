@@ -16,6 +16,7 @@ require("nvim-lightbulb").setup({
     ignore = {
         clients = { "ruff_lsp" },
     },
+    code_lenses = true,
 })
 
 vim.fn.sign_define("LightBulbSign", { text = icon })
