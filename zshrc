@@ -195,10 +195,16 @@ eval "$(fzf --zsh)"
 # --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
 # --multi"
 ## catppuccin-mocha
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+# --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+# --multi"
+## Kanagawa
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=bg+:#282727,bg:#181616,spinner:#dcd7ba,hl:#d27e99 \
+--color=fg:#a3d4d5,header:#d27e99,info:#9cabca,pointer:#dcd7ba \
+--color=marker:#a3d4d5,fg+:#a3d4d5,prompt:#9cabca,hl+:#d27e99 \
 --multi"
 if command -v fd 1>/dev/null 2>&1; then
   export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'

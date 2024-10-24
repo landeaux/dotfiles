@@ -1,16 +1,77 @@
-font_family      JetBrainsMono Nerd Font Mono Regular
-bold_font        JetBrainsMono Nerd Font Mono Bold
-italic_font      JetBrainsMono Nerd Font Mono Italic
-bold_italic_font JetBrainsMono Nerd Font Mono Bold Italic
+env PYENV_ROOT=${PYENV_ROOT}
+
+# ----------=== Fonts ===----------
+font_family      JetBrains Mono NL Regular
+bold_font        JetBrains Mono NL Bold
+italic_font      JetBrains Mono NL Italic
+bold_italic_font JetBrains Mono NL Bold Italic
+
+# Nerd Font Symbols
+symbol_map U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E6AA,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF,U+F0001-U+F1AF0 Symbols Nerd Font Mono
 
 font_size 14.0
 
+# ----------=== Mouse ===----------
+# hide the mouse cursor immediately when typing text
 mouse_hide_wait -1
+
+# ----------=== MacOS ===----------
 macos_option_as_alt both
+
+# ----------=== Layouts ===----------
+enabled_layouts tall:bias=50;full_size=1;mirrored=false,stack
+map cmd+ctrl+z toggle_layout stack
+
+# ----------=== Scrollback ===----------
+# Scrollback Pager
+# See: https://github.com/kovidgoyal/kitty/issues/719#issuecomment-952039731
+# scrollback_pager ~/.config/kitty/pager.sh 'INPUT_LINE_NUMBER' 'CURSOR_LINE' 'CURSOR_COLUMN'
+# scrollback_lines 5000
+
+# ----------=== Windows ===----------
+map cmd+shift+enter new_window_with_cwd
+
+## Switch focus to the neighboring window in the indicated direction
+map shift+left neighboring_window left
+map shift+right neighboring_window right
+map shift+up neighboring_window up
+map shift+down neighboring_window down
+
+## Move the active window in the indicated direction
+map cmd+shift+up move_window up
+map cmd+shift+left move_window left
+map cmd+shift+right move_window right
+map cmd+shift+down move_window down
+
+# ----------=== Tabs ===----------
+map cmd+shift+t new_tab_with_cwd
+map ctrl+alt+1 goto_tab 1
+map ctrl+alt+2 goto_tab 2
+map ctrl+alt+3 goto_tab 3
+map ctrl+alt+4 goto_tab 4
+map ctrl+alt+5 goto_tab 5
+map ctrl+alt+6 goto_tab 6
+
+tab_bar_style powerline
+tab_title_template "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{index}:{title}"
+
+# ----------=== kitty-scrollback.nvim ===----------
+allow_remote_control socket-only
+listen_on unix:/tmp/kitty
+shell_integration enabled
+# kitty-scrollback.nvim Kitten alias
+action_alias kitty_scrollback_nvim kitten ${HOME}/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py --nvim-args --clean --noplugin -n
+# Browse scrollback buffer in nvim
+map kitty_mod+h kitty_scrollback_nvim
+# Browse output of the last shell command in nvim
+map kitty_mod+g kitty_scrollback_nvim --config ksb_builtin_last_cmd_output
+# Show clicked command output in nvim
+mouse_map kitty_mod+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
+
 
 include kitty.local.conf
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Latte
+# Kanagawa_light
 include current-theme.conf
 # END_KITTY_THEME
