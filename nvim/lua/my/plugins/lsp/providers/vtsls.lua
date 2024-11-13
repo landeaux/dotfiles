@@ -31,11 +31,11 @@ return {
                 enumMemberValues = { enabled = true },
             },
             referencesCodeLens = {
-                enabled = true,
+                enabled = false,
                 showOnAllFunctions = true,
             },
             implementationsCodeLens = {
-                enabled = true,
+                enabled = false,
                 showOnInterfaceMethods = true,
             },
         },
@@ -44,7 +44,7 @@ return {
                 semicolons = "remove",
             },
             referencesCodeLens = {
-                enabled = true,
+                enabled = false,
                 showOnAllFunctions = true,
             },
         },
