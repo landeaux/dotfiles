@@ -76,9 +76,8 @@ brew install openssl readline sqlite3 xz zlib tcl-tk
 brew install fzf
 
 # Install Fonts
-brew tap homebrew/cask-fonts
-brew install font-jetbrains-mono
-brew install font-symbols-only-nerd-font
+brew install --cask font-jetbrains-mono
+brew install --cask font-symbols-only-nerd-font
 
 # Install a modern version of Zsh.
 brew install zsh
