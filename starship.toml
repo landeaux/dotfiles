@@ -15,7 +15,7 @@ style = "blue"
 
 [character]
 error_symbol = "[❯](red)"
-success_symbol = "[❯](green)"
+success_symbol = "[❯](purple)"
 vimcmd_symbol = "[❮](green)"
 
 [git_branch]
