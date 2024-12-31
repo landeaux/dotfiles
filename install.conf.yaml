@@ -3,12 +3,13 @@
       create: true
       relink: true
 
-- clean: ['~', '~/.config']
+- clean: ["~", "~/.config"]
 
 - link:
     ~/.bashrc:
     ~/.config/bat: bat
     ~/.config/direnv: direnv
+    ~/.config/ghostty: ghostty
     ~/.config/karabiner.edn: karabiner.edn
     ~/.config/karabiner: karabiner
     ~/.config/kitty: kitty
@@ -16,7 +17,7 @@
     ~/.config/skhd: skhd
     ~/.config/starship.toml: starship.toml
     ~/.config/yabai: yabai
-    ~/.dotfiles: ''
+    ~/.dotfiles: ""
     ~/.gitconfig:
     ~/.gitignore:
     ~/.gitmessage:

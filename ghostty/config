@@ -1,0 +1,9 @@
+theme = "Kanagawa Dragon"
+
+font-family = "JetBrains Mono NL"
+font-size = 14.0
+font-thicken = true
+
+mouse-hide-while-typing = true
+
+# vim:ft=conf
