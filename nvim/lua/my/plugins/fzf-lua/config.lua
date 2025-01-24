@@ -61,6 +61,7 @@ fzf_lua.setup({
         actions = {
             ["ctrl-d"] = grep_dir,
         },
+        fd_opts = [[--color=never --type f --type l --hidden --exclude .git]],
     },
     diagnostics = {
         diag_source = true,
