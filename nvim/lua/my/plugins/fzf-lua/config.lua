@@ -42,7 +42,7 @@ local grep_dir = function(selected, opts)
             .. " --glob '!.git'"
             .. globs
             .. " -e",
-        prompt = "*Rg>",
+        prompt = "*Rg> ",
         winopts = {
             title = globs,
             title_pos = "center",
@@ -68,6 +68,7 @@ fzf_lua.setup({
         diag_source = true,
     },
     grep = {
+        prompt = "Rg> ",
         rg_glob = true,
         rg_opts = "--column"
             .. " --line-number"
