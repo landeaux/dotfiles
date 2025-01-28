@@ -19,6 +19,9 @@ return {
             },
         },
         typescript = {
+            preferences = {
+                quoteStyle = "single",
+            },
             format = {
                 semicolons = "remove",
             },
@@ -40,6 +43,9 @@ return {
             },
         },
         javascript = {
+            preferences = {
+                quoteStyle = "single",
+            },
             format = {
                 semicolons = "remove",
             },
