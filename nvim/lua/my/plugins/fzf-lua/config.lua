@@ -60,6 +60,7 @@ fzf_lua.setup({
     files = {
         actions = {
             ["ctrl-d"] = grep_dir,
+            ["alt-."] = fzf_lua.actions.toggle_hidden,
         },
         fd_opts = [[--color=never --type f --type l --exclude .git]],
         hidden = true,
@@ -68,6 +69,9 @@ fzf_lua.setup({
         diag_source = true,
     },
     grep = {
+        actions = {
+            ["alt-."] = fzf_lua.actions.toggle_hidden,
+        },
         prompt = "Rg> ",
         rg_glob = true,
         rg_opts = "--column"
