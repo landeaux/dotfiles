@@ -2,7 +2,7 @@ local custom = require("my.plugins.fterm.custom_terminals")
 local fterm = require("FTerm")
 local map = require("my.utils").map_factory({ silent = true })
 
-map({ "n", "t" }, "<A-i>", function() fterm:toggle() end, { desc = "Toggle terminal" })
+map({ "n", "t" }, "<A-;>", function() fterm:toggle() end, { desc = "Toggle terminal" })
 
 map("t", "<A-x>", function() fterm:exit() end, { desc = "Exit terminal" })
 
