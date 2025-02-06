@@ -1,6 +1,5 @@
 go
 marker
 nvm
-pyenv
 rustup/rustc/cargo
 oh-my-zsh
