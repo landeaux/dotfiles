@@ -1,5 +1,13 @@
-local text = "▌" -- "|", "▏", "▌", "│", "┃"
-local text_staged = "▏" -- "|", "▏", "▌", "│", "┃"
+-- █ U+2588
+-- ▊ U+258a
+-- ▋ U+258b
+-- ▌ U+258c ✓
+-- ▍ U+258d ✓
+-- ▎ U+258e
+-- ▏ U+258f
+
+local text = "▌"
+local text_staged = "▍"
 
 require("gitsigns").setup({
     signs = {
