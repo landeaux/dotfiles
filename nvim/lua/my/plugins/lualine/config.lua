@@ -50,5 +50,5 @@ require("lualine").setup({
             { "location", cond = win_is_wide },
         },
     },
-    extensions = { "fugitive", "quickfix", "man", "neo-tree" },
+    extensions = { "fugitive", "fzf", "quickfix", "man", "mason", "oil" },
 })
