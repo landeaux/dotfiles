@@ -127,8 +127,6 @@ map("n", "<Leader>ek", function() vim.diagnostic.open_float({ scope = "cursor" }
 })
 map("n", "<Leader>el", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 map("n", "<Leader>eq", vim.diagnostic.setloclist, { desc = "Add diagnostics to location list" })
-map("n", "[e", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-map("n", "]e", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
 -- Netrw
 map("n", "<Leader>x", ":Ex<CR>", { desc = "Open Netrw" })

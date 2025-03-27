@@ -1,7 +1,7 @@
 ---@param client vim.lsp.Client|nil
 ---@param bufnr integer
 local function documentColor(client, bufnr)
-    if client and client.supports_method("textDocument/documentColor") then
+    if client and client:supports_method("textDocument/documentColor", bufnr) then
         require("document-color").buf_attach(bufnr)
     end
 end
@@ -9,7 +9,7 @@ end
 ---@param client vim.lsp.Client|nil
 ---@param bufnr integer
 local function documentHighlight(client, bufnr)
-    if client and client.supports_method("textDocument/documentHighlight") then
+    if client and client:supports_method("textDocument/documentHighlight", bufnr) then
         local highlight_augroup_name = "_lsp_document_highlight"
         local highlight_augroup = vim.api.nvim_create_augroup(highlight_augroup_name, { clear = false })
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -34,7 +34,7 @@ local function documentHighlight(client, bufnr)
 end
 
 local function codeLens(client, bufnr)
-    if client and client.supports_method("textDocument/codeLens") then
+    if client and client:supports_method("textDocument/codeLens", bufnr) then
         vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
             buffer = bufnr,
             group = vim.api.nvim_create_augroup("_lsp_codelens", { clear = true }),

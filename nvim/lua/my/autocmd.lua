@@ -6,7 +6,7 @@ utils.create_augroup({
         event = "TextYankPost",
         opts = {
             pattern = "*",
-            callback = function() vim.highlight.on_yank() end,
+            callback = function() vim.hl.on_yank() end,
         },
     },
 }, "_highlight_on_yank")
