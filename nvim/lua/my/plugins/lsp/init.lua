@@ -3,7 +3,7 @@ return {
         "neovim/nvim-lspconfig",
         config = function() require("my.plugins.lsp.config") end,
         dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
+            "blink.cmp",
             "jose-elias-alvarez/typescript.nvim",
             "williamboman/mason-lspconfig.nvim",
             "b0o/schemastore.nvim", -- for jsonls

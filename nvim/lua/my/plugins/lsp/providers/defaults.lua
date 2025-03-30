@@ -4,10 +4,14 @@ M.flags = {
     debounce_text_changes = 150,
 }
 
-M.capabilities = require("cmp_nvim_lsp").default_capabilities()
-M.capabilities.textDocument.colorProvider = {
-    dynamicRegistration = true,
+M.capabilities = {
+    textDocument = {
+        colorProvider = {
+            dynamicRegistration = true,
+        },
+    },
 }
+M.capabilities = require("blink.cmp").get_lsp_capabilities(M.capabilities)
 
 M.autostart = true
 
