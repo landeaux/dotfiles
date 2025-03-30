@@ -5,10 +5,11 @@ vim.diagnostic.config({
         source = true,
         border = "rounded",
     },
-    virtual_text = false,
-    virtual_lines = {
-        current_line = true,
+    jump = {
+        float = true,
     },
+    virtual_text = false,
+    virtual_lines = false,
     signs = {
         priority = 20,
         text = {
@@ -24,6 +25,6 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
         },
     },
-    update_in_insert = true,
+    update_in_insert = false,
     severity_sort = true,
 })
