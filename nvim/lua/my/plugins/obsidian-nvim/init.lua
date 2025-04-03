@@ -23,12 +23,12 @@ return {
         -- current markdown file being edited.
         workspaces = {
             {
-                name = "personal",
-                path = "~/Notes/personal",
-            },
-            {
                 name = "work",
                 path = "~/Notes/work",
+            },
+            {
+                name = "personal",
+                path = "~/Notes/personal",
             },
         },
 
