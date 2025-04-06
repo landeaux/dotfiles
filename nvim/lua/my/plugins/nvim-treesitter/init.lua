@@ -13,6 +13,7 @@ return {
             aliases = {
                 smarty = "html",
             },
+            enable_close_on_slash = true,
         },
     },
 }
