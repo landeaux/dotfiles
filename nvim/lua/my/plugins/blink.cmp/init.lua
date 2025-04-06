@@ -54,6 +54,7 @@ return {
                 documentation = {
                     -- (Default) Only show the documentation popup when manually triggered
                     auto_show = true,
+                    window = { border = "rounded" },
                 },
                 menu = {
                     -- nvim-cmp style menu
@@ -63,6 +64,7 @@ return {
                             { "kind_icon", "kind", gap = 1 },
                         },
                     },
+                    border = "rounded",
                 },
             },
 
