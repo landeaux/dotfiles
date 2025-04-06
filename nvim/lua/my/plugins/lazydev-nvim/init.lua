@@ -4,11 +4,10 @@ return {
         ft = "lua",
         opts = {
             library = {
-                { path = "luvit-meta/library", words = { "vim%.uv" } },
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
             },
         },
     },
-    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings }
     { -- optional blink completion source for require statements and module annotations
         "saghen/blink.cmp",
         opts = {
