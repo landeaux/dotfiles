@@ -124,6 +124,12 @@ if command -v tmux_workspace 1>/dev/null 2>&1; then
   alias tmw="tmux_workspace"
 fi
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=($HOME/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
 # Docker
 if command -v docker 1>/dev/null 2>&1; then
   alias dci="docker container inspect"
