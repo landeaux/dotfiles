@@ -22,6 +22,7 @@ local ensure_installed = {
 }
 
 require("mason-lspconfig").setup({
+    automatic_installation = false,
     ensure_installed = ensure_installed,
 })
 
