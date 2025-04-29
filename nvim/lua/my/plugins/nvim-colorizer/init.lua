@@ -1,7 +1,7 @@
 return {
-    "norcalli/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
     init = function() require("my.plugins.nvim-colorizer.mappings") end,
-    config = function() require("my.plugins.nvim-colorizer.config") end,
+    opts = {},
     cmd = {
         "ColorizerAttachToBuffer",
         "ColorizerDetachFromBuffer",
