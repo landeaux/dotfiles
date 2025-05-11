@@ -5,7 +5,7 @@ return {
         dependencies = {
             "blink.cmp",
             "jose-elias-alvarez/typescript.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            "mason-org/mason-lspconfig.nvim",
             "b0o/schemastore.nvim", -- for jsonls
             {
                 "mrshmllow/document-color.nvim",
