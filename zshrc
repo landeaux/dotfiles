@@ -138,6 +138,9 @@ else
   export EDITOR='vi'
 fi
 
+# Ensure containers are built using AMD64 architecture
+export DOCKER_DEFAULT_PLATFORM="linux/amd64"
+
 # Marker command palette (https://github.com/pindexis/marker)
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 export MARKER_KEY_GET="\C-J"
