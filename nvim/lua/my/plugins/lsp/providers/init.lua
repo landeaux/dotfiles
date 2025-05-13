@@ -32,7 +32,6 @@ local servers = vim.list_extend({
 }, ensure_installed)
 
 local default_config = require("my.plugins.lsp.providers.defaults")
-local lspconfig = require("lspconfig")
 
 for _, server in pairs(servers) do
     local opts = default_config
@@ -44,5 +43,6 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend("force", opts, config)
     end
 
-    lspconfig[server].setup(opts)
+    vim.lsp.config(server, opts)
+    vim.lsp.enable(server)
 end
