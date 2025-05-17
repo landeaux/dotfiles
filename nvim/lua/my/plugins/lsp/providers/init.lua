@@ -15,6 +15,7 @@ local ensure_installed = {
     "lua_ls",
     "taplo",
     "tailwindcss",
+    "twiggy_language_server",
     "vimls",
     "volar",
     "vtsls",
