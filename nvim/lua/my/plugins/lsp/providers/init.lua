@@ -17,7 +17,7 @@ local ensure_installed = {
     "tailwindcss",
     "twiggy_language_server",
     "vimls",
-    "volar",
+    "vue_ls",
     "vtsls",
     "yamlls",
 }
