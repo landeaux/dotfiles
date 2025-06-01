@@ -9,5 +9,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("my.plugins", {
     install = { colorscheme = { "habamax" } },
     checker = { enabled = false },
-    ui = { border = "rounded" },
+    ui = {
+        border = "none",
+        size = { width = 1, height = 1 },
+    },
 })
