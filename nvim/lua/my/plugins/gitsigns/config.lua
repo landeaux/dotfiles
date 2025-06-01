@@ -27,8 +27,5 @@ require("gitsigns").setup({
         untracked = { text = text_staged },
     },
     attach_to_untracked = true,
-    preview_config = {
-        border = "rounded",
-    },
     on_attach = function(bufnr) require("my.plugins.gitsigns.mappings").register(bufnr) end,
 })

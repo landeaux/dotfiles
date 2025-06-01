@@ -3,7 +3,6 @@ vim.diagnostic.config({
     float = {
         header = "",
         source = true,
-        border = "rounded",
     },
     jump = {
         float = true,

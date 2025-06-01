@@ -1,5 +1,5 @@
 require("FTerm").setup({
-    border = "rounded",
+    border = vim.o.winborder,
     dimensions = {
         height = 0.9,
         width = 0.9,
