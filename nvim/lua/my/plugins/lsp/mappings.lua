@@ -26,7 +26,7 @@ local M = {}
 M.register = function(client, bufnr)
     local map = map_factory({ buffer = bufnr, silent = true })
     map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-    map("n", "grt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+    -- map("n", "grt", vim.lsp.buf.type_definition, { desc = "Go to type definition" }) -- already set as default
     map("n", "grd", vim.lsp.buf.declaration, { desc = "Go to declaration" })
     -- map("n", dgI", vim.lsp.buf.implementation, { desc = "Go to implementation" })
     -- map("n", "gr", vim.lsp.buf.references, { desc = "Go to references" }) -- default is now "grr"
