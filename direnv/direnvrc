@@ -22,4 +22,22 @@ layout_poetry() {
     export VIRTUAL_ENV
 }
 
+layout_python_uv() {
+    PYPROJECT_TOML="${PYPROJECT_TOML:-pyproject.toml}"
+    if [[ ! -f "$PYPROJECT_TOML" ]]; then
+        log_status "No pyproject.toml found. Executing \`uv init --bare\` to create a \`$PYPROJECT_TOML\` first."
+        uv init --bare
+    fi
+
+    if [[ -d ".venv" ]]; then
+        VIRTUAL_ENV="$(pwd)/.venv"
+    else
+        log_status "No virtual environment exists. Executing \`uv venv\` to create one."
+        uv venv
+    fi
+
+    PATH_add "$VIRTUAL_ENV/bin"
+    export VIRTUAL_ENV
+}
+
 # vim: ft=bash
