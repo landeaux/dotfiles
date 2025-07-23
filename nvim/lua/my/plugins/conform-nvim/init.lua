@@ -31,6 +31,7 @@ return {
             end,
             scss = { "prettierd" },
             sh = { "shfmt" },
+            toml = { lsp_format = "prefer" },
             typescript = { "prettierd", "eslint_d" },
             typescriptreact = { "prettierd", "eslint_d" },
             vue = { "prettierd", "eslint_d" },
