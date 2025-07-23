@@ -1,7 +1,7 @@
 -- vim.lsp.set_log_level("debug")
 -- require("vim.lsp.log").set_format_func(vim.inspect)
 
-local ensure_installed = {
+local servers = {
     "ansiblels",
     "basedpyright",
     "bashls",
@@ -9,28 +9,20 @@ local ensure_installed = {
     "dockerls",
     "gopls",
     "html",
-    "jsonls",
-    "prosemd_lsp",
-    -- "ruff_lsp",
-    "lua_ls",
-    "taplo",
-    "tailwindcss",
-    "twiggy_language_server",
-    "vimls",
-    "vue_ls",
-    "vtsls",
-    "yamlls",
-}
-
-require("mason-lspconfig").setup({
-    ensure_installed = ensure_installed,
-})
-
-local servers = vim.list_extend({
     "intelephense",
+    "jsonls",
+    "lua_ls",
+    "prosemd_lsp",
     "ruff",
     "smarty_ls",
-}, ensure_installed)
+    "tailwindcss",
+    "taplo",
+    "twiggy_language_server",
+    "vimls",
+    "vtsls",
+    "vue_ls",
+    "yamlls",
+}
 
 local default_config = require("my.plugins.lsp.providers.defaults")
 
