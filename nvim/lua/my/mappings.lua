@@ -62,6 +62,19 @@ end, {
 
 -- Clipboard
 map("n", "<Leader>a", "<cmd> %+y<CR>", { desc = "Copy file contents to clipboard" })
+map("n", "<leader>yf", function() vim.fn.setreg("+", vim.fn.expand("%:t")) end, { desc = "Yank filename to clipboard" })
+map(
+    "n",
+    "<leader>yp",
+    function() vim.fn.setreg("+", vim.fn.expand("%:.")) end,
+    { desc = "Yank file path to clipboard (relative to current directory)" }
+)
+map(
+    "n",
+    "<leader>yP",
+    function() vim.fn.setreg("+", vim.fn.expand("%:p")) end,
+    { desc = "Yank file path to clipboard (full path)" }
+)
 
 -- Quit
 map("n", "<Leader>q", ":quitall<CR>", { desc = "Quit neovim" })
