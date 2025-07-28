@@ -1,6 +1,6 @@
 return {
     "L3MON4D3/LuaSnip",
-    version = "v1.*",
+    version = "v2.*",
     -- needed for Variable/Placeholder transformations
     -- (see: https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variable-transforms)
     build = "make install_jsregexp",

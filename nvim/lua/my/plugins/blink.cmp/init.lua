@@ -14,7 +14,7 @@ return {
         dependencies = {
             -- optional: provides snippets for the snippet source
             { "rafamadriz/friendly-snippets" },
-            { "L3MON4D3/LuaSnip", version = "v1.*" },
+            { "L3MON4D3/LuaSnip" },
             { "hrsh7th/cmp-calc" },
         },
 
