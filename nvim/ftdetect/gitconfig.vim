@@ -1,1 +1,1 @@
-au BufRead,BufNewFile gitconfig,.gitconfig.local set filetype=gitconfig
+au BufRead,BufNewFile gitconfig,.gitconfig.* set filetype=gitconfig
