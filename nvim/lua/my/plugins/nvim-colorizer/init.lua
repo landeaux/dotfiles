@@ -4,6 +4,10 @@ return {
     opts = {
         user_default_options = {
             names = false,
+            css = true,
+            tailwind = "lsp",
+            mode = "virtualtext",
+            virtualtext_inline = "after",
         },
     },
     cmd = {
