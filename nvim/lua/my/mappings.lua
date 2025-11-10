@@ -36,9 +36,6 @@ map("n", "]l", ":lnext<CR>zz", { desc = "Go to next location list item" })
 map("n", "[b", ":bprev<CR>", { desc = "Go to previous buffer" })
 map("n", "]b", ":bnext<CR>", { desc = "Go to next buffer" })
 
--- Better pasting in insert mode
-map("i", "<C-r>", "<C-r><C-o>", { desc = "Paste from register and preserve indentation" })
-
 -- Add undo break-points
 map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
