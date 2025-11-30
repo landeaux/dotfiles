@@ -190,5 +190,7 @@ return {
         -- 2. "vsplit" - to open in a vertical split if there's not already a vertical split
         -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
         open_notes_in = "current",
+
+        ui = { enable = false },
     },
 }
