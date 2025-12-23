@@ -6,4 +6,6 @@ font-thicken = true
 
 mouse-hide-while-typing = true
 
+keybind = shift+enter=text:\x1b\r
+
 # vim:ft=conf
