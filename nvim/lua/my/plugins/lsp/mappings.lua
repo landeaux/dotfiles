@@ -43,6 +43,10 @@ M.register = function(client, bufnr)
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
         end, { desc = "Toggle Inlay Hints" })
     end
+
+    map("n", "<leader>td", function()
+        vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+    end, { desc = "Toggle Diagnostics" })
 end
 
 return M
