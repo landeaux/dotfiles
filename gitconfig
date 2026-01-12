@@ -31,12 +31,14 @@
 [init]
   defaultBranch = main
 [merge]
-  tool = nvimdiff
-[mergetool]
-  prompt = true
-  keepBackup = false
+  ; tool = nvimdiff
+	tool = codediff
 [mergetool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\" -c 'wincmd l' -c 'nnoremap <Leader>gf :diffget LOCAL<CR>' -c 'nnoremap <Leader>gj :diffget REMOTE<CR>'"
+[mergetool "codediff"]
+  prompt = true
+  keepBackup = false
+	cmd = "nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\""
 [pull]
 	ff = only
 [push]
