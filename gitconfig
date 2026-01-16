@@ -1,45 +1,45 @@
 [alias]
-  stash-untracked = "!f() { git stash; git stash -u; git stash pop stash@{1}; }; f"
-  yesterday = !sh -c 'git log --abbrev-commit --pretty=oneline --author="\"$(git config user.name)\"" --since=24.hours.ago --reverse'
-	show-gone = !git branch -vv | grep '\\[.*: gone\\]' | awk \"{print \\$1}\"
+	stash-untracked = "!f() { git stash; git stash -u; git stash pop stash@{1}; }; f"
+	yesterday = !sh -c 'git log --abbrev-commit --pretty=oneline --author="\"$(git config user.name)\"" --since=24.hours.ago --reverse'
+	show-gone = !git branch -vv | grep '\\[.*: gone\\]' | awk "{print \\$1}"
 	delete-gone = !sh -c 'git show-gone | xargs --no-run-if-empty git branch -d'
 [color]
-  ui = auto
+	ui = auto
 [commit]
-  template = ~/.gitmessage
+	template = ~/.gitmessage
 [core]
-  autocrlf = input
-  editor = nvim
-  excludesfile = ~/.gitignore
+	autocrlf = input
+	editor = nvim
+	excludesfile = ~/.gitignore
 [diff]
-  colorMoved = zebra
-  tool = nvimdiff
+	colorMoved = zebra
+	tool = nvimdiff
 [difftool]
-  prompt = false
+	prompt = false
 [difftool "nvimdiff"]
-  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [fetch]
-  prune = true
-  pruneTags = true
+	prune = true
+	pruneTags = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 [include]
-  path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 [init]
-  defaultBranch = main
+	defaultBranch = main
 [merge]
-  ; tool = nvimdiff
+	; tool = nvimdiff
 	tool = codediff
 [mergetool "nvimdiff"]
-  cmd = "nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\" -c 'wincmd l' -c 'nnoremap <Leader>gf :diffget LOCAL<CR>' -c 'nnoremap <Leader>gj :diffget REMOTE<CR>'"
+	cmd = "nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\" -c 'wincmd l' -c 'nnoremap <Leader>gf :diffget LOCAL<CR>' -c 'nnoremap <Leader>gj :diffget REMOTE<CR>'"
 [mergetool "codediff"]
-  prompt = true
-  keepBackup = false
+	prompt = true
+	keepBackup = false
 	cmd = "nvim \"$MERGED\" -c \"CodeDiff merge \\\"$MERGED\\\"\""
 [pull]
 	ff = only
 [push]
-  default = current
+	default = current
