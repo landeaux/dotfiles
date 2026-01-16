@@ -13,11 +13,13 @@
 	excludesfile = ~/.gitignore
 [diff]
 	colorMoved = zebra
-	tool = nvimdiff
+	tool = codediff
 [difftool]
 	prompt = false
 [difftool "nvimdiff"]
 	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[difftool "codediff"]
+	cmd = "nvim \"$LOCAL\" \"$REMOTE\" +\"CodeDiff file $LOCAL $REMOTE\""
 [fetch]
 	prune = true
 	pruneTags = true
@@ -31,7 +33,6 @@
 [init]
 	defaultBranch = main
 [merge]
-	; tool = nvimdiff
 	tool = codediff
 [mergetool "nvimdiff"]
 	cmd = "nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\" -c 'wincmd l' -c 'nnoremap <Leader>gf :diffget LOCAL<CR>' -c 'nnoremap <Leader>gj :diffget REMOTE<CR>'"
