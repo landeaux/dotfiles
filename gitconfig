@@ -1,7 +1,7 @@
 [alias]
 	stash-untracked = "!f() { git stash; git stash -u; git stash pop stash@{1}; }; f"
 	yesterday = !sh -c 'git log --abbrev-commit --pretty=oneline --author="\"$(git config user.name)\"" --since=24.hours.ago --reverse'
-	show-gone = !git branch -vv | grep '\\[.*: gone\\]' | awk "{print \\$1}"
+	show-gone = !git branch -vv | grep '[.*: gone]' | awk '{print $1}'
 	delete-gone = !sh -c 'git show-gone | xargs --no-run-if-empty git branch -d'
 [color]
 	ui = auto
