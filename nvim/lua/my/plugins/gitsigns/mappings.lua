@@ -35,9 +35,12 @@ M.register = function(bufnr)
     map("n", "<leader>hb", function() gs.blame_line({ full = true }) end, "Show git blame per line")
     map("n", "<leader>hd", gs.diffthis, "Diff this")
     map("n", "<leader>hD", function() gs.diffthis("~") end, "Diff this (~)")
+    map("n", "<leader>hq", gs.setqflist, "Add current file hunks to quickfix list")
+    map("n", "<leader>hQ", function() gs.setqflist("all") end, "Add all file hunks to quickfix list")
 
     -- Toggles
     map("n", "<leader>tb", gs.toggle_current_line_blame, "Toggle current line blame")
+    map("n", "<leader>tW", gs.toggle_word_diff, "Toggle word diff")
 
     -- Text object
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Inner hunk")
