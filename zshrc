@@ -193,6 +193,19 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#a3d4d5,header:#d27e99,info:#9cabca,pointer:#dcd7ba \
 --color=marker:#a3d4d5,fg+:#a3d4d5,prompt:#9cabca,hl+:#d27e99 \
 --multi"
+
+# Ctrl-G: pick and insert a git commit hash
+fzf-commit-widget() {
+  local commit
+  commit=$(git log --oneline --color=always |
+    fzf --ansi --preview 'git show --color=always {1}' |
+    awk '{print $1}')
+  LBUFFER+="$commit"
+  zle reset-prompt
+}
+zle -N fzf-commit-widget
+bindkey '^G' fzf-commit-widget
+
 if command -v fd 1>/dev/null 2>&1; then
   export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
