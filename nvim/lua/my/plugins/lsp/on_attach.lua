@@ -49,12 +49,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
         local bufnr = event.buf
 
-        -- Skip invalid buffers, scratch buffers, and codediff virtual buffers
+        -- Skip invalid or scratch buffers
         if not vim.api.nvim_buf_is_valid(bufnr) or vim.bo[bufnr].buftype ~= "" then
-            return
-        end
-        local bufname = vim.api.nvim_buf_get_name(bufnr)
-        if bufname:match("^codediff://") then
             return
         end
 
