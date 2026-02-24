@@ -2,7 +2,8 @@
 ---@param bufnr integer
 local function documentColor(client, bufnr)
     if client and client:supports_method("textDocument/documentColor", bufnr) then
-        require("document-color").buf_attach(bufnr)
+        -- Wrap in pcall to prevent errors from vim.wait() triggering other plugin callbacks
+        pcall(require("document-color").buf_attach, bufnr)
     end
 end
 
@@ -47,6 +48,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(event)
         local bufnr = event.buf
+
+        -- Skip invalid buffers, scratch buffers, and codediff virtual buffers
+        if not vim.api.nvim_buf_is_valid(bufnr) or vim.bo[bufnr].buftype ~= "" then
+            return
+        end
+        local bufname = vim.api.nvim_buf_get_name(bufnr)
+        if bufname:match("^codediff://") then
+            return
+        end
+
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
         require("my.plugins.lsp.mappings").register(client, bufnr)
