@@ -48,29 +48,29 @@ function fzclean() {
 # manage git worktrees: add, switch (default), or remove
 function fzwt() {
   case "${1:-}" in
-    add)
-      local branch="${2:?Usage: fzwt add <branch>}"
-      local repo
-      repo=$(basename "$(git rev-parse --show-toplevel)")
-      local dest="../${repo}.${branch}"
-      git worktree add "$dest" -b "$branch" 2>/dev/null ||
-        git worktree add "$dest" "$branch"
-      cd "$dest"
-      ;;
-    rm)
-      local dir
-      dir=$(git worktree list |
-        fzf --preview 'git log --oneline --color=always -10 {2}' |
-        awk '{print $1}')
-      [ -n "$dir" ] && git worktree remove "$dir"
-      ;;
-    *)
-      local dir
-      dir=$(git worktree list |
-        fzf --preview 'git log --oneline --color=always -10 {2}' |
-        awk '{print $1}')
-      [ -n "$dir" ] && cd "$dir"
-      ;;
+  add)
+    local branch="${2:?Usage: fzwt add <branch>}"
+    local repo
+    repo=$(basename "$(git rev-parse --show-toplevel)")
+    local dest="../${repo}.${branch}"
+    git worktree add "$dest" -b "$branch" 2>/dev/null ||
+      git worktree add "$dest" "$branch"
+    cd "$dest"
+    ;;
+  rm)
+    local dir
+    dir=$(git worktree list |
+      fzf --preview 'git log --oneline --color=always -10 {2}' |
+      awk '{print $1}')
+    [ -n "$dir" ] && git worktree remove "$dir"
+    ;;
+  *)
+    local dir
+    dir=$(git worktree list |
+      fzf --preview 'git log --oneline --color=always -10 {2}' |
+      awk '{print $1}')
+    [ -n "$dir" ] && cd "$dir"
+    ;;
   esac
 }
 
