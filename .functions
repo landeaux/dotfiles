@@ -55,7 +55,7 @@ function fzwt() {
     local dest="../${repo}.${branch}"
     git worktree add "$dest" -b "$branch" 2>/dev/null ||
       git worktree add "$dest" "$branch"
-    cd "$dest"
+    cd "$dest" || return
     ;;
   rm)
     local dir
@@ -69,7 +69,7 @@ function fzwt() {
     dir=$(git worktree list |
       fzf --preview 'git log --oneline --color=always -10 {2}' |
       awk '{print $1}')
-    [ -n "$dir" ] && cd "$dir"
+    [ -n "$dir" ] && cd "$dir" || return
     ;;
   esac
 }
