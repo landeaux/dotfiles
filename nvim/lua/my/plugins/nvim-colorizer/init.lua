@@ -2,12 +2,18 @@ return {
     "catgoose/nvim-colorizer.lua",
     init = function() require("my.plugins.nvim-colorizer.mappings") end,
     opts = {
-        user_default_options = {
-            names = false,
-            css = true,
-            tailwind = "lsp",
-            mode = "virtualtext",
-            virtualtext_inline = "after",
+        options = {
+            parsers = {
+                names = { enable = false },
+                css = true,
+                tailwind = { enable = true, lsp = true },
+            },
+            display = {
+                mode = "virtualtext",
+                virtualtext = {
+                    position = "after",
+                },
+            },
         },
     },
     cmd = {
