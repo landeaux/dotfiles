@@ -1,7 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = "main",
+        branch = "master", -- TODO: migrate to main branch
         build = ":TSUpdate",
         lazy = false,
         config = function() require("my.plugins.nvim-treesitter.config") end,
