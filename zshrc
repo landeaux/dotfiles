@@ -263,11 +263,13 @@ if [ -f ~/.functions ]; then
 fi
 
 if command -v brew 1>/dev/null 2>&1; then
-  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-  export PATH="$(brew --prefix moreutils)/libexec/gnubin:$PATH"
-  export PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
-  export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
-  export PATH="$(brew --prefix ssh-copy-id)/bin:$PATH"
+  _brew_prefix="$(brew --prefix)"
+  export PATH="$_brew_prefix/opt/coreutils/libexec/gnubin:$PATH"
+  export PATH="$_brew_prefix/opt/moreutils/libexec/gnubin:$PATH"
+  export PATH="$_brew_prefix/opt/findutils/libexec/gnubin:$PATH"
+  export PATH="$_brew_prefix/opt/gnu-sed/libexec/gnubin:$PATH"
+  export PATH="$_brew_prefix/opt/ssh-copy-id/bin:$PATH"
+  unset _brew_prefix
 fi
 
 # initialize starship prompt
