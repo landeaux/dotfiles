@@ -14,7 +14,7 @@ require("nvim-lightbulb").setup({
         updatetime = -1,
     },
     ignore = {
-        clients = { "ruff_lsp" },
+        clients = { "ruff" },
     },
     code_lenses = true,
 })
