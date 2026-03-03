@@ -20,5 +20,5 @@ require("nvim-lightbulb").setup({
 })
 
 vim.fn.sign_define("LightBulbSign", { text = icon })
-vim.api.nvim_command("highlight LightBulbFloatWin guifg=#f9e2af")
-vim.api.nvim_command("highlight LightBulbVirtualText guifg=#f9e2af")
+vim.cmd("highlight LightBulbFloatWin guifg=#f9e2af")
+vim.cmd("highlight LightBulbVirtualText guifg=#f9e2af")
