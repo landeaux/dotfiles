@@ -6,7 +6,7 @@ vim.lsp.commands["editor.action.showReferences"] = function(command, ctx)
     if locations and #locations > 0 and client ~= nil then
         local items = vim.lsp.util.locations_to_items(locations, client.offset_encoding)
         vim.fn.setloclist(0, {}, " ", { title = "References", items = items, context = ctx })
-        vim.api.nvim_command("lopen")
+        vim.cmd.lopen()
     end
 end
 
