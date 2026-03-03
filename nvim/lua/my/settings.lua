@@ -28,9 +28,8 @@ opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 opt.fileignorecase = false
 opt.cedit = "<C-X>" -- use CTRL-X to switch to command window (useful if CTRL-F has been mapped)
 
--- Project specific vimrc with secure
+-- Project specific vimrc
 opt.exrc = true
-opt.secure = true
 
 -- Indent
 opt.smartindent = true
