@@ -86,7 +86,7 @@ NOTE: skip if on macOS (zsh is already installed)
 1. Download and run the install-script:
 
    ```bash
-   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
    ```
 
 ### Install Spaceship theme for Oh My Zsh
