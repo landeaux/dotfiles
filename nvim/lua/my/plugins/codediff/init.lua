@@ -7,5 +7,8 @@ return {
         explorer = {
             initial_focus = "modified", -- Initial focus: "explorer", "original", or "modified"
         },
+        diff = {
+            layout = "inline",
+        },
     },
 }
