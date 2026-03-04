@@ -5,7 +5,7 @@
 - [✓] Nerd fonts (SourceCodePro, JetBrainsMono)
 - [✓] Install zsh (already installed on macOS)
 - [✓] oh-my-zsh (using curl)
-- [✓] oh-my-zsh spaceship theme (using curl, depends on Nerd fonts)
+- [✓] starship prompt (using brew)
 - [✓] kitty (using curl)
 - [✓] tmux (using brew)
 - [✓] pyenv (using curl)
@@ -89,22 +89,18 @@ NOTE: skip if on macOS (zsh is already installed)
    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
    ```
 
-### Install Spaceship theme for Oh My Zsh
+### Install Starship prompt
 
-[Spaceship Prompt](https://github.com/spaceship-prompt/spaceship-prompt/)
+[Starship](https://starship.rs/)
 
-1. Clone the repo:
-
-   ```bash
-   git clone https://github.com/spaceship-prompt/spaceship-prompt.git \
-     "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-   ```
-
-2. Symlink spaceship.zsh-theme to your oh-my-zsh custom themes directory:
+1. Install via brew:
 
    ```bash
-   ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+   brew install starship
    ```
+
+   Starship is initialized in `.zshrc` via `eval "$(starship init zsh)"`.
+   Configuration is in `starship.toml`.
 
 ### Install kitty terminal
 
