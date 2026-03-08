@@ -10,6 +10,11 @@ return {
                 "active-class", -- For Vue Router RouterLink component
                 "exact-active-class", -- For Vue Router RouterLink component
             },
+            experimental = {
+                classRegex = {
+                    { "Classes\\s*=\\s*['\"`]([^'\"`]*)['\"`]" },
+                },
+            },
         },
     },
 }
