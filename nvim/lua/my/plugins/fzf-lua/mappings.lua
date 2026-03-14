@@ -16,28 +16,6 @@ map(
 -- grep
 map("n", "<Leader>fg", ":FzfLua live_grep<CR>", { desc = "Live grep" })
 -- map("n", "<Leader>fg", ":FzfLua live_grep_native<CR>", { desc = "Live grep" })
--- TODO: implement this as an action (see actions.toggle_ignore)
-map(
-    "n",
-    "<Leader>fG",
-    function()
-        require("fzf-lua").live_grep({
-            rg_opts = "--column"
-                .. " --line-number"
-                .. " --no-heading"
-                .. " --color=always"
-                .. " --smart-case"
-                .. " --max-columns=512"
-                .. " --hidden"
-                .. " --no-ignore"
-                .. " --glob '!.git'"
-                .. " -e",
-        })
-    end,
-    {
-        desc = "Live grep (include ignored, except .git/)",
-    }
-)
 map("n", "<Leader>fw", ":FzfLua grep_cword<CR>", { desc = "Find word under cursor" })
 map("n", "<Leader>fW", ":FzfLua grep_cWORD<CR>", { desc = "Find WORD under cursor" })
 map("v", "<Leader>f", ":<C-U>FzfLua grep_visual<CR>", { desc = "Find visual selection" })
