@@ -71,7 +71,6 @@ fzf_lua.setup({
     grep = {
         actions = {
             ["alt-."] = fzf_lua.actions.toggle_hidden,
-            ["alt-i"] = fzf_lua.actions.toggle_ignore,
         },
         prompt = "Rg> ",
         rg_glob = true,
