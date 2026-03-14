@@ -60,7 +60,6 @@ fzf_lua.setup({
     files = {
         actions = {
             ["ctrl-d"] = grep_dir,
-            ["alt-."] = fzf_lua.actions.toggle_hidden,
         },
         fd_opts = [[--color=never --type f --type l --exclude .git]],
         hidden = true,
