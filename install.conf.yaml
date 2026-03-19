@@ -29,6 +29,7 @@
     ~/.zshrc:
     ~/.functions: .functions
     ~/.markdownlintrc: .markdownlintrc
+    ~/.markdownlint-cli2.yaml: .markdownlint-cli2.yaml
     ~/bin: bin
 
 - shell:
