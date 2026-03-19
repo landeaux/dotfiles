@@ -11,7 +11,7 @@ return {
                 require("none-ls.diagnostics.eslint_d"),
                 null_ls.builtins.diagnostics.selene,
                 null_ls.builtins.diagnostics.mypy.with({ temp_dir = "/tmp" }),
-                null_ls.builtins.diagnostics.markdownlint,
+                null_ls.builtins.diagnostics.markdownlint_cli2,
             },
         })
     end,
