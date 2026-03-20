@@ -9,3 +9,5 @@
 
 - When in plan mode or using superpowers skills like brainstorming and writing plans, do not commit the generated spec
   or plan documents (e.g., `docs/plans/*.md`, `docs/superpowers/plans/*.md`, `docs/superpowers/specs/*.md`).
+
+@~/.claude/CLAUDE.local.md
