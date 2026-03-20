@@ -1,0 +1,4 @@
+- When writing commits, never say the changes were generated or co-authored by Claude Code.
+- Use `fd` instead of `find` when running shell commands.
+- Use `rg` instead of `grep` when running shell commands.
+- Never commit spec or plan files.

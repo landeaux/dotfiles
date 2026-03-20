@@ -1,0 +1,140 @@
+{
+  "env": {
+    "ENABLE_LSP_TOOL": "true"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash(cat *)",
+      "Bash(find *)",
+      "Bash(gh auth status *)",
+      "Bash(gh issue list *)",
+      "Bash(gh issue view *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr view *)",
+      "Bash(gh run list *)",
+      "Bash(gh run view *)",
+      "Bash(gh run watch *)",
+      "Bash(git rev-parse *)",
+      "Bash(git show *)",
+      "Bash(glab auth status *)",
+      "Bash(glab ci get *)",
+      "Bash(glab ci list *)",
+      "Bash(glab ci status *)",
+      "Bash(glab ci trace *)",
+      "Bash(glab ci view *)",
+      "Bash(glab issue list *)",
+      "Bash(glab issue view *)",
+      "Bash(glab mr diff *)",
+      "Bash(glab mr list *)",
+      "Bash(glab mr view *)",
+      "Bash(grep *)",
+      "Bash(head *)",
+      "Bash(ls *)",
+      "Bash(mypy *)",
+      "Bash(pytest *)",
+      "Bash(python -m json.tool *)",
+      "Bash(python -m mypy *)",
+      "Bash(python -m pytest *)",
+      "Bash(python -m ruff check *)",
+      "Bash(python -m ruff format *)",
+      "Bash(ruff check *)",
+      "Bash(ruff format *)",
+      "Bash(tail *)",
+      "Bash(uv pip show *)",
+      "Bash(uv run mypy *)",
+      "Bash(uv run pytest *)",
+      "Bash(uv run ruff check *)",
+      "Bash(uv run ruff format *)",
+      "Bash(wc *)"
+    ],
+    "deny": [
+      "Bash(export *)",
+      "Bash(printenv)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Read(**/.aws/**)",
+      "Read(**/.env)",
+      "Read(**/.env.production)",
+      "Read(**/.env.staging)",
+      "Read(**/.env.next)",
+      "Read(**/.env-production)",
+      "Read(**/.env-staging)",
+      "Read(**/.env-next)",
+      "Read(**/.envrc*)",
+      "Read(**/.ssh/**)",
+      "Read(**/credentials/**)",
+      "Read(**/secrets/**)"
+    ],
+    "ask": [
+      "Bash(find * -exec *)",
+      "Bash(find * -execdir *)"
+    ]
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude needs you to approve a tool use\" with title \"Claude Code\"'"
+          }
+        ]
+      },
+      {
+        "matcher": "elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude is asking you a question\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code has concluded its response\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/format.sh"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/lint.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "basedpyright@claude-code-lsps": true,
+    "vscode-langservers@claude-code-lsps": true,
+    "vtsls@claude-code-lsps": true,
+    "vue-volar@claude-code-lsps": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
+  "voiceEnabled": true
+}
