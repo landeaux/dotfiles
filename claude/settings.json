@@ -9,6 +9,7 @@
   "permissions": {
     "allow": [
       "Bash(cat *)",
+      "Bash(fd *)",
       "Bash(find *)",
       "Bash(gh api -X GET *)",
       "Bash(gh auth status *)",
@@ -89,7 +90,14 @@
       "Read(**/credentials/**)",
       "Read(**/secrets/**)"
     ],
-    "ask": ["Bash(find * -exec *)", "Bash(find * -execdir *)"]
+    "ask": [
+      "Bash(fd * --exec *)",
+      "Bash(fd * --exec-batch *)",
+      "Bash(fd * -x *)",
+      "Bash(fd * -X *)",
+      "Bash(find * -exec *)",
+      "Bash(find * -execdir *)"
+    ]
   },
   "hooks": {
     "Notification": [
