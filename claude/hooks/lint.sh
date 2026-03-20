@@ -30,7 +30,7 @@ case "$file" in
 # markdown: markdownlint-cli2
 *.md | *.mdx)
 	if command -v markdownlint-cli2 >/dev/null; then
-		markdownlint-cli2 "$file"
+		markdownlint-cli2 --config ~/.markdownlint-cli2.jsonc "$file"
 	fi
 	;;
 # lua: selene

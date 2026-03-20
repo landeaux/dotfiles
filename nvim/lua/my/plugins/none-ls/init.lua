@@ -11,7 +11,9 @@ return {
                 require("none-ls.diagnostics.eslint_d"),
                 null_ls.builtins.diagnostics.selene,
                 null_ls.builtins.diagnostics.mypy.with({ temp_dir = "/tmp" }),
-                null_ls.builtins.diagnostics.markdownlint_cli2,
+                null_ls.builtins.diagnostics.markdownlint_cli2.with({
+                    extra_args = { "--config", vim.fn.expand("~/.markdownlint-cli2.jsonc") },
+                }),
             },
         })
     end,
