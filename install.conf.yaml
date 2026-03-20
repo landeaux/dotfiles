@@ -31,9 +31,15 @@
     ~/.markdownlintrc: .markdownlintrc
     ~/.markdownlint-cli2.yaml: .markdownlint-cli2.yaml
     ~/bin: bin
-    ~/.claude/CLAUDE.md: claude/CLAUDE.md
-    ~/.claude/settings.json: claude/settings.json
-    ~/.claude/hooks: claude/hooks
+    ~/.claude/CLAUDE.md:
+      path: claude/CLAUDE.md
+      force: true
+    ~/.claude/settings.json:
+      path: claude/settings.json
+      force: true
+    ~/.claude/hooks:
+      path: claude/hooks
+      force: true
 
 - shell:
     - git submodule update --init --recursive
