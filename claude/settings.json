@@ -10,17 +10,35 @@
     "allow": [
       "Bash(cat *)",
       "Bash(find *)",
+      "Bash(gh api -X GET *)",
       "Bash(gh auth status *)",
       "Bash(gh issue list *)",
+      "Bash(gh issue status *)",
       "Bash(gh issue view *)",
+      "Bash(gh label list *)",
+      "Bash(gh milestone list *)",
+      "Bash(gh pr checks *)",
       "Bash(gh pr diff *)",
       "Bash(gh pr list *)",
+      "Bash(gh pr status *)",
       "Bash(gh pr view *)",
+      "Bash(gh release list *)",
+      "Bash(gh release view *)",
+      "Bash(gh repo list *)",
+      "Bash(gh repo view *)",
+      "Bash(gh run checks *)",
       "Bash(gh run list *)",
       "Bash(gh run view *)",
       "Bash(gh run watch *)",
+      "Bash(gh search *)",
+      "Bash(gh status *)",
+      "Bash(gh workflow list *)",
+      "Bash(gh workflow view *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
       "Bash(git rev-parse *)",
       "Bash(git show *)",
+      "Bash(git status *)",
       "Bash(glab auth status *)",
       "Bash(glab ci get *)",
       "Bash(glab ci list *)",
@@ -42,6 +60,7 @@
       "Bash(python -m pytest *)",
       "Bash(python -m ruff check *)",
       "Bash(python -m ruff format *)",
+      "Bash(rg *)",
       "Bash(ruff check *)",
       "Bash(ruff format *)",
       "Bash(tail *)",
@@ -70,10 +89,7 @@
       "Read(**/credentials/**)",
       "Read(**/secrets/**)"
     ],
-    "ask": [
-      "Bash(find * -exec *)",
-      "Bash(find * -execdir *)"
-    ]
+    "ask": ["Bash(find * -exec *)", "Bash(find * -execdir *)"]
   },
   "hooks": {
     "Notification": [
@@ -92,6 +108,15 @@
           {
             "type": "command",
             "command": "osascript -e 'display notification \"Claude is asking you a question\" with title \"Claude Code\"'"
+          }
+        ]
+      },
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude is done and waiting for your next prompt\" with title \"Claude Code\"'"
           }
         ]
       }
