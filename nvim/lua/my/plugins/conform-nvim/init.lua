@@ -17,7 +17,9 @@ return {
             javascript = { "prettierd", "eslint_d" },
             javascriptreact = { "prettierd", "eslint_d" },
             json = { "prettierd" },
-            jsonc = { "prettierd" },
+            -- NOTE: prettierd adds trailing commas to JSONC, which jsonls warns about (code 519).
+            -- See https://github.com/prettier/prettier/issues/15956
+            jsonc = { lsp_format = "prefer" },
             less = { "prettierd" },
             lua = { "stylua" },
             markdown = { "prettierd", "injected" },

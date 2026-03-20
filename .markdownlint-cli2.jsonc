@@ -1,0 +1,8 @@
+{
+  // Disable some built-in rules
+  "config": {
+    "line-length": false
+  },
+  // Fix any fixable errors
+  "fix": true
+}
