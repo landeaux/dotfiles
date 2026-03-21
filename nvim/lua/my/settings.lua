@@ -101,8 +101,6 @@ opt.winborder = "rounded"
 -- Folds
 opt.foldcolumn = "1"
 opt.foldlevel = 99
-opt.foldmethod = "expr"
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldtext = ""
 
 -- Performance
