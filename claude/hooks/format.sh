@@ -6,6 +6,23 @@ set -uo pipefail
 
 file=$(jq -r '.tool_response.filePath // .tool_input.file_path')
 
+# Resolve project root (nearest dir with .venv) from the file being edited,
+# so the hook works even when CWD differs (e.g. git worktrees).
+find_venv() {
+	local dir
+	dir=$(dirname "$1")
+	while [ "$dir" != "/" ]; do
+		if [ -d "$dir/.venv" ]; then
+			echo "$dir/.venv"
+			return 0
+		fi
+		dir=$(dirname "$dir")
+	done
+	return 1
+}
+
+venv=$(find_venv "$file") || venv=""
+
 run_prettierd() {
 	if command -v prettierd >/dev/null; then
 		prettierd "$1" <"$1" | sponge "$1"
@@ -19,9 +36,9 @@ run_eslint_d() {
 }
 
 run_ruff() {
-	if [ -x .venv/bin/ruff ]; then
-		.venv/bin/ruff check --select I --fix "$1"
-		.venv/bin/ruff format "$1"
+	if [ -n "$venv" ] && [ -x "$venv/bin/ruff" ]; then
+		"$venv/bin/ruff" check --select I --fix "$1"
+		"$venv/bin/ruff" format "$1"
 	elif command -v ruff >/dev/null; then
 		ruff check --select I --fix "$1"
 		ruff format "$1"
