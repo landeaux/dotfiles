@@ -1,12 +1,11 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = "master", -- TODO: migrate to main branch
         build = ":TSUpdate",
         lazy = false,
         config = function() require("my.plugins.nvim-treesitter.config") end,
         dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
+            { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
         },
     },
     {
