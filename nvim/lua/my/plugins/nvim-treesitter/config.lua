@@ -71,47 +71,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Incremental selection (replaces removed incremental_selection module)
-local function incremental_select(forward)
-    return function()
-        local node = vim.treesitter.get_node()
-        if not node then
-            return
-        end
-
-        if forward then
-            if vim.fn.mode() ~= "v" then
-                vim.cmd("normal! v")
-            else
-                node = node:parent()
-                if not node then
-                    return
-                end
-            end
-        else
-            local child = node:named_child(0)
-            if not child then
-                return
-            end
-            node = child
-        end
-
-        local sr, sc, er, ec = node:range()
-        if ec > 0 then
-            ec = ec - 1
-        else
-            er = er - 1
-            ec = #vim.api.nvim_buf_get_lines(0, er, er + 1, true)[1] - 1
-        end
-        vim.api.nvim_buf_set_mark(0, "<", sr + 1, sc, {})
-        vim.api.nvim_buf_set_mark(0, ">", er + 1, ec, {})
-        vim.cmd("normal! gv")
-    end
-end
-
-vim.keymap.set({ "n", "x" }, "<CR>", incremental_select(true))
-vim.keymap.set("x", "<BS>", incremental_select(false))
-
 -- Textobjects
 require("nvim-treesitter-textobjects").setup({
     select = { lookahead = true },
