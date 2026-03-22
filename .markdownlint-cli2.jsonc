@@ -1,7 +1,8 @@
 {
   // Disable some built-in rules
   "config": {
-    "line-length": false
+    "line-length": false,
+    "no-duplicate-heading": false
   },
   // Fix any fixable errors
   "fix": true
