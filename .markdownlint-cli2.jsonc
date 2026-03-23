@@ -2,7 +2,8 @@
   // Disable some built-in rules
   "config": {
     "line-length": {
-      "line_length": 120
+      "line_length": 120,
+      "tables": false
     },
     "no-duplicate-heading": false
   },
