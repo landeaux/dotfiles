@@ -167,7 +167,8 @@
     "pyright-lsp@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
-    "context7-plugin@context7-marketplace": true
+    "context7-plugin@context7-marketplace": true,
+    "php-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "context7-marketplace": {
