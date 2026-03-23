@@ -71,8 +71,6 @@ brew "zsh"
 cask "font-jetbrains-mono"
 cask "font-symbols-only-nerd-font"
 
-# VS Code Extensions
-
-# Go
-
-# UV
+# Local (machine-specific, not committed)
+local_brewfile = File.expand_path("Brewfile.local", __dir__)
+eval(File.read(local_brewfile)) if File.exist?(local_brewfile)
