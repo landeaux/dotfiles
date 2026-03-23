@@ -84,7 +84,12 @@ case "$file" in
 	run_eslint_d "$file"
 	;;
 # prettierd only
-*.md | *.mdx) run_prettierd "$file" ;;
+*.md | *.mdx)
+	run_prettierd "$file"
+	if command -v markdownlint-cli2 >/dev/null; then
+		markdownlint-cli2 --fix "$file" 2>/dev/null || true
+	fi
+	;;
 *.css) run_prettierd "$file" ;;
 *.scss) run_prettierd "$file" ;;
 *.less) run_prettierd "$file" ;;
