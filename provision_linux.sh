@@ -26,9 +26,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 git clone --depth=1 https://github.com/pindexis/marker ~/.marker
 ~/.marker/install.py
 
-########## install pyenv + plugins
-# see scripts/install_pyenv.sh
-
 ########## install nvm (node + npm)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 command -v nvm

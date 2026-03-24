@@ -148,15 +148,6 @@ export MARKER_KEY_NEXT_PLACEHOLDER="\C-/"
 # stop python from writing pycs
 export PYTHONDONTWRITEBYTECODE=1
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# pipenv
-export PIPENV_VENV_IN_PROJECT=1              # make sure venv is always in the project dir
-export PIPENV_DONT_LOAD_ENV=1                # don't let pipenv autoload env... we have direnv for this
-eval "$(_PIPENV_COMPLETE=zsh_source pipenv)" # set up magic shell completion
 
 # poetry
 export POETRY_VIRTUALENVS_IN_PROJECT=true

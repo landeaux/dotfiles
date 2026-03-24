@@ -8,8 +8,6 @@
 - [✓] starship prompt (using brew)
 - [✓] kitty (using curl)
 - [✓] tmux (using brew)
-- [✓] pyenv (using curl)
-- [✓] pipenv (requires pip)
 - [✓] nvm (provides npm, node)
 - [✓] go (dpkg download)
 - [✓] shfmt (depends on go)
@@ -39,8 +37,6 @@
 - [ ] Install oh-my-zsh theme
 - [ ] Install kitty
 - [ ] Install tmux
-- [ ] Install pyenv
-- [ ] Install pipenv
 - [ ] Install nvm
 - [ ] Install go
 - [ ] Install shfmt
