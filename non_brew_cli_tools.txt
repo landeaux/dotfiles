@@ -1,5 +1,0 @@
-go
-marker
-nvm
-rustup/rustc/cargo
-oh-my-zsh
