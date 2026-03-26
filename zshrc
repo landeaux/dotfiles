@@ -140,11 +140,6 @@ fi
 # Ensure containers are built using AMD64 architecture
 export DOCKER_DEFAULT_PLATFORM="linux/amd64"
 
-# Marker command palette (https://github.com/pindexis/marker)
-[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
-export MARKER_KEY_GET="\C-J"
-export MARKER_KEY_NEXT_PLACEHOLDER="\C-/"
-
 # stop python from writing pycs
 export PYTHONDONTWRITEBYTECODE=1
 
@@ -205,8 +200,8 @@ fi
 
 # nvm config
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
+[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
@@ -226,10 +221,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# add Go and Go package binaries to PATH
-go_path="/usr/local/go/bin"
+# add Go package binaries to PATH
 go_pkg_path="${HOME}/go/bin"
-[ -d "${go_path}" ] && export PATH="${PATH}:${go_path}"
 [ -d "${go_pkg_path}" ] && export PATH="${PATH}:${go_pkg_path}"
 
 # add luarocks binaries to PATH
