@@ -4,11 +4,9 @@ Personal dotfiles managed with [dotbot](https://github.com/anishathalye/dotbot).
 
 ## Fresh Machine Setup
 
-On a brand-new Mac, download and inspect the seed script, then run it:
+On a brand-new Mac:
 
-    curl -fsSL https://raw.githubusercontent.com/landeaux/dotfiles/main/scripts/seed.sh -o /tmp/seed.sh
-    less /tmp/seed.sh
-    bash /tmp/seed.sh
+    curl -fsSL https://raw.githubusercontent.com/landeaux/dotfiles/main/scripts/seed.sh | bash
 
 This will:
 
