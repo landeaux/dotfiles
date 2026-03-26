@@ -6,7 +6,9 @@ Personal dotfiles managed with [dotbot](https://github.com/anishathalye/dotbot).
 
 On a brand-new Mac:
 
-    curl -fsSL https://raw.githubusercontent.com/landeaux/dotfiles/main/scripts/seed.sh | bash
+```bash
+curl -fsSL https://raw.githubusercontent.com/landeaux/dotfiles/main/scripts/seed.sh | bash
+```
 
 This will:
 
@@ -19,7 +21,9 @@ This will:
 
 From the dotfiles directory:
 
-    ./scripts/bootstrap.sh
+```bash
+./scripts/bootstrap.sh
+```
 
 This re-runs the full setup and is safe to run repeatedly (all scripts are idempotent).
 
@@ -40,15 +44,21 @@ The `scripts/macos_defaults.sh` script configures macOS system preferences. To e
 
 **Dump current settings for a specific domain:**
 
-    defaults read com.apple.dock
+```bash
+defaults read com.apple.dock
+```
 
 **List all defaults domains:**
 
-    defaults domains
+```bash
+defaults domains
+```
 
 **Find defaults for an application** (replace `appname` with the app's domain):
 
-    defaults read com.apple.appname
+```bash
+defaults read com.apple.appname
+```
 
 **Common domains to explore:**
 
