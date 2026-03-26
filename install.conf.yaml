@@ -21,7 +21,6 @@
     ~/.gitconfig:
     ~/.gitignore:
     ~/.gitmessage:
-    ~/.local/share/marker/user_commands.txt: marker/user_commands.txt
     ~/.tmux.conf:
     ~/.tmux/workspaces: tmux/workspaces
     ~/.tmux/themes: tmux/themes
