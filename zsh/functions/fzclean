@@ -1,0 +1,11 @@
+local branches
+branches=$(git branch --merged |
+  grep -vE '^\*|^\s*(main|master|develop)\s*$' |
+  sed 's/^[[:space:]]*//')
+if [ -z "$branches" ]; then
+  echo "No merged branches to clean up."
+  return
+fi
+echo "$branches" |
+  fzf --multi --preview 'git log --oneline --color=always {} | head -10' |
+  xargs -r git branch -d
