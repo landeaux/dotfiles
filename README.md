@@ -31,12 +31,12 @@ This re-runs the full setup and is safe to run repeatedly (all scripts are idemp
 
 Each script can be run independently:
 
-| Script                      | Purpose                                              |
-| --------------------------- | ---------------------------------------------------- |
-| `scripts/prerequisites.sh`  | Xcode CLI tools + Homebrew                           |
-| `scripts/install_tools.sh`  | Brew packages + oh-my-zsh, rustup, Claude Code, Node |
-| `./install`                 | Dotbot symlinks + shell commands                     |
-| `scripts/macos_defaults.sh` | macOS system preferences                             |
+| Script                      | Purpose                                  |
+| --------------------------- | ---------------------------------------- |
+| `scripts/prerequisites.sh`  | Xcode CLI tools + Homebrew               |
+| `scripts/install_tools.sh`  | Brew packages, rustup, Claude Code, Node |
+| `./install`                 | Dotbot symlinks + shell commands         |
+| `scripts/macos_defaults.sh` | macOS system preferences                 |
 
 ## macOS Defaults
 

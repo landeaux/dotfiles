@@ -16,17 +16,6 @@ brew bundle --file="$DOTFILES_DIR/Brewfile"
 brew cleanup
 
 ###############################################################################
-# oh-my-zsh
-###############################################################################
-
-if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-  echo "Installing oh-my-zsh..."
-  RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-else
-  echo "oh-my-zsh already installed."
-fi
-
-###############################################################################
 # Rust (rustup)
 ###############################################################################
 
