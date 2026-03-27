@@ -24,9 +24,8 @@
     ~/.tmux.conf:
     ~/.tmux/workspaces: tmux/workspaces
     ~/.tmux/themes: tmux/themes
-    ~/.zshenv:
-    ~/.zshrc:
-    ~/.functions: .functions
+    ~/.zshenv: zsh/zshenv.shim
+    ~/.config/zsh: zsh
     ~/.markdownlint-cli2.jsonc: .markdownlint-cli2.jsonc
     ~/bin: bin
     ~/.claude/CLAUDE.md:
