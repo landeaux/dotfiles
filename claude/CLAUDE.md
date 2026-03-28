@@ -2,6 +2,8 @@
 
 ## Git & Commits
 
+- Use conventional commits: `type(scope):` where type is `feat`, `fix`, `refactor`, `chore`, `docs`, etc. Scope is
+  optional.
 - When in plan mode or using superpowers skills like brainstorming and writing-plans, do not commit the generated
   planning artifacts (e.g., `docs/plans/*.md`, `docs/superpowers/plans/*.md`, `docs/superpowers/specs/*.md`).
 - When committing, only commit what the user specifies. Do not commit when told not to. Always check for leftover
