@@ -1,4 +1,7 @@
 # General
+alias l="ls -lah"
+alias la="ls -lAh"
+alias ll="ls -lh"
 alias ls="ls -F --color=auto"
 alias rm="rm -i"
 alias prettifyjson="python -m json.tool"
