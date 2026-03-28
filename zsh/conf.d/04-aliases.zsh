@@ -1,4 +1,8 @@
 # General
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 alias dust="du -sh * | sort -hr"
 alias grep="grep --color=auto"
 alias l="ls -lah"
