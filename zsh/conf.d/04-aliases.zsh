@@ -1,12 +1,14 @@
 # General
+alias dust="du -sh * | sort -hr"
+alias grep="grep --color=auto"
 alias l="ls -lah"
 alias la="ls -lAh"
 alias ll="ls -lh"
 alias ls="ls -F --color=auto"
-alias rm="rm -i"
-alias prettifyjson="python -m json.tool"
-alias dust="du -sh * | sort -hr"
+alias md="mkdir -p"
 alias path='echo -e ${PATH//:/\\n}'
+alias prettifyjson="python -m json.tool"
+alias rm="rm -i"
 
 # sha256sum shim for macOS
 if ! command -v sha256sum 1>/dev/null 2>&1; then
