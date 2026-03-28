@@ -11,7 +11,7 @@ alias ll="ls -lh"
 alias ls="ls -F --color=auto"
 alias md="mkdir -p"
 alias path='echo -e ${PATH//:/\\n}'
-alias prettifyjson="python -m json.tool"
+alias pj="python -m json.tool"
 alias rm="rm -i"
 
 # sha256sum shim for macOS
