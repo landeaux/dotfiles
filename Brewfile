@@ -42,7 +42,6 @@ brew "nvm"
 brew "openssh"
 brew "pandoc"
 brew "pinentry-mac"
-brew "pipx"
 brew "pngpaste" # for https://github.com/epwalsh/obsidian.nvim?tab=readme-ov-file#setup
 brew "prettierd"
 brew "qmk/qmk/qmk"
