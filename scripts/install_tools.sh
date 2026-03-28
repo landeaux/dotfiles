@@ -38,26 +38,32 @@ else
 fi
 
 ###############################################################################
-# nvm — install default Node version
+# nvm — install and set up default Node version
 ###############################################################################
 
 export NVM_DIR="$HOME/.nvm"
-BREW_PREFIX="$(brew --prefix)"
-if [[ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ]]; then
-  # shellcheck source=/dev/null
-  . "$BREW_PREFIX/opt/nvm/nvm.sh"
-  if ! nvm ls default &>/dev/null || [[ "$(nvm ls default --no-colors 2>&1)" == *"N/A"* ]]; then
-    echo "Installing default Node version (LTS)..."
-    nvm install --lts
-  else
-    echo "Default Node version already installed."
-  fi
+if [[ ! -d "$NVM_DIR" ]]; then
+  echo "Installing nvm..."
+  curl --proto '=https' --tlsv1.2 -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | PROFILE=/dev/null bash
+else
+  echo "nvm already installed."
+fi
+
+# shellcheck source=/dev/null
+. "$NVM_DIR/nvm.sh"
+
+if ! nvm ls default &>/dev/null || [[ "$(nvm ls default --no-colors 2>&1)" == *"N/A"* ]]; then
+  echo "Installing default Node version (LTS)..."
+  nvm install --lts
+else
+  echo "Default Node version already installed."
 fi
 
 ###############################################################################
 # Default shell — switch to brew-installed zsh
 ###############################################################################
 
+BREW_PREFIX="$(brew --prefix)"
 BREW_ZSH="$BREW_PREFIX/bin/zsh"
 if [[ -x "$BREW_ZSH" ]]; then
   if ! grep -q "$BREW_ZSH" /etc/shells; then
