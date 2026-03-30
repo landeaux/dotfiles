@@ -67,7 +67,7 @@ brew "zsh"
 # Casks
 cask "font-jetbrains-mono"
 cask "font-symbols-only-nerd-font"
-cask "docker"
+cask "docker-desktop"
 cask "ghostty"
 cask "karabiner-elements"
 cask "qmk-toolbox"
