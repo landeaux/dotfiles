@@ -70,7 +70,6 @@ cask "font-symbols-only-nerd-font"
 cask "docker-desktop"
 cask "ghostty"
 cask "karabiner-elements"
-cask "qmk-toolbox"
 
 # Local (machine-specific, not committed)
 local_brewfile = File.expand_path("Brewfile.local", __dir__)
