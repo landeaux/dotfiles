@@ -5,7 +5,7 @@ vim.diagnostic.config({
         source = true,
     },
     jump = {
-        float = true,
+        on_jump = vim.diagnostic.open_float,
     },
     virtual_text = false,
     virtual_lines = false,
