@@ -38,5 +38,10 @@ for _, server in pairs(servers) do
     end
 
     vim.lsp.config(server, opts)
-    vim.lsp.enable(server)
+
+    -- Only enable if the server binary is installed
+    local resolved = vim.lsp.config[server]
+    if not resolved or not resolved.cmd or vim.fn.executable(resolved.cmd[1]) == 1 then
+        vim.lsp.enable(server)
+    end
 end
