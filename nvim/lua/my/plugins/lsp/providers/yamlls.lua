@@ -1,4 +1,5 @@
 return {
+    filetypes = { "yaml", "yaml.docker-compose", "yaml.ansible" },
     settings = {
         yaml = {
             schemas = {
