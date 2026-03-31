@@ -1,4 +1,22 @@
 return {
+    filetypes = {
+        "astro",
+        "css",
+        "eruby",
+        "html",
+        "htmldjango",
+        "javascript",
+        "javascriptreact",
+        "less",
+        "markdown",
+        "php",
+        "sass",
+        "scss",
+        "svelte",
+        "typescript",
+        "typescriptreact",
+        "vue",
+    },
     settings = {
         tailwindCSS = {
             classAttributes = {
