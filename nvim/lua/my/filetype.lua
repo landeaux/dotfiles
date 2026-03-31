@@ -23,6 +23,8 @@ vim.filetype.add({
         ["zshrc"] = "zsh",
     },
     pattern = {
+        -- zsh autoloaded functions (no extension)
+        [".*/zsh/functions/.*"] = "zsh",
         -- gitconfig with suffix (e.g. .gitconfig.local)
         ["%.gitconfig%..*"] = "gitconfig",
         -- zsh files with suffix (e.g. .zshrc.local, .zshenv.local, .zprofile.local)
