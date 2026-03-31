@@ -113,6 +113,3 @@ opt.timeoutlen = 750 -- By default timeoutlen is 1000 ms
 -- Completion
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.shortmess:append("cI")
-
--- Theme
-opt.termguicolors = true
