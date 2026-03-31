@@ -1,0 +1,22 @@
+vim.filetype.add({
+    pattern = {
+        [".*/ansible/.*%.yml"] = "yaml.ansible",
+        [".*/ansible/.*%.yaml"] = "yaml.ansible",
+        [".*/playbooks/.*%.yml"] = "yaml.ansible",
+        [".*/playbooks/.*%.yaml"] = "yaml.ansible",
+        [".*/roles/.*%.yml"] = "yaml.ansible",
+        [".*/roles/.*%.yaml"] = "yaml.ansible",
+        [".*/handlers/.*%.yml"] = "yaml.ansible",
+        [".*/handlers/.*%.yaml"] = "yaml.ansible",
+        [".*/tasks/.*%.yml"] = "yaml.ansible",
+        [".*/tasks/.*%.yaml"] = "yaml.ansible",
+        ["docker%-compose%.yml"] = "yaml.docker-compose",
+        ["docker%-compose%.yaml"] = "yaml.docker-compose",
+        ["docker%-compose%..*%.yml"] = "yaml.docker-compose",
+        ["docker%-compose%..*%.yaml"] = "yaml.docker-compose",
+        ["compose%.yml"] = "yaml.docker-compose",
+        ["compose%.yaml"] = "yaml.docker-compose",
+        ["compose%..*%.yml"] = "yaml.docker-compose",
+        ["compose%..*%.yaml"] = "yaml.docker-compose",
+    },
+})

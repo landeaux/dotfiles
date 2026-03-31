@@ -1,6 +1,7 @@
 local my_modules = {
     "my.disabled",
     "my.settings",
+    "my.filetype",
     "my.diagnostics",
     "my.scratch",
     "my.buf_only",
