@@ -11,6 +11,10 @@ map("v", "<", "<gv^", { desc = "Indent left without leaving visual mode" })
 map("v", "<Tab>", ">gv^", { desc = "Indent right without leaving visual mode" })
 map("v", "<S-Tab>", "<gv^", { desc = "Indent left without leaving visual mode" })
 
+-- Incremental selection (built-in treesitter, replaces wildfire.nvim)
+map("x", "<CR>", "an", { remap = true, desc = "Expand selection to parent node" })
+map("x", "<BS>", "in", { remap = true, desc = "Shrink selection to child node" })
+
 map("x", "<C-j>", ":move '>+1<CR>gv=gv", { desc = "Move selected line/block of text up one line" })
 map("x", "<C-k>", ":move '<-2<CR>gv=gv", { desc = "Move selected line/block of text down one line" })
 
