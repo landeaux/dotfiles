@@ -5,14 +5,6 @@ return {
         dependencies = {
             "blink.cmp",
             "b0o/schemastore.nvim", -- for jsonls
-            {
-                "mrshmllow/document-color.nvim",
-                config = function()
-                    require("document-color").setup({
-                        mode = "background", -- "background" | "foreground" | "single"
-                    })
-                end,
-            },
         },
     },
 }

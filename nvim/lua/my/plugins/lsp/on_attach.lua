@@ -1,14 +1,5 @@
 ---@param client vim.lsp.Client|nil
 ---@param bufnr integer
-local function documentColor(client, bufnr)
-    if client and client:supports_method("textDocument/documentColor", bufnr) then
-        -- Wrap in pcall to prevent errors from vim.wait() triggering other plugin callbacks
-        pcall(require("document-color").buf_attach, bufnr)
-    end
-end
-
----@param client vim.lsp.Client|nil
----@param bufnr integer
 local function documentHighlight(client, bufnr)
     if client and client:supports_method("textDocument/documentHighlight", bufnr) then
         local highlight_augroup_name = "_lsp_document_highlight"
@@ -34,16 +25,6 @@ local function documentHighlight(client, bufnr)
     end
 end
 
-local function codeLens(client, bufnr)
-    if client and client:supports_method("textDocument/codeLens", bufnr) then
-        vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
-            buffer = bufnr,
-            group = vim.api.nvim_create_augroup("_lsp_codelens", { clear = true }),
-            callback = vim.lsp.codelens.refresh,
-        })
-    end
-end
-
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(event)
@@ -57,8 +38,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
         require("my.plugins.lsp.mappings").register(client, bufnr)
-        documentColor(client, bufnr)
         documentHighlight(client, bufnr)
-        codeLens(client, bufnr)
     end,
 })
