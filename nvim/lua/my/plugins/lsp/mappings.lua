@@ -8,7 +8,7 @@ M.register = function(client, bufnr)
     local map = map_factory({ buffer = bufnr, silent = true })
     map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
     map("n", "grd", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-    map("n", "<Leader>li", ":lsp<CR>", { desc = "Show LSP info" })
+    map("n", "<Leader>li", ":checkhealth vim.lsp<CR>", { desc = "Show LSP info" })
 
     if client and client:supports_method("textDocument/inlayHint", bufnr) and vim.lsp.inlay_hint then
         map("n", "<leader>tI", function()
