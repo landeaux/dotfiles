@@ -1,5 +1,33 @@
 vim.filetype.add({
+    extension = {
+        gql = "graphql",
+        graphql = "graphql",
+        graphqls = "graphql",
+    },
+    filename = {
+        [".ansible-lint"] = "yaml",
+        [".gitmessage"] = "gitcommit",
+        [".markdownlintrc"] = "json",
+        [".pylintrc"] = "conf",
+        [".tmux.conf.local"] = "tmux",
+        [".zprofile"] = "zsh",
+        [".zshenv"] = "zsh",
+        [".zshrc"] = "zsh",
+        ["gitconfig"] = "gitconfig",
+        ["gitignore"] = "gitignore",
+        ["gitmessage"] = "gitcommit",
+        ["kitty.conf"] = "conf",
+        ["pylintrc"] = "conf",
+        ["zprofile"] = "zsh",
+        ["zshenv"] = "zsh",
+        ["zshrc"] = "zsh",
+    },
     pattern = {
+        -- gitconfig with suffix (e.g. .gitconfig.local)
+        ["%.gitconfig%..*"] = "gitconfig",
+        -- zshrc with suffix (e.g. .zshrc.local)
+        ["%.zshrc%..*"] = "zsh",
+        -- ansible
         [".*/ansible/.*%.yml"] = "yaml.ansible",
         [".*/ansible/.*%.yaml"] = "yaml.ansible",
         [".*/playbooks/.*%.yml"] = "yaml.ansible",
@@ -10,6 +38,7 @@ vim.filetype.add({
         [".*/handlers/.*%.yaml"] = "yaml.ansible",
         [".*/tasks/.*%.yml"] = "yaml.ansible",
         [".*/tasks/.*%.yaml"] = "yaml.ansible",
+        -- docker compose
         ["docker%-compose%.yml"] = "yaml.docker-compose",
         ["docker%-compose%.yaml"] = "yaml.docker-compose",
         ["docker%-compose%..*%.yml"] = "yaml.docker-compose",
