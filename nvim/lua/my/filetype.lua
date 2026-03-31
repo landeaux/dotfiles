@@ -25,8 +25,12 @@ vim.filetype.add({
     pattern = {
         -- gitconfig with suffix (e.g. .gitconfig.local)
         ["%.gitconfig%..*"] = "gitconfig",
-        -- zshrc with suffix (e.g. .zshrc.local)
+        -- zsh files with suffix (e.g. .zshrc.local, .zshenv.local, .zprofile.local)
         ["%.zshrc%..*"] = "zsh",
+        ["%.zshenv%..*"] = "zsh",
+        ["%.zprofile%..*"] = "zsh",
+        -- zshenv.shim
+        ["zshenv%..*"] = "zsh",
         -- ansible
         [".*/ansible/.*%.yml"] = "yaml.ansible",
         [".*/ansible/.*%.yaml"] = "yaml.ansible",
