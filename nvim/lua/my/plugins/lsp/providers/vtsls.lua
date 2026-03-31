@@ -1,5 +1,3 @@
-require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-
 vim.lsp.commands["editor.action.showReferences"] = function(command, ctx)
     local locations = command.arguments[3]
     local client = vim.lsp.get_client_by_id(ctx.client_id)
