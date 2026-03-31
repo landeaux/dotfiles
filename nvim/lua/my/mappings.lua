@@ -12,7 +12,6 @@ map("v", "<Tab>", ">gv^", { desc = "Indent right without leaving visual mode" })
 map("v", "<S-Tab>", "<gv^", { desc = "Indent left without leaving visual mode" })
 
 -- Incremental selection (built-in treesitter, replaces wildfire.nvim)
-map("n", "<CR>", "van", { remap = true, desc = "Start incremental selection" })
 map("x", "<CR>", "an", { remap = true, desc = "Expand selection to parent node" })
 map("x", "<BS>", "in", { remap = true, desc = "Shrink selection to child node" })
 
