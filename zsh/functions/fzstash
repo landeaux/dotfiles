@@ -1,9 +1,0 @@
-local stash
-stash=$(git stash list |
-  fzf --preview 'echo {} | cut -d: -f1 | xargs git stash show -p --color=always' |
-  cut -d: -f1)
-[ -z "$stash" ] && return
-local action
-action=$(printf "apply\npop\ndrop\nshow" |
-  fzf --prompt "Action for $stash> ")
-[ -n "$action" ] && git stash "$action" "$stash"

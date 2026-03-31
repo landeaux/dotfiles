@@ -1,1 +1,0 @@
-tree -aC --gitignore -I '.git' --dirsfirst "$@" | less -FRX

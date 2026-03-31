@@ -1,7 +1,0 @@
-if [ ! "$1" ]; then
-  echo "Usage: yeet process_name"
-elif killall "$1"; then
-  echo
-  echo " (╯°□°）╯︵$(echo "$1" | flip)"
-  echo
-fi

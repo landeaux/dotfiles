@@ -1,6 +1,0 @@
-local branch
-branch=$(git branch --all --sort=-committerdate --format='%(refname:short)' |
-  grep -v '^origin/HEAD' |
-  fzf --preview 'git log --oneline --color=always {} | head -20')
-[ -z "$branch" ] && return
-git switch "${branch#origin/}"
