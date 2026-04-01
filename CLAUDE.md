@@ -14,7 +14,7 @@ to their target locations (home dir, `~/.config/`, etc.) via `install.conf.yaml`
 Key directories:
 
 - `zsh/` — Modular zsh config: `conf.d/` files sourced in numbered order, `functions/` autoloaded
-- `nvim/` — Neovim config (lazy.nvim, plugins in `lua/my/plugins/`)
+- `nvim/` — Neovim config (vim.pack, plugins in `lua/my/plugins/`)
 - `claude/` — Claude Code global config (symlinked to `~/.claude/`): `CLAUDE.md`, `settings.json`, `hooks/`
 - `scripts/` — Bootstrap and utility scripts (idempotent, safe to re-run)
 - `bin/` — User scripts symlinked to `~/bin/`
@@ -31,6 +31,7 @@ Key directories:
   updating one, update the other.
 - **Autoloaded functions.** New zsh functions go in `zsh/functions/` as individual files and must be registered in
   `.zshrc`'s `autoload -Uz` line.
+- **Neovim headless commands.** Always use `nvim --headless` when running nvim non-interactively (benchmarks, health checks, etc.) or it will hang waiting for a terminal.
 
 ## Conventions
 
