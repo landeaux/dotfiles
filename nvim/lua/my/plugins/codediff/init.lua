@@ -1,14 +1,8 @@
-return {
-    "esmuellert/codediff.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    cmd = "CodeDiff",
-    opts = {
-        -- Explorer panel configuration
-        explorer = {
-            initial_focus = "modified", -- Initial focus: "explorer", "original", or "modified"
-        },
-        diff = {
-            layout = "inline",
-        },
+require("codediff").setup({
+    explorer = {
+        initial_focus = "modified",
     },
-}
+    diff = {
+        layout = "inline",
+    },
+})
