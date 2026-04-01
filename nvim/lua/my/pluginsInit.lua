@@ -16,6 +16,9 @@ vim.api.nvim_create_autocmd("PackChanged", {
         elseif name == "vim-pydocstring" then
             vim.fn.system({ "make", "install" })
         elseif name == "markdown-preview.nvim" then
+            if not ev.data.active then
+                vim.cmd.packadd("markdown-preview.nvim")
+            end
             vim.fn["mkdp#util#install"]()
         elseif name == "vscode-js-debug" then
             vim.fn.system({ "npm", "install", "--legacy-peer-deps" })

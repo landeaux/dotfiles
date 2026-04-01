@@ -1,5 +1,5 @@
 require("my.plugins.nvim-colorizer.mappings")
-require("nvim-colorizer").setup({
+require("colorizer").setup({
     options = {
         parsers = {
             names = { enable = false },

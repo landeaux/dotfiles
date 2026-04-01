@@ -97,6 +97,7 @@ require("dap-vscode-js").setup({
 })
 
 for _, language in ipairs({ "javascript", "javascriptreact", "typescript", "typescriptreact" }) do
+    require("dap").configurations[language] = require("dap").configurations[language] or {}
     local configurations = require("dap").configurations[language]
     local configurations_to_add = {
         {
