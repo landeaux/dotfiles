@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 local ok, err = pcall(require, "my")
 
 if not ok then
