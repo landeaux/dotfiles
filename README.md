@@ -70,6 +70,51 @@ defaults read com.apple.appname
 
 Add new defaults to `scripts/macos_defaults.sh` following the existing pattern.
 
+## Managing Neovim Plugins
+
+Plugins are managed with `vim.pack` (Neovim 0.12 built-in). All plugins are declared in
+`nvim/lua/my/pluginsInit.lua`.
+
+**Update all plugins:**
+
+```lua
+vim.pack.update()
+```
+
+Opens a confirmation buffer — `:write` to apply, `:quit` to discard, `:restart` to reload.
+
+**Install a new plugin:** add it to the `vim.pack.add({...})` call in `pluginsInit.lua` along with a
+`require()` call for its setup module, then restart Neovim.
+
+**Remove a plugin:**
+
+1. Delete it from `vim.pack.add()` and its `require()` call in `pluginsInit.lua`
+2. Delete it from disk:
+
+```lua
+vim.pack.del({ "plugin-name" })
+```
+
+**Rollback a bad update:**
+
+```bash
+git checkout HEAD -- nvim/nvim-pack-lock.json
+```
+
+Then in Neovim:
+
+```lua
+vim.pack.update(nil, { target = "lockfile" })
+```
+
+**Check what's installed:**
+
+```lua
+vim.pack.get()
+```
+
+Or `vim.pack.update(nil, { offline = true })` for a visual overview without downloading anything.
+
 ## Machine-Specific Packages
 
 Add a `Brewfile.local` in the repo root for packages specific to one machine. It is automatically included by the
