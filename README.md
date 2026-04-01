@@ -110,7 +110,7 @@ vim.pack.update(nil, { target = "lockfile" })
 **Check what's installed:**
 
 ```lua
-vim.pack.get()
+vim.print(vim.pack.get())
 ```
 
 Or `vim.pack.update(nil, { offline = true })` for a visual overview without downloading anything.
