@@ -55,7 +55,6 @@ vim.pack.add({
     "https://github.com/stevearc/dressing.nvim",
     "https://github.com/b0o/schemastore.nvim",
     "https://github.com/sindrets/diffview.nvim",
-    "https://github.com/fladson/vim-kitty",
     "https://github.com/notjedi/nvim-rooter.lua",
     "https://github.com/tartansandal/vim-compiler-pytest",
 

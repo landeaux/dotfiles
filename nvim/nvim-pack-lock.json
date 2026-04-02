@@ -189,10 +189,6 @@
       "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
       "src": "https://github.com/tpope/vim-fugitive"
     },
-    "vim-kitty": {
-      "rev": "cd72f2d9cfee8d6aba5a180a5ac3ca265b5d3a46",
-      "src": "https://github.com/fladson/vim-kitty"
-    },
     "vim-lastplace": {
       "rev": "e58cb0df716d3c88605ae49db5c4741db8b48aa9",
       "src": "https://github.com/farmergreg/vim-lastplace"
