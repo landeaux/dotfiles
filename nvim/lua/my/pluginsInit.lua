@@ -92,7 +92,6 @@ vim.pack.add({
     { src = "https://github.com/epwalsh/obsidian.nvim", version = vim.version.range("*") },
     "https://github.com/iamcco/markdown-preview.nvim",
     "https://github.com/esmuellert/codediff.nvim",
-    { src = "https://github.com/mikesmithgh/kitty-scrollback.nvim", version = vim.version.range("6.x") },
     "https://github.com/numToStr/Comment.nvim",
     "https://github.com/JoosepAlviste/nvim-ts-context-commentstring",
     "https://github.com/heavenshell/vim-pydocstring",
@@ -137,6 +136,5 @@ require("my.plugins.nvim-lightbulb")
 require("my.plugins.obsidian-nvim")
 require("my.plugins.markdown-preview")
 require("my.plugins.codediff")
-require("my.plugins.kitty-scrollback-nvim")
 require("my.plugins.comment-nvim")
 require("my.plugins.vim-pydocstring")
