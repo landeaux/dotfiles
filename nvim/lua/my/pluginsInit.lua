@@ -140,3 +140,4 @@ require("my.plugins.vim-pydocstring")
 
 -- Builtin plugins
 vim.cmd.packadd("nvim.undotree")
+vim.cmd.packadd("nvim.difftool")
