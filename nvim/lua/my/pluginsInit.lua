@@ -54,7 +54,6 @@ vim.pack.add({
     "https://github.com/lewis6991/gitsigns.nvim",
     "https://github.com/stevearc/dressing.nvim",
     "https://github.com/b0o/schemastore.nvim",
-    "https://github.com/sindrets/diffview.nvim",
     "https://github.com/notjedi/nvim-rooter.lua",
     "https://github.com/tartansandal/vim-compiler-pytest",
 
@@ -113,7 +112,6 @@ require("my.plugins.fzf-lua")
 require("my.plugins.indent-blankline")
 require("my.plugins.gitsigns")
 require("my.plugins.dressing-nvim")
-require("my.plugins.diffview")
 require("my.plugins.nvim-rooter")
 require("my.plugins.nvim-colorizer")
 

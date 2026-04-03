@@ -16,7 +16,6 @@ require("catppuccin").setup({
             },
         },
         mason = true,
-        diffview = true,
         fzf = true,
         dap = true,
         dap_ui = true,
