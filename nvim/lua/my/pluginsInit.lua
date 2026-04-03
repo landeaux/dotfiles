@@ -137,3 +137,6 @@ require("my.plugins.markdown-preview")
 require("my.plugins.codediff")
 require("my.plugins.comment-nvim")
 require("my.plugins.vim-pydocstring")
+
+-- Builtin plugins
+vim.cmd.packadd("nvim.undotree")
