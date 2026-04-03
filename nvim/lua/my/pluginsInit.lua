@@ -12,17 +12,17 @@ vim.api.nvim_create_autocmd("PackChanged", {
             end
             vim.cmd("TSUpdate")
         elseif name == "LuaSnip" then
-            vim.fn.system({ "make", "install_jsregexp" })
+            vim.system({ "make", "install_jsregexp" }, { cwd = ev.data.path }):wait()
         elseif name == "vim-pydocstring" then
-            vim.fn.system({ "make", "install" })
+            vim.system({ "make", "install" }, { cwd = ev.data.path }):wait()
         elseif name == "markdown-preview.nvim" then
             if not ev.data.active then
                 vim.cmd.packadd("markdown-preview.nvim")
             end
             vim.fn["mkdp#util#install"]()
         elseif name == "vscode-js-debug" then
-            vim.fn.system({ "npm", "install", "--legacy-peer-deps" })
-            vim.fn.system({ "npm", "run", "compile" })
+            vim.system({ "npm", "install", "--legacy-peer-deps" }, { cwd = ev.data.path }):wait()
+            vim.system({ "npm", "run", "compile" }, { cwd = ev.data.path }):wait()
         end
     end,
 })
