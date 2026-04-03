@@ -1,6 +1,12 @@
 vim.keymap.set("n", "<leader>Do", "<cmd>CodeDiff<CR>", { desc = "[CodeDiff] Explorer (git status)" })
 vim.keymap.set("n", "<leader>Df", "<cmd>CodeDiff file HEAD<CR>", { desc = "[CodeDiff] Diff file vs HEAD" })
-vim.keymap.set("n", "<leader>Dh", "<cmd>CodeDiff history<CR>", { desc = "[CodeDiff] File history" })
-vim.keymap.set("x", "<leader>Dh", ":<C-U>CodeDiff history<CR>", { desc = "[CodeDiff] Line-range history" })
+vim.keymap.set("n", "<leader>Dh", "<cmd>CodeDiff history %<CR>", { desc = "[CodeDiff] File history (current file)" })
+vim.keymap.set(
+    "x",
+    "<leader>Dh",
+    ":<C-U>CodeDiff history %<CR>",
+    { desc = "[CodeDiff] Line-range history (current file)" }
+)
+vim.keymap.set("n", "<leader>DH", "<cmd>CodeDiff history<CR>", { desc = "[CodeDiff] File history (all files)" })
 vim.keymap.set("n", "<leader>Dm", "<cmd>CodeDiff main<CR>", { desc = "[CodeDiff] Explorer vs main" })
 vim.keymap.set("n", "<leader>Dd", "<cmd>CodeDiff develop<CR>", { desc = "[CodeDiff] Explorer vs develop" })
