@@ -6,3 +6,5 @@ require("codediff").setup({
         layout = "inline",
     },
 })
+
+require("my.plugins.codediff.mappings")
