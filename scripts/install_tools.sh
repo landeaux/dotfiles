@@ -77,3 +77,10 @@ if [[ -x "$BREW_ZSH" ]]; then
     echo "Default shell is already brew zsh."
   fi
 fi
+
+###############################################################################
+# QMK
+###############################################################################
+
+echo "Setting up QMK..."
+"$DOTFILES_DIR/scripts/setup_qmk.sh"
