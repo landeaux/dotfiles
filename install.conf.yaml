@@ -37,6 +37,7 @@
     ~/.claude/hooks:
       path: claude/hooks
       force: true
+    ~/Library/Application Support/qmk/qmk.ini: qmk/qmk.ini
 
 - shell:
     - git submodule update --init --recursive
