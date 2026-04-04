@@ -1,9 +1,6 @@
 # Taps
-tap "koekeishiya/formulae"
-tap "osx-cross/arm"
-tap "osx-cross/avr"
-tap "qmk/qmk"
-tap "yqrashawn/goku"
+tap "koekeishiya/formulae" # for skhd/yabai
+tap "yqrashawn/goku" # for karabiner-elements
 
 # Formulae
 brew "ack"
@@ -19,13 +16,13 @@ brew "fd"
 brew "findutils"
 brew "fzf"
 brew "gh"
-brew "go"
 brew "git"
 brew "git-extras"
 brew "git-lfs"
 brew "glab"
 brew "gnu-sed"
 brew "gnupg"
+brew "go"
 brew "grep"
 brew "hadolint"
 brew "hyperfine"
@@ -65,9 +62,9 @@ brew "yqrashawn/goku/goku"
 brew "zsh"
 
 # Casks
+cask "docker-desktop"
 cask "font-jetbrains-mono"
 cask "font-symbols-only-nerd-font"
-cask "docker-desktop"
 cask "ghostty"
 cask "karabiner-elements"
 
