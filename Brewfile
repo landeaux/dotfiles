@@ -60,6 +60,7 @@ brew "vscode-langservers-extracted"
 brew "vtsls"
 brew "wget"
 brew "yqrashawn/goku/goku"
+brew "zoxide"
 brew "zsh"
 
 # Casks
