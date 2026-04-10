@@ -43,3 +43,23 @@ utils.create_augroup({
         },
     },
 }, "_resize_splits")
+
+utils.create_augroup({
+    {
+        event = "BufEnter",
+        opts = {
+            callback = function()
+                if vim.bo.buftype ~= "" then
+                    return
+                end
+                local root = vim.fs.root(0, {
+                    { ".git", ".hg", ".svn" },
+                    { "package.json", "pyproject.toml", "Cargo.toml", "go.mod" },
+                })
+                if root then
+                    vim.cmd.cd(root)
+                end
+            end,
+        },
+    },
+}, "_cd_project_root")
