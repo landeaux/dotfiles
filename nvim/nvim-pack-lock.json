@@ -43,7 +43,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "eee072d89ccdc0a4627bf67d0757d2e4981c7292",
+      "rev": "657c1bbb7357c61e26a20d868b53a460b05c18c0",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -79,7 +79,7 @@
       "src": "https://github.com/nvimtools/none-ls-extras.nvim"
     },
     "none-ls.nvim": {
-      "rev": "7f9301e416533b5d74e2fb3b1ce5059eeaed748b",
+      "rev": "899e93f9f10251d7220b188eba1b837c0ba27927",
       "src": "https://github.com/nvimtools/none-ls.nvim"
     },
     "nui.nvim": {
@@ -117,6 +117,10 @@
     "nvim-nio": {
       "rev": "21f5324bfac14e22ba26553caf69ec76ae8a7662",
       "src": "https://github.com/nvim-neotest/nvim-nio"
+    },
+    "nvim-rooter.lua": {
+      "rev": "7689d05e8ab95acb4b24785253d913c0aae18be9",
+      "src": "https://github.com/notjedi/nvim-rooter.lua"
     },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
@@ -158,7 +162,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "da18be6fd74c78e824e9dcf3e77865057b2d3c07",
+      "rev": "f5df9e70403b5d4c0642702a64534f04f3d71d03",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
