@@ -155,7 +155,8 @@
     "playwright@claude-plugins-official": true,
     "context7-plugin@context7-marketplace": true,
     "php-lsp@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true
+    "claude-md-management@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "context7-marketplace": {
