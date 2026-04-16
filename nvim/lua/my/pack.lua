@@ -263,4 +263,23 @@ vim.api.nvim_create_user_command("PackPrune", function(opts)
     vim.notify(("Pruned: %s"):format(table.concat(orphans, ", ")))
 end, { nargs = 0, bang = true })
 
+vim.api.nvim_create_user_command("PackSync", function(opts)
+    local orphans = orphan_names()
+    local active = active_names()
+    if not opts.bang then
+        local msg = ("Restore %d plugins to lockfile revs"):format(#active)
+        if #orphans > 0 then
+            msg = msg .. (" and prune %d orphans (%s)"):format(#orphans, table.concat(orphans, ", "))
+        end
+        msg = msg .. "?"
+        if not confirm_yes(msg) then
+            return
+        end
+    end
+    vim.pack.update(nil, { target = "lockfile", force = true })
+    if #orphans > 0 then
+        vim.pack.del(orphans)
+    end
+end, { nargs = 0, bang = true })
+
 return M
