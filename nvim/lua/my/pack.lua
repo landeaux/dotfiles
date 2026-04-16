@@ -276,6 +276,8 @@ vim.api.nvim_create_user_command("PackSync", function(opts)
             return
         end
     end
+    -- force=true is mandatory: vim.pack.update's confirm buffer is async, so we can't
+    -- sequence vim.pack.del after it. The outer confirm_yes above covers both phases.
     vim.pack.update(nil, { target = "lockfile", force = true })
     if #orphans > 0 then
         vim.pack.del(orphans)
