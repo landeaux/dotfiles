@@ -209,7 +209,28 @@ vim.api.nvim_create_user_command("PackStatus", function()
 end, { nargs = 0 })
 
 vim.api.nvim_create_user_command("PackUpdate", function(opts)
-    local names = (#opts.fargs > 0) and opts.fargs or nil
+    local names = nil
+    if #opts.fargs > 0 then
+        local active_set = {}
+        for _, n in ipairs(active_names()) do
+            active_set[n] = true
+        end
+        local to_update, skipped = {}, {}
+        for _, name in ipairs(opts.fargs) do
+            if active_set[name] then
+                table.insert(to_update, name)
+            else
+                table.insert(skipped, name)
+            end
+        end
+        if #skipped > 0 then
+            vim.notify(("Skipped (not active): %s"):format(table.concat(skipped, ", ")), vim.log.levels.WARN)
+        end
+        if #to_update == 0 then
+            return
+        end
+        names = to_update
+    end
     vim.pack.update(names, { force = opts.bang })
 end, { nargs = "*", bang = true, complete = complete_active })
 
