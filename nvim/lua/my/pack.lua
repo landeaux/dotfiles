@@ -235,36 +235,45 @@ vim.api.nvim_create_user_command("PackUpdate", function(opts)
 end, { nargs = "*", bang = true, complete = complete_active })
 
 vim.api.nvim_create_user_command("PackRemove", function(opts)
-    local managed_set = {}
-    for _, n in ipairs(all_names()) do
-        managed_set[n] = true
+    local active_set, orphan_set = {}, {}
+    for _, n in ipairs(active_names()) do
+        active_set[n] = true
     end
-    local to_remove, skipped = {}, {}
+    for _, n in ipairs(orphan_names()) do
+        orphan_set[n] = true
+    end
+    local to_remove, still_active, unknown = {}, {}, {}
     for _, name in ipairs(opts.fargs) do
-        if managed_set[name] then
+        if orphan_set[name] then
             table.insert(to_remove, name)
+        elseif active_set[name] then
+            table.insert(still_active, name)
         else
-            table.insert(skipped, name)
+            table.insert(unknown, name)
         end
     end
     if #to_remove > 0 then
         vim.pack.del(to_remove)
     end
-    if not opts.bang then
-        local parts = {}
-        if #to_remove > 0 then
-            table.insert(parts, ("Removed: %s"):format(table.concat(to_remove, ", ")))
-            table.insert(
-                parts,
-                "Remember to remove their specs from pluginsInit.lua or they'll be reinstalled on next startup."
+    local parts = {}
+    if #to_remove > 0 then
+        table.insert(parts, ("Removed: %s"):format(table.concat(to_remove, ", ")))
+    end
+    if #still_active > 0 then
+        table.insert(
+            parts,
+            ("Still in spec (remove from pluginsInit.lua and restart nvim first): %s"):format(
+                table.concat(still_active, ", ")
             )
-        end
-        if #skipped > 0 then
-            table.insert(parts, ("Skipped (not managed): %s"):format(table.concat(skipped, ", ")))
-        end
-        if #parts > 0 then
-            vim.notify(table.concat(parts, "\n"), vim.log.levels.INFO)
-        end
+        )
+    end
+    if #unknown > 0 then
+        table.insert(parts, ("Unknown (not managed): %s"):format(table.concat(unknown, ", ")))
+    end
+    local has_problems = #still_active > 0 or #unknown > 0
+    if #parts > 0 and (has_problems or not opts.bang) then
+        local level = has_problems and vim.log.levels.WARN or vim.log.levels.INFO
+        vim.notify(table.concat(parts, "\n"), level)
     end
 end, { nargs = "+", bang = true, complete = complete_all })
 
