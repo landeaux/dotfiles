@@ -35,6 +35,17 @@ local function short_rev(rev)
     return rev:sub(1, 7)
 end
 
+local function actual_rev(path)
+    if not path then
+        return nil
+    end
+    local r = vim.system({ "git", "-C", path, "rev-parse", "HEAD" }, { text = true }):wait()
+    if r.code == 0 then
+        return (r.stdout:gsub("%s+", ""))
+    end
+    return nil
+end
+
 local function version_str(spec)
     local v = spec.version
     if v == nil then
@@ -130,9 +141,10 @@ local function collect_rows(include_lockfile)
     local lockfile = include_lockfile and read_lockfile() or nil
     local active_rows, orphan_rows = {}, {}
     for _, p in ipairs(managed()) do
+        local rev = actual_rev(p.path) or p.rev
         local row = {
             p.spec.name,
-            short_rev(p.rev),
+            short_rev(rev),
             p.active and "active" or "orphan",
             version_str(p.spec),
         }
@@ -142,7 +154,7 @@ local function collect_rows(include_lockfile)
             local drift
             if not lockfile or lock_rev == nil then
                 drift = "?"
-            elseif lock_rev == p.rev then
+            elseif lock_rev == rev then
                 drift = "="
             else
                 drift = "≠"
