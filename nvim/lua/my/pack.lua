@@ -208,4 +208,9 @@ vim.api.nvim_create_user_command("PackStatus", function()
     open_scratch(lines, "packstatus")
 end, { nargs = 0 })
 
+vim.api.nvim_create_user_command("PackUpdate", function(opts)
+    local names = (#opts.fargs > 0) and opts.fargs or nil
+    vim.pack.update(names, { force = opts.bang })
+end, { nargs = "*", bang = true, complete = complete_active })
+
 return M
