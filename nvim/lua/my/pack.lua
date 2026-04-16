@@ -271,7 +271,7 @@ end, { nargs = "+", bang = true, complete = complete_all })
 vim.api.nvim_create_user_command("PackPrune", function(opts)
     local orphans = orphan_names()
     if #orphans == 0 then
-        vim.notify("No orphan plugins to prune.")
+        vim.notify("No orphan plugins to prune.", vim.log.levels.INFO)
         return
     end
     if not opts.bang then
@@ -281,13 +281,13 @@ vim.api.nvim_create_user_command("PackPrune", function(opts)
         end
     end
     vim.pack.del(orphans)
-    vim.notify(("Pruned: %s"):format(table.concat(orphans, ", ")))
+    vim.notify(("Pruned: %s"):format(table.concat(orphans, ", ")), vim.log.levels.INFO)
 end, { nargs = 0, bang = true })
 
 vim.api.nvim_create_user_command("PackSync", function(opts)
     local orphans = orphan_names()
-    local active = active_names()
     if not opts.bang then
+        local active = active_names()
         local msg = ("Restore %d plugins to lockfile revs"):format(#active)
         if #orphans > 0 then
             msg = msg .. (" and prune %d orphans (%s)"):format(#orphans, table.concat(orphans, ", "))
@@ -303,6 +303,11 @@ vim.api.nvim_create_user_command("PackSync", function(opts)
     if #orphans > 0 then
         vim.pack.del(orphans)
     end
+    local done = "Synced: restored plugins to lockfile revs"
+    if #orphans > 0 then
+        done = done .. (" and pruned %d orphans"):format(#orphans)
+    end
+    vim.notify(done, vim.log.levels.INFO)
 end, { nargs = 0, bang = true })
 
 return M
