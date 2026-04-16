@@ -247,4 +247,20 @@ vim.api.nvim_create_user_command("PackRemove", function(opts)
     end
 end, { nargs = "+", bang = true, complete = complete_all })
 
+vim.api.nvim_create_user_command("PackPrune", function(opts)
+    local orphans = orphan_names()
+    if #orphans == 0 then
+        vim.notify("No orphan plugins to prune.")
+        return
+    end
+    if not opts.bang then
+        local msg = ("Prune orphans: %s?"):format(table.concat(orphans, ", "))
+        if not confirm_yes(msg) then
+            return
+        end
+    end
+    vim.pack.del(orphans)
+    vim.notify(("Pruned: %s"):format(table.concat(orphans, ", ")))
+end, { nargs = 0, bang = true })
+
 return M
