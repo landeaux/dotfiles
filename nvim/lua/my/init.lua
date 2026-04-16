@@ -7,6 +7,7 @@ local my_modules = {
     "my.buf_only",
     "my.grep",
     "my.pluginsInit",
+    "my.pack",
     "my.autocmd",
     "my.mappings",
 }
