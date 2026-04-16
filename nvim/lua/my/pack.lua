@@ -213,4 +213,16 @@ vim.api.nvim_create_user_command("PackUpdate", function(opts)
     vim.pack.update(names, { force = opts.bang })
 end, { nargs = "*", bang = true, complete = complete_active })
 
+vim.api.nvim_create_user_command("PackRemove", function(opts)
+    vim.pack.del(opts.fargs)
+    if not opts.bang then
+        vim.notify(
+            ("Removed: %s\nRemember to remove their specs from pluginsInit.lua or they'll be reinstalled on next startup."):format(
+                table.concat(opts.fargs, ", ")
+            ),
+            vim.log.levels.WARN
+        )
+    end
+end, { nargs = "+", bang = true, complete = complete_all })
+
 return M
