@@ -219,21 +219,17 @@ vim.api.nvim_create_user_command("PackUpdate", function(opts)
         for _, n in ipairs(active_names()) do
             active_set[n] = true
         end
-        local to_update, skipped = {}, {}
+        local skipped = {}
         for _, name in ipairs(opts.fargs) do
-            if active_set[name] then
-                table.insert(to_update, name)
-            else
+            if not active_set[name] then
                 table.insert(skipped, name)
             end
         end
         if #skipped > 0 then
-            vim.notify(("Skipped (not active): %s"):format(table.concat(skipped, ", ")), vim.log.levels.WARN)
-        end
-        if #to_update == 0 then
+            vim.notify(("PackUpdate: unknown plugin(s): %s"):format(table.concat(skipped, ", ")), vim.log.levels.ERROR)
             return
         end
-        names = to_update
+        names = opts.fargs
     end
     vim.pack.update(names, { force = opts.bang })
 end, { nargs = "*", bang = true, complete = complete_active })
