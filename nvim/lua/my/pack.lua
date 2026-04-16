@@ -214,14 +214,36 @@ vim.api.nvim_create_user_command("PackUpdate", function(opts)
 end, { nargs = "*", bang = true, complete = complete_active })
 
 vim.api.nvim_create_user_command("PackRemove", function(opts)
-    vim.pack.del(opts.fargs)
+    local managed_set = {}
+    for _, n in ipairs(all_names()) do
+        managed_set[n] = true
+    end
+    local to_remove, skipped = {}, {}
+    for _, name in ipairs(opts.fargs) do
+        if managed_set[name] then
+            table.insert(to_remove, name)
+        else
+            table.insert(skipped, name)
+        end
+    end
+    if #to_remove > 0 then
+        vim.pack.del(to_remove)
+    end
     if not opts.bang then
-        vim.notify(
-            ("Removed: %s\nRemember to remove their specs from pluginsInit.lua or they'll be reinstalled on next startup."):format(
-                table.concat(opts.fargs, ", ")
-            ),
-            vim.log.levels.WARN
-        )
+        local parts = {}
+        if #to_remove > 0 then
+            table.insert(parts, ("Removed: %s"):format(table.concat(to_remove, ", ")))
+            table.insert(
+                parts,
+                "Remember to remove their specs from pluginsInit.lua or they'll be reinstalled on next startup."
+            )
+        end
+        if #skipped > 0 then
+            table.insert(parts, ("Skipped (not managed): %s"):format(table.concat(skipped, ", ")))
+        end
+        if #parts > 0 then
+            vim.notify(table.concat(parts, "\n"), vim.log.levels.INFO)
+        end
     end
 end, { nargs = "+", bang = true, complete = complete_all })
 
