@@ -197,4 +197,15 @@ vim.api.nvim_create_user_command("PackList", function()
     open_scratch(render_table(headers, rows), "packlist")
 end, { nargs = 0 })
 
+vim.api.nvim_create_user_command("PackStatus", function()
+    local headers = { "NAME", "REV", "STATE", "VERSION", "LOCKFILE", "DRIFT" }
+    local rows, lockfile = collect_rows(true)
+    local lines = render_table(headers, rows)
+    if not lockfile then
+        table.insert(lines, 1, "WARNING: nvim-pack-lock.json missing or unparseable")
+        table.insert(lines, 2, "")
+    end
+    open_scratch(lines, "packstatus")
+end, { nargs = 0 })
+
 return M
