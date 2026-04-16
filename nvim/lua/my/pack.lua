@@ -43,6 +43,10 @@ local function version_str(spec)
     if type(v) == "string" then
         return v
     end
+    if type(v) == "table" and v.from and v.to then
+        local function fmt(s) return ("%d.%d.%d"):format(s.major or 0, s.minor or 0, s.patch or 0) end
+        return fmt(v.from) .. ".." .. fmt(v.to)
+    end
     return "<range>"
 end
 
