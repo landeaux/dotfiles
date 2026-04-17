@@ -1,5 +1,9 @@
 require("my.plugins.nvim-colorizer.mappings")
 require("colorizer").setup({
+    filetypes = {
+        "*",
+        "!nvim-pack",
+    },
     options = {
         parsers = {
             names = { enable = false },
