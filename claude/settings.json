@@ -168,5 +168,6 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "model": "claude-opus-4-6[1M]"
 }
