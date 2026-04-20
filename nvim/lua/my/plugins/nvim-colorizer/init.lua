@@ -3,6 +3,7 @@ require("colorizer").setup({
     filetypes = {
         "*",
         "!nvim-pack",
+        "!oil",
     },
     options = {
         parsers = {
