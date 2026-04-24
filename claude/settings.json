@@ -10,6 +10,7 @@
   "permissions": {
     "allow": [
       "Bash(cat *)",
+      "Bash(diffstat *)",
       "Bash(fd *)",
       "Bash(find *)",
       "Bash(gh api -X GET *)",
