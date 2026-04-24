@@ -169,5 +169,6 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "voiceEnabled": true,
-  "model": "claude-opus-4-6[1M]"
+  "model": "claude-opus-4-6[1M]",
+  "preferredNotifChannel": "ghostty"
 }
