@@ -102,6 +102,7 @@
       "Bash(find * -execdir *)"
     ]
   },
+  "model": "claude-opus-4-6[1M]",
   "hooks": {
     "Notification": [
       {
@@ -157,7 +158,8 @@
     "context7-plugin@context7-marketplace": true,
     "php-lsp@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "clangd-lsp@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "clangd@claude-code-lsps": true
   },
   "extraKnownMarketplaces": {
     "context7-marketplace": {
@@ -169,7 +171,6 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
-  "voiceEnabled": true,
-  "model": "claude-opus-4-6[1M]",
-  "preferredNotifChannel": "ghostty"
+  "preferredNotifChannel": "ghostty",
+  "voiceEnabled": true
 }
