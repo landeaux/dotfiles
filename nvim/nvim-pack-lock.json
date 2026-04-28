@@ -63,7 +63,7 @@
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "lualine.nvim": {
-      "rev": "a905eeebc4e63fdc48b5135d3bf8aea5618fb21c",
+      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "markdown-preview.nvim": {
@@ -107,11 +107,11 @@
       "src": "https://github.com/mxsdev/nvim-dap-vscode-js"
     },
     "nvim-lightbulb": {
-      "rev": "e974b1a93c917c840545f51b9a66cfd72c520522",
+      "rev": "b8c08c5f3b1586dfcdd9f34d7d54fe6982e01ac9",
       "src": "https://github.com/kosayoda/nvim-lightbulb"
     },
     "nvim-lspconfig": {
-      "rev": "eeef061d58d759b5419c1e20c4b3a5bc3154f871",
+      "rev": "bf5abe69c1874531f359a822d0cff4d73e26113f",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -141,7 +141,7 @@
       "src": "https://github.com/yioneko/nvim-vtsls"
     },
     "nvim-web-devicons": {
-      "rev": "8069e89df2d7259704286a5906a11c5b27d5b440",
+      "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "obsidian.nvim": {
@@ -158,7 +158,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "c3709d579066ab8f9600f5b76ade2da5042ec1ac",
+      "rev": "20d4e9970798123e6197acb1c85c4b1e897efd29",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
