@@ -159,13 +159,20 @@
     "php-lsp@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true,
-    "clangd@claude-code-lsps": true
+    "clangd@claude-code-lsps": true,
+    "cloudflare@cloudflare": true
   },
   "extraKnownMarketplaces": {
     "context7-marketplace": {
       "source": {
         "source": "github",
         "repo": "upstash/context7"
+      }
+    },
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
       }
     }
   },
