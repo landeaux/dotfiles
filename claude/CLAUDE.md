@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+## Responses
+
+- Provide concise, focused responses. Skip non-essential context and keep examples minimal.
+
 ## Git & Commits
 
 - Use conventional commits: `type(scope):` where type is `feat`, `fix`, `refactor`, `chore`, `docs`, etc. Scope is
