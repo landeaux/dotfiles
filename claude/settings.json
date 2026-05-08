@@ -179,7 +179,6 @@
     }
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "high",
   "preferredNotifChannel": "ghostty",
   "voiceEnabled": true,
   "skipAutoPermissionPrompt": true
