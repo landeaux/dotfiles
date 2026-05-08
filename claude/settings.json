@@ -88,9 +88,7 @@
       "Bash(fd * --exec *)",
       "Bash(fd * --exec-batch *)",
       "Bash(fd * -x *)",
-      "Bash(fd * -X *)",
-      "Bash(find * -exec *)",
-      "Bash(find * -execdir *)"
+      "Bash(fd * -X *)"
     ]
   },
   "hooks": {
