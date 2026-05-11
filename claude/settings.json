@@ -49,6 +49,7 @@
       "Bash(glab ci view *)",
       "Bash(glab issue list *)",
       "Bash(glab issue view *)",
+      "Bash(glab label list *)",
       "Bash(glab mr diff *)",
       "Bash(glab mr list *)",
       "Bash(glab mr view *)",
