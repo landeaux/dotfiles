@@ -48,8 +48,7 @@ opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*"
 -- Search
 opt.ignorecase = true
 opt.smartcase = true
-opt.grepprg = "rg --vimgrep"
-opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep --smart-case --max-columns=512 --hidden --glob '!.git'"
 
 -- Incremental command
 opt.inccommand = "split"

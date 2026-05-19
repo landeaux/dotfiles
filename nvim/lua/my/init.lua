@@ -5,7 +5,6 @@ local my_modules = {
     "my.diagnostics",
     "my.scratch",
     "my.buf_only",
-    "my.grep",
     "my.pluginsInit",
     "my.pack",
     "my.autocmd",
