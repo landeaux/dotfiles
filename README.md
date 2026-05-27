@@ -17,6 +17,19 @@ This will:
 3. Clone this repo to `~/dotfiles`
 4. Run the full bootstrap (tools, dotfiles, macOS defaults)
 
+### On a fresh Ubuntu host (e.g., a remote droplet)
+
+```bash
+sudo apt-get update && sudo apt-get install -y git
+git clone https://github.com/landeaux/dotfiles.git ~/dotfiles
+cd ~/dotfiles && ./scripts/bootstrap.sh
+```
+
+This installs the headless terminal stack only — GUI apps, window managers, and keyboard remappers are skipped.
+Tools that aren't in apt (or ship too-old versions) and aren't on the Linux installer's allow-list
+(`selene`, `stylua`, `prettierd`, `eslint_d`, `markdownlint-cli2`, language servers) should be installed
+per-project as needed.
+
 ## Updating an Existing Machine
 
 From the dotfiles directory:
@@ -31,12 +44,14 @@ This re-runs the full setup and is safe to run repeatedly (all scripts are idemp
 
 Each script can be run independently:
 
-| Script                      | Purpose                                  |
-| --------------------------- | ---------------------------------------- |
-| `scripts/prerequisites.sh`  | Xcode CLI tools + Homebrew               |
-| `scripts/install_tools.sh`  | Brew packages, rustup, Claude Code, Node |
-| `./install`                 | Dotbot symlinks + shell commands         |
-| `scripts/macos_defaults.sh` | macOS system preferences                 |
+| Script                              | Purpose                                                                          |
+| ----------------------------------- | -------------------------------------------------------------------------------- |
+| `scripts/prerequisites.sh`          | macOS: Xcode CLT + Homebrew. Linux: apt prereqs.                                 |
+| `scripts/install_tools.sh`          | OS dispatcher → `install_tools_macos.sh` or `_linux.sh`                          |
+| `scripts/install_tools_macos.sh`    | Brewfile, rustup, Claude Code, nvm, zsh, QMK                                     |
+| `scripts/install_tools_linux.sh`    | apt packages, neovim tarball, starship/zoxide/gh, rustup, nvm, uv, Claude Code   |
+| `./install`                         | Dotbot symlinks (OS-conditional) + shell commands                                |
+| `scripts/macos_defaults.sh`         | macOS system preferences (macOS only)                                            |
 
 ## macOS Defaults
 
