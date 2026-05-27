@@ -30,7 +30,8 @@ fi
 
 ###############################################################################
 # Neovim — install from official GitHub release tarball (apt default is too
-# old; the project publishes signed tarballs with a shasum manifest).
+# old). The release no longer ships a shasum.txt manifest, but each asset has
+# a `digest` field on the GitHub Releases API which we use to verify.
 ###############################################################################
 
 if ! command -v nvim &>/dev/null; then
@@ -44,12 +45,24 @@ if ! command -v nvim &>/dev/null; then
       ;;
   esac
   NVIM_TARBALL="nvim-${NVIM_ARCH}.tar.gz"
-  NVIM_BASE_URL="https://github.com/neovim/neovim/releases/latest/download"
+  NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/latest/download/${NVIM_TARBALL}"
+  NVIM_API_URL="https://api.github.com/repos/neovim/neovim/releases/latest"
   NVIM_TMP="$(mktemp -d)"
-  curl -fL "${NVIM_BASE_URL}/shasum.txt" -o "${NVIM_TMP}/shasum.txt"
-  curl -fL "${NVIM_BASE_URL}/${NVIM_TARBALL}" -o "${NVIM_TMP}/${NVIM_TARBALL}"
-  # Verify checksum from the project's shasum.txt manifest.
-  (cd "$NVIM_TMP" && grep " ${NVIM_TARBALL}\$" shasum.txt | sha256sum -c -)
+  # Fetch the expected sha256 from the GitHub release API. The `digest` field
+  # is populated by GitHub; if it's empty or missing, fail loudly rather than
+  # install an unverified binary.
+  NVIM_SHA256="$(
+    curl -fsSL "$NVIM_API_URL" |
+      jq -r --arg name "$NVIM_TARBALL" \
+        '.assets[] | select(.name == $name) | .digest // ""' |
+      sed 's/^sha256://'
+  )"
+  if [[ -z "$NVIM_SHA256" ]]; then
+    echo "Could not retrieve sha256 digest for ${NVIM_TARBALL} from ${NVIM_API_URL}" >&2
+    exit 1
+  fi
+  curl -fL "$NVIM_DOWNLOAD_URL" -o "${NVIM_TMP}/${NVIM_TARBALL}"
+  echo "${NVIM_SHA256}  ${NVIM_TMP}/${NVIM_TARBALL}" | sha256sum -c -
   sudo rm -rf "/opt/nvim-${NVIM_ARCH}"
   sudo tar -C /opt -xzf "${NVIM_TMP}/${NVIM_TARBALL}"
   sudo ln -sf "/opt/nvim-${NVIM_ARCH}/bin/nvim" /usr/local/bin/nvim
