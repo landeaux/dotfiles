@@ -12,6 +12,23 @@ echo "Installing apt packages from apt_packages.txt..."
 grep -v '^\s*\(#\|$\)' "$DOTFILES_DIR/apt_packages.txt" | xargs sudo apt-get install -y
 
 ###############################################################################
+# Binary name shims — Ubuntu's apt names some binaries differently than
+# their upstream/macOS equivalents (fd-find -> fdfind, bat -> batcat).
+# Symlink them into /usr/local/bin so the rest of the dotfiles (zsh
+# config, plugins, etc.) can call the canonical names.
+###############################################################################
+
+if command -v fdfind &>/dev/null && [[ ! -e /usr/local/bin/fd ]]; then
+  echo "Symlinking /usr/local/bin/fd -> $(command -v fdfind)"
+  sudo ln -sf "$(command -v fdfind)" /usr/local/bin/fd
+fi
+
+if command -v batcat &>/dev/null && [[ ! -e /usr/local/bin/bat ]]; then
+  echo "Symlinking /usr/local/bin/bat -> $(command -v batcat)"
+  sudo ln -sf "$(command -v batcat)" /usr/local/bin/bat
+fi
+
+###############################################################################
 # Neovim — install from official GitHub release tarball (apt default is too
 # old; the project publishes signed tarballs with a shasum manifest).
 ###############################################################################
