@@ -10,8 +10,10 @@ build-essential
 ca-certificates
 
 # Shell and terminal
+# (No zsh-completions: not a Debian/Ubuntu package. The `zsh` package ships
+# its built-in completions via its `zsh-common` dependency; community
+# completions are added later via plugin manager or git clone.)
 zsh
-zsh-completions
 tmux
 
 # Core CLI tools
