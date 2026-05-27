@@ -2,8 +2,9 @@
 # Mirrors the portable subset of Brewfile. macOS-only formulae (qmk, skhd, goku,
 # pinentry-mac) and tools that aren't in apt or ship too-old versions
 # (selene, stylua, prettierd, eslint_d, markdownlint-cli2, vtsls, basedpyright,
-# lua-language-server, tree-sitter-cli, hadolint, shfmt, hyperfine, ghq) are
-# intentionally excluded — install per-project as needed.
+# lua-language-server, tree-sitter-cli, hadolint, shfmt, hyperfine) are
+# intentionally excluded — install per-project as needed. Tools installed via
+# upstream GitHub releases (nvim, fzf, ghq) live in install_tools_linux.sh.
 
 # Build essentials (also installed by prerequisites.sh; harmless to re-list)
 build-essential

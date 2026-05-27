@@ -91,6 +91,35 @@ else
 fi
 
 ###############################################################################
+# ghq — install from official GitHub release zip. The zip contains docs and
+# completions alongside the binary, so we extract specific members rather than
+# unzipping the whole archive.
+###############################################################################
+
+if [[ ! -x /usr/local/bin/ghq ]]; then
+  echo "Installing ghq from GitHub release zip..."
+  case "$(uname -m)" in
+    x86_64) GHQ_ARCH="amd64" ;;
+    aarch64 | arm64) GHQ_ARCH="arm64" ;;
+    *)
+      echo "Unsupported architecture for ghq zip: $(uname -m)" >&2
+      exit 1
+      ;;
+  esac
+  GHQ_ZIP="ghq_linux_${GHQ_ARCH}.zip"
+  GHQ_DOWNLOAD_URL="https://github.com/x-motemen/ghq/releases/latest/download/${GHQ_ZIP}"
+  GHQ_TMP="$(mktemp -d)"
+  curl -fL "$GHQ_DOWNLOAD_URL" -o "${GHQ_TMP}/${GHQ_ZIP}"
+  sudo unzip -j -o "${GHQ_TMP}/${GHQ_ZIP}" "ghq_linux_${GHQ_ARCH}/ghq" -d /usr/local/bin
+  sudo mkdir -p /usr/local/share/zsh/site-functions
+  sudo unzip -j -o "${GHQ_TMP}/${GHQ_ZIP}" "ghq_linux_${GHQ_ARCH}/misc/zsh/_ghq" \
+    -d /usr/local/share/zsh/site-functions
+  rm -rf "$GHQ_TMP"
+else
+  echo "ghq already installed."
+fi
+
+###############################################################################
 # Starship prompt (no apt package)
 ###############################################################################
 
