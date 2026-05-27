@@ -1,3 +1,26 @@
+-- Skip setup on hosts where no vault directories exist (e.g. remote dev boxes).
+local all_workspaces = {
+    {
+        name = "work",
+        path = "~/Notes/work",
+    },
+    {
+        name = "personal",
+        path = "~/Notes/personal",
+    },
+}
+
+local workspaces = {}
+for _, w in ipairs(all_workspaces) do
+    if vim.uv.fs_stat(vim.fn.expand(w.path)) then
+        table.insert(workspaces, w)
+    end
+end
+
+if #workspaces == 0 then
+    return
+end
+
 require("obsidian").setup({
     -- A list of workspace names, paths, and configuration overrides.
     -- If you use the Obsidian app, the 'path' of a workspace should generally be
@@ -5,16 +28,7 @@ require("obsidian").setup({
     -- When obsidian.nvim is loaded by your plugin manager, it will automatically set
     -- the workspace to the first workspace in the list whose `path` is a parent of the
     -- current markdown file being edited.
-    workspaces = {
-        {
-            name = "work",
-            path = "~/Notes/work",
-        },
-        {
-            name = "personal",
-            path = "~/Notes/personal",
-        },
-    },
+    workspaces = workspaces,
 
     -- Optional, if you keep notes in a specific subdirectory of your vault.
     notes_subdir = "notes",
