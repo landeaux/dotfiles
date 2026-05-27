@@ -23,7 +23,6 @@ chafa
 direnv
 entr
 fd-find
-fzf
 git
 git-lfs
 gnupg

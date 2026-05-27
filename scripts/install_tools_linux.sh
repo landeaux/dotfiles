@@ -57,6 +57,40 @@ else
 fi
 
 ###############################################################################
+# fzf — install from official GitHub release tarball. Apt's fzf on Ubuntu
+# noble (0.44.1) predates `fzf --zsh` (added in 0.48), which the zsh config
+# uses. jq is installed by the apt block above.
+###############################################################################
+
+if [[ ! -x /usr/local/bin/fzf ]]; then
+  echo "Installing fzf from GitHub release tarball..."
+  case "$(uname -m)" in
+    x86_64) FZF_ARCH="linux_amd64" ;;
+    aarch64 | arm64) FZF_ARCH="linux_arm64" ;;
+    *)
+      echo "Unsupported architecture for fzf tarball: $(uname -m)" >&2
+      exit 1
+      ;;
+  esac
+  FZF_VERSION="$(
+    curl -fsSL https://api.github.com/repos/junegunn/fzf/releases/latest |
+      jq -r '.tag_name' | sed 's/^v//'
+  )"
+  if [[ -z "$FZF_VERSION" ]]; then
+    echo "Could not determine latest fzf version from GitHub API" >&2
+    exit 1
+  fi
+  FZF_TARBALL="fzf-${FZF_VERSION}-${FZF_ARCH}.tar.gz"
+  FZF_TMP="$(mktemp -d)"
+  curl -fL "https://github.com/junegunn/fzf/releases/download/v${FZF_VERSION}/${FZF_TARBALL}" \
+    -o "${FZF_TMP}/${FZF_TARBALL}"
+  sudo tar -C /usr/local/bin -xzf "${FZF_TMP}/${FZF_TARBALL}" fzf
+  rm -rf "$FZF_TMP"
+else
+  echo "fzf already installed."
+fi
+
+###############################################################################
 # Starship prompt (no apt package)
 ###############################################################################
 
