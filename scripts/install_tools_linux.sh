@@ -120,6 +120,33 @@ else
 fi
 
 ###############################################################################
+# tree-sitter CLI — needed by nvim-treesitter to compile parsers. Apt's
+# tree-sitter-cli on Ubuntu noble lags significantly; install from GitHub
+# release (gzipped single binary).
+###############################################################################
+
+if [[ ! -x /usr/local/bin/tree-sitter ]]; then
+  echo "Installing tree-sitter CLI from GitHub release..."
+  case "$(uname -m)" in
+    x86_64) TS_ARCH="linux-x64" ;;
+    aarch64 | arm64) TS_ARCH="linux-arm64" ;;
+    *)
+      echo "Unsupported architecture for tree-sitter: $(uname -m)" >&2
+      exit 1
+      ;;
+  esac
+  TS_GZ="tree-sitter-${TS_ARCH}.gz"
+  TS_DOWNLOAD_URL="https://github.com/tree-sitter/tree-sitter/releases/latest/download/${TS_GZ}"
+  TS_TMP="$(mktemp -d)"
+  curl -fL "$TS_DOWNLOAD_URL" -o "${TS_TMP}/${TS_GZ}"
+  gunzip "${TS_TMP}/${TS_GZ}"
+  sudo install -m 0755 "${TS_TMP}/tree-sitter-${TS_ARCH}" /usr/local/bin/tree-sitter
+  rm -rf "$TS_TMP"
+else
+  echo "tree-sitter already installed."
+fi
+
+###############################################################################
 # Starship prompt (no apt package)
 ###############################################################################
 
