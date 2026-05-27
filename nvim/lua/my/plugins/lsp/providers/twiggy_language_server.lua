@@ -2,7 +2,7 @@ return {
     settings = {
         twiggy = {
             framework = "ignore",
-            phpExecutable = "/opt/homebrew/bin/php",
+            phpExecutable = vim.fn.exepath("php"),
         },
     },
 }
