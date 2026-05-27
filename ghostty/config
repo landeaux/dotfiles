@@ -6,6 +6,9 @@ font-thicken = true
 
 mouse-hide-while-typing = true
 
+keybind = cmd+shift+i=prompt_tab_title
+keybind = cmd+ctrl+i=prompt_surface_title
+
 # Terminfo - SSH
 # See: https://ghostty.org/docs/help/terminfo#ssh
 ## copy the terminfo entry the first time you log into a new server over SSH
