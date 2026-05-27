@@ -6,17 +6,13 @@
 - clean: ["~", "~/.config", "~/.claude"]
 
 - link:
+    # Shared (linked on all platforms)
     ~/.bashrc:
     ~/.config/bat: bat
     ~/.config/direnv: direnv
-    ~/.config/ghostty: ghostty
-    ~/.config/karabiner.edn: karabiner.edn
-    ~/.config/karabiner: karabiner
-    ~/.config/kitty: kitty
     ~/.config/nvim: nvim
-    ~/.config/skhd: skhd
     ~/.config/starship.toml: starship.toml
-    ~/.config/yabai: yabai
+    ~/.config/zsh: zsh
     ~/.dotfiles: ""
     ~/.gitconfig:
     ~/.gitignore:
@@ -25,7 +21,6 @@
     ~/.tmux/workspaces: tmux/workspaces
     ~/.tmux/themes: tmux/themes
     ~/.zshenv: zsh/zshenv.shim
-    ~/.config/zsh: zsh
     ~/.markdownlint-cli2.jsonc: .markdownlint-cli2.jsonc
     ~/bin: bin
     ~/.claude/CLAUDE.md:
@@ -38,10 +33,32 @@
       path: claude/hooks
       force: true
     ~/.claude/keybindings.json: claude/keybindings.json
-    ~/Library/Application Support/qmk/qmk.ini: qmk/qmk.ini
+
+    # macOS-only (GUI apps and window/keyboard management)
+    ~/.config/ghostty:
+      path: ghostty
+      if: '[ "$(uname)" = "Darwin" ]'
+    ~/.config/karabiner.edn:
+      path: karabiner.edn
+      if: '[ "$(uname)" = "Darwin" ]'
+    ~/.config/karabiner:
+      path: karabiner
+      if: '[ "$(uname)" = "Darwin" ]'
+    ~/.config/kitty:
+      path: kitty
+      if: '[ "$(uname)" = "Darwin" ]'
+    ~/.config/skhd:
+      path: skhd
+      if: '[ "$(uname)" = "Darwin" ]'
+    ~/.config/yabai:
+      path: yabai
+      if: '[ "$(uname)" = "Darwin" ]'
+    ~/Library/Application Support/qmk/qmk.ini:
+      path: qmk/qmk.ini
+      if: '[ "$(uname)" = "Darwin" ]'
 
 - shell:
     - git submodule update --init --recursive
     - '[ -n "$TMUX" ] && tmux source-file "${HOME}/.tmux.conf"; true'
     - tic -x ./terminfo/tmux-256color.terminfo # custom terminfo w/ italics
-    - bat cache --build # update the binary cache for bat
+    - command -v bat >/dev/null 2>&1 && bat cache --build || true # update the binary cache for bat (skipped if bat unavailable)
