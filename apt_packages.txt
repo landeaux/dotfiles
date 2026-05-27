@@ -1,0 +1,40 @@
+# Apt packages installed by scripts/install_tools_linux.sh.
+# Mirrors the portable subset of Brewfile. macOS-only formulae (qmk, skhd, goku,
+# pinentry-mac) and tools that aren't in apt or ship too-old versions
+# (selene, stylua, prettierd, eslint_d, markdownlint-cli2, vtsls, basedpyright,
+# lua-language-server, tree-sitter-cli, hadolint, shfmt, hyperfine, ghq) are
+# intentionally excluded — install per-project as needed.
+
+# Build essentials (also installed by prerequisites.sh; harmless to re-list)
+build-essential
+ca-certificates
+
+# Shell and terminal
+zsh
+zsh-completions
+tmux
+
+# Core CLI tools
+ack
+bat
+chafa
+direnv
+entr
+fd-find
+fzf
+git
+git-lfs
+gnupg
+imagemagick
+jq
+pandoc
+ripgrep
+shellcheck
+tree
+unzip
+wget
+
+# Language toolchains available in apt
+golang-go
+lua5.4
+luarocks
