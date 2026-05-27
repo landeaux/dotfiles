@@ -8,6 +8,8 @@
 - link:
     # Shared (linked on all platforms)
     ~/.bashrc:
+      path: bashrc
+      force: true
     ~/.config/bat: bat
     ~/.config/direnv: direnv
     ~/.config/nvim: nvim
@@ -20,7 +22,9 @@
     ~/.tmux.conf:
     ~/.tmux/workspaces: tmux/workspaces
     ~/.tmux/themes: tmux/themes
-    ~/.zshenv: zsh/zshenv.shim
+    ~/.zshenv:
+      path: zsh/zshenv.shim
+      force: true
     ~/.markdownlint-cli2.jsonc: .markdownlint-cli2.jsonc
     ~/bin: bin
     ~/.claude/CLAUDE.md:
