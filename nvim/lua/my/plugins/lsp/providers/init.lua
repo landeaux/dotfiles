@@ -10,7 +10,7 @@ local servers = {
     "dockerls",
     "gopls",
     "html",
-    "phpantom_lsp",
+    "intelephense",
     "jsonls",
     "lua_ls",
     "prosemd_lsp",
