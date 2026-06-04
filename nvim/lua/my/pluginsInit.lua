@@ -117,8 +117,10 @@ require("my.plugins.luasnip")
 require("my.plugins.blink-cmp")
 
 require("my.plugins.lazydev-nvim")
-require("my.plugins.lsp")
+-- Mason must load before lsp: it prepends its bin/ to $PATH, which the lsp
+-- provider gate (vim.fn.executable) relies on to enable Mason-only servers.
 require("my.plugins.mason")
+require("my.plugins.lsp")
 require("my.plugins.conform-nvim")
 require("my.plugins.none-ls")
 
