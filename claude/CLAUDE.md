@@ -33,6 +33,11 @@
 - Use `fd` instead of `find` when running shell commands.
 - Use `rg` instead of `grep` when running shell commands.
 
+## GitLab (glab)
+
+- When creating a draft MR, use `--draft` alone — it auto-prefixes the title with `Draft: `. Do not also add a
+  `Draft: ` prefix to `--title`, or the title becomes `Draft: Draft: ...`.
+
 ---
 
 @~/.claude/CLAUDE.local.md
