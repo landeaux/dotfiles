@@ -27,7 +27,7 @@
       "src": "https://github.com/hrsh7th/cmp-calc"
     },
     "codediff.nvim": {
-      "rev": "29b06f37251f2e010f53a0892573b2ec03d165e2",
+      "rev": "5d6aa753797a0ebda14dd769ed03d12a320d689b",
       "src": "https://github.com/esmuellert/codediff.nvim"
     },
     "conform.nvim": {
@@ -75,7 +75,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "none-ls-extras.nvim": {
-      "rev": "167f29529ff1438e673b1792a71aaf79ddd6c74f",
+      "rev": "27681d797a26f1b4d6119296df42f5204c88a2dc",
       "src": "https://github.com/nvimtools/none-ls-extras.nvim"
     },
     "none-ls.nvim": {
@@ -111,7 +111,7 @@
       "src": "https://github.com/kosayoda/nvim-lightbulb"
     },
     "nvim-lspconfig": {
-      "rev": "229b79051b380377664edc4cbd534930154921a1",
+      "rev": "ed19590a3a9792901553c388d1aadafce012f80d",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -158,7 +158,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "30d47907079474907f24d4a546932119a8b9f641",
+      "rev": "0f3cd0e584b4ed221fc44eee5b0b6ce335f7e263",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
