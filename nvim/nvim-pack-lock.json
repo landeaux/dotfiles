@@ -111,7 +111,7 @@
       "src": "https://github.com/kosayoda/nvim-lightbulb"
     },
     "nvim-lspconfig": {
-      "rev": "ed19590a3a9792901553c388d1aadafce012f80d",
+      "rev": "a683e0ddf0cf64c6cd689e18ffb480ade3c162b7",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -158,7 +158,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "8d6022b2a9034f46135437ade736c31b0ccfc8d7",
+      "rev": "304d2286752923e3b0eb1ddcb3d4002a69b855ad",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
