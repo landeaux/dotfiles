@@ -45,16 +45,14 @@
 
 ## Tool Use
 
-- Use `fd` instead of `find` when running shell commands.
-- Use `rg` instead of `grep` when running shell commands.
-- Don't pass `git -C <path>` when the shell's working directory is already the target repository — use plain `git
-  status`, `git branch --show-current`, etc. The Bash tool's cwd persists across calls, so `-C` is redundant. (Running
-  from outside the repo, `-C` is still fine.)
+- Don't pass `git -C <path>` when the shell's working directory is already the target repository — use plain
+  `git status`, `git branch --show-current`, etc. The Bash tool's cwd persists across calls, so `-C` is redundant.
+  (Running from outside the repo, `-C` is still fine.)
 
 ## GitLab (glab)
 
-- When creating a draft MR, use `--draft` alone — it auto-prefixes the title with `Draft: `. Do not also add a
-  `Draft: ` prefix to `--title`, or the title becomes `Draft: Draft: ...`.
+- When creating a draft MR, use `--draft` alone — it auto-prefixes the title with `Draft:`. Do not also add a
+  `Draft:` prefix to `--title`, or the title becomes `Draft: Draft: ...`.
 
 ---
 
