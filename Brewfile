@@ -1,5 +1,4 @@
 # Taps
-tap "koekeishiya/formulae" # for skhd/yabai
 tap "yqrashawn/goku" # for karabiner-elements
 
 # Formulae
@@ -29,7 +28,6 @@ brew "hadolint"
 brew "hyperfine"
 brew "imagemagick"
 brew "jq"
-brew "koekeishiya/formulae/skhd"
 brew "lua"
 brew "lua-language-server"
 brew "luarocks"
