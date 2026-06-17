@@ -1,6 +1,3 @@
-# Taps
-tap "yqrashawn/goku" # for karabiner-elements
-
 # Formulae
 brew "ack"
 brew "actionlint"
@@ -59,7 +56,6 @@ brew "vim"
 brew "vscode-langservers-extracted"
 brew "vtsls"
 brew "wget"
-brew "yqrashawn/goku/goku"
 brew "zoxide"
 brew "zsh"
 
