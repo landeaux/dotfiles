@@ -33,9 +33,6 @@
     ~/.claude/settings.json:
       path: claude/settings.json
       force: true
-    ~/.claude/hooks:
-      path: claude/hooks
-      force: true
     ~/.claude/keybindings.json: claude/keybindings.json
 
     # macOS-only (GUI apps and window/keyboard management)
