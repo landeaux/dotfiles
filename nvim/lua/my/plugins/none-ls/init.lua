@@ -1,6 +1,7 @@
 local null_ls = require("null-ls")
 null_ls.setup({
     sources = {
+        null_ls.builtins.diagnostics.actionlint,
         null_ls.builtins.diagnostics.hadolint,
         require("none-ls.diagnostics.eslint_d"),
         null_ls.builtins.diagnostics.selene,
