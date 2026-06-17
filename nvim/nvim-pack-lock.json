@@ -158,7 +158,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "304d2286752923e3b0eb1ddcb3d4002a69b855ad",
+      "rev": "735540a7602bffd1b07deab7d508affb57b78c64",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
