@@ -184,6 +184,7 @@
   },
   "alwaysThinkingEnabled": true,
   "preferredNotifChannel": "ghostty",
+  "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "tui": "fullscreen"
 }
