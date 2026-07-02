@@ -13,9 +13,9 @@ to their target locations (home dir, `~/.config/`, etc.) via `install.conf.yaml`
 
 Key directories:
 
-- `zsh/` — Modular zsh config: `conf.d/` files sourced in numbered order, `functions/` autoloaded
+- `zsh/` — Modular zsh config: `conf.d/` files sourced in numbered order
 - `nvim/` — Neovim config (vim.pack, plugins in `lua/my/plugins/`)
-- `claude/` — Claude Code global config (symlinked to `~/.claude/`): `CLAUDE.md`, `settings.json`
+- `claude/` — Claude Code global config (symlinked to `~/.claude/`): `CLAUDE.md`, `settings.json`, `keybindings.json`
 - `scripts/` — Bootstrap and utility scripts (idempotent, safe to re-run)
 - `bin/` — User scripts symlinked to `~/bin/`
 
@@ -27,8 +27,8 @@ Key directories:
   `02-completion.zsh`). Ordering matters — new files need an appropriate number.
 - **Local overrides.** Machine-specific config goes in `.local` files (`.zshenv.local`, `.zshrc.local`,
   `Brewfile.local`) which are gitignored.
-- **Autoloaded functions.** New zsh functions go in `zsh/functions/` as individual files and must be registered in
-  `.zshrc`'s `autoload -Uz` line.
+- **Shell functions live in conf.d.** New zsh functions go in `zsh/conf.d/07-functions.zsh` (the old
+  `zsh/functions/` autoload setup was removed).
 - **Neovim headless commands.** Always use `nvim --headless` when running nvim non-interactively (benchmarks, health checks, etc.) or it will hang waiting for a terminal.
 
 ## Conventions
