@@ -43,7 +43,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "774150bc05f774af1df614f55d156b3318c6decd",
+      "rev": "532d463f5c83595192fe740572d8fd6902b2217a",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -111,7 +111,7 @@
       "src": "https://github.com/kosayoda/nvim-lightbulb"
     },
     "nvim-lspconfig": {
-      "rev": "d224a1920728ba129880efc700d4a0180ac4ecbb",
+      "rev": "d6ac7a0d46555d44bf21f4f9c65f5201f818b475",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -158,11 +158,11 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "4504f8f389c44561e10027e68000cbe000129727",
+      "rev": "e954496f8ef22904e8a84f5078f4a110fdc7a0d3",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
-      "rev": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc",
+      "rev": "887b8a03ea3804628505c9002fd07bd06a3db2e0",
       "src": "https://github.com/luukvbaal/statuscol.nvim"
     },
     "vim-compiler-pytest": {
