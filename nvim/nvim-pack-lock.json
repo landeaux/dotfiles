@@ -27,11 +27,11 @@
       "src": "https://github.com/hrsh7th/cmp-calc"
     },
     "codediff.nvim": {
-      "rev": "31510a9b34c032b6fe98fc158d4066702f68cff2",
+      "rev": "e08a35a56a52c290398ebfaec33c34cfcf2d0f3c",
       "src": "https://github.com/esmuellert/codediff.nvim"
     },
     "conform.nvim": {
-      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "dressing.nvim": {
@@ -43,11 +43,11 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "8671012a7b2a1648595952c655039d51fb301c14",
+      "rev": "05e44d38de0a79c11fba5f7bf8138791b1dbdd1e",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
-      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
+      "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "indent-blankline.nvim": {
@@ -83,7 +83,7 @@
       "src": "https://github.com/nvimtools/none-ls.nvim"
     },
     "nui.nvim": {
-      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "rev": "a25dd472316d806eb38a5dd667c2e40da5570c75",
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim-colorizer.lua": {
@@ -111,7 +111,7 @@
       "src": "https://github.com/kosayoda/nvim-lightbulb"
     },
     "nvim-lspconfig": {
-      "rev": "43ed3797b266e1ee8d222e491379ad471c9d3146",
+      "rev": "fbaef6156f9ad65790931ab543ab1dfec57bbec7",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -119,7 +119,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "c9f9ed6c1892f629ea399f4ee7905f2686fa13f2",
+      "rev": "074aa4422bf029908338e855d0c0f71470a971bb",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -158,7 +158,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "427b0ff24377a6cdd18aa822a984a5adf156c3fa",
+      "rev": "cef8d093b63c9be7e8b49f7dc341e8447fc4c300",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
@@ -174,7 +174,7 @@
       "src": "https://github.com/tpope/vim-dispatch"
     },
     "vim-eunuch": {
-      "rev": "e86bb794a1c10a2edac130feb0ea590a00d03f1e",
+      "rev": "929490937745cd96130d3e7948f762f0aa403314",
       "src": "https://github.com/tpope/vim-eunuch"
     },
     "vim-fugitive": {
