@@ -107,8 +107,10 @@
       "Bash(fd * --exec-batch *)",
       "Bash(fd * -x *)",
       "Bash(fd * -X *)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "Notification": [
       {
@@ -183,8 +185,9 @@
     }
   },
   "alwaysThinkingEnabled": true,
+  "tui": "fullscreen",
   "preferredNotifChannel": "ghostty",
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
-  "tui": "fullscreen"
+  "effortLevel": "xhigh"
 }
