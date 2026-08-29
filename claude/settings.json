@@ -5,8 +5,10 @@
   },
   "attribution": {
     "commit": "",
-    "pr": ""
+    "pr": "",
+    "sessionUrl": false
   },
+  "remoteControlAtStartup": false,
   "permissions": {
     "allow": [
       "Bash(diffstat *)",
@@ -185,9 +187,15 @@
     }
   },
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-fable-5": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
   "preferredNotifChannel": "ghostty",
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
-  "effortLevel": "xhigh"
+  "agentPushNotifEnabled": true
 }
