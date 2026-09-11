@@ -112,7 +112,6 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5[1m]",
   "hooks": {
     "Notification": [
       {
@@ -187,12 +186,6 @@
     }
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "xhigh",
-  "modelSettings": {
-    "claude-fable-5": {
-      "effortLevel": "high"
-    }
-  },
   "tui": "fullscreen",
   "preferredNotifChannel": "ghostty",
   "skipAutoPermissionPrompt": true,
