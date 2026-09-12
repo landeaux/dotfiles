@@ -119,7 +119,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "d4d59cb369da46b95699bd2200efbcffc6dadb3b",
+      "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -158,7 +158,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "schemastore.nvim": {
-      "rev": "e37abcf2f337dc2587aae9118f866b0cf8ed96b7",
+      "rev": "05e938c0aa5dfbdbb11972fa4c8a85f27f402ba0",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "statuscol.nvim": {
