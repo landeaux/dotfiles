@@ -34,6 +34,7 @@
       path: claude/settings.json
       force: true
     ~/.claude/keybindings.json: claude/keybindings.json
+    ~/.claude/output-styles: claude/output-styles
 
     # macOS-only (GUI apps and window/keyboard management)
     ~/.config/ghostty:

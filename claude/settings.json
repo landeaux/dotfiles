@@ -187,6 +187,7 @@
   },
   "alwaysThinkingEnabled": true,
   "tui": "fullscreen",
+  "outputStyle": "Concise",
   "preferredNotifChannel": "ghostty",
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
