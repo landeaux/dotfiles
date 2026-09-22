@@ -8,7 +8,6 @@
     "pr": "",
     "sessionUrl": false
   },
-  "remoteControlAtStartup": false,
   "permissions": {
     "allow": [
       "Bash(diffstat *)",
@@ -155,7 +154,7 @@
     ]
   },
   "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": false,
     "lua-lsp@claude-plugins-official": true,
     "basedpyright@claude-code-lsps": true,
     "vscode-langservers@claude-code-lsps": true,
@@ -169,7 +168,8 @@
     "claude-md-management@claude-plugins-official": true,
     "clangd-lsp@claude-plugins-official": true,
     "clangd@claude-code-lsps": true,
-    "cloudflare@cloudflare": true
+    "cloudflare@cloudflare": true,
+    "mattpocock-skills@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "context7-marketplace": {
@@ -185,12 +185,13 @@
       }
     }
   },
-  "alwaysThinkingEnabled": true,
-  "tui": "fullscreen",
   "outputStyle": "Concise",
+  "alwaysThinkingEnabled": true,
+  "promptSuggestionEnabled": false,
+  "tui": "fullscreen",
   "preferredNotifChannel": "ghostty",
-  "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true,
+  "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
-  "promptSuggestionEnabled": false
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true
 }
