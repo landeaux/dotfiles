@@ -185,7 +185,6 @@
       }
     }
   },
-  "outputStyle": "Concise",
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
   "tui": "fullscreen",
