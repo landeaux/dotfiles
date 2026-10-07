@@ -114,6 +114,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "fable",
   "hooks": {
     "Notification": [
       {
@@ -172,7 +173,7 @@
     "clangd-lsp@claude-plugins-official": true,
     "clangd@claude-code-lsps": true,
     "cloudflare@cloudflare": true,
-    "mattpocock-skills@claude-plugins-official": true
+    "mattpocock-skills@mattpocock": true
   },
   "extraKnownMarketplaces": {
     "context7-marketplace": {
@@ -185,6 +186,12 @@
       "source": {
         "source": "github",
         "repo": "cloudflare/skills"
+      }
+    },
+    "mattpocock": {
+      "source": {
+        "source": "github",
+        "repo": "mattpocock/skills"
       }
     }
   },
