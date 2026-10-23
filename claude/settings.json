@@ -114,7 +114,6 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "fable",
   "hooks": {
     "Notification": [
       {
@@ -202,5 +201,6 @@
   "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "outputStyle": "Concise"
 }
