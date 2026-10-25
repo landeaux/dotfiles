@@ -48,6 +48,8 @@
 - Don't pass `git -C <path>` when the shell's working directory is already the target repository — use plain
   `git status`, `git branch --show-current`, etc. The Bash tool's cwd persists across calls, so `-C` is redundant.
   (Running from outside the repo, `-C` is still fine.)
+- Shell is zsh with GNU sed (Homebrew). In-place edits are `sed -i 's/…/…/' file` with no `''` suffix. Quote
+  anything zsh would glob: `[id]` paths, `--include='*.ts'`.
 
 ## GitLab (glab)
 
