@@ -6,7 +6,5 @@
       "tables": false
     },
     "no-duplicate-heading": false
-  },
-  // Fix any fixable errors
-  "fix": true
+  }
 }
