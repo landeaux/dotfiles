@@ -6,6 +6,9 @@ font-thicken = true
 
 mouse-hide-while-typing = true
 
+# Don't dim inactive splits; nvim signals focus via cursorline instead
+unfocused-split-opacity = 1
+
 keybind = cmd+shift+i=prompt_tab_title
 keybind = cmd+ctrl+i=prompt_surface_title
 
