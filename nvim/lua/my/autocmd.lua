@@ -63,3 +63,20 @@ utils.create_augroup({
         },
     },
 }, "_cd_project_root")
+
+-- Show cursorline only while the terminal pane has focus, so the active
+-- Ghostty split is obvious without dimming inactive splits
+utils.create_augroup({
+    {
+        event = "FocusGained",
+        opts = {
+            callback = function() vim.wo.cursorline = true end,
+        },
+    },
+    {
+        event = "FocusLost",
+        opts = {
+            callback = function() vim.wo.cursorline = false end,
+        },
+    },
+}, "_focus_indicator")
