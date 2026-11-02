@@ -7,6 +7,7 @@ return {
                 extra = {
                     {
                         name = "docker-stack",
+                        description = "Custom docker-stack schema",
                         url = "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json",
                         fileMatch = {
                             "**/docker-stack.yml",

@@ -6,6 +6,7 @@ return {
                 extra = {
                     {
                         name = "markdownlint-cli2",
+                        description = "Custom markdownlint-cli2 schema",
                         url = "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/main/schema/markdownlint-cli2-config-schema.json",
                         fileMatch = { ".markdownlint-cli2.jsonc", ".markdownlint-cli2.json" },
                     },
