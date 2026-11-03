@@ -1,38 +1,22 @@
 # CLAUDE.md
 
+Personal dotfiles managed with [dotbot](https://github.com/anishathalye/dotbot). Files live in this repo and are
+symlinked into place (home dir, `~/.config/`, `~/.claude/`) by `install.conf.yaml`.
+
 ## Commands
 
-- `./install` — Run dotbot to create/update symlinks (defined in `install.conf.yaml`)
-- `./scripts/bootstrap.sh` — Full setup: prerequisites → tools → dotfiles → macOS defaults
-- Individual scripts can be run standalone (see `scripts/`)
+- `./install` — dotbot: create/update symlinks
+- `./scripts/bootstrap.sh` — full setup: prerequisites → tools → dotfiles → macOS defaults
 
-## Architecture
+## Rules
 
-This is a dotfiles repo managed with [dotbot](https://github.com/anishathalye/dotbot). Files live here and are symlinked
-to their target locations (home dir, `~/.config/`, etc.) via `install.conf.yaml`.
+- `install.conf.yaml` is the source of truth for what links where. Edit files at their repo paths, never at the
+  symlink targets.
+- New config goes at XDG paths (`~/.config/...`) where the tool supports it.
+- Machine-specific config goes in gitignored `.local` files (`.zshenv.local`, `.zshrc.local`, `Brewfile.local`).
+- Scripts in `scripts/` use `set -e` and are idempotent.
 
-Key directories:
+## Reference
 
-- `zsh/` — Modular zsh config: `conf.d/` files sourced in numbered order
-- `nvim/` — Neovim config (vim.pack, plugins in `lua/my/plugins/`)
-- `claude/` — Claude Code global config (symlinked to `~/.claude/`): `CLAUDE.md`, `settings.json`, `keybindings.json`
-- `scripts/` — Bootstrap and utility scripts (idempotent, safe to re-run)
-- `bin/` — User scripts symlinked to `~/bin/`
-
-## Key Patterns
-
-- **Symlinks, not copies.** `install.conf.yaml` is the source of truth for what gets linked where. Edit files at their
-  repo paths, not the symlink targets.
-- **Numbered conf.d ordering.** Zsh files in `conf.d/` are sourced numerically (`01-options.zsh` before
-  `02-completion.zsh`). Ordering matters — new files need an appropriate number.
-- **Local overrides.** Machine-specific config goes in `.local` files (`.zshenv.local`, `.zshrc.local`,
-  `Brewfile.local`) which are gitignored.
-- **Shell functions live in conf.d.** New zsh functions go in `zsh/conf.d/07-functions.zsh` (the old
-  `zsh/functions/` autoload setup was removed).
-- **Neovim headless commands.** Always use `nvim --headless` when running nvim non-interactively (benchmarks, health checks, etc.) or it will hang waiting for a terminal.
-
-## Conventions
-
-- Conventional commits: `feat(scope):`, `fix:`, `refactor:`, `chore:`, `docs:`
-- Scripts use `set -e` and are idempotent
-- XDG-compliant paths where possible (`ZDOTDIR=$HOME/.config/zsh`)
+- [Zsh config](docs/zsh.md) — read before editing anything under `zsh/`.
+- [Neovim config](docs/nvim.md) — read before editing or running anything under `nvim/`.
