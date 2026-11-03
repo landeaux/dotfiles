@@ -196,10 +196,11 @@
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
   "tui": "fullscreen",
+  "autoMemoryEnabled": false,
   "preferredNotifChannel": "ghostty",
   "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
-  "autoMemoryEnabled": false
+  "model": "opus"
 }
