@@ -7,4 +7,4 @@
 
 ## Reference
 
-- [Git & commits](docs/git.md) — read before starting a multi-change task, committing, or writing a commit message.
+- [Git & commits](docs/git.md) — read before committing or starting a multi-change task.
