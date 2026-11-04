@@ -35,6 +35,7 @@
       force: true
     ~/.claude/keybindings.json: claude/keybindings.json
     ~/.claude/docs: claude/docs
+    ~/.claude/skills/address-self-review: claude/skills/address-self-review
 
     # macOS-only (GUI apps and window/keyboard management)
     ~/.config/ghostty:
