@@ -198,7 +198,7 @@
   "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "preferredNotifChannel": "ghostty",
-  "remoteControlAtStartup": false,
+  "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
