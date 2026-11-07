@@ -1,5 +1,5 @@
 # Apt packages installed by scripts/install_tools_linux.sh.
-# Mirrors the portable subset of Brewfile. macOS-only formulae (qmk, skhd, goku,
+# Mirrors the portable subset of Brewfile. macOS-only formulae (qmk, goku,
 # pinentry-mac) and tools that aren't in apt or ship too-old versions
 # (selene, stylua, prettierd, eslint_d, markdownlint-cli2, vtsls, basedpyright,
 # lua-language-server, hadolint, shfmt, hyperfine) are intentionally excluded —

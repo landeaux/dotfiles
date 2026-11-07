@@ -50,12 +50,6 @@
     ~/.config/kitty:
       path: kitty
       if: '[ "$(uname)" = "Darwin" ]'
-    ~/.config/skhd:
-      path: skhd
-      if: '[ "$(uname)" = "Darwin" ]'
-    ~/.config/yabai:
-      path: yabai
-      if: '[ "$(uname)" = "Darwin" ]'
     ~/Library/Application Support/qmk/qmk.ini:
       path: qmk/qmk.ini
       if: '[ "$(uname)" = "Darwin" ]'
