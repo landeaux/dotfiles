@@ -30,12 +30,10 @@
     # Agent config shared by all harnesses; each harness gets a link to the same source
     ~/.agents/AGENTS.md: agents/AGENTS.md
     ~/.agents/docs: agents/docs
-    ~/.agents/skills/address-self-review: agents/skills/address-self-review
     ~/.config/opencode/AGENTS.md: agents/AGENTS.md
     ~/.claude/CLAUDE.md:
       path: agents/AGENTS.md
       force: true
-    ~/.claude/skills/address-self-review: agents/skills/address-self-review
     # Claude Code only
     ~/.claude/settings.json:
       path: claude/settings.json
