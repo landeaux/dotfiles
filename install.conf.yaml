@@ -3,7 +3,7 @@
       create: true
       relink: true
 
-- clean: ["~", "~/.config", "~/.claude"]
+- clean: ["~", "~/.config", "~/.claude", "~/.agents"]
 
 - link:
     # Shared (linked on all platforms)
@@ -27,16 +27,21 @@
       force: true
     ~/.markdownlint-cli2.jsonc: .markdownlint-cli2.jsonc
     ~/bin: bin
+    # Agent config shared by all harnesses; each harness gets a link to the same source
+    ~/.agents/AGENTS.md: agents/AGENTS.md
+    ~/.agents/docs: agents/docs
+    ~/.agents/skills/address-self-review: agents/skills/address-self-review
+    ~/.config/opencode/AGENTS.md: agents/AGENTS.md
     ~/.claude/CLAUDE.md:
-      path: claude/CLAUDE.md
+      path: agents/AGENTS.md
       force: true
+    ~/.claude/skills/address-self-review: agents/skills/address-self-review
+    # Claude Code only
     ~/.claude/settings.json:
       path: claude/settings.json
       force: true
     ~/.claude/keybindings.json: claude/keybindings.json
-    ~/.claude/docs: claude/docs
     ~/.claude/output-styles: claude/output-styles
-    ~/.claude/skills/address-self-review: claude/skills/address-self-review
 
     # macOS-only (GUI apps and window/keyboard management)
     ~/.config/ghostty:
